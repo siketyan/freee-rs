@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **partner_doc_setting_attributes** | Option<[**crate::models::PartnerCreateParamsPartnerDocSettingAttributes**](partnerCreateParams_partner_doc_setting_attributes.md)> |  | [optional]
 **partner_bank_account_attributes** | Option<[**crate::models::PartnerCreateParamsPartnerBankAccountAttributes**](partnerCreateParams_partner_bank_account_attributes.md)> |  | [optional]
 **payment_term_attributes** | Option<[**crate::models::PartnerCreateParamsPaymentTermAttributes**](partnerCreateParams_payment_term_attributes.md)> |  | [optional]
-**invoice_payment_term_attributes** | Option<[**crate::models::PartnerCreateParamsPaymentTermAttributes**](partnerCreateParams_payment_term_attributes.md)> |  | [optional]
+**invoice_payment_term_attributes** | Option<[**crate::models::PartnerCreateParamsInvoicePaymentTermAttributes**](partnerCreateParams_invoice_payment_term_attributes.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

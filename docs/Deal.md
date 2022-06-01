@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **issue_date** | **String** | 発生日 (yyyy-mm-dd) | 
 **due_date** | Option<**String**> | 支払期日 (yyyy-mm-dd) | [optional]
 **amount** | **i64** | 金額 | 
-**due_amount** | Option<**i32**> | 支払金額 | [optional]
+**due_amount** | Option<**i32**> | 支払残額 | [optional]
 **_type** | Option<**String**> | 収支区分 (収入: income, 支出: expense) | [optional]
 **partner_id** | **i32** | 取引先ID | 
 **partner_code** | Option<**String**> | 取引先コード | [optional]

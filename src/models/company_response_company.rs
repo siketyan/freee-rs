@@ -54,7 +54,7 @@ pub struct CompanyResponseCompany {
     pub role: Role,
     /// 電話番号１
     #[serde(rename = "phone1")]
-    pub phone1: String,
+    pub phone1: Option<String>,
     /// 電話番号２
     #[serde(rename = "phone2")]
     pub phone2: Option<String>,
@@ -93,10 +93,26 @@ pub struct CompanyResponseCompany {
     pub use_partner_code: bool,
     #[serde(rename = "fiscal_years")]
     pub fiscal_years: Vec<crate::models::FiscalYears>,
+    #[serde(rename = "account_items", skip_serializing_if = "Option::is_none")]
+    pub account_items: Option<Vec<crate::models::CompanyResponseCompanyAccountItemsInner>>,
+    #[serde(rename = "tax_codes", skip_serializing_if = "Option::is_none")]
+    pub tax_codes: Option<Vec<crate::models::CompanyResponseCompanyTaxCodesInner>>,
+    #[serde(rename = "taxes", skip_serializing_if = "Option::is_none")]
+    pub taxes: Option<Vec<crate::models::CompanyResponseCompanyTaxesInner>>,
+    #[serde(rename = "items", skip_serializing_if = "Option::is_none")]
+    pub items: Option<Vec<crate::models::CompanyResponseCompanyItemsInner>>,
+    #[serde(rename = "partners", skip_serializing_if = "Option::is_none")]
+    pub partners: Option<Vec<crate::models::CompanyResponseCompanyPartnersInner>>,
+    #[serde(rename = "sections", skip_serializing_if = "Option::is_none")]
+    pub sections: Option<Vec<crate::models::CompanyResponseCompanySectionsInner>>,
+    #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Vec<crate::models::CompanyResponseCompanyTagsInner>>,
+    #[serde(rename = "walletables", skip_serializing_if = "Option::is_none")]
+    pub walletables: Option<Vec<crate::models::CompanyResponseCompanyWalletablesInner>>,
 }
 
 impl CompanyResponseCompany {
-    pub fn new(id: i32, name: Option<String>, name_kana: Option<String>, display_name: String, tax_at_source_calc_type: i32, contact_name: Option<String>, head_count: Option<i32>, corporate_number: String, txn_number_format: TxnNumberFormat, private_settlement: bool, minus_format: i32, role: Role, phone1: String, phone2: Option<String>, fax: Option<String>, zipcode: String, prefecture_code: Option<i32>, street_name1: String, street_name2: String, invoice_layout: InvoiceLayout, amount_fraction: i32, industry_class: IndustryClass, industry_code: IndustryCode, workflow_setting: WorkflowSetting, use_partner_code: bool, fiscal_years: Vec<crate::models::FiscalYears>) -> CompanyResponseCompany {
+    pub fn new(id: i32, name: Option<String>, name_kana: Option<String>, display_name: String, tax_at_source_calc_type: i32, contact_name: Option<String>, head_count: Option<i32>, corporate_number: String, txn_number_format: TxnNumberFormat, private_settlement: bool, minus_format: i32, role: Role, phone1: Option<String>, phone2: Option<String>, fax: Option<String>, zipcode: String, prefecture_code: Option<i32>, street_name1: String, street_name2: String, invoice_layout: InvoiceLayout, amount_fraction: i32, industry_class: IndustryClass, industry_code: IndustryCode, workflow_setting: WorkflowSetting, use_partner_code: bool, fiscal_years: Vec<crate::models::FiscalYears>) -> CompanyResponseCompany {
         CompanyResponseCompany {
             id,
             name,
@@ -125,6 +141,14 @@ impl CompanyResponseCompany {
             workflow_setting,
             use_partner_code,
             fiscal_years,
+            account_items: None,
+            tax_codes: None,
+            taxes: None,
+            items: None,
+            partners: None,
+            sections: None,
+            tags: None,
+            walletables: None,
         }
     }
 }

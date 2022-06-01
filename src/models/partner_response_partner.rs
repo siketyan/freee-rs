@@ -76,7 +76,7 @@ pub struct PartnerResponsePartner {
     #[serde(rename = "payment_term_attributes", skip_serializing_if = "Option::is_none")]
     pub payment_term_attributes: Option<Box<crate::models::PartnerResponsePartnerPaymentTermAttributes>>,
     #[serde(rename = "invoice_payment_term_attributes", skip_serializing_if = "Option::is_none")]
-    pub invoice_payment_term_attributes: Option<Box<crate::models::PartnerResponsePartnerPaymentTermAttributes>>,
+    pub invoice_payment_term_attributes: Option<Box<crate::models::PartnerResponsePartnerInvoicePaymentTermAttributes>>,
 }
 
 impl PartnerResponsePartner {

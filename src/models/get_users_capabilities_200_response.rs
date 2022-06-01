@@ -16,27 +16,27 @@ pub struct GetUsersCapabilities200Response {
     #[serde(rename = "wallet_txns")]
     pub wallet_txns: Box<crate::models::UserCapability>,
     #[serde(rename = "deals")]
-    pub deals: Box<crate::models::UserCapability>,
+    pub deals: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "transfers")]
-    pub transfers: Box<crate::models::UserCapability>,
+    pub transfers: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "docs")]
-    pub docs: Box<crate::models::UserCapability>,
+    pub docs: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "doc_postings")]
     pub doc_postings: Box<crate::models::UserCapability>,
     #[serde(rename = "receipts")]
-    pub receipts: Box<crate::models::UserCapability>,
+    pub receipts: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "receipt_stream_editor")]
     pub receipt_stream_editor: Box<crate::models::UserCapability>,
     #[serde(rename = "expense_applications")]
-    pub expense_applications: Box<crate::models::UserCapability>,
+    pub expense_applications: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "spreadsheets")]
     pub spreadsheets: Box<crate::models::UserCapability>,
     #[serde(rename = "payment_requests")]
-    pub payment_requests: Box<crate::models::UserCapability>,
+    pub payment_requests: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "request_forms")]
     pub request_forms: Box<crate::models::UserCapability>,
     #[serde(rename = "approval_requests")]
-    pub approval_requests: Box<crate::models::UserCapability>,
+    pub approval_requests: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "reports")]
     pub reports: Box<crate::models::UserCapability>,
     #[serde(rename = "reports_income_expense")]
@@ -62,7 +62,7 @@ pub struct GetUsersCapabilities200Response {
     #[serde(rename = "reports_managements_navigation")]
     pub reports_managements_navigation: Box<crate::models::UserCapability>,
     #[serde(rename = "manual_journals")]
-    pub manual_journals: Box<crate::models::UserCapability>,
+    pub manual_journals: Box<crate::models::UserCapabilityWithSelfOnly>,
     #[serde(rename = "fixed_assets")]
     pub fixed_assets: Box<crate::models::UserCapability>,
     #[serde(rename = "inventory_refreshes")]
@@ -136,7 +136,7 @@ pub struct GetUsersCapabilities200Response {
 }
 
 impl GetUsersCapabilities200Response {
-    pub fn new(wallet_txns: crate::models::UserCapability, deals: crate::models::UserCapability, transfers: crate::models::UserCapability, docs: crate::models::UserCapability, doc_postings: crate::models::UserCapability, receipts: crate::models::UserCapability, receipt_stream_editor: crate::models::UserCapability, expense_applications: crate::models::UserCapability, spreadsheets: crate::models::UserCapability, payment_requests: crate::models::UserCapability, request_forms: crate::models::UserCapability, approval_requests: crate::models::UserCapability, reports: crate::models::UserCapability, reports_income_expense: crate::models::UserCapability, reports_receivables: crate::models::UserCapability, reports_payables: crate::models::UserCapability, reports_cash_balance: crate::models::UserCapability, reports_crosstabs: crate::models::UserCapability, reports_general_ledgers: crate::models::UserCapability, reports_pl: crate::models::UserCapability, reports_bs: crate::models::UserCapability, reports_journals: crate::models::UserCapability, reports_managements_planning: crate::models::UserCapability, reports_managements_navigation: crate::models::UserCapability, manual_journals: crate::models::UserCapability, fixed_assets: crate::models::UserCapability, inventory_refreshes: crate::models::UserCapability, biz_allocations: crate::models::UserCapability, payment_records: crate::models::UserCapability, annual_reports: crate::models::UserCapability, tax_reports: crate::models::UserCapability, consumption_entries: crate::models::UserCapability, tax_return: crate::models::UserCapability, account_item_statements: crate::models::UserCapability, month_end: crate::models::UserCapability, year_end: crate::models::UserCapability, walletables: crate::models::UserCapability, companies: crate::models::UserCapability, invitations: crate::models::UserCapability, sign_in_logs: crate::models::UserCapability, backups: crate::models::UserCapability, opening_balances: crate::models::UserCapability, system_conversion: crate::models::UserCapability, resets: crate::models::UserCapability, partners: crate::models::UserCapability, items: crate::models::UserCapability, sections: crate::models::UserCapability, tags: crate::models::UserCapability, account_items: crate::models::UserCapability, taxes: crate::models::UserCapability, user_matchers: crate::models::UserCapability, deal_templates: crate::models::UserCapability, manual_journal_templates: crate::models::UserCapability, cost_allocations: crate::models::UserCapability, approval_flow_routes: crate::models::UserCapability, expense_application_templates: crate::models::UserCapability, workflows: crate::models::UserCapability, oauth_applications: crate::models::UserCapability, oauth_authorizations: crate::models::UserCapability, bank_accountant_staff_users: crate::models::UserCapability) -> GetUsersCapabilities200Response {
+    pub fn new(wallet_txns: crate::models::UserCapability, deals: crate::models::UserCapabilityWithSelfOnly, transfers: crate::models::UserCapabilityWithSelfOnly, docs: crate::models::UserCapabilityWithSelfOnly, doc_postings: crate::models::UserCapability, receipts: crate::models::UserCapabilityWithSelfOnly, receipt_stream_editor: crate::models::UserCapability, expense_applications: crate::models::UserCapabilityWithSelfOnly, spreadsheets: crate::models::UserCapability, payment_requests: crate::models::UserCapabilityWithSelfOnly, request_forms: crate::models::UserCapability, approval_requests: crate::models::UserCapabilityWithSelfOnly, reports: crate::models::UserCapability, reports_income_expense: crate::models::UserCapability, reports_receivables: crate::models::UserCapability, reports_payables: crate::models::UserCapability, reports_cash_balance: crate::models::UserCapability, reports_crosstabs: crate::models::UserCapability, reports_general_ledgers: crate::models::UserCapability, reports_pl: crate::models::UserCapability, reports_bs: crate::models::UserCapability, reports_journals: crate::models::UserCapability, reports_managements_planning: crate::models::UserCapability, reports_managements_navigation: crate::models::UserCapability, manual_journals: crate::models::UserCapabilityWithSelfOnly, fixed_assets: crate::models::UserCapability, inventory_refreshes: crate::models::UserCapability, biz_allocations: crate::models::UserCapability, payment_records: crate::models::UserCapability, annual_reports: crate::models::UserCapability, tax_reports: crate::models::UserCapability, consumption_entries: crate::models::UserCapability, tax_return: crate::models::UserCapability, account_item_statements: crate::models::UserCapability, month_end: crate::models::UserCapability, year_end: crate::models::UserCapability, walletables: crate::models::UserCapability, companies: crate::models::UserCapability, invitations: crate::models::UserCapability, sign_in_logs: crate::models::UserCapability, backups: crate::models::UserCapability, opening_balances: crate::models::UserCapability, system_conversion: crate::models::UserCapability, resets: crate::models::UserCapability, partners: crate::models::UserCapability, items: crate::models::UserCapability, sections: crate::models::UserCapability, tags: crate::models::UserCapability, account_items: crate::models::UserCapability, taxes: crate::models::UserCapability, user_matchers: crate::models::UserCapability, deal_templates: crate::models::UserCapability, manual_journal_templates: crate::models::UserCapability, cost_allocations: crate::models::UserCapability, approval_flow_routes: crate::models::UserCapability, expense_application_templates: crate::models::UserCapability, workflows: crate::models::UserCapability, oauth_applications: crate::models::UserCapability, oauth_authorizations: crate::models::UserCapability, bank_accountant_staff_users: crate::models::UserCapability) -> GetUsersCapabilities200Response {
         GetUsersCapabilities200Response {
             wallet_txns: Box::new(wallet_txns),
             deals: Box::new(deals),
