@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **corresponding_expense_id** | **i32** | 支出取引相手勘定科目ID | 
 **accumulated_dep_account_item_id** | Option<**i32**> | 減価償却累計額勘定科目ID（法人のみ利用可能） | [optional]
 **searchable** | Option<**i32**> | 検索可能:2, 検索不可：3(登録時未指定の場合は2で登録されます。更新時未指定の場合はsearchableは変更されません。) | [optional]
-**items** | Option<[**Vec<crate::models::AccountItemParamsAccountItemItems>**](accountItemParams_account_item_items.md)> | 品目 | [optional]
-**partners** | Option<[**Vec<crate::models::AccountItemParamsAccountItemItems>**](accountItemParams_account_item_items.md)> | 取引先 | [optional]
+**items** | Option<[**Vec<crate::models::AccountItemParamsAccountItemItemsInner>**](accountItemParams_account_item_items_inner.md)> | 品目 | [optional]
+**partners** | Option<[**Vec<crate::models::AccountItemParamsAccountItemItemsInner>**](accountItemParams_account_item_items_inner.md)> | 取引先 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

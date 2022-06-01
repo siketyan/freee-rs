@@ -23,14 +23,14 @@ pub struct ManualJournalUpdateParams {
     #[serde(rename = "adjustment", skip_serializing_if = "Option::is_none")]
     pub adjustment: Option<bool>,
     #[serde(rename = "details")]
-    pub details: Vec<crate::models::ManualJournalUpdateParamsDetails>,
+    pub details: Vec<crate::models::ManualJournalUpdateParamsDetailsInner>,
     /// 証憑ファイルID（ファイルボックスのファイルID）（配列）
     #[serde(rename = "receipt_ids", skip_serializing_if = "Option::is_none")]
     pub receipt_ids: Option<Vec<i32>>,
 }
 
 impl ManualJournalUpdateParams {
-    pub fn new(company_id: i32, issue_date: String, details: Vec<crate::models::ManualJournalUpdateParamsDetails>) -> ManualJournalUpdateParams {
+    pub fn new(company_id: i32, issue_date: String, details: Vec<crate::models::ManualJournalUpdateParamsDetailsInner>) -> ManualJournalUpdateParams {
         ManualJournalUpdateParams {
             company_id,
             issue_date,

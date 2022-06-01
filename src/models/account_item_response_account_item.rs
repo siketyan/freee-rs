@@ -47,9 +47,9 @@ pub struct AccountItemResponseAccountItem {
     #[serde(rename = "accumulated_dep_account_item_id", skip_serializing_if = "Option::is_none")]
     pub accumulated_dep_account_item_id: Option<i32>,
     #[serde(rename = "items", skip_serializing_if = "Option::is_none")]
-    pub items: Option<Vec<crate::models::AccountItemResponseAccountItemItems>>,
+    pub items: Option<Vec<crate::models::AccountItemResponseAccountItemItemsInner>>,
     #[serde(rename = "partners", skip_serializing_if = "Option::is_none")]
-    pub partners: Option<Vec<crate::models::AccountItemResponseAccountItemPartners>>,
+    pub partners: Option<Vec<crate::models::AccountItemResponseAccountItemPartnersInner>>,
     /// 勘定科目の使用設定（true: 使用する、false: 使用しない）
     #[serde(rename = "available")]
     pub available: bool,

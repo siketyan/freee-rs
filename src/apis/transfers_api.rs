@@ -171,7 +171,7 @@ pub async fn get_transfer(configuration: &configuration::Configuration, id: i32,
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の取引（振替）一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li> <p>amount : 振替金額</p> </li>  <li> <p>from_walletable_type, to_walletable_type</p>  <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
-pub async fn get_transfers(configuration: &configuration::Configuration, company_id: i32, start_date: Option<&str>, end_date: Option<&str>, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::InlineResponse20012, Error<GetTransfersError>> {
+pub async fn get_transfers(configuration: &configuration::Configuration, company_id: i32, start_date: Option<&str>, end_date: Option<&str>, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::GetTransfers200Response, Error<GetTransfersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

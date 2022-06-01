@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_transfers
 
-> crate::models::InlineResponse20012 get_transfers(company_id, start_date, end_date, offset, limit)
+> crate::models::GetTransfers200Response get_transfers(company_id, start_date, end_date, offset, limit)
 取引（振替）一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の取引（振替）一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li> <p>amount : 振替金額</p> </li>  <li> <p>from_walletable_type, to_walletable_type</p>  <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20012**](inline_response_200_12.md)
+[**crate::models::GetTransfers200Response**](get_transfers_200_response.md)
 
 ### Authorization
 

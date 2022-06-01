@@ -27,7 +27,7 @@ pub struct PaymentRequestCreateParams {
     pub description: Option<String>,
     /// 支払依頼の項目行一覧（配列）
     #[serde(rename = "payment_request_lines")]
-    pub payment_request_lines: Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLines>,
+    pub payment_request_lines: Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLinesInner>,
     /// 承認者のユーザーID<br> 「承認者を指定」の経路を申請経路として使用する場合に指定してください。<br> 指定する承認者のユーザーIDは、申請経路APIを利用して取得してください。 
     #[serde(rename = "approver_id", skip_serializing_if = "Option::is_none")]
     pub approver_id: Option<i32>,
@@ -91,7 +91,7 @@ pub struct PaymentRequestCreateParams {
 }
 
 impl PaymentRequestCreateParams {
-    pub fn new(company_id: i32, title: String, payment_request_lines: Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLines>, approval_flow_route_id: i32, draft: bool, issue_date: String) -> PaymentRequestCreateParams {
+    pub fn new(company_id: i32, title: String, payment_request_lines: Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLinesInner>, approval_flow_route_id: i32, draft: bool, issue_date: String) -> PaymentRequestCreateParams {
         PaymentRequestCreateParams {
             company_id,
             title,

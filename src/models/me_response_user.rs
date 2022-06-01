@@ -35,7 +35,7 @@ pub struct MeResponseUser {
     #[serde(rename = "last_name_kana", skip_serializing_if = "Option::is_none")]
     pub last_name_kana: Option<String>,
     #[serde(rename = "companies", skip_serializing_if = "Option::is_none")]
-    pub companies: Option<Vec<crate::models::MeResponseUserCompanies>>,
+    pub companies: Option<Vec<crate::models::MeResponseUserCompaniesInner>>,
 }
 
 impl MeResponseUser {

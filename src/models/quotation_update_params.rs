@@ -90,7 +90,7 @@ pub struct QuotationUpdateParams {
     pub tax_entry_method: Option<TaxEntryMethod>,
     /// 見積内容
     #[serde(rename = "quotation_contents", skip_serializing_if = "Option::is_none")]
-    pub quotation_contents: Option<Vec<crate::models::QuotationUpdateParamsQuotationContents>>,
+    pub quotation_contents: Option<Vec<crate::models::QuotationUpdateParamsQuotationContentsInner>>,
 }
 
 impl QuotationUpdateParams {

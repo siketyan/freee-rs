@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_tax_codes
 
-> crate::models::InlineResponse2007 get_tax_codes()
+> crate::models::GetTaxCodes200Response get_tax_codes()
 税区分コード一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>税区分コード一覧を取得する</p>
@@ -53,7 +53,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::InlineResponse2007**](inline_response_200_7.md)
+[**crate::models::GetTaxCodes200Response**](get_tax_codes_200_response.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 ## get_taxes_companies
 
-> crate::models::InlineResponse2008 get_taxes_companies(company_id)
+> crate::models::GetTaxesCompanies200Response get_taxes_companies(company_id)
 税区分コード詳細一覧の取得
 
 ### Parameters
@@ -81,7 +81,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2008**](inline_response_200_8.md)
+[**crate::models::GetTaxesCompanies200Response**](get_taxes_companies_200_response.md)
 
 ### Authorization
 

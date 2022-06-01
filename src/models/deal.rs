@@ -48,16 +48,16 @@ pub struct Deal {
     pub status: Status,
     /// 取引の明細行
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
-    pub details: Option<Vec<crate::models::DealCreateResponseDealDetails>>,
+    pub details: Option<Vec<crate::models::DealCreateResponseDealDetailsInner>>,
     /// 取引の+更新行
     #[serde(rename = "renews", skip_serializing_if = "Option::is_none")]
-    pub renews: Option<Vec<crate::models::DealRenews>>,
+    pub renews: Option<Vec<crate::models::DealRenewsInner>>,
     /// 取引の支払行
     #[serde(rename = "payments", skip_serializing_if = "Option::is_none")]
-    pub payments: Option<Vec<crate::models::DealCreateResponseDealPayments>>,
+    pub payments: Option<Vec<crate::models::DealCreateResponseDealPaymentsInner>>,
     /// 証憑ファイル（ファイルボックスのファイル）
     #[serde(rename = "receipts", skip_serializing_if = "Option::is_none")]
-    pub receipts: Option<Vec<crate::models::DealReceipts>>,
+    pub receipts: Option<Vec<crate::models::DealReceiptsInner>>,
 }
 
 impl Deal {

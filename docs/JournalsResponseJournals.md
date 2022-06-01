@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **visible_ids** | Option<**Vec<String>**> |  | [optional]
 **status_url** | Option<**String**> | ステータス確認用URL | [optional]
 **up_to_date** | Option<**bool**> | 集計結果が最新かどうか | [optional]
-**up_to_date_reasons** | Option<[**Vec<crate::models::JournalsResponseJournalsUpToDateReasons>**](journalsResponse_journals_up_to_date_reasons.md)> | 集計が最新でない場合の要因情報 | [optional]
+**up_to_date_reasons** | Option<[**Vec<crate::models::JournalsResponseJournalsUpToDateReasonsInner>**](journalsResponse_journals_up_to_date_reasons_inner.md)> | 集計が最新でない場合の要因情報 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

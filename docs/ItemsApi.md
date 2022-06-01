@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_items
 
-> crate::models::InlineResponse2006 get_items(company_id, start_update_date, end_update_date, offset, limit)
+> crate::models::GetItems200Response get_items(company_id, start_update_date, end_update_date, offset, limit)
 品目一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の品目一覧を取得する</p>
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2006**](inline_response_200_6.md)
+[**crate::models::GetItems200Response**](get_items_200_response.md)
 
 ### Authorization
 

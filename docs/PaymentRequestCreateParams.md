@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **title** | **String** | 申請タイトル | 
 **application_date** | Option<**String**> | 申請日 (yyyy-mm-dd)<br> 指定しない場合は当日の日付が登録されます。  | [optional]
 **description** | Option<**String**> | 備考 | [optional]
-**payment_request_lines** | [**Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLines>**](paymentRequestCreateParams_payment_request_lines.md) | 支払依頼の項目行一覧（配列） | 
+**payment_request_lines** | [**Vec<crate::models::PaymentRequestCreateParamsPaymentRequestLinesInner>**](paymentRequestCreateParams_payment_request_lines_inner.md) | 支払依頼の項目行一覧（配列） | 
 **approver_id** | Option<**i32**> | 承認者のユーザーID<br> 「承認者を指定」の経路を申請経路として使用する場合に指定してください。<br> 指定する承認者のユーザーIDは、申請経路APIを利用して取得してください。  | [optional]
 **approval_flow_route_id** | **i32** | 申請経路ID<br> 指定する申請経路IDは、申請経路APIを利用して取得してください。  | 
 **parent_id** | Option<**i32**> | 親申請ID(法人向け エンタープライズプラン、プロフェッショナルプラン)<br> <ul>   <li>承認済みの既存各種申請IDのみ指定可能です。</li>   <li>各種申請一覧APIを利用して取得してください。</li> </ul>  | [optional]

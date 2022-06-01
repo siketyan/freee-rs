@@ -40,8 +40,8 @@ Name | Type | Description | Notes
 **notes** | Option<**String**> | 備考 | [optional]
 **quotation_layout** | **String** | 見積書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン | 
 **tax_entry_method** | **String** | 見積書の消費税計算方法(inclusive: 内税, exclusive: 外税) | 
-**quotation_contents** | Option<[**Vec<crate::models::QuotationIndexResponseQuotationContents>**](quotationIndexResponse_quotation_contents.md)> | 見積内容 | [optional]
-**total_amount_per_vat_rate** | [**crate::models::InvoiceIndexResponseTotalAmountPerVatRate**](invoiceIndexResponse_total_amount_per_vat_rate.md) |  | 
+**quotation_contents** | Option<[**Vec<crate::models::QuotationIndexResponseQuotationsInnerQuotationContentsInner>**](quotationIndexResponse_quotations_inner_quotation_contents_inner.md)> | 見積内容 | [optional]
+**total_amount_per_vat_rate** | [**crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate**](invoiceIndexResponse_invoices_inner_total_amount_per_vat_rate.md) |  | 
 **related_invoice_id** | Option<**i32**> | 関連する請求書ID<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br>  | [optional]
 **related_quotation_ids** | Option<**Vec<i32>**> | 関連する見積書ID(配列)<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br>  | [optional]
 

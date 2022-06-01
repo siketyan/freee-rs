@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **searchable** | **i32** | 検索可能:2, 検索不可：3 | 
 **accumulated_dep_account_item_name** | Option<**String**> | 減価償却累計額勘定科目（法人のみ利用可能） | [optional]
 **accumulated_dep_account_item_id** | Option<**i32**> | 減価償却累計額勘定科目ID（法人のみ利用可能） | [optional]
-**items** | Option<[**Vec<crate::models::AccountItemResponseAccountItemItems>**](accountItemResponse_account_item_items.md)> |  | [optional]
-**partners** | Option<[**Vec<crate::models::AccountItemResponseAccountItemPartners>**](accountItemResponse_account_item_partners.md)> |  | [optional]
+**items** | Option<[**Vec<crate::models::AccountItemResponseAccountItemItemsInner>**](accountItemResponse_account_item_items_inner.md)> |  | [optional]
+**partners** | Option<[**Vec<crate::models::AccountItemResponseAccountItemPartnersInner>**](accountItemResponse_account_item_partners_inner.md)> |  | [optional]
 **available** | **bool** | 勘定科目の使用設定（true: 使用する、false: 使用しない） | 
 **walletable_id** | Option<**i32**> | 口座ID | 
 **group_name** | Option<**String**> | 決算書表示名（小カテゴリー） | [optional]

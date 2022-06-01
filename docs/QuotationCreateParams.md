@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **notes** | Option<**String**> | 備考 | [optional]
 **quotation_layout** | Option<**String**> | 見積書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン | [optional]
 **tax_entry_method** | Option<**String**> | 見積書の消費税計算方法(inclusive: 内税表示, exclusive: 外税表示 (デフォルト)) | [optional]
-**quotation_contents** | Option<[**Vec<crate::models::InvoiceCreateParamsInvoiceContents>**](invoiceCreateParams_invoice_contents.md)> | 見積内容 | [optional]
+**quotation_contents** | Option<[**Vec<crate::models::InvoiceCreateParamsInvoiceContentsInner>**](invoiceCreateParams_invoice_contents_inner.md)> | 見積内容 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

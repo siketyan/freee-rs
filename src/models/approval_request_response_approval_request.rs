@@ -30,7 +30,7 @@ pub struct ApprovalRequestResponseApprovalRequest {
     pub applicant_id: i32,
     /// 承認者（配列）   承認ステップのresource_typeがunspecified (指定なし)の場合はapproversはレスポンスに含まれません。   しかし、resource_typeがunspecifiedの承認ステップにおいて誰かが承認・却下・差し戻しのいずれかのアクションを取った後は、   approversはレスポンスに含まれるようになります。   その場合approversにはアクションを行ったステップのIDとアクションを行ったユーザーのIDが含まれます。
     #[serde(rename = "approvers")]
-    pub approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovers>,
+    pub approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>,
     /// 申請No.
     #[serde(rename = "application_number")]
     pub application_number: String,
@@ -39,7 +39,7 @@ pub struct ApprovalRequestResponseApprovalRequest {
     pub status: Status,
     /// 各種申請の項目一覧（配列）
     #[serde(rename = "request_items")]
-    pub request_items: Vec<crate::models::ApprovalRequestsIndexResponseRequestItems>,
+    pub request_items: Vec<crate::models::ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner>,
     /// 申請フォームID
     #[serde(rename = "form_id")]
     pub form_id: i32,
@@ -48,10 +48,10 @@ pub struct ApprovalRequestResponseApprovalRequest {
     pub approval_flow_route_id: i32,
     /// 各種申請のコメント一覧（配列）
     #[serde(rename = "comments")]
-    pub comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationComments>,
+    pub comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationCommentsInner>,
     /// 各種申請の承認履歴（配列）
     #[serde(rename = "approval_flow_logs")]
-    pub approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogs>,
+    pub approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>,
     /// 現在承認ステップID
     #[serde(rename = "current_step_id")]
     pub current_step_id: Option<i32>,
@@ -72,7 +72,7 @@ pub struct ApprovalRequestResponseApprovalRequest {
 }
 
 impl ApprovalRequestResponseApprovalRequest {
-    pub fn new(id: i32, company_id: i32, application_date: String, title: String, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovers>, application_number: String, status: Status, request_items: Vec<crate::models::ApprovalRequestsIndexResponseRequestItems>, form_id: i32, approval_flow_route_id: i32, comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationComments>, approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogs>, current_step_id: Option<i32>, current_round: i32, approval_request_form: crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestForm, deal_id: Option<i32>, manual_journal_id: Option<i32>, deal_status: Option<DealStatus>) -> ApprovalRequestResponseApprovalRequest {
+    pub fn new(id: i32, company_id: i32, application_date: String, title: String, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>, application_number: String, status: Status, request_items: Vec<crate::models::ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner>, form_id: i32, approval_flow_route_id: i32, comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationCommentsInner>, approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>, current_step_id: Option<i32>, current_round: i32, approval_request_form: crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestForm, deal_id: Option<i32>, manual_journal_id: Option<i32>, deal_status: Option<DealStatus>) -> ApprovalRequestResponseApprovalRequest {
         ApprovalRequestResponseApprovalRequest {
             id,
             company_id,

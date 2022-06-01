@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **approval_flow_route_id** | **i32** | 申請経路ID | 
 **approver_id** | Option<**i32**> | 承認者のユーザーID | [optional]
 **draft** | **bool** | falseの時、in_progress:申請中で更新する。それ以外の時はdraft:下書きで更新する | 
-**request_items** | [**Vec<crate::models::ApprovalRequestCreateParamsRequestItems>**](approvalRequestCreateParams_request_items.md) |  | 
+**request_items** | [**Vec<crate::models::ApprovalRequestCreateParamsRequestItemsInner>**](approvalRequestCreateParams_request_items_inner.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

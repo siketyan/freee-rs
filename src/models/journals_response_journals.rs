@@ -42,7 +42,7 @@ pub struct JournalsResponseJournals {
     pub up_to_date: Option<bool>,
     /// 集計が最新でない場合の要因情報
     #[serde(rename = "up_to_date_reasons", skip_serializing_if = "Option::is_none")]
-    pub up_to_date_reasons: Option<Vec<crate::models::JournalsResponseJournalsUpToDateReasons>>,
+    pub up_to_date_reasons: Option<Vec<crate::models::JournalsResponseJournalsUpToDateReasonsInner>>,
 }
 
 impl JournalsResponseJournals {

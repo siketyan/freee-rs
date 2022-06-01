@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invoices** | [**Vec<crate::models::InvoiceIndexResponseInvoices>**](invoiceIndexResponse_invoices.md) |  | 
+**invoices** | [**Vec<crate::models::InvoiceIndexResponseInvoicesInner>**](invoiceIndexResponse_invoices_inner.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

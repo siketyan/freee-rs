@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_banks
 
-> crate::models::InlineResponse20011 get_banks(offset, limit, _type)
+> crate::models::GetBanks200Response get_banks(offset, limit, _type)
 連携サービス一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>連携しているサービス一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
@@ -57,7 +57,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20011**](inline_response_200_11.md)
+[**crate::models::GetBanks200Response**](get_banks_200_response.md)
 
 ### Authorization
 

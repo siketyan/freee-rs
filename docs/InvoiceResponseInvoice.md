@@ -48,8 +48,8 @@ Name | Type | Description | Notes
 **invoice_layout** | **String** | 請求書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `carried_forward_standard_classic` - レイアウト３（繰越金額欄あり）/クラシック  * `carried_forward_envelope_classic` - 封筒２（繰越金額欄あり）/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン | 
 **tax_entry_method** | **String** | 請求書の消費税計算方法(inclusive: 内税, exclusive: 外税) | 
 **deal_id** | Option<**i32**> | 取引ID (invoice_statusがsubmitted, unsubmittedの時IDが表示されます) | [optional]
-**invoice_contents** | Option<[**Vec<crate::models::InvoiceIndexResponseInvoiceContents>**](invoiceIndexResponse_invoice_contents.md)> | 請求内容 | [optional]
-**total_amount_per_vat_rate** | [**crate::models::InvoiceIndexResponseTotalAmountPerVatRate**](invoiceIndexResponse_total_amount_per_vat_rate.md) |  | 
+**invoice_contents** | Option<[**Vec<crate::models::InvoiceIndexResponseInvoicesInnerInvoiceContentsInner>**](invoiceIndexResponse_invoices_inner_invoice_contents_inner.md)> | 請求内容 | [optional]
+**total_amount_per_vat_rate** | [**crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate**](invoiceIndexResponse_invoices_inner_total_amount_per_vat_rate.md) |  | 
 **related_quotation_ids** | Option<**Vec<i32>**> | 関連する見積書ID(配列)<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br>  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

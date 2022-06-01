@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## get_users
 
-> crate::models::InlineResponse2004 get_users(company_id, limit)
+> crate::models::GetUsers200Response get_users(company_id, limit)
 事業所に所属するユーザー一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>事業所に所属するユーザーの一覧を取得する</p>
@@ -28,7 +28,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2004**](inline_response_200_4.md)
+[**crate::models::GetUsers200Response**](get_users_200_response.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_users_capabilities
 
-> crate::models::InlineResponse2005 get_users_capabilities(company_id)
+> crate::models::GetUsersCapabilities200Response get_users_capabilities(company_id)
 ログインユーザーの権限の取得
 
  <h2 id=\"\">概要</h2>  <p>ユーザーの権限情報を取得する</p>
@@ -58,7 +58,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2005**](inline_response_200_5.md)
+[**crate::models::GetUsersCapabilities200Response**](get_users_capabilities_200_response.md)
 
 ### Authorization
 

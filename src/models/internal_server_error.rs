@@ -16,7 +16,7 @@ pub struct InternalServerError {
     #[serde(rename = "status_code", skip_serializing_if = "Option::is_none")]
     pub status_code: Option<i32>,
     #[serde(rename = "errors", skip_serializing_if = "Option::is_none")]
-    pub errors: Option<Vec<crate::models::InternalServerErrorErrors>>,
+    pub errors: Option<Vec<crate::models::InternalServerErrorErrorsInner>>,
 }
 
 impl InternalServerError {

@@ -13,15 +13,15 @@ Name | Type | Description | Notes
 **status** | **String** | 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し) | 
 **section_id** | Option<**i32**> | 部門ID | [optional]
 **tag_ids** | Option<**Vec<i32>**> | メモタグID | [optional]
-**expense_application_lines** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationExpenseApplicationLines>**](expenseApplicationResponse_expense_application_expense_application_lines.md) | 経費申請の項目行一覧（配列） | 
+**expense_application_lines** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner>**](expenseApplicationResponse_expense_application_expense_application_lines_inner.md) | 経費申請の項目行一覧（配列） | 
 **deal_id** | Option<**i32**> | 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます) | 
 **deal_status** | Option<**String**> | 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:精算済み, unsettled:清算待ち) | 
 **applicant_id** | **i32** | 申請者のユーザーID | 
-**approvers** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovers>**](expenseApplicationResponse_expense_application_approvers.md) | 承認者（配列）   承認ステップのresource_typeがunspecified (指定なし)の場合はapproversはレスポンスに含まれません。   しかし、resource_typeがunspecifiedの承認ステップにおいて誰かが承認・却下・差し戻しのいずれかのアクションを取った後は、   approversはレスポンスに含まれるようになります。   その場合approversにはアクションを行ったステップのIDとアクションを行ったユーザーのIDが含まれます。 | 
+**approvers** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>**](expenseApplicationResponse_expense_application_approvers_inner.md) | 承認者（配列）   承認ステップのresource_typeがunspecified (指定なし)の場合はapproversはレスポンスに含まれません。   しかし、resource_typeがunspecifiedの承認ステップにおいて誰かが承認・却下・差し戻しのいずれかのアクションを取った後は、   approversはレスポンスに含まれるようになります。   その場合approversにはアクションを行ったステップのIDとアクションを行ったユーザーのIDが含まれます。 | 
 **application_number** | **String** | 申請No. | 
 **approval_flow_route_id** | **i32** | 申請経路ID | 
-**comments** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationComments>**](expenseApplicationResponse_expense_application_comments.md) | 経費申請のコメント一覧（配列） | 
-**approval_flow_logs** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogs>**](expenseApplicationResponse_expense_application_approval_flow_logs.md) | 経費申請の承認履歴（配列） | 
+**comments** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationCommentsInner>**](expenseApplicationResponse_expense_application_comments_inner.md) | 経費申請のコメント一覧（配列） | 
+**approval_flow_logs** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>**](expenseApplicationResponse_expense_application_approval_flow_logs_inner.md) | 経費申請の承認履歴（配列） | 
 **current_step_id** | Option<**i32**> | 現在承認ステップID | 
 **current_round** | **i32** | 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。 | 
 **segment_1_tag_id** | Option<**i64**> | セグメント１ID。セグメント１が使用可能なプランの時のみレスポンスに含まれます。 | [optional]

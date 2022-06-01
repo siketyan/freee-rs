@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_segment_tags
 
-> crate::models::InlineResponse20016 get_segment_tags(company_id, segment_id, offset, limit)
+> crate::models::GetSegmentTags200Response get_segment_tags(company_id, segment_id, offset, limit)
 セグメントタグ一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所のセグメントタグ一覧を取得する</p>  <h2 id=\"\">注意点</h2>  <ul>  <li>本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。</li>  </ul>
@@ -93,7 +93,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20016**](inline_response_200_16.md)
+[**crate::models::GetSegmentTags200Response**](get_segment_tags_200_response.md)
 
 ### Authorization
 

@@ -48,10 +48,10 @@ pub struct DealCreateResponseDeal {
     pub status: Status,
     /// 取引の明細行
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
-    pub details: Option<Vec<crate::models::DealCreateResponseDealDetails>>,
+    pub details: Option<Vec<crate::models::DealCreateResponseDealDetailsInner>>,
     /// 取引の支払行
     #[serde(rename = "payments", skip_serializing_if = "Option::is_none")]
-    pub payments: Option<Vec<crate::models::DealCreateResponseDealPayments>>,
+    pub payments: Option<Vec<crate::models::DealCreateResponseDealPaymentsInner>>,
 }
 
 impl DealCreateResponseDeal {

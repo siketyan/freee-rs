@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **cost_allocation** | Option<**String**> | 配賦仕訳のみ：only,配賦仕訳以外：without(条件に指定した時のみ含まれる） | [optional]
 **approval_flow_status** | Option<**String**> | 未承認を除く: without_in_progress (デフォルト), 全てのステータス: all(条件に指定した時のみ含まれる） | [optional]
 **created_at** | Option<**String**> | 作成日時 | [optional]
-**balances** | [**Vec<crate::models::TrialPlSegment2TagsResponseTrialPlSegment2TagsBalances>**](trialPlSegment_2TagsResponse_trial_pl_segment_2_tags_balances.md) |  | 
+**balances** | [**Vec<crate::models::TrialPlSegment2TagsResponseTrialPlSegment2TagsBalancesInner>**](trialPlSegment_2TagsResponse_trial_pl_segment_2_tags_balances_inner.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

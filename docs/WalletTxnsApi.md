@@ -105,7 +105,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_wallet_txns
 
-> crate::models::InlineResponse20013 get_wallet_txns(company_id, walletable_type, walletable_id, start_date, end_date, entry_side, offset, limit)
+> crate::models::GetWalletTxns200Response get_wallet_txns(company_id, walletable_type, walletable_id, start_date, end_date, entry_side, offset, limit)
 明細一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の明細一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li> <p>amount : 明細金額</p> </li>  <li> <p>due_amount : 取引登録待ち金額</p> </li>  <li> <p>balance : 残高</p> </li>  <li> <p>entry_side</p>  <ul> <li>income : 入金</li>  <li>expense : 出金</li> </ul> </li>  <li> <p>walletable_type</p>  <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
@@ -126,7 +126,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20013**](inline_response_200_13.md)
+[**crate::models::GetWalletTxns200Response**](get_wallet_txns_200_response.md)
 
 ### Authorization
 

@@ -171,7 +171,7 @@ pub async fn get_tag(configuration: &configuration::Configuration, id: i32, comp
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所のメモタグ一覧を取得する</p>
-pub async fn get_tags(configuration: &configuration::Configuration, company_id: i32, start_update_date: Option<&str>, end_update_date: Option<&str>, offset: Option<i32>, limit: Option<i32>) -> Result<crate::models::InlineResponse200, Error<GetTagsError>> {
+pub async fn get_tags(configuration: &configuration::Configuration, company_id: i32, start_update_date: Option<&str>, end_update_date: Option<&str>, offset: Option<i32>, limit: Option<i32>) -> Result<crate::models::GetTags200Response, Error<GetTagsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

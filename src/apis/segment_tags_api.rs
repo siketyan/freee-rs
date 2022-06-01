@@ -125,7 +125,7 @@ pub async fn destroy_segments_tag(configuration: &configuration::Configuration, 
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所のセグメントタグ一覧を取得する</p>  <h2 id=\"\">注意点</h2>  <ul>  <li>本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。</li>  </ul>
-pub async fn get_segment_tags(configuration: &configuration::Configuration, company_id: i32, segment_id: i32, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::InlineResponse20016, Error<GetSegmentTagsError>> {
+pub async fn get_segment_tags(configuration: &configuration::Configuration, company_id: i32, segment_id: i32, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::GetSegmentTags200Response, Error<GetSegmentTagsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

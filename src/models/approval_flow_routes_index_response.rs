@@ -14,11 +14,11 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApprovalFlowRoutesIndexResponse {
     #[serde(rename = "approval_flow_routes")]
-    pub approval_flow_routes: Vec<crate::models::ApprovalFlowRoutesIndexResponseApprovalFlowRoutes>,
+    pub approval_flow_routes: Vec<crate::models::ApprovalFlowRoutesIndexResponseApprovalFlowRoutesInner>,
 }
 
 impl ApprovalFlowRoutesIndexResponse {
-    pub fn new(approval_flow_routes: Vec<crate::models::ApprovalFlowRoutesIndexResponseApprovalFlowRoutes>) -> ApprovalFlowRoutesIndexResponse {
+    pub fn new(approval_flow_routes: Vec<crate::models::ApprovalFlowRoutesIndexResponseApprovalFlowRoutesInner>) -> ApprovalFlowRoutesIndexResponse {
         ApprovalFlowRoutesIndexResponse {
             approval_flow_routes,
         }
