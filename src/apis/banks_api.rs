@@ -71,7 +71,7 @@ pub async fn get_bank(configuration: &configuration::Configuration, id: i32) -> 
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>連携しているサービス一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
-pub async fn get_banks(configuration: &configuration::Configuration, offset: Option<i64>, limit: Option<i32>, _type: Option<&str>) -> Result<crate::models::InlineResponse20011, Error<GetBanksError>> {
+pub async fn get_banks(configuration: &configuration::Configuration, offset: Option<i64>, limit: Option<i32>, _type: Option<&str>) -> Result<crate::models::GetBanks200Response, Error<GetBanksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

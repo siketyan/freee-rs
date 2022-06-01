@@ -14,10 +14,10 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct SelectablesIndexResponse {
     #[serde(rename = "account_categories", skip_serializing_if = "Option::is_none")]
-    pub account_categories: Option<Vec<crate::models::SelectablesIndexResponseAccountCategories>>,
+    pub account_categories: Option<Vec<crate::models::SelectablesIndexResponseAccountCategoriesInner>>,
     /// 決算書表示名（小カテゴリー）
     #[serde(rename = "account_groups", skip_serializing_if = "Option::is_none")]
-    pub account_groups: Option<Vec<crate::models::SelectablesIndexResponseAccountGroups>>,
+    pub account_groups: Option<Vec<crate::models::SelectablesIndexResponseAccountGroupsInner>>,
 }
 
 impl SelectablesIndexResponse {

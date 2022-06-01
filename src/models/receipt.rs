@@ -38,11 +38,11 @@ pub struct Receipt {
     #[serde(rename = "file_src")]
     pub file_src: String,
     #[serde(rename = "user")]
-    pub user: Box<crate::models::DealUser>,
+    pub user: Box<crate::models::DealReceiptsInnerUser>,
 }
 
 impl Receipt {
-    pub fn new(id: i32, status: Status, mime_type: String, origin: Origin, created_at: String, file_src: String, user: crate::models::DealUser) -> Receipt {
+    pub fn new(id: i32, status: Status, mime_type: String, origin: Origin, created_at: String, file_src: String, user: crate::models::DealReceiptsInnerUser) -> Receipt {
         Receipt {
             id,
             status,

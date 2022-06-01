@@ -35,17 +35,17 @@ pub struct DealCreateParams {
     #[serde(rename = "ref_number", skip_serializing_if = "Option::is_none")]
     pub ref_number: Option<String>,
     #[serde(rename = "details")]
-    pub details: Vec<crate::models::DealCreateParamsDetails>,
+    pub details: Vec<crate::models::DealCreateParamsDetailsInner>,
     /// 支払行一覧（配列）：未指定の場合、未決済の取引を作成します。
     #[serde(rename = "payments", skip_serializing_if = "Option::is_none")]
-    pub payments: Option<Vec<crate::models::DealCreateParamsPayments>>,
+    pub payments: Option<Vec<crate::models::DealCreateParamsPaymentsInner>>,
     /// 証憑ファイルID（ファイルボックスのファイルID）（配列）
     #[serde(rename = "receipt_ids", skip_serializing_if = "Option::is_none")]
     pub receipt_ids: Option<Vec<i32>>,
 }
 
 impl DealCreateParams {
-    pub fn new(issue_date: String, _type: Type, company_id: i32, details: Vec<crate::models::DealCreateParamsDetails>) -> DealCreateParams {
+    pub fn new(issue_date: String, _type: Type, company_id: i32, details: Vec<crate::models::DealCreateParamsDetailsInner>) -> DealCreateParams {
         DealCreateParams {
             issue_date,
             _type,

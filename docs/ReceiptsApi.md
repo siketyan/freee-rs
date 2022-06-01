@@ -141,7 +141,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_receipts
 
-> crate::models::InlineResponse20014 get_receipts(company_id, start_date, end_date, user_name, number, comment_type, comment_important, category, offset, limit)
+> crate::models::GetReceipts200Response get_receipts(company_id, start_date, end_date, user_name, number, comment_type, comment_important, category, offset, limit)
 ファイルボックス 証憑ファイル一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所のファイルボックス 証憑ファイル一覧を取得する</p>
@@ -164,7 +164,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20014**](inline_response_200_14.md)
+[**crate::models::GetReceipts200Response**](get_receipts_200_response.md)
 
 ### Authorization
 

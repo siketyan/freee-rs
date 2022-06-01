@@ -123,9 +123,9 @@ pub struct QuotationResponseQuotation {
     pub tax_entry_method: TaxEntryMethod,
     /// 見積内容
     #[serde(rename = "quotation_contents", skip_serializing_if = "Option::is_none")]
-    pub quotation_contents: Option<Vec<crate::models::QuotationIndexResponseQuotationContents>>,
+    pub quotation_contents: Option<Vec<crate::models::QuotationIndexResponseQuotationsInnerQuotationContentsInner>>,
     #[serde(rename = "total_amount_per_vat_rate")]
-    pub total_amount_per_vat_rate: Box<crate::models::InvoiceIndexResponseTotalAmountPerVatRate>,
+    pub total_amount_per_vat_rate: Box<crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate>,
     /// 関連する請求書ID<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br> 
     #[serde(rename = "related_invoice_id", skip_serializing_if = "Option::is_none")]
     pub related_invoice_id: Option<i32>,
@@ -135,7 +135,7 @@ pub struct QuotationResponseQuotation {
 }
 
 impl QuotationResponseQuotation {
-    pub fn new(id: i32, company_id: i32, issue_date: String, partner_id: Option<i32>, quotation_number: String, total_amount: i32, quotation_status: QuotationStatus, partner_title: Option<String>, company_name: String, quotation_layout: QuotationLayout, tax_entry_method: TaxEntryMethod, total_amount_per_vat_rate: crate::models::InvoiceIndexResponseTotalAmountPerVatRate) -> QuotationResponseQuotation {
+    pub fn new(id: i32, company_id: i32, issue_date: String, partner_id: Option<i32>, quotation_number: String, total_amount: i32, quotation_status: QuotationStatus, partner_title: Option<String>, company_name: String, quotation_layout: QuotationLayout, tax_entry_method: TaxEntryMethod, total_amount_per_vat_rate: crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate) -> QuotationResponseQuotation {
         QuotationResponseQuotation {
             id,
             company_id,

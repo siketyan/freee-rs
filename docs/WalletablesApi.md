@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_walletable
 
-> crate::models::InlineResponse20010 get_walletable(id, _type, company_id)
+> crate::models::GetWalletable200Response get_walletable(id, _type, company_id)
 口座情報の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座情報を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
@@ -92,7 +92,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20010**](inline_response_200_10.md)
+[**crate::models::GetWalletable200Response**](get_walletable_200_response.md)
 
 ### Authorization
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_walletables
 
-> crate::models::InlineResponse2009 get_walletables(company_id, with_balance, _type)
+> crate::models::GetWalletables200Response get_walletables(company_id, with_balance, _type)
 口座一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse2009**](inline_response_200_9.md)
+[**crate::models::GetWalletables200Response**](get_walletables_200_response.md)
 
 ### Authorization
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_walletable
 
-> crate::models::InlineResponse20010 update_walletable(id, _type, walletable_update_params)
+> crate::models::GetWalletable200Response update_walletable(id, _type, walletable_update_params)
 口座の更新
 
  <h2 id=\"\">概要</h2>  <p>口座を更新する</p>
@@ -156,7 +156,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20010**](inline_response_200_10.md)
+[**crate::models::GetWalletable200Response**](get_walletable_200_response.md)
 
 ### Authorization
 

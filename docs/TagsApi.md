@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_tags
 
-> crate::models::InlineResponse200 get_tags(company_id, start_update_date, end_update_date, offset, limit)
+> crate::models::GetTags200Response get_tags(company_id, start_update_date, end_update_date, offset, limit)
 メモタグ一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所のメモタグ一覧を取得する</p>
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse200**](inline_response_200.md)
+[**crate::models::GetTags200Response**](get_tags_200_response.md)
 
 ### Authorization
 

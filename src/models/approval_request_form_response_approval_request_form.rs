@@ -36,7 +36,7 @@ pub struct ApprovalRequestFormResponseApprovalRequestForm {
     pub form_order: Option<i32>,
     /// 申請フォームの項目
     #[serde(rename = "parts", skip_serializing_if = "Option::is_none")]
-    pub parts: Option<Vec<crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestFormParts>>,
+    pub parts: Option<Vec<crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInner>>,
     /// 適用された経路数
     #[serde(rename = "route_setting_count")]
     pub route_setting_count: i32,

@@ -39,7 +39,7 @@ pub struct ApprovalFlowRouteResponseApprovalFlowRoute {
     pub request_form_ids: Vec<i32>,
     /// 承認ステップ（配列）
     #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
-    pub steps: Option<Vec<crate::models::ApprovalFlowRouteResponseApprovalFlowRouteSteps>>,
+    pub steps: Option<Vec<crate::models::ApprovalFlowRouteResponseApprovalFlowRouteStepsInner>>,
 }
 
 impl ApprovalFlowRouteResponseApprovalFlowRoute {

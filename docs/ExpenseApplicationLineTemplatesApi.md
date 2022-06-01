@@ -100,7 +100,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_expense_application_line_templates
 
-> crate::models::InlineResponse20015 get_expense_application_line_templates(company_id, offset, limit)
+> crate::models::GetExpenseApplicationLineTemplates200Response get_expense_application_line_templates(company_id, offset, limit)
 経費科目一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の経費科目一覧を取得する</p>
@@ -116,7 +116,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::InlineResponse20015**](inline_response_200_15.md)
+[**crate::models::GetExpenseApplicationLineTemplates200Response**](get_expense_application_line_templates_200_response.md)
 
 ### Authorization
 

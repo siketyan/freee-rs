@@ -62,11 +62,11 @@ pub struct TrialPlThreeYearsResponseTrialPlThreeYears {
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<String>,
     #[serde(rename = "balances")]
-    pub balances: Vec<crate::models::TrialPlThreeYearsResponseTrialPlThreeYearsBalances>,
+    pub balances: Vec<crate::models::TrialPlThreeYearsResponseTrialPlThreeYearsBalancesInner>,
 }
 
 impl TrialPlThreeYearsResponseTrialPlThreeYears {
-    pub fn new(company_id: i32, balances: Vec<crate::models::TrialPlThreeYearsResponseTrialPlThreeYearsBalances>) -> TrialPlThreeYearsResponseTrialPlThreeYears {
+    pub fn new(company_id: i32, balances: Vec<crate::models::TrialPlThreeYearsResponseTrialPlThreeYearsBalancesInner>) -> TrialPlThreeYearsResponseTrialPlThreeYears {
         TrialPlThreeYearsResponseTrialPlThreeYears {
             company_id,
             fiscal_year: None,

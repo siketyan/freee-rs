@@ -224,7 +224,7 @@ pub async fn get_receipt(configuration: &configuration::Configuration, id: i32, 
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所のファイルボックス 証憑ファイル一覧を取得する</p>
-pub async fn get_receipts(configuration: &configuration::Configuration, company_id: i32, start_date: &str, end_date: &str, user_name: Option<&str>, number: Option<i32>, comment_type: Option<&str>, comment_important: Option<bool>, category: Option<&str>, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::InlineResponse20014, Error<GetReceiptsError>> {
+pub async fn get_receipts(configuration: &configuration::Configuration, company_id: i32, start_date: &str, end_date: &str, user_name: Option<&str>, number: Option<i32>, comment_type: Option<&str>, comment_important: Option<bool>, category: Option<&str>, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::GetReceipts200Response, Error<GetReceiptsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

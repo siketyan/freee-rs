@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **notes** | Option<**String**> | 備考 | [optional]
 **invoice_layout** | Option<**String**> | 請求書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `carried_forward_standard_classic` - レイアウト３（繰越金額欄あり）/クラシック  * `carried_forward_envelope_classic` - 封筒２（繰越金額欄あり）/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン | [optional]
 **tax_entry_method** | Option<**String**> | 請求書の消費税計算方法(inclusive: 内税表示, exclusive: 外税表示 (デフォルト)) | [optional]
-**invoice_contents** | Option<[**Vec<crate::models::InvoiceUpdateParamsInvoiceContents>**](invoiceUpdateParams_invoice_contents.md)> | 請求内容 | [optional]
+**invoice_contents** | Option<[**Vec<crate::models::InvoiceUpdateParamsInvoiceContentsInner>**](invoiceUpdateParams_invoice_contents_inner.md)> | 請求内容 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

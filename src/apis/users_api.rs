@@ -65,7 +65,7 @@ pub enum UpdateUserError {
 
 
 ///  <h2 id=\"\">概要</h2>  <p>事業所に所属するユーザーの一覧を取得する</p>
-pub async fn get_users(configuration: &configuration::Configuration, company_id: i32, limit: Option<i32>) -> Result<crate::models::InlineResponse2004, Error<GetUsersError>> {
+pub async fn get_users(configuration: &configuration::Configuration, company_id: i32, limit: Option<i32>) -> Result<crate::models::GetUsers200Response, Error<GetUsersError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -100,7 +100,7 @@ pub async fn get_users(configuration: &configuration::Configuration, company_id:
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>ユーザーの権限情報を取得する</p>
-pub async fn get_users_capabilities(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::InlineResponse2005, Error<GetUsersCapabilitiesError>> {
+pub async fn get_users_capabilities(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::GetUsersCapabilities200Response, Error<GetUsersCapabilitiesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

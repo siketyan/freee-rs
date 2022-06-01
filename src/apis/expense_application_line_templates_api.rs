@@ -168,7 +168,7 @@ pub async fn get_expense_application_line_template(configuration: &configuration
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の経費科目一覧を取得する</p>
-pub async fn get_expense_application_line_templates(configuration: &configuration::Configuration, company_id: i32, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::InlineResponse20015, Error<GetExpenseApplicationLineTemplatesError>> {
+pub async fn get_expense_application_line_templates(configuration: &configuration::Configuration, company_id: i32, offset: Option<i64>, limit: Option<i32>) -> Result<crate::models::GetExpenseApplicationLineTemplates200Response, Error<GetExpenseApplicationLineTemplatesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -30,14 +30,14 @@ pub struct ManualJournal {
     pub txn_number: Option<String>,
     /// 貸借行一覧（配列）: 貸借合わせて100行まで登録できます。
     #[serde(rename = "details")]
-    pub details: Vec<crate::models::ManualJournalDetails>,
+    pub details: Vec<crate::models::ManualJournalDetailsInner>,
     /// 証憑ファイルID（ファイルボックスのファイルID）
     #[serde(rename = "receipt_ids", skip_serializing_if = "Option::is_none")]
     pub receipt_ids: Option<Vec<i32>>,
 }
 
 impl ManualJournal {
-    pub fn new(id: i32, company_id: i32, issue_date: String, adjustment: bool, txn_number: Option<String>, details: Vec<crate::models::ManualJournalDetails>) -> ManualJournal {
+    pub fn new(id: i32, company_id: i32, issue_date: String, adjustment: bool, txn_number: Option<String>, details: Vec<crate::models::ManualJournalDetailsInner>) -> ManualJournal {
         ManualJournal {
             id,
             company_id,

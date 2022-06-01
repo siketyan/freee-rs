@@ -29,11 +29,11 @@ pub struct ApprovalRequestUpdateParams {
     #[serde(rename = "draft")]
     pub draft: bool,
     #[serde(rename = "request_items")]
-    pub request_items: Vec<crate::models::ApprovalRequestCreateParamsRequestItems>,
+    pub request_items: Vec<crate::models::ApprovalRequestCreateParamsRequestItemsInner>,
 }
 
 impl ApprovalRequestUpdateParams {
-    pub fn new(company_id: i32, approval_flow_route_id: i32, draft: bool, request_items: Vec<crate::models::ApprovalRequestCreateParamsRequestItems>) -> ApprovalRequestUpdateParams {
+    pub fn new(company_id: i32, approval_flow_route_id: i32, draft: bool, request_items: Vec<crate::models::ApprovalRequestCreateParamsRequestItemsInner>) -> ApprovalRequestUpdateParams {
         ApprovalRequestUpdateParams {
             company_id,
             application_date: None,

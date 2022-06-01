@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **partner_code** | Option<**String**> | 取引先コード | [optional]
 **ref_number** | Option<**String**> | 管理番号 | [optional]
 **status** | **String** | 決済状況 (未決済: unsettled, 完了: settled) | 
-**details** | Option<[**Vec<crate::models::DealCreateResponseDealDetails>**](dealCreateResponse_deal_details.md)> | 取引の明細行 | [optional]
-**payments** | Option<[**Vec<crate::models::DealCreateResponseDealPayments>**](dealCreateResponse_deal_payments.md)> | 取引の支払行 | [optional]
+**details** | Option<[**Vec<crate::models::DealCreateResponseDealDetailsInner>**](dealCreateResponse_deal_details_inner.md)> | 取引の明細行 | [optional]
+**payments** | Option<[**Vec<crate::models::DealCreateResponseDealPaymentsInner>**](dealCreateResponse_deal_payments_inner.md)> | 取引の支払行 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

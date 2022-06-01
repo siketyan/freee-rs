@@ -14,11 +14,11 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct CompanyIndexResponse {
     #[serde(rename = "companies")]
-    pub companies: Vec<crate::models::CompanyIndexResponseCompanies>,
+    pub companies: Vec<crate::models::CompanyIndexResponseCompaniesInner>,
 }
 
 impl CompanyIndexResponse {
-    pub fn new(companies: Vec<crate::models::CompanyIndexResponseCompanies>) -> CompanyIndexResponse {
+    pub fn new(companies: Vec<crate::models::CompanyIndexResponseCompaniesInner>) -> CompanyIndexResponse {
         CompanyIndexResponse {
             companies,
         }

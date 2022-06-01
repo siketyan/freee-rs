@@ -14,11 +14,11 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct AccountItemsResponse {
     #[serde(rename = "account_items")]
-    pub account_items: Vec<crate::models::AccountItemsResponseAccountItems>,
+    pub account_items: Vec<crate::models::AccountItemsResponseAccountItemsInner>,
 }
 
 impl AccountItemsResponse {
-    pub fn new(account_items: Vec<crate::models::AccountItemsResponseAccountItems>) -> AccountItemsResponse {
+    pub fn new(account_items: Vec<crate::models::AccountItemsResponseAccountItemsInner>) -> AccountItemsResponse {
         AccountItemsResponse {
             account_items,
         }

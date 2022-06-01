@@ -147,16 +147,16 @@ pub struct InvoiceResponseInvoice {
     pub deal_id: Option<i32>,
     /// 請求内容
     #[serde(rename = "invoice_contents", skip_serializing_if = "Option::is_none")]
-    pub invoice_contents: Option<Vec<crate::models::InvoiceIndexResponseInvoiceContents>>,
+    pub invoice_contents: Option<Vec<crate::models::InvoiceIndexResponseInvoicesInnerInvoiceContentsInner>>,
     #[serde(rename = "total_amount_per_vat_rate")]
-    pub total_amount_per_vat_rate: Box<crate::models::InvoiceIndexResponseTotalAmountPerVatRate>,
+    pub total_amount_per_vat_rate: Box<crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate>,
     /// 関連する見積書ID(配列)<br> 下記で作成したものが該当します。  <a href=\"https://support.freee.co.jp/hc/ja/articles/203318410#1-2\" target=\"_blank\">見積書・納品書を納品書・請求書に変換する</a><br> <a href=\"https://support.freee.co.jp/hc/ja/articles/209076226\" target=\"_blank\">複数の見積書・納品書から合算請求書を作成する</a><br> 
     #[serde(rename = "related_quotation_ids", skip_serializing_if = "Option::is_none")]
     pub related_quotation_ids: Option<Vec<i32>>,
 }
 
 impl InvoiceResponseInvoice {
-    pub fn new(id: i32, company_id: i32, issue_date: String, partner_id: Option<i32>, invoice_number: String, total_amount: i32, invoice_status: InvoiceStatus, posting_status: PostingStatus, company_name: String, payment_type: PaymentType, invoice_layout: InvoiceLayout, tax_entry_method: TaxEntryMethod, total_amount_per_vat_rate: crate::models::InvoiceIndexResponseTotalAmountPerVatRate) -> InvoiceResponseInvoice {
+    pub fn new(id: i32, company_id: i32, issue_date: String, partner_id: Option<i32>, invoice_number: String, total_amount: i32, invoice_status: InvoiceStatus, posting_status: PostingStatus, company_name: String, payment_type: PaymentType, invoice_layout: InvoiceLayout, tax_entry_method: TaxEntryMethod, total_amount_per_vat_rate: crate::models::InvoiceIndexResponseInvoicesInnerTotalAmountPerVatRate) -> InvoiceResponseInvoice {
         InvoiceResponseInvoice {
             id,
             company_id,

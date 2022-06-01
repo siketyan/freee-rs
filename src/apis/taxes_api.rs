@@ -82,7 +82,7 @@ pub async fn get_tax_code(configuration: &configuration::Configuration, code: i3
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>税区分コード一覧を取得する</p>
-pub async fn get_tax_codes(configuration: &configuration::Configuration, ) -> Result<crate::models::InlineResponse2007, Error<GetTaxCodesError>> {
+pub async fn get_tax_codes(configuration: &configuration::Configuration, ) -> Result<crate::models::GetTaxCodes200Response, Error<GetTaxCodesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -112,7 +112,7 @@ pub async fn get_tax_codes(configuration: &configuration::Configuration, ) -> Re
     }
 }
 
-pub async fn get_taxes_companies(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::InlineResponse2008, Error<GetTaxesCompaniesError>> {
+pub async fn get_taxes_companies(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::GetTaxesCompanies200Response, Error<GetTaxesCompaniesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

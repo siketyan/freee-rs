@@ -170,7 +170,7 @@ pub async fn get_item(configuration: &configuration::Configuration, company_id: 
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の品目一覧を取得する</p>
-pub async fn get_items(configuration: &configuration::Configuration, company_id: i32, start_update_date: Option<&str>, end_update_date: Option<&str>, offset: Option<i32>, limit: Option<i32>) -> Result<crate::models::InlineResponse2006, Error<GetItemsError>> {
+pub async fn get_items(configuration: &configuration::Configuration, company_id: i32, start_update_date: Option<&str>, end_update_date: Option<&str>, offset: Option<i32>, limit: Option<i32>) -> Result<crate::models::GetItems200Response, Error<GetItemsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

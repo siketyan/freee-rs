@@ -14,11 +14,11 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApprovalRequestFormIndexResponse {
     #[serde(rename = "approval_request_forms")]
-    pub approval_request_forms: Vec<crate::models::ApprovalRequestFormIndexResponseApprovalRequestForms>,
+    pub approval_request_forms: Vec<crate::models::ApprovalRequestFormIndexResponseApprovalRequestFormsInner>,
 }
 
 impl ApprovalRequestFormIndexResponse {
-    pub fn new(approval_request_forms: Vec<crate::models::ApprovalRequestFormIndexResponseApprovalRequestForms>) -> ApprovalRequestFormIndexResponse {
+    pub fn new(approval_request_forms: Vec<crate::models::ApprovalRequestFormIndexResponseApprovalRequestFormsInner>) -> ApprovalRequestFormIndexResponse {
         ApprovalRequestFormIndexResponse {
             approval_request_forms,
         }
