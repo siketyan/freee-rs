@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **private_settlement** | **bool** | プライベート資金/役員資金（false: 使用しない、true: 使用する） | 
 **minus_format** | **i32** | マイナスの表示方法（0: -、 1: △） | 
 **role** | **String** | ユーザーの権限 | 
-**phone1** | **String** | 電話番号１ | 
+**phone1** | Option<**String**> | 電話番号１ | 
 **phone2** | Option<**String**> | 電話番号２ | 
 **fax** | Option<**String**> | FAX | 
 **zipcode** | **String** | 郵便番号 | 
@@ -31,6 +31,14 @@ Name | Type | Description | Notes
 **workflow_setting** | **String** | 仕訳承認フロー（enable: 有効、 disable: 無効） | 
 **use_partner_code** | **bool** | 取引先コードの利用設定（true: 有効、 false: 無効） | 
 **fiscal_years** | [**Vec<crate::models::FiscalYears>**](fiscal_years.md) |  | 
+**account_items** | Option<[**Vec<crate::models::CompanyResponseCompanyAccountItemsInner>**](companyResponse_company_account_items_inner.md)> |  | [optional]
+**tax_codes** | Option<[**Vec<crate::models::CompanyResponseCompanyTaxCodesInner>**](companyResponse_company_tax_codes_inner.md)> |  | [optional]
+**taxes** | Option<[**Vec<crate::models::CompanyResponseCompanyTaxesInner>**](companyResponse_company_taxes_inner.md)> |  | [optional]
+**items** | Option<[**Vec<crate::models::CompanyResponseCompanyItemsInner>**](companyResponse_company_items_inner.md)> |  | [optional]
+**partners** | Option<[**Vec<crate::models::CompanyResponseCompanyPartnersInner>**](companyResponse_company_partners_inner.md)> |  | [optional]
+**sections** | Option<[**Vec<crate::models::CompanyResponseCompanySectionsInner>**](companyResponse_company_sections_inner.md)> |  | [optional]
+**tags** | Option<[**Vec<crate::models::CompanyResponseCompanyTagsInner>**](companyResponse_company_tags_inner.md)> |  | [optional]
+**walletables** | Option<[**Vec<crate::models::CompanyResponseCompanyWalletablesInner>**](companyResponse_company_walletables_inner.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

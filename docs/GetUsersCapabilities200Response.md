@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **wallet_txns** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**deals** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**transfers** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**docs** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**deals** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
+**transfers** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
+**docs** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **doc_postings** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**receipts** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**receipts** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **receipt_stream_editor** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**expense_applications** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**expense_applications** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **spreadsheets** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**payment_requests** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**payment_requests** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **request_forms** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**approval_requests** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**approval_requests** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **reports** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **reports_income_expense** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **reports_receivables** | [**crate::models::UserCapability**](userCapability.md) |  | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **reports_journals** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **reports_managements_planning** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **reports_managements_navigation** | [**crate::models::UserCapability**](userCapability.md) |  | 
-**manual_journals** | [**crate::models::UserCapability**](userCapability.md) |  | 
+**manual_journals** | [**crate::models::UserCapabilityWithSelfOnly**](userCapabilityWithSelfOnly.md) |  | 
 **fixed_assets** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **inventory_refreshes** | [**crate::models::UserCapability**](userCapability.md) |  | 
 **biz_allocations** | [**crate::models::UserCapability**](userCapability.md) |  | 

@@ -38,11 +38,11 @@ pub struct DealReceiptsInner {
     #[serde(rename = "file_src")]
     pub file_src: String,
     #[serde(rename = "user")]
-    pub user: Box<crate::models::DealReceiptsInnerUser>,
+    pub user: Box<crate::models::DealCreateResponseDealReceiptsInnerUser>,
 }
 
 impl DealReceiptsInner {
-    pub fn new(id: i32, status: Status, mime_type: String, origin: Origin, created_at: String, file_src: String, user: crate::models::DealReceiptsInnerUser) -> DealReceiptsInner {
+    pub fn new(id: i32, status: Status, mime_type: String, origin: Origin, created_at: String, file_src: String, user: crate::models::DealCreateResponseDealReceiptsInnerUser) -> DealReceiptsInner {
         DealReceiptsInner {
             id,
             status,

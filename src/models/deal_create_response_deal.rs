@@ -28,7 +28,7 @@ pub struct DealCreateResponseDeal {
     /// 金額
     #[serde(rename = "amount")]
     pub amount: i64,
-    /// 支払金額
+    /// 支払残額
     #[serde(rename = "due_amount", skip_serializing_if = "Option::is_none")]
     pub due_amount: Option<i32>,
     /// 収支区分 (収入: income, 支出: expense)
@@ -52,6 +52,9 @@ pub struct DealCreateResponseDeal {
     /// 取引の支払行
     #[serde(rename = "payments", skip_serializing_if = "Option::is_none")]
     pub payments: Option<Vec<crate::models::DealCreateResponseDealPaymentsInner>>,
+    /// 証憑ファイル（ファイルボックスのファイル）
+    #[serde(rename = "receipts", skip_serializing_if = "Option::is_none")]
+    pub receipts: Option<Vec<crate::models::DealCreateResponseDealReceiptsInner>>,
 }
 
 impl DealCreateResponseDeal {
@@ -70,6 +73,7 @@ impl DealCreateResponseDeal {
             status,
             details: None,
             payments: None,
+            receipts: None,
         }
     }
 }

@@ -28,7 +28,7 @@ pub struct Deal {
     /// 金額
     #[serde(rename = "amount")]
     pub amount: i64,
-    /// 支払金額
+    /// 支払残額
     #[serde(rename = "due_amount", skip_serializing_if = "Option::is_none")]
     pub due_amount: Option<i32>,
     /// 収支区分 (収入: income, 支出: expense)

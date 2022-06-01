@@ -67,7 +67,7 @@ pub struct PartnerCreateParams {
     #[serde(rename = "payment_term_attributes", skip_serializing_if = "Option::is_none")]
     pub payment_term_attributes: Option<Box<crate::models::PartnerCreateParamsPaymentTermAttributes>>,
     #[serde(rename = "invoice_payment_term_attributes", skip_serializing_if = "Option::is_none")]
-    pub invoice_payment_term_attributes: Option<Box<crate::models::PartnerCreateParamsPaymentTermAttributes>>,
+    pub invoice_payment_term_attributes: Option<Box<crate::models::PartnerCreateParamsInvoicePaymentTermAttributes>>,
 }
 
 impl PartnerCreateParams {
