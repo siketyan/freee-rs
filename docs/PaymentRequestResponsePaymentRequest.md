@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **title** | **String** | 申請タイトル | 
 **application_date** | **String** | 申請日 (yyyy-mm-dd) | 
 **description** | **String** | 備考 | 
-**total_amount** | **i32** | 合計金額 | 
+**total_amount** | **i64** | 合計金額 | 
 **status** | **String** | 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し) | 
 **payment_request_lines** | [**Vec<crate::models::PaymentRequestResponsePaymentRequestPaymentRequestLinesInner>**](paymentRequestResponse_payment_request_payment_request_lines_inner.md) | 支払依頼の項目行一覧（配列） | 
 **deal_id** | Option<**i32**> | 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます) | 

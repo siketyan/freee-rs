@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **quotation_number** | Option<**String**> | 見積書番号 (デフォルト: 自動採番されます) | [optional]
 **title** | Option<**String**> | タイトル (デフォルト: 見積書) | [optional]
 **description** | Option<**String**> | 概要 | [optional]
-**quotation_status** | Option<**String**> | 見積書ステータス  (unsubmitted: 送付待ち, submitted: 送付済み) | [optional]
+**quotation_status** | Option<**String**> | 見積書ステータス  (unsubmitted: 送付待ち, submitted: 送付済み) (請求書承認ワークフローを利用している場合、unsubmitted を指定すると、下書きの見積書が作成されます) | [optional]
 **partner_display_name** | **String** | 見積書に表示する取引先名 | 
 **partner_title** | **String** | 敬称（御中、様、(空白)の3つから選択） | 
 **partner_contact_info** | Option<**String**> | 取引先担当者名 | [optional]

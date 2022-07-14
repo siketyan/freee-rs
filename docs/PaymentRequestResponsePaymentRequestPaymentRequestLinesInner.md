@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **i64** | 支払依頼の項目行ID | 
 **line_type** | **String** | 行の種類 (deal_line: 支払依頼, withholding_tax: 源泉徴収税) | 
 **description** | **String** | 内容 | 
-**amount** | **i32** | 金額 | 
+**amount** | **i64** | 金額 | 
 **account_item_id** | Option<**i32**> | 勘定科目ID | 
 **tax_code** | Option<**i32**> | 税区分コード | 
 **item_id** | Option<**i32**> | 品目ID | 

@@ -27,7 +27,7 @@ pub struct PaymentRequestsIndexResponsePaymentRequestsInner {
     pub application_date: String,
     /// 合計金額
     #[serde(rename = "total_amount")]
-    pub total_amount: i32,
+    pub total_amount: i64,
     /// 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し)
     #[serde(rename = "status")]
     pub status: Status,
@@ -76,7 +76,7 @@ pub struct PaymentRequestsIndexResponsePaymentRequestsInner {
 }
 
 impl PaymentRequestsIndexResponsePaymentRequestsInner {
-    pub fn new(id: i32, company_id: i32, title: String, application_date: String, total_amount: i32, status: Status, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>, application_number: String, current_step_id: Option<i32>, current_round: i32, document_code: String, issue_date: String, payment_date: Option<String>, payment_method: PaymentMethod, partner_id: Option<i32>, partner_code: Option<String>, partner_name: Option<String>) -> PaymentRequestsIndexResponsePaymentRequestsInner {
+    pub fn new(id: i32, company_id: i32, title: String, application_date: String, total_amount: i64, status: Status, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>, application_number: String, current_step_id: Option<i32>, current_round: i32, document_code: String, issue_date: String, payment_date: Option<String>, payment_method: PaymentMethod, partner_id: Option<i32>, partner_code: Option<String>, partner_name: Option<String>) -> PaymentRequestsIndexResponsePaymentRequestsInner {
         PaymentRequestsIndexResponsePaymentRequestsInner {
             id,
             company_id,

@@ -457,7 +457,6 @@ Class | Method | HTTP request | Description
  - [PartnersResponsePartnersInner](docs/PartnersResponsePartnersInner.md)
  - [PartnersResponsePartnersInnerAddressAttributes](docs/PartnersResponsePartnersInnerAddressAttributes.md)
  - [PartnersResponsePartnersInnerPartnerBankAccountAttributes](docs/PartnersResponsePartnersInnerPartnerBankAccountAttributes.md)
- - [PartnersResponsePartnersInnerPartnerDocSettingAttributes](docs/PartnersResponsePartnersInnerPartnerDocSettingAttributes.md)
  - [PaymentParams](docs/PaymentParams.md)
  - [PaymentRequestActionCreateParams](docs/PaymentRequestActionCreateParams.md)
  - [PaymentRequestCreateParams](docs/PaymentRequestCreateParams.md)
