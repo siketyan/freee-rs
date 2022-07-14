@@ -63,8 +63,14 @@ jobs:
           command: login
           args: ${{ secrets.CRATES_IO_TOKEN }}
 
-      - name: Publish to crates.io
+      - name: Publish to crates.io (freee)
         uses: actions-rs/cargo@v1
         with:
           command: publish
-          args: --verbose --allow-dirty --workspace
+          args: --verbose --allow-dirty -p freee
+
+      - name: Publish to crates.io (freee-hr)
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish
+          args: --verbose --allow-dirty -p freee-hr
