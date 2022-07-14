@@ -31,7 +31,7 @@ pub struct PartnerCreateParamsPartnerBankAccountAttributes {
     /// 支店番号
     #[serde(rename = "branch_code", skip_serializing_if = "Option::is_none")]
     pub branch_code: Option<String>,
-    /// 口座種別(ordinary:普通、checking：当座、earmarked：納税準備預金、savings：貯蓄、other:その他)
+    /// 口座種別(ordinary:普通、checking：当座、earmarked：納税準備預金、savings：貯蓄、other:その他)、指定しない場合ordinaryになります。
     #[serde(rename = "account_type", skip_serializing_if = "Option::is_none")]
     pub account_type: Option<String>,
     /// 口座番号

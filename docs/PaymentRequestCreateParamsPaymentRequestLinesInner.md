@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **line_type** | Option<**String**> | '行の種類 (deal_line: 支払依頼, withholding_tax: 源泉徴収税)'<br> 'デフォルトは deal_line: 支払依頼 です'  | [optional]
 **description** | Option<**String**> | 内容 | [optional]
-**amount** | **i32** | 金額 | 
+**amount** | **i64** | 金額 | 
 **account_item_id** | Option<**i32**> | 勘定科目ID | [optional]
 **tax_code** | Option<**i32**> | 税区分コード<br> 勘定科目IDを指定する場合は必須です。  | [optional]
 **item_id** | Option<**i32**> | 品目ID | [optional]

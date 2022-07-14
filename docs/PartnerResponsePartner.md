@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **payer_walletable_id** | Option<**i32**> | 振込元口座ID（一括振込ファイル用）:（未設定の場合は、nullです。） | [optional]
 **transfer_fee_handling_side** | Option<**String**> | 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee) | [optional]
 **address_attributes** | Option<[**crate::models::PartnerResponsePartnerAddressAttributes**](partnerResponse_partner_address_attributes.md)> |  | [optional]
-**partner_doc_setting_attributes** | Option<[**crate::models::PartnersResponsePartnersInnerPartnerDocSettingAttributes**](partnersResponse_partners_inner_partner_doc_setting_attributes.md)> |  | [optional]
+**partner_doc_setting_attributes** | Option<[**crate::models::PartnerCreateParamsPartnerDocSettingAttributes**](partnerCreateParams_partner_doc_setting_attributes.md)> |  | [optional]
 **partner_bank_account_attributes** | Option<[**crate::models::PartnersResponsePartnersInnerPartnerBankAccountAttributes**](partnersResponse_partners_inner_partner_bank_account_attributes.md)> |  | [optional]
 **payment_term_attributes** | Option<[**crate::models::PartnerResponsePartnerPaymentTermAttributes**](partnerResponse_partner_payment_term_attributes.md)> |  | [optional]
 **invoice_payment_term_attributes** | Option<[**crate::models::PartnerResponsePartnerInvoicePaymentTermAttributes**](partnerResponse_partner_invoice_payment_term_attributes.md)> |  | [optional]

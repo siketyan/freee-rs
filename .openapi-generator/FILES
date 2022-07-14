@@ -164,7 +164,6 @@ docs/PartnersResponse.md
 docs/PartnersResponsePartnersInner.md
 docs/PartnersResponsePartnersInnerAddressAttributes.md
 docs/PartnersResponsePartnersInnerPartnerBankAccountAttributes.md
-docs/PartnersResponsePartnersInnerPartnerDocSettingAttributes.md
 docs/PaymentParams.md
 docs/PaymentRequestActionCreateParams.md
 docs/PaymentRequestCreateParams.md
@@ -534,7 +533,6 @@ src/models/partners_response.rs
 src/models/partners_response_partners_inner.rs
 src/models/partners_response_partners_inner_address_attributes.rs
 src/models/partners_response_partners_inner_partner_bank_account_attributes.rs
-src/models/partners_response_partners_inner_partner_doc_setting_attributes.rs
 src/models/payment_params.rs
 src/models/payment_request_action_create_params.rs
 src/models/payment_request_create_params.rs

@@ -30,7 +30,7 @@ pub struct PaymentRequestResponsePaymentRequest {
     pub description: String,
     /// 合計金額
     #[serde(rename = "total_amount")]
-    pub total_amount: i32,
+    pub total_amount: i64,
     /// 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し)
     #[serde(rename = "status")]
     pub status: Status,
@@ -121,7 +121,7 @@ pub struct PaymentRequestResponsePaymentRequest {
 }
 
 impl PaymentRequestResponsePaymentRequest {
-    pub fn new(id: i32, company_id: i32, title: String, application_date: String, description: String, total_amount: i32, status: Status, payment_request_lines: Vec<crate::models::PaymentRequestResponsePaymentRequestPaymentRequestLinesInner>, deal_id: Option<i32>, deal_status: Option<DealStatus>, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>, application_number: String, approval_flow_route_id: i32, comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationCommentsInner>, approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>, current_step_id: Option<i32>, current_round: i32, document_code: String, receipt_ids: Vec<i32>, issue_date: String, payment_date: Option<String>, payment_method: PaymentMethod, partner_id: Option<i32>, partner_name: Option<String>, bank_name: String, bank_name_kana: String, bank_code: String, branch_name: String, branch_kana: String, branch_code: String, account_type: AccountType, account_number: String, account_name: String) -> PaymentRequestResponsePaymentRequest {
+    pub fn new(id: i32, company_id: i32, title: String, application_date: String, description: String, total_amount: i64, status: Status, payment_request_lines: Vec<crate::models::PaymentRequestResponsePaymentRequestPaymentRequestLinesInner>, deal_id: Option<i32>, deal_status: Option<DealStatus>, applicant_id: i32, approvers: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApproversInner>, application_number: String, approval_flow_route_id: i32, comments: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationCommentsInner>, approval_flow_logs: Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>, current_step_id: Option<i32>, current_round: i32, document_code: String, receipt_ids: Vec<i32>, issue_date: String, payment_date: Option<String>, payment_method: PaymentMethod, partner_id: Option<i32>, partner_name: Option<String>, bank_name: String, bank_name_kana: String, bank_code: String, branch_name: String, branch_kana: String, branch_code: String, account_type: AccountType, account_number: String, account_name: String) -> PaymentRequestResponsePaymentRequest {
         PaymentRequestResponsePaymentRequest {
             id,
             company_id,

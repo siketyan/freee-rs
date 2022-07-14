@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **company_id** | **i32** | 事業所ID | 
 **title** | **String** | 申請タイトル | 
 **application_date** | **String** | 申請日 (yyyy-mm-dd) | 
-**total_amount** | **i32** | 合計金額 | 
+**total_amount** | **i64** | 合計金額 | 
 **status** | **String** | 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し) | 
 **deal_id** | Option<**i32**> | 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます) | [optional]
 **deal_status** | Option<**String**> | 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:支払済み, unsettled:支払待ち) | [optional]
