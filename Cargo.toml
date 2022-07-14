@@ -1,22 +1,5 @@
-[package]
-name = "freee"
-description = "REST API client implementation for freee Accounting, auto-generated from OpenAPI specification."
-version = "0.1.0"
-license = "MIT"
-readme = "README.md"
-homepage = "https://github.com/siketyan/freee-rs"
-repository = "https://github.com/siketyan/freee-rs.git"
-documentation = "https://docs.rs/freee/0.1.0/freee/"
-keywords = ["api-client", "freee", "accounting"]
-authors = ["Naoki Ikeguchi <me@s6n.jp>"]
-edition = "2021"
-
-[dependencies]
-serde = "^1.0"
-serde_derive = "^1.0"
-serde_json = "^1.0"
-url = "^2.2"
-
-[dependencies.reqwest]
-version = "^0.11"
-features = ["json", "multipart"]
+[workspace]
+members = [
+    "accounting",
+    "hr",
+]
