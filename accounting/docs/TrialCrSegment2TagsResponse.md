@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trial_cr_segment_2_tags** | [**crate::models::TrialCrSegment2TagsResponseTrialCrSegment2Tags**](trialCrSegment_2TagsResponse_trial_cr_segment_2_tags.md) |  | 
+**trial_cr_segment_2_tags** | [**crate::models::TrialPlSegment2TagsResponseTrialPlSegment2Tags**](trialPlSegment_2TagsResponse_trial_pl_segment_2_tags.md) |  | 
 **up_to_date** | **bool** | 集計結果が最新かどうか | 
 **up_to_date_reasons** | Option<[**Vec<crate::models::JournalsResponseJournalsUpToDateReasonsInner>**](journalsResponse_journals_up_to_date_reasons_inner.md)> | 集計が最新でない場合の要因情報 | [optional]
 
