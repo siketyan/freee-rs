@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TrialCrSegment1TagsResponse {
     #[serde(rename = "trial_cr_segment_1_tags")]
-    pub trial_cr_segment_1_tags: Box<crate::models::TrialCrSegment1TagsResponseTrialCrSegment1Tags>,
+    pub trial_cr_segment_1_tags: Box<crate::models::TrialPlSegment1TagsResponseTrialPlSegment1Tags>,
     /// 集計結果が最新かどうか
     #[serde(rename = "up_to_date")]
     pub up_to_date: bool,
@@ -24,7 +24,7 @@ pub struct TrialCrSegment1TagsResponse {
 }
 
 impl TrialCrSegment1TagsResponse {
-    pub fn new(trial_cr_segment_1_tags: crate::models::TrialCrSegment1TagsResponseTrialCrSegment1Tags, up_to_date: bool) -> TrialCrSegment1TagsResponse {
+    pub fn new(trial_cr_segment_1_tags: crate::models::TrialPlSegment1TagsResponseTrialPlSegment1Tags, up_to_date: bool) -> TrialCrSegment1TagsResponse {
         TrialCrSegment1TagsResponse {
             trial_cr_segment_1_tags: Box::new(trial_cr_segment_1_tags),
             up_to_date,

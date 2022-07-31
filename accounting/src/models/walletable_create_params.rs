@@ -22,12 +22,12 @@ pub struct WalletableCreateParams {
     /// 事業所ID
     #[serde(rename = "company_id")]
     pub company_id: i32,
-    /// サービスID
+    /// 連携サービスID（typeにbank_account、credit_cardを指定する場合は必須）
     #[serde(rename = "bank_id", skip_serializing_if = "Option::is_none")]
     pub bank_id: Option<i32>,
-    /// 決算書表示名（小カテゴリー）　例：売掛金, 受取手形, 未収入金（法人のみ）, 買掛金, 支払手形, 未払金, 預り金, 前受金
-    #[serde(rename = "group_name", skip_serializing_if = "Option::is_none")]
-    pub group_name: Option<String>,
+    /// 口座を資産口座とするか負債口座とするか（true: 資産口座 (デフォルト), false: 負債口座）<br> bank_idを指定しない場合にのみ使われます。<br> bank_idを指定する場合には資産口座か負債口座かはbank_idに指定したサービスに応じて決定され、is_assetに指定した値は無視されます。 
+    #[serde(rename = "is_asset", skip_serializing_if = "Option::is_none")]
+    pub is_asset: Option<bool>,
 }
 
 impl WalletableCreateParams {
@@ -37,7 +37,7 @@ impl WalletableCreateParams {
             _type,
             company_id,
             bank_id: None,
-            group_name: None,
+            is_asset: None,
         }
     }
 }

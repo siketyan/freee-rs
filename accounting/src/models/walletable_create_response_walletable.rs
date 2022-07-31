@@ -19,7 +19,7 @@ pub struct WalletableCreateResponseWalletable {
     /// 口座名, 最大255文字
     #[serde(rename = "name")]
     pub name: String,
-    /// サービスID
+    /// 連携サービスID（typeにbank_account、credit_cardを指定する場合は必須）
     #[serde(rename = "bank_id")]
     pub bank_id: i32,
     /// 口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)

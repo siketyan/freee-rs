@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct TrialCrTwoYearsResponse {
     #[serde(rename = "trial_cr_two_years")]
-    pub trial_cr_two_years: Box<crate::models::TrialCrTwoYearsResponseTrialCrTwoYears>,
+    pub trial_cr_two_years: Box<crate::models::TrialPlTwoYearsResponseTrialPlTwoYears>,
     /// 集計結果が最新かどうか
     #[serde(rename = "up_to_date")]
     pub up_to_date: bool,
@@ -24,7 +24,7 @@ pub struct TrialCrTwoYearsResponse {
 }
 
 impl TrialCrTwoYearsResponse {
-    pub fn new(trial_cr_two_years: crate::models::TrialCrTwoYearsResponseTrialCrTwoYears, up_to_date: bool) -> TrialCrTwoYearsResponse {
+    pub fn new(trial_cr_two_years: crate::models::TrialPlTwoYearsResponseTrialPlTwoYears, up_to_date: bool) -> TrialCrTwoYearsResponse {
         TrialCrTwoYearsResponse {
             trial_cr_two_years: Box::new(trial_cr_two_years),
             up_to_date,
