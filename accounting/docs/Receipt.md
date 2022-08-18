@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **i32** | 証憑ファイルID | 
-**status** | **String** | ステータス(unconfirmed:確認待ち、confirmed:確認済み、deleted:削除済み、ignored:無視) | 
+**status** | **String** | ステータス(confirmed:確認済み、deleted:削除済み、ignored:無視) | 
 **description** | Option<**String**> | メモ | [optional]
 **mime_type** | **String** | MIMEタイプ | 
 **issue_date** | Option<**String**> | 発生日 | [optional]

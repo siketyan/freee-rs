@@ -1,7 +1,4 @@
 .gitignore
-.openapi-generator-ignore
-.travis.yml
-Cargo.toml
 README.md
 docs/AccessDeniedError.md
 docs/ApiV1ApprovalActionRequest.md
@@ -116,7 +113,6 @@ docs/InternalServerErrorErrorsInner.md
 docs/NotfoundError.md
 docs/NotfoundErrorErrorsInner.md
 docs/UnauthorizedError.md
-git_push.sh
 src/apis/_api.rs
 src/apis/configuration.rs
 src/apis/mod.rs

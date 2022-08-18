@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<**i32**> | 扶養親族ID（idがない場合は新規作成になる) | [optional]
+**id** | Option<**i32**> | 扶養親族ルールID（idがない場合は新規作成になる) | [optional]
 **last_name** | **String** | 姓 null不可 | 
 **first_name** | **String** | 名 null不可 | 
 **last_name_kana** | Option<**String**> | 姓カナ | [optional]

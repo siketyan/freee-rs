@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **birth_date** | [**String**](string.md) | 生年月日 null不可 | 
 **entry_date** | [**String**](string.md) | 入社日 null不可 | 
 **retire_date** | Option<[**String**](string.md)> | 退職日 - 退職していない場合は指定不要です。 - 指定する場合はentry_date以降の日付を指定してください。 - retire_dateをクリアする場合、nullを指定してください。 | [optional]
+**company_reference_date_rule_name** | Option<**String**> | <a href=\"https://support.freee.co.jp/hc/ja/articles/360000666303-締め日支払い日を変更する方法は-\" target=\"_blank\">締め日支払い日グループ名</a> で設定した締め日支払い日を指定してください。 - 未指定の際は、締め日支払い日は変わりません。 - 指定した従業員が給与計算対象外の場合、指定するとエラーになります。 | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

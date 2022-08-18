@@ -16,7 +16,7 @@ pub struct Receipt {
     /// 証憑ファイルID
     #[serde(rename = "id")]
     pub id: i32,
-    /// ステータス(unconfirmed:確認待ち、confirmed:確認済み、deleted:削除済み、ignored:無視)
+    /// ステータス(confirmed:確認済み、deleted:削除済み、ignored:無視)
     #[serde(rename = "status")]
     pub status: Status,
     /// メモ
@@ -57,11 +57,9 @@ impl Receipt {
     }
 }
 
-/// ステータス(unconfirmed:確認待ち、confirmed:確認済み、deleted:削除済み、ignored:無視)
+/// ステータス(confirmed:確認済み、deleted:削除済み、ignored:無視)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Status {
-    #[serde(rename = "unconfirmed")]
-    Unconfirmed,
     #[serde(rename = "confirmed")]
     Confirmed,
     #[serde(rename = "deleted")]
@@ -72,7 +70,7 @@ pub enum Status {
 
 impl Default for Status {
     fn default() -> Status {
-        Self::Unconfirmed
+        Self::Confirmed
     }
 }
 /// アップロード元種別
