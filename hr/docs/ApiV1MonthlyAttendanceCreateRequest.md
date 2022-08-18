@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company_id** | **i32** | 作成対象事業所ID（必須） | 
+**company_id** | **i32** | 事業所ID（必須） | 
 **target_year** | **i32** | 対象年（必須） | 
 **target_month** | **i32** | 対象月（必須） | 
 **approval_flow_route_id** | **i32** | 申請経路ID（必須） | 

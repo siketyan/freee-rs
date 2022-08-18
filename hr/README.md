@@ -2,22 +2,6 @@
 
 freee人事労務のAPI仕様です。
 
-## [重要] freee人事労務 APIの新バージョンについて
-
-このリファレンスはfreee人事労務 APIの新バージョンのリファレンスです。
-
-2022年7月まで[旧バージョン](https://developer.freee.co.jp/docs/hr/pre-reference)と合わせて2つのバージョンが利用できる状態です。
-
-新しいAPIを利用するにはリクエストヘッダーに以下を指定します。
-
-```
-FREEE-VERSION: 2022-02-01
-```
-
-指定がない場合には2022年7月に廃止予定のAPIを利用することになります。
-
-詳細な変更やスケジュールは[【重要】freee人事労務APIの仕様変更について](https://developer.freee.co.jp/news/5418)をご覧ください。
-
 ## 認証について
 
 OAuth2.0を利用します。詳細は[ドキュメントの認証](https://developer.freee.co.jp/docs)パートを参照してください。
@@ -112,15 +96,22 @@ All URIs are relative to *https://api.freee.co.jp/hr*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**action_approval_requests_paid_holiday**](docs/DefaultApi.md#action_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays/{id}/actions | 有給申請の承認操作 
 *DefaultApi* | [**bulk_update_employee_dependent_rules**](docs/DefaultApi.md#bulk_update_employee_dependent_rules) | **PUT** /api/v1/employees/{employee_id}/dependent_rules/bulk_update | 更新 
+*DefaultApi* | [**create_approval_requests_paid_holiday**](docs/DefaultApi.md#create_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays | 有給申請の作成 
 *DefaultApi* | [**create_employee**](docs/DefaultApi.md#create_employee) | **POST** /api/v1/employees | 作成 
 *DefaultApi* | [**create_employee_time_clock**](docs/DefaultApi.md#create_employee_time_clock) | **POST** /api/v1/employees/{employee_id}/time_clocks | 打刻情報の登録 
 *DefaultApi* | [**create_group**](docs/DefaultApi.md#create_group) | **POST** /api/v1/groups | 部門情報の作成 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 役職情報の作成 
+*DefaultApi* | [**destroy_approval_requests_paid_holiday**](docs/DefaultApi.md#destroy_approval_requests_paid_holiday) | **DELETE** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の削除 
 *DefaultApi* | [**destroy_employee**](docs/DefaultApi.md#destroy_employee) | **DELETE** /api/v1/employees/{id} | 削除 
 *DefaultApi* | [**destroy_employee_work_record**](docs/DefaultApi.md#destroy_employee_work_record) | **DELETE** /api/v1/employees/{employee_id}/work_records/{date} | 削除 
 *DefaultApi* | [**destroy_group**](docs/DefaultApi.md#destroy_group) | **DELETE** /api/v1/groups/{id} | 部門情報の削除 
 *DefaultApi* | [**destroy_position**](docs/DefaultApi.md#destroy_position) | **DELETE** /api/v1/positions/{id} | 役職情報の削除 
+*DefaultApi* | [**get_approval_flow_route**](docs/DefaultApi.md#get_approval_flow_route) | **GET** /api/v1/approval_flow_routes/{id} | 申請経路の取得
+*DefaultApi* | [**get_approval_flow_routes**](docs/DefaultApi.md#get_approval_flow_routes) | **GET** /api/v1/approval_flow_routes | 申請経路一覧の取得
+*DefaultApi* | [**get_approval_requests_paid_holiday**](docs/DefaultApi.md#get_approval_requests_paid_holiday) | **GET** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の詳細取得 
+*DefaultApi* | [**get_approval_requests_paid_holidays**](docs/DefaultApi.md#get_approval_requests_paid_holidays) | **GET** /api/v1/approval_requests/paid_holidays | 有給申請の一覧取得 
 *DefaultApi* | [**get_bonuses_employee_payroll_statement**](docs/DefaultApi.md#get_bonuses_employee_payroll_statement) | **GET** /api/v1/bonuses/employee_payroll_statements/{employee_id} | 取得 
 *DefaultApi* | [**get_bonuses_employee_payroll_statements**](docs/DefaultApi.md#get_bonuses_employee_payroll_statements) | **GET** /api/v1/bonuses/employee_payroll_statements | 一覧の取得 
 *DefaultApi* | [**get_company_employees**](docs/DefaultApi.md#get_company_employees) | **GET** /api/v1/companies/{company_id}/employees | 一覧の取得 
@@ -143,6 +134,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_salaries_employee_payroll_statement**](docs/DefaultApi.md#get_salaries_employee_payroll_statement) | **GET** /api/v1/salaries/employee_payroll_statements/{employee_id} | 取得 
 *DefaultApi* | [**get_salaries_employee_payroll_statements**](docs/DefaultApi.md#get_salaries_employee_payroll_statements) | **GET** /api/v1/salaries/employee_payroll_statements | 一覧の取得 
 *DefaultApi* | [**get_users_me**](docs/DefaultApi.md#get_users_me) | **GET** /api/v1/users/me | 取得 
+*DefaultApi* | [**update_approval_requests_paid_holiday**](docs/DefaultApi.md#update_approval_requests_paid_holiday) | **PUT** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の更新 
 *DefaultApi* | [**update_employee**](docs/DefaultApi.md#update_employee) | **PUT** /api/v1/employees/{id} | 更新 
 *DefaultApi* | [**update_employee_bank_account_rule**](docs/DefaultApi.md#update_employee_bank_account_rule) | **PUT** /api/v1/employees/{employee_id}/bank_account_rule | 更新 
 *DefaultApi* | [**update_employee_basic_pay_rule**](docs/DefaultApi.md#update_employee_basic_pay_rule) | **PUT** /api/v1/employees/{employee_id}/basic_pay_rule | 更新 

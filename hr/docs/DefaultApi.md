@@ -4,15 +4,22 @@ All URIs are relative to *https://api.freee.co.jp/hr*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**action_approval_requests_paid_holiday**](DefaultApi.md#action_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays/{id}/actions | 有給申請の承認操作 
 [**bulk_update_employee_dependent_rules**](DefaultApi.md#bulk_update_employee_dependent_rules) | **PUT** /api/v1/employees/{employee_id}/dependent_rules/bulk_update | 更新 
+[**create_approval_requests_paid_holiday**](DefaultApi.md#create_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays | 有給申請の作成 
 [**create_employee**](DefaultApi.md#create_employee) | **POST** /api/v1/employees | 作成 
 [**create_employee_time_clock**](DefaultApi.md#create_employee_time_clock) | **POST** /api/v1/employees/{employee_id}/time_clocks | 打刻情報の登録 
 [**create_group**](DefaultApi.md#create_group) | **POST** /api/v1/groups | 部門情報の作成 
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 役職情報の作成 
+[**destroy_approval_requests_paid_holiday**](DefaultApi.md#destroy_approval_requests_paid_holiday) | **DELETE** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の削除 
 [**destroy_employee**](DefaultApi.md#destroy_employee) | **DELETE** /api/v1/employees/{id} | 削除 
 [**destroy_employee_work_record**](DefaultApi.md#destroy_employee_work_record) | **DELETE** /api/v1/employees/{employee_id}/work_records/{date} | 削除 
 [**destroy_group**](DefaultApi.md#destroy_group) | **DELETE** /api/v1/groups/{id} | 部門情報の削除 
 [**destroy_position**](DefaultApi.md#destroy_position) | **DELETE** /api/v1/positions/{id} | 役職情報の削除 
+[**get_approval_flow_route**](DefaultApi.md#get_approval_flow_route) | **GET** /api/v1/approval_flow_routes/{id} | 申請経路の取得
+[**get_approval_flow_routes**](DefaultApi.md#get_approval_flow_routes) | **GET** /api/v1/approval_flow_routes | 申請経路一覧の取得
+[**get_approval_requests_paid_holiday**](DefaultApi.md#get_approval_requests_paid_holiday) | **GET** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の詳細取得 
+[**get_approval_requests_paid_holidays**](DefaultApi.md#get_approval_requests_paid_holidays) | **GET** /api/v1/approval_requests/paid_holidays | 有給申請の一覧取得 
 [**get_bonuses_employee_payroll_statement**](DefaultApi.md#get_bonuses_employee_payroll_statement) | **GET** /api/v1/bonuses/employee_payroll_statements/{employee_id} | 取得 
 [**get_bonuses_employee_payroll_statements**](DefaultApi.md#get_bonuses_employee_payroll_statements) | **GET** /api/v1/bonuses/employee_payroll_statements | 一覧の取得 
 [**get_company_employees**](DefaultApi.md#get_company_employees) | **GET** /api/v1/companies/{company_id}/employees | 一覧の取得 
@@ -35,6 +42,7 @@ Method | HTTP request | Description
 [**get_salaries_employee_payroll_statement**](DefaultApi.md#get_salaries_employee_payroll_statement) | **GET** /api/v1/salaries/employee_payroll_statements/{employee_id} | 取得 
 [**get_salaries_employee_payroll_statements**](DefaultApi.md#get_salaries_employee_payroll_statements) | **GET** /api/v1/salaries/employee_payroll_statements | 一覧の取得 
 [**get_users_me**](DefaultApi.md#get_users_me) | **GET** /api/v1/users/me | 取得 
+[**update_approval_requests_paid_holiday**](DefaultApi.md#update_approval_requests_paid_holiday) | **PUT** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の更新 
 [**update_employee**](DefaultApi.md#update_employee) | **PUT** /api/v1/employees/{id} | 更新 
 [**update_employee_bank_account_rule**](DefaultApi.md#update_employee_bank_account_rule) | **PUT** /api/v1/employees/{employee_id}/bank_account_rule | 更新 
 [**update_employee_basic_pay_rule**](DefaultApi.md#update_employee_basic_pay_rule) | **PUT** /api/v1/employees/{employee_id}/basic_pay_rule | 更新 
@@ -46,6 +54,37 @@ Method | HTTP request | Description
 [**update_group**](DefaultApi.md#update_group) | **PUT** /api/v1/groups/{id} | 部門情報の更新 
 [**update_position**](DefaultApi.md#update_position) | **PUT** /api/v1/positions/{id} | 役職情報の更新 
 
+
+
+## action_approval_requests_paid_holiday
+
+> crate::models::ApiV1PaidHolidayResponse action_approval_requests_paid_holiday(id, api_v1_approval_action_request)
+有給申請の承認操作 
+
+ 指定した事業所の有給申請情報を承認操作します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  全休の有給申請は承認されると申請者の有給の残数が減ります。<br> 半休と時間休の有給申請は承認されても申請者の有給の残数が減らない場合があります。以下の条件を満たす場合、申請者の有給の残数が減ります。 - 申請承認後、申請者が申請の対象日に出勤打刻と退勤打刻をする。 - 申請承認前に、申請者が申請の対象日に勤怠を登録している。  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | 有給申請ID | [required] |
+**api_v1_approval_action_request** | Option<[**ApiV1ApprovalActionRequest**](ApiV1ApprovalActionRequest.md)> |  |  |
+
+### Return type
+
+[**crate::models::ApiV1PaidHolidayResponse**](ApiV1PaidHolidayResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## bulk_update_employee_dependent_rules
@@ -66,6 +105,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::ApiV1EmployeesDependentRulesControllerBulkUpdateResponse**](ApiV1EmployeesDependentRulesController.bulk_update_response.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## create_approval_requests_paid_holiday
+
+> crate::models::ApiV1PaidHolidayResponse create_approval_requests_paid_holiday(api_v1_paid_holiday_request)
+有給申請の作成 
+
+ 指定した事業所の有給申請を新規作成します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**api_v1_paid_holiday_request** | Option<[**ApiV1PaidHolidayRequest**](ApiV1PaidHolidayRequest.md)> |  |  |
+
+### Return type
+
+[**crate::models::ApiV1PaidHolidayResponse**](ApiV1PaidHolidayResponse.md)
 
 ### Authorization
 
@@ -200,6 +269,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## destroy_approval_requests_paid_holiday
+
+> destroy_approval_requests_paid_holiday(id, company_id)
+有給申請の削除 
+
+ 指定した事業所の有給申請情報を削除します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | 有給申請ID | [required] |
+**company_id** | **i32** | 事業所ID | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/problem+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## destroy_employee
 
 > destroy_employee(id, company_id)
@@ -321,6 +421,141 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/problem+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_approval_flow_route
+
+> crate::models::ApiV1ApprovalFlowRouteResponse get_approval_flow_route(id, company_id)
+申請経路の取得
+
+指定した事業所の申請経路を取得する - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | 申請経路ID | [required] |
+**company_id** | **i32** | 事業所ID | [required] |
+
+### Return type
+
+[**crate::models::ApiV1ApprovalFlowRouteResponse**](ApiV1ApprovalFlowRouteResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_approval_flow_routes
+
+> crate::models::ApiV1ApprovalFlowRoutesIndexResponse get_approval_flow_routes(company_id, included_user_id, usage)
+申請経路一覧の取得
+
+指定した事業所の申請経路一覧を取得する - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**company_id** | **i32** | 事業所ID | [required] |
+**included_user_id** | Option<**i32**> | 経路に含まれるユーザーのユーザーID |  |
+**usage** | Option<**String**> | 申請種別（申請経路を使用できる申請種別を示します。例えば、AttendanceWorkflow の場合は、勤怠申請で使用できる申請経路です。） - `AttendanceWorkflow` - 勤怠申請 - `PersonalDataWorkflow` - 身上変更申請 |  |
+
+### Return type
+
+[**crate::models::ApiV1ApprovalFlowRoutesIndexResponse**](ApiV1ApprovalFlowRoutesIndexResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_approval_requests_paid_holiday
+
+> crate::models::ApiV1PaidHolidayResponse get_approval_requests_paid_holiday(company_id, id)
+有給申請の詳細取得 
+
+ 指定した事業所の有給申請情報を取得します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**company_id** | **i32** | 事業所ID | [required] |
+**id** | **i32** | 有給申請ID | [required] |
+
+### Return type
+
+[**crate::models::ApiV1PaidHolidayResponse**](ApiV1PaidHolidayResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_approval_requests_paid_holidays
+
+> crate::models::ApiV1PaidHolidayIndexResponse get_approval_requests_paid_holidays(company_id, status, application_number, start_issue_date, end_issue_date, approver_id, applicant_id, start_target_date, end_target_date, passed_auto_check, limit, offset)
+有給申請の一覧取得 
+
+ 指定した事業所の指定日付時点における有給申請情報をリストで返します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**company_id** | **i32** | 事業所ID | [required] |
+**status** | Option<**String**> | 申請ステータス - `draft` - 下書き - `in_progress` - 申請中 - `approved` - 承認済 - `feedback` - 差戻し |  |
+**application_number** | Option<**i32**> | 申請No |  |
+**start_issue_date** | Option<**String**> | 申請開始日 |  |
+**end_issue_date** | Option<**String**> | 申請終了日 |  |
+**approver_id** | Option<**i32**> | 現在承認ステップの承認者のユーザーID  approver_idに値を指定する場合、指定なしの申請経路を利用した申請は返却されません  |  |
+**applicant_id** | Option<**i32**> | 申請者のユーザーID |  |
+**start_target_date** | Option<**String**> | 対象開始日 |  |
+**end_target_date** | Option<**String**> | 対象終了日 |  |
+**passed_auto_check** | Option<**bool**> | 自動チェック結果 - trueを指定した場合、自動チェック結果がtrueの申請のみ返却します。 - falseを指定した場合、自動チェック結果がfalseの申請のみ返却します。 - キーごと指定しない場合、すべての申請を返却します。 |  |
+**limit** | Option<**i32**> | 取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 100) |  |
+**offset** | Option<**i32**> | 取得レコードのオフセット (デフォルト: 0) |  |
+
+### Return type
+
+[**crate::models::ApiV1PaidHolidayIndexResponse**](ApiV1PaidHolidayIndexResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1043,6 +1278,37 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## update_approval_requests_paid_holiday
+
+> crate::models::ApiV1PaidHolidayResponse update_approval_requests_paid_holiday(id, api_v1_paid_holiday_request)
+有給申請の更新 
+
+ 指定した事業所の有給申請情報を更新します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | 有給申請ID | [required] |
+**api_v1_paid_holiday_request** | Option<[**ApiV1PaidHolidayRequest**](ApiV1PaidHolidayRequest.md)> |  |  |
+
+### Return type
+
+[**crate::models::ApiV1PaidHolidayResponse**](ApiV1PaidHolidayResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## update_employee
 
 > crate::models::ApiV1EmployeesControllerUpdateResponse update_employee(id, body)
@@ -1266,7 +1532,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesWorkRecordSummarySerializer update_employee_work_record_summary(employee_id, year, month, api_v1_employees_work_record_summary_controller_update_body)
 勤怠情報月次サマリの更新 
 
- 指定した従業員、月の勤怠情報のサマリを更新します。勤怠データが存在しない場合は新規作成、既に存在する場合は上書き更新されます。 ※日毎の勤怠の更新はこのAPIではできません。日毎の勤怠の操作には勤怠APIを使用して下さい。 ※管理者権限を持ったユーザのみ実行可能です。  ## 更新可能な項目 ※値が設定された項目のみ更新されます。値が設定されなかった場合は自動的に0が設定されます。 - work_days：総勤務日数 - work_days_on_weekdays：所定労働日の勤務日数 - work_days_on_prescribed_holidays：所定休日の勤務日数 - work_days_on_legal_holidays：法定休日の勤務日数 - total_work_mins：労働時間（分） - total_normal_work_mins：所定労働時間（分） - total_excess_statutory_work_mins：給与計算に用いられる法定内残業時間（分） - total_holiday_work_mins：法定休日労働時間（分） - total_latenight_work_mins：深夜労働時間（分） - total_actual_excess_statutory_work_mins：実労働時間ベースの法定内残業時間（分） - total_overtime_work_mins：時間外労働時間（分） - num_absences：欠勤日数 - num_absences_for_deduction：控除対象の欠勤日数 - total_lateness_mins：遅刻時間（分） - total_lateness_mins_for_deduction：控除対象の遅刻時間（分） - total_early_leaving_mins：早退時間（分） - total_early_leaving_mins_for_deduction：控除対象の早退時間（分） - num_paid_holidays：有給取得日数 - total_shortage_work_mins：不足時間（分）（フレックスタイム制でのみ使用） - total_deemed_paid_excess_statutory_work_mins：支給対象の法定内残業時間（分）（裁量労働制でのみ使用） - total_deemed_paid_overtime_except_normal_work_mins：支給対象の時間外労働時間（分）（裁量労働制でのみ使用）  # examples  勤怠情報を更新する場合は以下のようなパラメータをリクエストします。  ``` {   \"work_days\": 20,   \"work_days_on_weekdays\": 20,   \"work_days_on_prescribed_holidays\": 0,   \"work_days_on_legal_holidays\": 0,   \"total_work_mins\": 9600,   \"total_normal_work_mins\": 9000,   \"total_excess_statutory_work_mins\": 600,   \"total_holiday_work_mins\": 0,   \"total_latenight_work_mins\": 0,   \"total_actual_excess_statutory_work_mins\": 0,   \"total_overtime_work_mins\": 600,   \"num_absences\": 0,   \"num_absences_for_deduction\": 0,   \"total_lateness_mins\": 60,   \"total_lateness_mins_for_deduction\": 60,   \"total_early_leaving_mins\": 60,   \"total_early_leaving_mins_for_deduction\": 60,   \"num_paid_holidays\": 2 } ```
+ 指定した従業員、月の勤怠情報のサマリを更新します。勤怠データが存在しない場合は新規作成、既に存在する場合は上書き更新されます。 ※日毎の勤怠の更新はこのAPIではできません。日毎の勤怠の操作には勤怠APIを使用して下さい。 ※管理者権限を持ったユーザのみ実行可能です。  ## 更新可能な項目 ※値が設定された項目のみ更新されます。値が設定されなかった場合は自動的に0が設定されます。 - work_days：総勤務日数 - work_days_on_weekdays：所定労働日の勤務日数 - work_days_on_prescribed_holidays：所定休日の勤務日数 - work_days_on_legal_holidays：法定休日の勤務日数 - total_work_mins：労働時間（分） - total_normal_work_mins：所定労働時間（分） - total_excess_statutory_work_mins：給与計算に用いられる法定内残業時間（分） - total_holiday_work_mins：法定休日労働時間（分） - total_latenight_work_mins：深夜労働時間（分） - total_actual_excess_statutory_work_mins：実労働時間ベースの法定内残業時間（分） - total_overtime_work_mins：時間外労働時間（分） - num_absences：欠勤日数 - num_absences_for_deduction：控除対象の欠勤日数 - total_lateness_mins：遅刻時間（分） - total_lateness_mins_for_deduction：控除対象の遅刻時間（分） - total_early_leaving_mins：早退時間（分） - total_early_leaving_mins_for_deduction：控除対象の早退時間（分） - num_paid_holidays：有給取得日数 - total_shortage_work_mins：不足時間（分）（フレックスタイム制でのみ使用） - total_deemed_paid_excess_statutory_work_mins：支給対象の法定内残業時間（分）（裁量労働制でのみ使用） - total_deemed_paid_overtime_except_normal_work_mins：支給対象の時間外労働時間（分）（裁量労働制でのみ使用）  # examples  勤怠情報を更新する場合は以下のようなパラメータをリクエストします。  ``` {   \"company_id\": 1,   \"work_days\": 20,   \"work_days_on_weekdays\": 20,   \"work_days_on_prescribed_holidays\": 0,   \"work_days_on_legal_holidays\": 0,   \"total_work_mins\": 9600,   \"total_normal_work_mins\": 9000,   \"total_excess_statutory_work_mins\": 600,   \"total_holiday_work_mins\": 0,   \"total_latenight_work_mins\": 0,   \"total_actual_excess_statutory_work_mins\": 0,   \"total_overtime_work_mins\": 600,   \"num_absences\": 0,   \"num_absences_for_deduction\": 0,   \"total_lateness_mins\": 60,   \"total_lateness_mins_for_deduction\": 60,   \"total_early_leaving_mins\": 60,   \"total_early_leaving_mins_for_deduction\": 60,   \"num_paid_holidays\": 2 } ```
 
 ### Parameters
 

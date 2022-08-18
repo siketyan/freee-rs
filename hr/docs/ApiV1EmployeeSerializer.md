@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **bank_account_rule** | Option<[**crate::models::ApiV1EmployeesBankAccountRuleSerializer**](ApiV1EmployeesBankAccountRuleSerializer.md)> |  | [optional]
 **basic_pay_rule** | Option<[**crate::models::ApiV1EmployeesBasicPayRuleSerializer**](ApiV1EmployeesBasicPayRuleSerializer.md)> |  | [optional]
 **payroll_calculation** | Option<**bool**> | 給与計算対象従業員の場合trueを返します | [optional]
+**company_reference_date_rule_name** | Option<**String**> | 締め日支払日グループ名(給与計算対象外従業員の場合、nullを返します) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
