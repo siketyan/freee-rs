@@ -1,7 +1,7 @@
 [package]
 name = "freee"
 description = "REST API client implementation for freee Accounting, auto-generated from OpenAPI specification."
-version = "0.4.1"
+version = "0.4.2"
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/siketyan/freee-rs"
