@@ -158,6 +158,8 @@ docs/PartnerResponsePartnerAddressAttributes.md
 docs/PartnerResponsePartnerInvoicePaymentTermAttributes.md
 docs/PartnerResponsePartnerPaymentTermAttributes.md
 docs/PartnerUpdateParams.md
+docs/PartnerUpdateParamsInvoicePaymentTermAttributes.md
+docs/PartnerUpdateParamsPaymentTermAttributes.md
 docs/PartnersApi.md
 docs/PartnersResponse.md
 docs/PartnersResponsePartnersInner.md
@@ -483,6 +485,8 @@ src/models/partner_response_partner_address_attributes.rs
 src/models/partner_response_partner_invoice_payment_term_attributes.rs
 src/models/partner_response_partner_payment_term_attributes.rs
 src/models/partner_update_params.rs
+src/models/partner_update_params_invoice_payment_term_attributes.rs
+src/models/partner_update_params_payment_term_attributes.rs
 src/models/partners_response.rs
 src/models/partners_response_partners_inner.rs
 src/models/partners_response_partners_inner_address_attributes.rs
