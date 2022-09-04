@@ -453,6 +453,8 @@ Class | Method | HTTP request | Description
  - [PartnerResponsePartnerInvoicePaymentTermAttributes](docs/PartnerResponsePartnerInvoicePaymentTermAttributes.md)
  - [PartnerResponsePartnerPaymentTermAttributes](docs/PartnerResponsePartnerPaymentTermAttributes.md)
  - [PartnerUpdateParams](docs/PartnerUpdateParams.md)
+ - [PartnerUpdateParamsInvoicePaymentTermAttributes](docs/PartnerUpdateParamsInvoicePaymentTermAttributes.md)
+ - [PartnerUpdateParamsPaymentTermAttributes](docs/PartnerUpdateParamsPaymentTermAttributes.md)
  - [PartnersResponse](docs/PartnersResponse.md)
  - [PartnersResponsePartnersInner](docs/PartnersResponsePartnersInner.md)
  - [PartnersResponsePartnersInnerAddressAttributes](docs/PartnersResponsePartnersInnerAddressAttributes.md)

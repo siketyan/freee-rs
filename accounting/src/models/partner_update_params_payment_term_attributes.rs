@@ -12,127 +12,26 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct PartnerUpdateParams {
-    /// 事業所ID
-    #[serde(rename = "company_id")]
-    pub company_id: i32,
-    /// 取引先名 (255文字以内)
-    #[serde(rename = "name")]
-    pub name: String,
-    /// ショートカット１ (255文字以内)
-    #[serde(rename = "shortcut1", skip_serializing_if = "Option::is_none")]
-    pub shortcut1: Option<String>,
-    /// ショートカット２ (255文字以内)
-    #[serde(rename = "shortcut2", skip_serializing_if = "Option::is_none")]
-    pub shortcut2: Option<String>,
-    /// 事業所種別（null: 未設定、1: 法人、2: 個人）
-    #[serde(rename = "org_code", skip_serializing_if = "Option::is_none")]
-    pub org_code: Option<OrgCode>,
-    /// 地域（JP: 国内、ZZ:国外）、指定しない場合JPになります。
-    #[serde(rename = "country_code", skip_serializing_if = "Option::is_none")]
-    pub country_code: Option<CountryCode>,
-    /// 正式名称（255文字以内）
-    #[serde(rename = "long_name", skip_serializing_if = "Option::is_none")]
-    pub long_name: Option<String>,
-    /// カナ名称（255文字以内）
-    #[serde(rename = "name_kana", skip_serializing_if = "Option::is_none")]
-    pub name_kana: Option<String>,
-    /// 敬称（御中、様、(空白)の3つから選択）
-    #[serde(rename = "default_title", skip_serializing_if = "Option::is_none")]
-    pub default_title: Option<String>,
-    /// 電話番号
-    #[serde(rename = "phone", skip_serializing_if = "Option::is_none")]
-    pub phone: Option<String>,
-    /// 担当者 氏名 (255文字以内)
-    #[serde(rename = "contact_name", skip_serializing_if = "Option::is_none")]
-    pub contact_name: Option<String>,
-    /// 担当者 メールアドレス (255文字以内)
-    #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<String>,
-    /// 振込元口座ID（一括振込ファイル用）:（walletableのtypeが'bank_account'のidのみ指定できます。また、未設定にする場合は、nullを指定してください。）
-    #[serde(rename = "payer_walletable_id", skip_serializing_if = "Option::is_none")]
-    pub payer_walletable_id: Option<i32>,
-    /// 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee)、指定しない場合payerになります。
-    #[serde(rename = "transfer_fee_handling_side", skip_serializing_if = "Option::is_none")]
-    pub transfer_fee_handling_side: Option<TransferFeeHandlingSide>,
-    #[serde(rename = "address_attributes", skip_serializing_if = "Option::is_none")]
-    pub address_attributes: Option<Box<crate::models::PartnerCreateParamsAddressAttributes>>,
-    #[serde(rename = "partner_doc_setting_attributes", skip_serializing_if = "Option::is_none")]
-    pub partner_doc_setting_attributes: Option<Box<crate::models::PartnerCreateParamsPartnerDocSettingAttributes>>,
-    #[serde(rename = "partner_bank_account_attributes", skip_serializing_if = "Option::is_none")]
-    pub partner_bank_account_attributes: Option<Box<crate::models::PartnerCreateParamsPartnerBankAccountAttributes>>,
-    #[serde(rename = "payment_term_attributes", skip_serializing_if = "Option::is_none")]
-    pub payment_term_attributes: Option<Box<crate::models::PartnerUpdateParamsPaymentTermAttributes>>,
-    #[serde(rename = "invoice_payment_term_attributes", skip_serializing_if = "Option::is_none")]
-    pub invoice_payment_term_attributes: Option<Box<crate::models::PartnerUpdateParamsInvoicePaymentTermAttributes>>,
+pub struct PartnerUpdateParamsPaymentTermAttributes {
+    /// 締め日（29, 30, 31日の末日を指定する場合は、32を指定してください。）
+    #[serde(rename = "cutoff_day", skip_serializing_if = "Option::is_none")]
+    pub cutoff_day: Option<i32>,
+    /// 支払月
+    #[serde(rename = "additional_months", skip_serializing_if = "Option::is_none")]
+    pub additional_months: Option<i32>,
+    /// 支払日（29, 30, 31日の末日を指定する場合は、32を指定してください。）
+    #[serde(rename = "fixed_day", skip_serializing_if = "Option::is_none")]
+    pub fixed_day: Option<i32>,
 }
 
-impl PartnerUpdateParams {
-    pub fn new(company_id: i32, name: String) -> PartnerUpdateParams {
-        PartnerUpdateParams {
-            company_id,
-            name,
-            shortcut1: None,
-            shortcut2: None,
-            org_code: None,
-            country_code: None,
-            long_name: None,
-            name_kana: None,
-            default_title: None,
-            phone: None,
-            contact_name: None,
-            email: None,
-            payer_walletable_id: None,
-            transfer_fee_handling_side: None,
-            address_attributes: None,
-            partner_doc_setting_attributes: None,
-            partner_bank_account_attributes: None,
-            payment_term_attributes: None,
-            invoice_payment_term_attributes: None,
+impl PartnerUpdateParamsPaymentTermAttributes {
+    pub fn new() -> PartnerUpdateParamsPaymentTermAttributes {
+        PartnerUpdateParamsPaymentTermAttributes {
+            cutoff_day: None,
+            additional_months: None,
+            fixed_day: None,
         }
     }
 }
 
-/// 事業所種別（null: 未設定、1: 法人、2: 個人）
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum OrgCode {
-    #[serde(rename = "1")]
-    _1,
-    #[serde(rename = "2")]
-    _2,
-}
-
-impl Default for OrgCode {
-    fn default() -> OrgCode {
-        Self::_1
-    }
-}
-/// 地域（JP: 国内、ZZ:国外）、指定しない場合JPになります。
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum CountryCode {
-    #[serde(rename = "JP")]
-    JP,
-    #[serde(rename = "ZZ")]
-    ZZ,
-}
-
-impl Default for CountryCode {
-    fn default() -> CountryCode {
-        Self::JP
-    }
-}
-/// 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee)、指定しない場合payerになります。
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum TransferFeeHandlingSide {
-    #[serde(rename = "payer")]
-    Payer,
-    #[serde(rename = "payee")]
-    Payee,
-}
-
-impl Default for TransferFeeHandlingSide {
-    fn default() -> TransferFeeHandlingSide {
-        Self::Payer
-    }
-}
 
