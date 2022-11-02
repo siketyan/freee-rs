@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **i32** | 見積内容ID | 
 **order** | **i32** | 順序 | 
-**_type** | **String** | 行の種類 | 
+**r#type** | **String** | 行の種類 | 
 **qty** | **f32** | 数量 | 
 **unit** | Option<**String**> | 単位 | 
 **unit_price** | **f32** | 単価 | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **tag_ids** | **Vec<i32>** |  | 
 **tag_names** | **Vec<String>** |  | 
 **segment_1_tag_id** | Option<**i64**> | セグメント１ID | [optional]
-**segment_1_tag_name** | Option<**String**> | セグメント１ID | [optional]
+**segment_1_tag_name** | Option<**String**> | セグメント１ | [optional]
 **segment_2_tag_id** | Option<**i64**> | セグメント２ID | [optional]
 **segment_2_tag_name** | Option<**String**> | セグメント２ | [optional]
 **segment_3_tag_id** | Option<**i64**> | セグメント３ID | [optional]

@@ -33,7 +33,7 @@ pub struct Deal {
     pub due_amount: Option<i32>,
     /// 収支区分 (収入: income, 支出: expense)
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<Type>,
+    pub r#type: Option<RHashType>,
     /// 取引先ID
     #[serde(rename = "partner_id")]
     pub partner_id: i32,
@@ -69,7 +69,7 @@ impl Deal {
             due_date: None,
             amount,
             due_amount: None,
-            _type: None,
+            r#type: None,
             partner_id,
             partner_code: None,
             ref_number: None,
@@ -84,15 +84,15 @@ impl Deal {
 
 /// 収支区分 (収入: income, 支出: expense)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "income")]
     Income,
     #[serde(rename = "expense")]
     Expense,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Income
     }
 }

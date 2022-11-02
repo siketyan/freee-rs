@@ -34,7 +34,7 @@ pub struct ExpenseApplicationLineTemplateParams {
     /// 内容の補足 (1000文字以内)
     #[serde(rename = "line_description", skip_serializing_if = "Option::is_none")]
     pub line_description: Option<String>,
-    /// 添付ファイルの必須/任意
+    /// 添付ファイルの必須/任意<br> falseを指定した時は申請時の領収書の添付を任意とします。<br> trueを指定した時は申請時の領収書の添付を必須とします。<br> 未指定の時は申請時の領収書の添付を任意とします。
     #[serde(rename = "required_receipt", skip_serializing_if = "Option::is_none")]
     pub required_receipt: Option<bool>,
 }

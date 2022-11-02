@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **issue_date** | **String** | 発生日 (yyyy-mm-dd) | 
-**_type** | **String** | 収支区分 (収入: income, 支出: expense) | 
+**r#type** | **String** | 収支区分 (収入: income, 支出: expense) | 
 **company_id** | **i32** | 事業所ID | 
 **due_date** | Option<**String**> | 支払期日(yyyy-mm-dd) | [optional]
 **partner_id** | Option<**i32**> | 取引先ID | [optional]

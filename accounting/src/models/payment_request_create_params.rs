@@ -37,7 +37,7 @@ pub struct PaymentRequestCreateParams {
     /// 親申請ID(法人向け エンタープライズプラン、プロフェッショナルプラン)<br> <ul>   <li>承認済みの既存各種申請IDのみ指定可能です。</li>   <li>各種申請一覧APIを利用して取得してください。</li> </ul> 
     #[serde(rename = "parent_id", skip_serializing_if = "Option::is_none")]
     pub parent_id: Option<i32>,
-    /// 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を作成します。<br> trueを指定した時は下書き（draft）で支払依頼を作成します。<br> 未指定の時は下書きとみなして支払依頼を作成します。 
+    /// 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を作成します。<br> trueを指定した時は下書き（draft）で支払依頼を作成します。 
     #[serde(rename = "draft")]
     pub draft: bool,
     /// 請求書番号（255文字以内）

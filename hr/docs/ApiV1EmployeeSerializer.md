@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **birth_date** | Option<[**String**](string.md)> | 生年月日 | [optional]
 **entry_date** | Option<[**String**](string.md)> | 入社日 | [optional]
 **retire_date** | Option<[**String**](string.md)> | 退職日 | [optional]
-**user_id** | Option<**i32**> |  | [optional]
+**user_id** | Option<**i32**> | ユーザーID(従業員詳細未設定の場合、nullになります。) | [optional]
 **profile_rule** | Option<[**crate::models::ApiV1EmployeesProfileRuleSerializer**](ApiV1EmployeesProfileRuleSerializer.md)> |  | [optional]
 **health_insurance_rule** | Option<[**crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer**](ApiV1EmployeesHealthInsuranceRuleSerializer.md)> |  | [optional]
 **welfare_pension_insurance_rule** | Option<[**crate::models::ApiV1EmployeesWelfarePensionInsuranceRuleSerializer**](ApiV1EmployeesWelfarePensionInsuranceRuleSerializer.md)> |  | [optional]

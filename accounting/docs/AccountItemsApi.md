@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## create_account_item
 
-> crate::models::AccountItemResponse create_account_item(account_item_params)
+> crate::models::AccountItemResponse create_account_item(account_item_create_params)
 勘定科目の作成
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目を作成する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_nameは、api/1/taxes/companies/{company_id} で該当事業所の税区分の一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのnameを指定して勘定科目の作成をしてください</p>
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**account_item_params** | [**AccountItemParams**](AccountItemParams.md) | 勘定科目の作成 | [required] |
+**account_item_create_params** | [**AccountItemCreateParams**](AccountItemCreateParams.md) | 勘定科目の作成 | [required] |
 
 ### Return type
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::AccountItemsResponse get_account_items(company_id, base_date)
 勘定科目一覧の取得
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>default_tax_id : デフォルト設定がされている税区分ID</li>  <li>default_tax_code : リクエストした日時を基準とした税区分コード</li> </ul>  <h2 id=\"_3\">注意点</h2> <p>default_tax_code は勘定科目作成・更新時に利用するものではありません</p>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>default_tax_code : リクエストした日時を基準とした税区分コード</li> </ul>  <h2 id=\"_3\">注意点</h2> <p>default_tax_code は勘定科目作成・更新時に利用するものではありません</p>
 
 ### Parameters
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_account_item
 
-> crate::models::AccountItemResponse update_account_item(id, account_item_params)
+> crate::models::AccountItemResponse update_account_item(id, account_item_update_params)
 勘定科目の更新
 
  <h2 id=\"\">概要</h2>  <p>勘定科目を更新する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、api/1/taxes/companies/{company_id} で該当事業所の税区分の一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのcodeを指定して勘定科目の更新をしてください</p>
@@ -148,7 +148,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** |  | [required] |
-**account_item_params** | [**AccountItemParams**](AccountItemParams.md) | 勘定科目の更新 | [required] |
+**account_item_update_params** | [**AccountItemUpdateParams**](AccountItemUpdateParams.md) | 勘定科目の更新 | [required] |
 
 ### Return type
 

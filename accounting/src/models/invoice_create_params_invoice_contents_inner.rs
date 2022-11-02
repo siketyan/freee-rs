@@ -18,7 +18,7 @@ pub struct InvoiceCreateParamsInvoiceContentsInner {
     pub order: i32,
     /// 行の種類 <ul> <li>normal、discountを指定する場合、account_item_id,tax_codeとunit_priceが必須となります。</li> <li>normalを指定した場合、qtyが必須となります。</li> </ul>
     #[serde(rename = "type")]
-    pub _type: Type,
+    pub r#type: RHashType,
     /// 数量
     #[serde(rename = "qty", skip_serializing_if = "Option::is_none")]
     pub qty: Option<f32>,
@@ -60,10 +60,10 @@ pub struct InvoiceCreateParamsInvoiceContentsInner {
 }
 
 impl InvoiceCreateParamsInvoiceContentsInner {
-    pub fn new(order: i32, _type: Type) -> InvoiceCreateParamsInvoiceContentsInner {
+    pub fn new(order: i32, r#type: RHashType) -> InvoiceCreateParamsInvoiceContentsInner {
         InvoiceCreateParamsInvoiceContentsInner {
             order,
-            _type,
+            r#type,
             qty: None,
             unit: None,
             unit_price: None,
@@ -83,7 +83,7 @@ impl InvoiceCreateParamsInvoiceContentsInner {
 
 /// 行の種類 <ul> <li>normal、discountを指定する場合、account_item_id,tax_codeとunit_priceが必須となります。</li> <li>normalを指定した場合、qtyが必須となります。</li> </ul>
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "normal")]
     Normal,
     #[serde(rename = "discount")]
@@ -92,8 +92,8 @@ pub enum Type {
     Text,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Normal
     }
 }

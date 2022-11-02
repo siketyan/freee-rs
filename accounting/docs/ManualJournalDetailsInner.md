@@ -19,11 +19,11 @@ Name | Type | Description | Notes
 **tag_ids** | **Vec<i32>** |  | 
 **tag_names** | **Vec<String>** |  | 
 **segment_1_tag_id** | Option<**i64**> | セグメント１ID | [optional]
-**segment_1_tag_name** | Option<**i32**> | セグメント１ID | [optional]
+**segment_1_tag_name** | Option<**String**> | セグメント１ | [optional]
 **segment_2_tag_id** | Option<**i64**> | セグメント２ID | [optional]
-**segment_2_tag_name** | Option<**i32**> | セグメント２ | [optional]
+**segment_2_tag_name** | Option<**String**> | セグメント２ | [optional]
 **segment_3_tag_id** | Option<**i64**> | セグメント３ID | [optional]
-**segment_3_tag_name** | Option<**i32**> | セグメント３ | [optional]
+**segment_3_tag_name** | Option<**String**> | セグメント３ | [optional]
 **amount** | **i32** | 金額（税込で指定してください） | 
 **vat** | **i32** | 消費税額（指定しない場合は自動で計算されます） | 
 **description** | **String** | 備考 | 

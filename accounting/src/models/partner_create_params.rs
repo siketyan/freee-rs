@@ -101,28 +101,28 @@ impl PartnerCreateParams {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum OrgCode {
     #[serde(rename = "1")]
-    _1,
+    Variant1,
     #[serde(rename = "2")]
-    _2,
+    Variant2,
 }
 
 impl Default for OrgCode {
     fn default() -> OrgCode {
-        Self::_1
+        Self::Variant1
     }
 }
 /// 地域（JP: 国内、ZZ:国外）、指定しない場合JPになります。
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum CountryCode {
     #[serde(rename = "JP")]
-    JP,
+    Jp,
     #[serde(rename = "ZZ")]
-    ZZ,
+    Zz,
 }
 
 impl Default for CountryCode {
     fn default() -> CountryCode {
-        Self::JP
+        Self::Jp
     }
 }
 /// 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee)、指定しない場合payerになります。

@@ -107,12 +107,12 @@ pub async fn create_walletable(configuration: &configuration::Configuration, wal
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座を削除する</p>  <h2 id=\"\">注意点</h2> <ul> <li>削除を実行するには、当該口座に関連する仕訳データを事前に削除する必要があります。</li> <li>当該口座に仕訳が残っていないか確認するには、レポートの「仕訳帳」等を参照し、必要に応じて、「取引」や「口座振替」も削除します。</li>  </ul>
-pub async fn destroy_walletable(configuration: &configuration::Configuration, id: i32, _type: &str, company_id: i32) -> Result<(), Error<DestroyWalletableError>> {
+pub async fn destroy_walletable(configuration: &configuration::Configuration, id: i32, r#type: &str, company_id: i32) -> Result<(), Error<DestroyWalletableError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(_type));
+    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(r#type));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
 
     local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
@@ -139,12 +139,12 @@ pub async fn destroy_walletable(configuration: &configuration::Configuration, id
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座情報を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
-pub async fn get_walletable(configuration: &configuration::Configuration, id: i32, _type: &str, company_id: i32) -> Result<crate::models::GetWalletable200Response, Error<GetWalletableError>> {
+pub async fn get_walletable(configuration: &configuration::Configuration, id: i32, r#type: &str, company_id: i32) -> Result<crate::models::GetWalletable200Response, Error<GetWalletableError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(_type));
+    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(r#type));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
@@ -171,7 +171,7 @@ pub async fn get_walletable(configuration: &configuration::Configuration, id: i3
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
-pub async fn get_walletables(configuration: &configuration::Configuration, company_id: i32, with_balance: Option<bool>, _type: Option<&str>) -> Result<crate::models::GetWalletables200Response, Error<GetWalletablesError>> {
+pub async fn get_walletables(configuration: &configuration::Configuration, company_id: i32, with_balance: Option<bool>, r#type: Option<&str>) -> Result<crate::models::GetWalletables200Response, Error<GetWalletablesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -183,7 +183,7 @@ pub async fn get_walletables(configuration: &configuration::Configuration, compa
     if let Some(ref local_var_str) = with_balance {
         local_var_req_builder = local_var_req_builder.query(&[("with_balance", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = _type {
+    if let Some(ref local_var_str) = r#type {
         local_var_req_builder = local_var_req_builder.query(&[("type", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
@@ -209,12 +209,12 @@ pub async fn get_walletables(configuration: &configuration::Configuration, compa
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>口座を更新する</p>
-pub async fn update_walletable(configuration: &configuration::Configuration, id: i32, _type: &str, walletable_update_params: Option<crate::models::WalletableUpdateParams>) -> Result<crate::models::GetWalletable200Response, Error<UpdateWalletableError>> {
+pub async fn update_walletable(configuration: &configuration::Configuration, id: i32, r#type: &str, walletable_update_params: Option<crate::models::WalletableUpdateParams>) -> Result<crate::models::GetWalletable200Response, Error<UpdateWalletableError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
 
-    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(_type));
+    let local_var_uri_str = format!("{}/api/1/walletables/{type}/{id}", local_var_configuration.base_path, id=id, type=crate::apis::urlencode(r#type));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
 
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {

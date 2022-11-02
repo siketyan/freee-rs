@@ -18,7 +18,7 @@ pub struct ApprovalRequestCreateParamsRequestItemsInner {
     pub id: Option<i32>,
     /// 項目タイプ(title: 申請タイトル, single_line: 自由記述形式 1行, multi_line: 自由記述形式 複数行, select: プルダウン, date: 日付, amount: 金額, receipt: 添付ファイル, section: 部門ID, partner: 取引先ID)
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<Type>,
+    pub r#type: Option<RHashType>,
     /// 項目の値
     #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
@@ -28,7 +28,7 @@ impl ApprovalRequestCreateParamsRequestItemsInner {
     pub fn new() -> ApprovalRequestCreateParamsRequestItemsInner {
         ApprovalRequestCreateParamsRequestItemsInner {
             id: None,
-            _type: None,
+            r#type: None,
             value: None,
         }
     }
@@ -36,7 +36,7 @@ impl ApprovalRequestCreateParamsRequestItemsInner {
 
 /// 項目タイプ(title: 申請タイトル, single_line: 自由記述形式 1行, multi_line: 自由記述形式 複数行, select: プルダウン, date: 日付, amount: 金額, receipt: 添付ファイル, section: 部門ID, partner: 取引先ID)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "title")]
     Title,
     #[serde(rename = "single_line")]
@@ -57,8 +57,8 @@ pub enum Type {
     Partner,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Title
     }
 }

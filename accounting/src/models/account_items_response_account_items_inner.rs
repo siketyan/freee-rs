@@ -28,9 +28,6 @@ pub struct AccountItemsResponseAccountItemsInner {
     /// ショートカット2(勘定科目コード) (20文字以内)
     #[serde(rename = "shortcut_num", skip_serializing_if = "Option::is_none")]
     pub shortcut_num: Option<String>,
-    /// デフォルト設定がされている税区分ID
-    #[serde(rename = "default_tax_id", skip_serializing_if = "Option::is_none")]
-    pub default_tax_id: Option<i32>,
     /// デフォルト設定がされている税区分コード
     #[serde(rename = "default_tax_code")]
     pub default_tax_code: i32,
@@ -73,7 +70,6 @@ impl AccountItemsResponseAccountItemsInner {
             tax_code,
             shortcut: None,
             shortcut_num: None,
-            default_tax_id: None,
             default_tax_code,
             account_category,
             account_category_id,

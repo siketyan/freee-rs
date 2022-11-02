@@ -25,7 +25,7 @@ pub struct ApprovalRequestFormResponseApprovalRequestForm {
     /// 申請フォームの説明
     #[serde(rename = "description")]
     pub description: String,
-    /// ステータス(draft: 申請で使用しない、active: 申請で使用する、deleted: 削除済み)
+    /// ステータス(draft: 申請で使用しない、active: 申請で使用する)
     #[serde(rename = "status")]
     pub status: Status,
     /// 作成日時
@@ -58,15 +58,13 @@ impl ApprovalRequestFormResponseApprovalRequestForm {
     }
 }
 
-/// ステータス(draft: 申請で使用しない、active: 申請で使用する、deleted: 削除済み)
+/// ステータス(draft: 申請で使用しない、active: 申請で使用する)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Status {
     #[serde(rename = "draft")]
     Draft,
     #[serde(rename = "active")]
     Active,
-    #[serde(rename = "deleted")]
-    Deleted,
 }
 
 impl Default for Status {

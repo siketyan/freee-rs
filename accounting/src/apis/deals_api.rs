@@ -175,7 +175,7 @@ pub async fn get_deal(configuration: &configuration::Configuration, company_id: 
 }
 
 /// <h2 id=\"\">概要</h2> <p>指定した事業所の取引一覧（収入／支出）を取得する</p> <h2 id=\"_2\">定義</h2> <ul> <li> <p>issue_date : 発生日</p> </li> <li> <p>due_date : 支払期日</p> </li> <li> <p>amount : 金額</p> </li> <li> <p>due_amount : 支払残額</p> </li> <li> <p>type</p> <ul> <li>income : 収入</li> <li>expense : 支出</li> </ul> </li> <li> <p>details : 取引の明細行</p> </li> <li> <p>accruals : 取引の債権債務行</p> </li> <li> <p>renews : 取引の+更新行</p> </li> <li> <p>payments : 取引の支払行</p> </li> <li> <p>from_walletable_type</p> <ul> <li>bank_account : 銀行口座</li> <li>credit_card : クレジットカード</li> <li>wallet : 現金</li> <li>private_account_item : プライベート資金（法人の場合は役員借入金もしくは役員借入金、個人の場合は事業主貸もしくは事業主借）</li> </ul> </li> <li> <p>registered_from</p> <ul> <li>all : すべての取引</li> <li>me : 自身が登録した取引</li> </ul> </li> </ul> <h2 id=\"_3\">注意点</h2> <ul> <li>セグメントタグ情報は法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。</li> <li>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。またpartner_codeとpartner_idは同時に指定することはできません。</li> </ul>
-pub async fn get_deals(configuration: &configuration::Configuration, company_id: i32, partner_id: Option<i32>, account_item_id: Option<i32>, partner_code: Option<&str>, status: Option<&str>, _type: Option<&str>, start_issue_date: Option<&str>, end_issue_date: Option<&str>, start_due_date: Option<&str>, end_due_date: Option<&str>, start_renew_date: Option<&str>, end_renew_date: Option<&str>, offset: Option<i64>, limit: Option<i32>, registered_from: Option<&str>, accruals: Option<&str>) -> Result<crate::models::GetDeals200Response, Error<GetDealsError>> {
+pub async fn get_deals(configuration: &configuration::Configuration, company_id: i32, partner_id: Option<i32>, account_item_id: Option<i32>, partner_code: Option<&str>, status: Option<&str>, r#type: Option<&str>, start_issue_date: Option<&str>, end_issue_date: Option<&str>, start_due_date: Option<&str>, end_due_date: Option<&str>, start_renew_date: Option<&str>, end_renew_date: Option<&str>, offset: Option<i64>, limit: Option<i32>, registered_from: Option<&str>, accruals: Option<&str>) -> Result<crate::models::GetDeals200Response, Error<GetDealsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -196,7 +196,7 @@ pub async fn get_deals(configuration: &configuration::Configuration, company_id:
     if let Some(ref local_var_str) = status {
         local_var_req_builder = local_var_req_builder.query(&[("status", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = _type {
+    if let Some(ref local_var_str) = r#type {
         local_var_req_builder = local_var_req_builder.query(&[("type", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_str) = start_issue_date {

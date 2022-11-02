@@ -39,6 +39,8 @@ pub struct Receipt {
     pub file_src: String,
     #[serde(rename = "user")]
     pub user: Box<crate::models::DealCreateResponseDealReceiptsInnerUser>,
+    #[serde(rename = "receipt_metadatum", skip_serializing_if = "Option::is_none")]
+    pub receipt_metadatum: Option<Box<crate::models::ReceiptUpdateParamsReceiptMetadatum>>,
 }
 
 impl Receipt {
@@ -53,6 +55,7 @@ impl Receipt {
             created_at,
             file_src,
             user: Box::new(user),
+            receipt_metadatum: None,
         }
     }
 }

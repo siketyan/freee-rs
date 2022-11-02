@@ -16,6 +16,36 @@ pub struct ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer {
     /// 厚生年金保険に加入しているかどうか null不可
     #[serde(rename = "entried", skip_serializing_if = "Option::is_none")]
     pub entried: Option<bool>,
+    /// 給与計算時の厚生年金保険料の計算方法
+    #[serde(rename = "welfare_pension_insurance_salary_calc_type", skip_serializing_if = "Option::is_none")]
+    pub welfare_pension_insurance_salary_calc_type: Option<WelfarePensionInsuranceSalaryCalcType>,
+    /// 賞与計算時の厚生年金保険料の計算方法
+    #[serde(rename = "welfare_pension_insurance_bonus_calc_type", skip_serializing_if = "Option::is_none")]
+    pub welfare_pension_insurance_bonus_calc_type: Option<WelfarePensionInsuranceBonusCalcType>,
+    /// 給与計算時の厚生年金保険料の直接指定金額（従業員負担分）
+    #[serde(rename = "manual_welfare_pension_insurance_amount_of_employee_salary", skip_serializing_if = "Option::is_none")]
+    pub manual_welfare_pension_insurance_amount_of_employee_salary: Option<i32>,
+    /// 賞与計算時の厚生年金保険料の直接指定金額（従業員負担分）
+    #[serde(rename = "manual_welfare_pension_insurance_amount_of_employee_bonus", skip_serializing_if = "Option::is_none")]
+    pub manual_welfare_pension_insurance_amount_of_employee_bonus: Option<i32>,
+    /// 給与計算時の厚生年金保険料の直接指定金額（会社負担分）
+    #[serde(rename = "manual_welfare_pension_insurance_amount_of_company_salary", skip_serializing_if = "Option::is_none")]
+    pub manual_welfare_pension_insurance_amount_of_company_salary: Option<f32>,
+    /// 賞与計算時の厚生年金保険料の直接指定金額（会社負担分）
+    #[serde(rename = "manual_welfare_pension_insurance_amount_of_company_bonus", skip_serializing_if = "Option::is_none")]
+    pub manual_welfare_pension_insurance_amount_of_company_bonus: Option<f32>,
+    /// 給与計算時の子ども・子育て拠出金の計算方法
+    #[serde(rename = "child_allowance_contribution_salary_calc_type", skip_serializing_if = "Option::is_none")]
+    pub child_allowance_contribution_salary_calc_type: Option<ChildAllowanceContributionSalaryCalcType>,
+    /// 賞与計算時の子ども・子育て拠出金の計算方法
+    #[serde(rename = "child_allowance_contribution_bonus_calc_type", skip_serializing_if = "Option::is_none")]
+    pub child_allowance_contribution_bonus_calc_type: Option<ChildAllowanceContributionBonusCalcType>,
+    /// 給与計算時の子ども・子育て拠出金の直接指定金額
+    #[serde(rename = "manual_child_allowance_contribution_amount_salary", skip_serializing_if = "Option::is_none")]
+    pub manual_child_allowance_contribution_amount_salary: Option<f32>,
+    /// 賞与計算時の子ども・子育て拠出金の直接指定金額
+    #[serde(rename = "manual_child_allowance_contribution_amount_bonus", skip_serializing_if = "Option::is_none")]
+    pub manual_child_allowance_contribution_amount_bonus: Option<f32>,
     /// 厚生年金保険の被保険者整理番号
     #[serde(rename = "reference_num", skip_serializing_if = "Option::is_none")]
     pub reference_num: Option<String>,
@@ -28,10 +58,76 @@ impl ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer {
     pub fn new(standard_monthly_remuneration: i32) -> ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer {
         ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer {
             entried: None,
+            welfare_pension_insurance_salary_calc_type: None,
+            welfare_pension_insurance_bonus_calc_type: None,
+            manual_welfare_pension_insurance_amount_of_employee_salary: None,
+            manual_welfare_pension_insurance_amount_of_employee_bonus: None,
+            manual_welfare_pension_insurance_amount_of_company_salary: None,
+            manual_welfare_pension_insurance_amount_of_company_bonus: None,
+            child_allowance_contribution_salary_calc_type: None,
+            child_allowance_contribution_bonus_calc_type: None,
+            manual_child_allowance_contribution_amount_salary: None,
+            manual_child_allowance_contribution_amount_bonus: None,
             reference_num: None,
             standard_monthly_remuneration,
         }
     }
 }
 
+/// 給与計算時の厚生年金保険料の計算方法
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum WelfarePensionInsuranceSalaryCalcType {
+    #[serde(rename = "auto")]
+    Auto,
+    #[serde(rename = "manual")]
+    Manual,
+}
+
+impl Default for WelfarePensionInsuranceSalaryCalcType {
+    fn default() -> WelfarePensionInsuranceSalaryCalcType {
+        Self::Auto
+    }
+}
+/// 賞与計算時の厚生年金保険料の計算方法
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum WelfarePensionInsuranceBonusCalcType {
+    #[serde(rename = "auto")]
+    Auto,
+    #[serde(rename = "manual")]
+    Manual,
+}
+
+impl Default for WelfarePensionInsuranceBonusCalcType {
+    fn default() -> WelfarePensionInsuranceBonusCalcType {
+        Self::Auto
+    }
+}
+/// 給与計算時の子ども・子育て拠出金の計算方法
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum ChildAllowanceContributionSalaryCalcType {
+    #[serde(rename = "auto")]
+    Auto,
+    #[serde(rename = "manual")]
+    Manual,
+}
+
+impl Default for ChildAllowanceContributionSalaryCalcType {
+    fn default() -> ChildAllowanceContributionSalaryCalcType {
+        Self::Auto
+    }
+}
+/// 賞与計算時の子ども・子育て拠出金の計算方法
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum ChildAllowanceContributionBonusCalcType {
+    #[serde(rename = "auto")]
+    Auto,
+    #[serde(rename = "manual")]
+    Manual,
+}
+
+impl Default for ChildAllowanceContributionBonusCalcType {
+    fn default() -> ChildAllowanceContributionBonusCalcType {
+        Self::Auto
+    }
+}
 

@@ -96,13 +96,19 @@ All URIs are relative to *https://api.freee.co.jp/hr*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**action_approval_requests_monthly_attendance**](docs/DefaultApi.md#action_approval_requests_monthly_attendance) | **POST** /api/v1/approval_requests/monthly_attendances/{id}/actions | 月次勤怠締め申請の承認操作 
+*DefaultApi* | [**action_approval_requests_overtime_work**](docs/DefaultApi.md#action_approval_requests_overtime_work) | **POST** /api/v1/approval_requests/overtime_works/{id}/actions | 残業申請の承認操作 
 *DefaultApi* | [**action_approval_requests_paid_holiday**](docs/DefaultApi.md#action_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays/{id}/actions | 有給申請の承認操作 
 *DefaultApi* | [**bulk_update_employee_dependent_rules**](docs/DefaultApi.md#bulk_update_employee_dependent_rules) | **PUT** /api/v1/employees/{employee_id}/dependent_rules/bulk_update | 更新 
+*DefaultApi* | [**create_approval_requests_monthly_attendance**](docs/DefaultApi.md#create_approval_requests_monthly_attendance) | **POST** /api/v1/approval_requests/monthly_attendances | 月次勤怠締め申請の作成 
+*DefaultApi* | [**create_approval_requests_overtime_work**](docs/DefaultApi.md#create_approval_requests_overtime_work) | **POST** /api/v1/approval_requests/overtime_works | 残業申請の作成 
 *DefaultApi* | [**create_approval_requests_paid_holiday**](docs/DefaultApi.md#create_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays | 有給申請の作成 
 *DefaultApi* | [**create_employee**](docs/DefaultApi.md#create_employee) | **POST** /api/v1/employees | 作成 
 *DefaultApi* | [**create_employee_time_clock**](docs/DefaultApi.md#create_employee_time_clock) | **POST** /api/v1/employees/{employee_id}/time_clocks | 打刻情報の登録 
 *DefaultApi* | [**create_group**](docs/DefaultApi.md#create_group) | **POST** /api/v1/groups | 部門情報の作成 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 役職情報の作成 
+*DefaultApi* | [**destroy_approval_requests_monthly_attendance**](docs/DefaultApi.md#destroy_approval_requests_monthly_attendance) | **DELETE** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の削除 
+*DefaultApi* | [**destroy_approval_requests_overtime_work**](docs/DefaultApi.md#destroy_approval_requests_overtime_work) | **DELETE** /api/v1/approval_requests/overtime_works/{id} | 残業申請の削除 
 *DefaultApi* | [**destroy_approval_requests_paid_holiday**](docs/DefaultApi.md#destroy_approval_requests_paid_holiday) | **DELETE** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の削除 
 *DefaultApi* | [**destroy_employee**](docs/DefaultApi.md#destroy_employee) | **DELETE** /api/v1/employees/{id} | 削除 
 *DefaultApi* | [**destroy_employee_work_record**](docs/DefaultApi.md#destroy_employee_work_record) | **DELETE** /api/v1/employees/{employee_id}/work_records/{date} | 削除 
@@ -110,6 +116,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**destroy_position**](docs/DefaultApi.md#destroy_position) | **DELETE** /api/v1/positions/{id} | 役職情報の削除 
 *DefaultApi* | [**get_approval_flow_route**](docs/DefaultApi.md#get_approval_flow_route) | **GET** /api/v1/approval_flow_routes/{id} | 申請経路の取得
 *DefaultApi* | [**get_approval_flow_routes**](docs/DefaultApi.md#get_approval_flow_routes) | **GET** /api/v1/approval_flow_routes | 申請経路一覧の取得
+*DefaultApi* | [**get_approval_requests_monthly_attendance**](docs/DefaultApi.md#get_approval_requests_monthly_attendance) | **GET** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の詳細取得 
+*DefaultApi* | [**get_approval_requests_monthly_attendances**](docs/DefaultApi.md#get_approval_requests_monthly_attendances) | **GET** /api/v1/approval_requests/monthly_attendances | 月次勤怠締め申請の一覧取得 
+*DefaultApi* | [**get_approval_requests_overtime_work**](docs/DefaultApi.md#get_approval_requests_overtime_work) | **GET** /api/v1/approval_requests/overtime_works/{id} | 残業申請の詳細取得 
+*DefaultApi* | [**get_approval_requests_overtime_works**](docs/DefaultApi.md#get_approval_requests_overtime_works) | **GET** /api/v1/approval_requests/overtime_works | 残業申請の一覧取得 
 *DefaultApi* | [**get_approval_requests_paid_holiday**](docs/DefaultApi.md#get_approval_requests_paid_holiday) | **GET** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の詳細取得 
 *DefaultApi* | [**get_approval_requests_paid_holidays**](docs/DefaultApi.md#get_approval_requests_paid_holidays) | **GET** /api/v1/approval_requests/paid_holidays | 有給申請の一覧取得 
 *DefaultApi* | [**get_bonuses_employee_payroll_statement**](docs/DefaultApi.md#get_bonuses_employee_payroll_statement) | **GET** /api/v1/bonuses/employee_payroll_statements/{employee_id} | 取得 
@@ -134,6 +144,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_salaries_employee_payroll_statement**](docs/DefaultApi.md#get_salaries_employee_payroll_statement) | **GET** /api/v1/salaries/employee_payroll_statements/{employee_id} | 取得 
 *DefaultApi* | [**get_salaries_employee_payroll_statements**](docs/DefaultApi.md#get_salaries_employee_payroll_statements) | **GET** /api/v1/salaries/employee_payroll_statements | 一覧の取得 
 *DefaultApi* | [**get_users_me**](docs/DefaultApi.md#get_users_me) | **GET** /api/v1/users/me | 取得 
+*DefaultApi* | [**update_approval_requests_monthly_attendance**](docs/DefaultApi.md#update_approval_requests_monthly_attendance) | **PUT** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の更新 
+*DefaultApi* | [**update_approval_requests_overtime_work**](docs/DefaultApi.md#update_approval_requests_overtime_work) | **PUT** /api/v1/approval_requests/overtime_works/{id} | 残業申請の更新 
 *DefaultApi* | [**update_approval_requests_paid_holiday**](docs/DefaultApi.md#update_approval_requests_paid_holiday) | **PUT** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の更新 
 *DefaultApi* | [**update_employee**](docs/DefaultApi.md#update_employee) | **PUT** /api/v1/employees/{id} | 更新 
 *DefaultApi* | [**update_employee_bank_account_rule**](docs/DefaultApi.md#update_employee_bank_account_rule) | **PUT** /api/v1/employees/{employee_id}/bank_account_rule | 更新 
@@ -157,7 +169,7 @@ Class | Method | HTTP request | Description
  - [ApiV1ApprovalFlowRouteResponseParams](docs/ApiV1ApprovalFlowRouteResponseParams.md)
  - [ApiV1ApprovalFlowRoutesIndexResponse](docs/ApiV1ApprovalFlowRoutesIndexResponse.md)
  - [ApiV1BonusesEmployeePayrollStatementSerializer](docs/ApiV1BonusesEmployeePayrollStatementSerializer.md)
- - [ApiV1BonusesEmployeePayrollStatementsControllerShowResponse](docs/ApiV1BonusesEmployeePayrollStatementsControllerShowResponse.md)
+ - [ApiV1BonusesEmployeePayrollStatementsControllerPeriodShowResponse](docs/ApiV1BonusesEmployeePayrollStatementsControllerPeriodShowResponse.md)
  - [ApiV1BonusesEmployeePayrollStatementsIndexSerializer](docs/ApiV1BonusesEmployeePayrollStatementsIndexSerializer.md)
  - [ApiV1CompaniesEmployeeSerializer](docs/ApiV1CompaniesEmployeeSerializer.md)
  - [ApiV1EmployeeCreateRequestSerializer](docs/ApiV1EmployeeCreateRequestSerializer.md)
@@ -170,52 +182,52 @@ Class | Method | HTTP request | Description
  - [ApiV1EmployeeUpdateRequestSerializer](docs/ApiV1EmployeeUpdateRequestSerializer.md)
  - [ApiV1EmployeesBankAccountRuleSerializer](docs/ApiV1EmployeesBankAccountRuleSerializer.md)
  - [ApiV1EmployeesBankAccountRuleUpdateRequestSerializer](docs/ApiV1EmployeesBankAccountRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesBankAccountRulesControllerShowResponse](docs/ApiV1EmployeesBankAccountRulesControllerShowResponse.md)
- - [ApiV1EmployeesBankAccountRulesControllerUpdateBody](docs/ApiV1EmployeesBankAccountRulesControllerUpdateBody.md)
- - [ApiV1EmployeesBankAccountRulesControllerUpdateResponse](docs/ApiV1EmployeesBankAccountRulesControllerUpdateResponse.md)
+ - [ApiV1EmployeesBankAccountRulesControllerPeriodShowResponse](docs/ApiV1EmployeesBankAccountRulesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesBankAccountRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesBankAccountRulesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesBankAccountRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesBankAccountRulesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesBasicPayRuleSerializer](docs/ApiV1EmployeesBasicPayRuleSerializer.md)
  - [ApiV1EmployeesBasicPayRuleUpdateRequestSerializer](docs/ApiV1EmployeesBasicPayRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesBasicPayRulesControllerShowResponse](docs/ApiV1EmployeesBasicPayRulesControllerShowResponse.md)
- - [ApiV1EmployeesBasicPayRulesControllerUpdateBody](docs/ApiV1EmployeesBasicPayRulesControllerUpdateBody.md)
- - [ApiV1EmployeesBasicPayRulesControllerUpdateResponse](docs/ApiV1EmployeesBasicPayRulesControllerUpdateResponse.md)
- - [ApiV1EmployeesControllerCreateBody](docs/ApiV1EmployeesControllerCreateBody.md)
- - [ApiV1EmployeesControllerCreateResponse](docs/ApiV1EmployeesControllerCreateResponse.md)
- - [ApiV1EmployeesControllerShowResponse](docs/ApiV1EmployeesControllerShowResponse.md)
- - [ApiV1EmployeesControllerUpdateBody](docs/ApiV1EmployeesControllerUpdateBody.md)
- - [ApiV1EmployeesControllerUpdateResponse](docs/ApiV1EmployeesControllerUpdateResponse.md)
+ - [ApiV1EmployeesBasicPayRulesControllerPeriodShowResponse](docs/ApiV1EmployeesBasicPayRulesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesBasicPayRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesBasicPayRulesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesBasicPayRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesBasicPayRulesControllerPeriodUpdateResponse.md)
+ - [ApiV1EmployeesControllerPeriodCreateBody](docs/ApiV1EmployeesControllerPeriodCreateBody.md)
+ - [ApiV1EmployeesControllerPeriodCreateResponse](docs/ApiV1EmployeesControllerPeriodCreateResponse.md)
+ - [ApiV1EmployeesControllerPeriodShowResponse](docs/ApiV1EmployeesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesControllerPeriodUpdateBody](docs/ApiV1EmployeesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesControllerPeriodUpdateResponse](docs/ApiV1EmployeesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesDependentRuleSerializer](docs/ApiV1EmployeesDependentRuleSerializer.md)
  - [ApiV1EmployeesDependentRuleUpdateRequestSerializer](docs/ApiV1EmployeesDependentRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesDependentRulesControllerBulkUpdateBody](docs/ApiV1EmployeesDependentRulesControllerBulkUpdateBody.md)
- - [ApiV1EmployeesDependentRulesControllerBulkUpdateResponse](docs/ApiV1EmployeesDependentRulesControllerBulkUpdateResponse.md)
- - [ApiV1EmployeesDependentRulesControllerIndexResponse](docs/ApiV1EmployeesDependentRulesControllerIndexResponse.md)
+ - [ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateBody](docs/ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateBody.md)
+ - [ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateResponse](docs/ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateResponse.md)
+ - [ApiV1EmployeesDependentRulesControllerPeriodIndexResponse](docs/ApiV1EmployeesDependentRulesControllerPeriodIndexResponse.md)
  - [ApiV1EmployeesEmployeeMultiHourlyWageWorkRecordSummarySerializer](docs/ApiV1EmployeesEmployeeMultiHourlyWageWorkRecordSummarySerializer.md)
  - [ApiV1EmployeesHealthInsuranceRuleSerializer](docs/ApiV1EmployeesHealthInsuranceRuleSerializer.md)
  - [ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer](docs/ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesHealthInsuranceRulesControllerShowResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerShowResponse.md)
- - [ApiV1EmployeesHealthInsuranceRulesControllerUpdateBody](docs/ApiV1EmployeesHealthInsuranceRulesControllerUpdateBody.md)
- - [ApiV1EmployeesHealthInsuranceRulesControllerUpdateResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerUpdateResponse.md)
+ - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesIndexSerializer](docs/ApiV1EmployeesIndexSerializer.md)
  - [ApiV1EmployeesProfileRuleSerializer](docs/ApiV1EmployeesProfileRuleSerializer.md)
  - [ApiV1EmployeesProfileRuleUpdateRequestSerializer](docs/ApiV1EmployeesProfileRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesProfileRulesControllerShowResponse](docs/ApiV1EmployeesProfileRulesControllerShowResponse.md)
- - [ApiV1EmployeesProfileRulesControllerUpdateBody](docs/ApiV1EmployeesProfileRulesControllerUpdateBody.md)
- - [ApiV1EmployeesProfileRulesControllerUpdateResponse](docs/ApiV1EmployeesProfileRulesControllerUpdateResponse.md)
+ - [ApiV1EmployeesProfileRulesControllerPeriodShowResponse](docs/ApiV1EmployeesProfileRulesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesProfileRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesProfileRulesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesProfileRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesProfileRulesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesTimeClockSerializer](docs/ApiV1EmployeesTimeClockSerializer.md)
- - [ApiV1EmployeesTimeClocksControllerAvailableTypesResponse](docs/ApiV1EmployeesTimeClocksControllerAvailableTypesResponse.md)
- - [ApiV1EmployeesTimeClocksControllerCreateBody](docs/ApiV1EmployeesTimeClocksControllerCreateBody.md)
- - [ApiV1EmployeesTimeClocksControllerCreateResponse](docs/ApiV1EmployeesTimeClocksControllerCreateResponse.md)
- - [ApiV1EmployeesTimeClocksControllerShowResponse](docs/ApiV1EmployeesTimeClocksControllerShowResponse.md)
+ - [ApiV1EmployeesTimeClocksControllerPeriodAvailableTypesResponse](docs/ApiV1EmployeesTimeClocksControllerPeriodAvailableTypesResponse.md)
+ - [ApiV1EmployeesTimeClocksControllerPeriodCreateBody](docs/ApiV1EmployeesTimeClocksControllerPeriodCreateBody.md)
+ - [ApiV1EmployeesTimeClocksControllerPeriodCreateResponse](docs/ApiV1EmployeesTimeClocksControllerPeriodCreateResponse.md)
+ - [ApiV1EmployeesTimeClocksControllerPeriodShowResponse](docs/ApiV1EmployeesTimeClocksControllerPeriodShowResponse.md)
  - [ApiV1EmployeesWelfarePensionInsuranceRuleSerializer](docs/ApiV1EmployeesWelfarePensionInsuranceRuleSerializer.md)
  - [ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer](docs/ApiV1EmployeesWelfarePensionInsuranceRuleUpdateRequestSerializer.md)
- - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerShowResponse](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerShowResponse.md)
- - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerUpdateBody](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerUpdateBody.md)
- - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerUpdateResponse](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerUpdateResponse.md)
+ - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodShowResponse](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodShowResponse.md)
+ - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateBody.md)
+ - [ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesWorkRecordSerializer](docs/ApiV1EmployeesWorkRecordSerializer.md)
- - [ApiV1EmployeesWorkRecordSummaryControllerUpdateBody](docs/ApiV1EmployeesWorkRecordSummaryControllerUpdateBody.md)
+ - [ApiV1EmployeesWorkRecordSummaryControllerPeriodUpdateBody](docs/ApiV1EmployeesWorkRecordSummaryControllerPeriodUpdateBody.md)
  - [ApiV1EmployeesWorkRecordSummarySerializer](docs/ApiV1EmployeesWorkRecordSummarySerializer.md)
  - [ApiV1EmployeesWorkRecordTimeRangeResponseSerializer](docs/ApiV1EmployeesWorkRecordTimeRangeResponseSerializer.md)
  - [ApiV1EmployeesWorkRecordTimeRangeSerializer](docs/ApiV1EmployeesWorkRecordTimeRangeSerializer.md)
- - [ApiV1EmployeesWorkRecordsControllerUpdateBody](docs/ApiV1EmployeesWorkRecordsControllerUpdateBody.md)
+ - [ApiV1EmployeesWorkRecordsControllerPeriodUpdateBody](docs/ApiV1EmployeesWorkRecordsControllerPeriodUpdateBody.md)
  - [ApiV1FlowRouteStepSrializerInner](docs/ApiV1FlowRouteStepSrializerInner.md)
  - [ApiV1GroupCreateRequest](docs/ApiV1GroupCreateRequest.md)
  - [ApiV1GroupCreateRequestParams](docs/ApiV1GroupCreateRequestParams.md)
@@ -248,8 +260,8 @@ Class | Method | HTTP request | Description
  - [ApiV1PositionResponse](docs/ApiV1PositionResponse.md)
  - [ApiV1PositionResponseParams](docs/ApiV1PositionResponseParams.md)
  - [ApiV1SalariesEmployeePayrollStatementSerializer](docs/ApiV1SalariesEmployeePayrollStatementSerializer.md)
- - [ApiV1SalariesEmployeePayrollStatementsControllerIndexResponse](docs/ApiV1SalariesEmployeePayrollStatementsControllerIndexResponse.md)
- - [ApiV1SalariesEmployeePayrollStatementsControllerShowResponse](docs/ApiV1SalariesEmployeePayrollStatementsControllerShowResponse.md)
+ - [ApiV1SalariesEmployeePayrollStatementsControllerPeriodIndexResponse](docs/ApiV1SalariesEmployeePayrollStatementsControllerPeriodIndexResponse.md)
+ - [ApiV1SalariesEmployeePayrollStatementsControllerPeriodShowResponse](docs/ApiV1SalariesEmployeePayrollStatementsControllerPeriodShowResponse.md)
  - [ApiV1UsersCompanySerializer](docs/ApiV1UsersCompanySerializer.md)
  - [ApiV1UsersMeSerializer](docs/ApiV1UsersMeSerializer.md)
  - [Error](docs/Error.md)

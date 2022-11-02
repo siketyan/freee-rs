@@ -122,7 +122,7 @@ Name | Type | Description  | Required | Notes
 **end_update_date** | Option<**String**> | 更新日で絞り込み：終了日(yyyy-mm-dd) |  |
 **offset** | Option<**i64**> | 取得レコードのオフセット (デフォルト: 0) |  |
 **limit** | Option<**i32**> | 取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) |  |
-**keyword** | Option<**String**> | 検索キーワード：取引先名・正式名称・カナ名称に対するあいまい検索で一致、またはショートカットキー1・2のいずれかに完全一致 |  |
+**keyword** | Option<**String**> | 検索キーワード<br> 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。<br> 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 <ul> <li>半角スペース</li> <li>全角スペース</li> <li>タブ</li> </ul>  |  |
 
 ### Return type
 

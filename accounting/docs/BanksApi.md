@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_banks
 
-> crate::models::GetBanks200Response get_banks(offset, limit, _type)
+> crate::models::GetBanks200Response get_banks(offset, limit, r#type)
 連携サービス一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>連携しているサービス一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li> </ul>
@@ -53,7 +53,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **offset** | Option<**i64**> | 取得レコードのオフセット (デフォルト: 0) |  |
 **limit** | Option<**i32**> | 取得レコードの件数 (デフォルト: 20, 最小: 1, 最大: 500) |  |
-**_type** | Option<**String**> | サービス種別 |  |
+**r#type** | Option<**String**> | サービス種別 |  |
 
 ### Return type
 

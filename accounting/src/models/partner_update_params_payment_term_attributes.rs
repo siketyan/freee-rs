@@ -16,7 +16,7 @@ pub struct PartnerUpdateParamsPaymentTermAttributes {
     /// 締め日（29, 30, 31日の末日を指定する場合は、32を指定してください。）
     #[serde(rename = "cutoff_day", skip_serializing_if = "Option::is_none")]
     pub cutoff_day: Option<i32>,
-    /// 支払月
+    /// 支払月（当月を指定する場合は、0を指定してください。）
     #[serde(rename = "additional_months", skip_serializing_if = "Option::is_none")]
     pub additional_months: Option<i32>,
     /// 支払日（29, 30, 31日の末日を指定する場合は、32を指定してください。）

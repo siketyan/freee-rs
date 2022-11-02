@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ErrorErrorsInner {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
+    pub r#type: Option<String>,
     #[serde(rename = "messages", skip_serializing_if = "Option::is_none")]
     pub messages: Option<Vec<String>>,
 }
@@ -22,7 +22,7 @@ pub struct ErrorErrorsInner {
 impl ErrorErrorsInner {
     pub fn new() -> ErrorErrorsInner {
         ErrorErrorsInner {
-            _type: None,
+            r#type: None,
             messages: None,
         }
     }
