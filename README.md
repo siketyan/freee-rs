@@ -6,8 +6,8 @@ Add to your Cargo.toml as follows:
 
 ```toml
 [dependencies]
-freee = "0.4"
-freee-hr = "0.4"
+freee = "0.5"
+freee-hr = "0.5"
 ```
 
 ## Crates
