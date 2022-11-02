@@ -21,7 +21,7 @@ pub struct ApiV1EmployeesTimeClockSerializer {
     pub date: Option<String>,
     /// 打刻種別
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<Type>,
+    pub r#type: Option<RHashType>,
     /// 打刻時刻
     #[serde(rename = "datetime", skip_serializing_if = "Option::is_none")]
     pub datetime: Option<String>,
@@ -38,7 +38,7 @@ impl ApiV1EmployeesTimeClockSerializer {
         ApiV1EmployeesTimeClockSerializer {
             id: None,
             date: None,
-            _type: None,
+            r#type: None,
             datetime: None,
             original_datetime: None,
             note: None,
@@ -48,7 +48,7 @@ impl ApiV1EmployeesTimeClockSerializer {
 
 /// 打刻種別
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "clock_in")]
     ClockIn,
     #[serde(rename = "break_begin")]
@@ -59,8 +59,8 @@ pub enum Type {
     ClockOut,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::ClockIn
     }
 }

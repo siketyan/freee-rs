@@ -184,7 +184,7 @@ pub enum UseVirtualTransferAccount {
     #[serde(rename = "not_use")]
     NotUse,
     #[serde(rename = "use")]
-    _Use,
+    Use,
 }
 
 impl Default for UseVirtualTransferAccount {

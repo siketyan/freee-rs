@@ -17,6 +17,10 @@ pub struct SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaul
     pub tax_rate_5: Option<Box<crate::models::SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5>>,
     #[serde(rename = "tax_rate_8", skip_serializing_if = "Option::is_none")]
     pub tax_rate_8: Option<Box<crate::models::SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8>>,
+    #[serde(rename = "tax_rate_10", skip_serializing_if = "Option::is_none")]
+    pub tax_rate_10: Option<Box<crate::models::SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10>>,
+    #[serde(rename = "tax_rate_r8", skip_serializing_if = "Option::is_none")]
+    pub tax_rate_r8: Option<Box<crate::models::SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8>>,
 }
 
 impl SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTax {
@@ -24,6 +28,8 @@ impl SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTax {
         SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTax {
             tax_rate_5: None,
             tax_rate_8: None,
+            tax_rate_10: None,
+            tax_rate_r8: None,
         }
     }
 }

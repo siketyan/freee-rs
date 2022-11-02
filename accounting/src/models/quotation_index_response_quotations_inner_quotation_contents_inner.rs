@@ -21,7 +21,7 @@ pub struct QuotationIndexResponseQuotationsInnerQuotationContentsInner {
     pub order: i32,
     /// 行の種類
     #[serde(rename = "type")]
-    pub _type: Type,
+    pub r#type: RHashType,
     /// 数量
     #[serde(rename = "qty")]
     pub qty: f32,
@@ -71,7 +71,7 @@ pub struct QuotationIndexResponseQuotationsInnerQuotationContentsInner {
     /// セグメント１ID
     #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_1_tag_id: Option<i64>,
-    /// セグメント１ID
+    /// セグメント１
     #[serde(rename = "segment_1_tag_name", skip_serializing_if = "Option::is_none")]
     pub segment_1_tag_name: Option<String>,
     /// セグメント２ID
@@ -89,11 +89,11 @@ pub struct QuotationIndexResponseQuotationsInnerQuotationContentsInner {
 }
 
 impl QuotationIndexResponseQuotationsInnerQuotationContentsInner {
-    pub fn new(id: i32, order: i32, _type: Type, qty: f32, unit: Option<String>, unit_price: f32, amount: i32, vat: i32, reduced_vat: bool, description: Option<String>, account_item_id: Option<i32>, account_item_name: Option<String>, tax_code: Option<i32>, item_id: Option<i32>, item_name: Option<String>, section_id: Option<i32>, section_name: Option<String>, tag_ids: Vec<i32>, tag_names: Vec<String>) -> QuotationIndexResponseQuotationsInnerQuotationContentsInner {
+    pub fn new(id: i32, order: i32, r#type: RHashType, qty: f32, unit: Option<String>, unit_price: f32, amount: i32, vat: i32, reduced_vat: bool, description: Option<String>, account_item_id: Option<i32>, account_item_name: Option<String>, tax_code: Option<i32>, item_id: Option<i32>, item_name: Option<String>, section_id: Option<i32>, section_name: Option<String>, tag_ids: Vec<i32>, tag_names: Vec<String>) -> QuotationIndexResponseQuotationsInnerQuotationContentsInner {
         QuotationIndexResponseQuotationsInnerQuotationContentsInner {
             id,
             order,
-            _type,
+            r#type,
             qty,
             unit,
             unit_price,
@@ -122,7 +122,7 @@ impl QuotationIndexResponseQuotationsInnerQuotationContentsInner {
 
 /// 行の種類
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "normal")]
     Normal,
     #[serde(rename = "discount")]
@@ -131,8 +131,8 @@ pub enum Type {
     Text,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Normal
     }
 }

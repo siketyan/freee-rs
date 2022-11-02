@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**i32**> | 見積内容ID | [optional]
 **order** | **i32** | 順序 | 
-**_type** | **String** | 行の種類 <ul> <li>normal、discountを指定する場合、account_item_id,tax_codeとunit_priceが必須となります。</li> <li>normalを指定した場合、qtyが必須となります。</li> </ul> | 
+**r#type** | **String** | 行の種類 <ul> <li>normal、discountを指定する場合、account_item_id,tax_codeとunit_priceが必須となります。</li> <li>normalを指定した場合、qtyが必須となります。</li> </ul> | 
 **qty** | Option<**f32**> | 数量 | [optional]
 **unit** | Option<**String**> | 単位 | [optional]
 **unit_price** | Option<**f32**> | 単価 (tax_entry_method: inclusiveの場合は税込価格、tax_entry_method: exclusiveの場合は税抜価格となります) | [optional]

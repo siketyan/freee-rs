@@ -21,22 +21,22 @@ pub struct CompanyResponseCompanyWalletablesInner {
     pub name: String,
     /// 口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)
     #[serde(rename = "type")]
-    pub _type: Type,
+    pub r#type: RHashType,
 }
 
 impl CompanyResponseCompanyWalletablesInner {
-    pub fn new(id: i32, name: String, _type: Type) -> CompanyResponseCompanyWalletablesInner {
+    pub fn new(id: i32, name: String, r#type: RHashType) -> CompanyResponseCompanyWalletablesInner {
         CompanyResponseCompanyWalletablesInner {
             id,
             name,
-            _type,
+            r#type,
         }
     }
 }
 
 /// 口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "bank_account")]
     BankAccount,
     #[serde(rename = "credit_card")]
@@ -45,8 +45,8 @@ pub enum Type {
     Wallet,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::BankAccount
     }
 }

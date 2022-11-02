@@ -18,17 +18,17 @@ pub struct ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
     pub id: i32,
     /// 項目タイプ(title: 申請タイトル, single_line: 自由記述形式 1行, multi_line: 自由記述形式 複数行, select: プルダウン, date: 日付, amount: 金額, receipt: 添付ファイル, section: 部門ID, partner: 取引先ID, ninja_sign_document: 契約書（freeeサイン連携）)
     #[serde(rename = "type")]
-    pub _type: Type,
+    pub r#type: RHashType,
     /// 項目の値
     #[serde(rename = "value")]
     pub value: String,
 }
 
 impl ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
-    pub fn new(id: i32, _type: Type, value: String) -> ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
+    pub fn new(id: i32, r#type: RHashType, value: String) -> ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
         ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
             id,
-            _type,
+            r#type,
             value,
         }
     }
@@ -36,7 +36,7 @@ impl ApprovalRequestsIndexResponseApprovalRequestsInnerRequestItemsInner {
 
 /// 項目タイプ(title: 申請タイトル, single_line: 自由記述形式 1行, multi_line: 自由記述形式 複数行, select: プルダウン, date: 日付, amount: 金額, receipt: 添付ファイル, section: 部門ID, partner: 取引先ID, ninja_sign_document: 契約書（freeeサイン連携）)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "title")]
     Title,
     #[serde(rename = "single_line")]
@@ -59,8 +59,8 @@ pub enum Type {
     NinjaSignDocument,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Title
     }
 }

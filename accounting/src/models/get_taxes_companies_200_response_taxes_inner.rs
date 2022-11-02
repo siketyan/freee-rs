@@ -25,7 +25,7 @@ pub struct GetTaxesCompanies200ResponseTaxesInner {
     /// 税区分の表示カテゴリ（tax_5: 5%表示の税区分、tax_8: 8%表示の税区分、tax_r8: 軽減税率8%表示の税区分、tax_10: 10%表示の税区分、null: 税率未設定税区分）
     #[serde(rename = "display_category")]
     pub display_category: Option<DisplayCategory>,
-    /// true: 使用する、false: 使用しない
+    /// 税区分の使用設定。true: 使用する、false: 使用しない
     #[serde(rename = "available")]
     pub available: bool,
 }
@@ -46,18 +46,18 @@ impl GetTaxesCompanies200ResponseTaxesInner {
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum DisplayCategory {
     #[serde(rename = "tax_5")]
-    _5,
+    Variant5,
     #[serde(rename = "tax_8")]
-    _8,
+    Variant8,
     #[serde(rename = "tax_r8")]
     R8,
     #[serde(rename = "tax_10")]
-    _10,
+    Variant10,
 }
 
 impl Default for DisplayCategory {
     fn default() -> DisplayCategory {
-        Self::_5
+        Self::Variant5
     }
 }
 

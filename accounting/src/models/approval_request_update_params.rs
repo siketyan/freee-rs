@@ -25,7 +25,7 @@ pub struct ApprovalRequestUpdateParams {
     /// 承認者のユーザーID
     #[serde(rename = "approver_id", skip_serializing_if = "Option::is_none")]
     pub approver_id: Option<i32>,
-    /// falseの時、in_progress:申請中で更新する。それ以外の時はdraft:下書きで更新する
+    /// 各種申請のステータス<br> falseを指定した時は申請中（in_progress）で各種申請を更新します。<br> trueを指定した時は下書き（draft）で各種申請を更新します。 
     #[serde(rename = "draft")]
     pub draft: bool,
     #[serde(rename = "request_items")]

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## create_receipt
 
-> crate::models::ReceiptResponse create_receipt(company_id, receipt, description, issue_date)
+> crate::models::ReceiptResponse create_receipt(company_id, receipt, description, issue_date, receipt_metadatum_partner_name, receipt_metadatum_issue_date, receipt_metadatum_amount)
 ファイルボックス 証憑ファイルアップロード
 
  <h2 id=\"\">概要</h2>  <p>ファイルボックスに証憑ファイルをアップロードする</p> <h2 id=\"_2\">注意点</h2> <ul>   <li>リクエストヘッダーの Content-Type は、multipart/form-dataにのみ対応しています。</li> </ul>
@@ -29,6 +29,9 @@ Name | Type | Description  | Required | Notes
 **receipt** | **std::path::PathBuf** | 証憑ファイル | [required] |
 **description** | Option<**String**> | メモ (255文字以内) |  |
 **issue_date** | Option<**String**> | 取引日 (yyyy-mm-dd) |  |
+**receipt_metadatum_partner_name** | Option<**String**> | 発行元 |  |
+**receipt_metadatum_issue_date** | Option<**String**> | 発行日 (yyyy-mm-dd) |  |
+**receipt_metadatum_amount** | Option<**i64**> | 金額 |  |
 
 ### Return type
 
@@ -191,7 +194,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | 証憑ファイルID | [required] |
-**receipt_update_params** | [**ReceiptUpdateParams**](ReceiptUpdateParams.md) | 経費申請の更新 | [required] |
+**receipt_update_params** | [**ReceiptUpdateParams**](ReceiptUpdateParams.md) |  | [required] |
 
 ### Return type
 

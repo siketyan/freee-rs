@@ -40,6 +40,7 @@ pub struct ApiV1EmployeeSerializer {
     /// 退職日
     #[serde(rename = "retire_date", skip_serializing_if = "Option::is_none")]
     pub retire_date: Option<String>,
+    /// ユーザーID(従業員詳細未設定の場合、nullになります。)
     #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
     pub user_id: Option<i32>,
     #[serde(rename = "profile_rule", skip_serializing_if = "Option::is_none")]

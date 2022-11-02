@@ -74,7 +74,7 @@ pub enum UpdateAccountItemError {
 
 
 ///  <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目を作成する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_nameは、api/1/taxes/companies/{company_id} で該当事業所の税区分の一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのnameを指定して勘定科目の作成をしてください</p>
-pub async fn create_account_item(configuration: &configuration::Configuration, account_item_params: crate::models::AccountItemParams) -> Result<crate::models::AccountItemResponse, Error<CreateAccountItemError>> {
+pub async fn create_account_item(configuration: &configuration::Configuration, account_item_create_params: crate::models::AccountItemCreateParams) -> Result<crate::models::AccountItemResponse, Error<CreateAccountItemError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -88,7 +88,7 @@ pub async fn create_account_item(configuration: &configuration::Configuration, a
     if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&account_item_params);
+    local_var_req_builder = local_var_req_builder.json(&account_item_create_params);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -169,7 +169,7 @@ pub async fn get_account_item(configuration: &configuration::Configuration, comp
     }
 }
 
-///  <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>default_tax_id : デフォルト設定がされている税区分ID</li>  <li>default_tax_code : リクエストした日時を基準とした税区分コード</li> </ul>  <h2 id=\"_3\">注意点</h2> <p>default_tax_code は勘定科目作成・更新時に利用するものではありません</p>
+///  <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>default_tax_code : リクエストした日時を基準とした税区分コード</li> </ul>  <h2 id=\"_3\">注意点</h2> <p>default_tax_code は勘定科目作成・更新時に利用するものではありません</p>
 pub async fn get_account_items(configuration: &configuration::Configuration, company_id: i32, base_date: Option<&str>) -> Result<crate::models::AccountItemsResponse, Error<GetAccountItemsError>> {
     let local_var_configuration = configuration;
 
@@ -205,7 +205,7 @@ pub async fn get_account_items(configuration: &configuration::Configuration, com
 }
 
 ///  <h2 id=\"\">概要</h2>  <p>勘定科目を更新する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、api/1/taxes/companies/{company_id} で該当事業所の税区分の一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのcodeを指定して勘定科目の更新をしてください</p>
-pub async fn update_account_item(configuration: &configuration::Configuration, id: i32, account_item_params: crate::models::AccountItemParams) -> Result<crate::models::AccountItemResponse, Error<UpdateAccountItemError>> {
+pub async fn update_account_item(configuration: &configuration::Configuration, id: i32, account_item_update_params: crate::models::AccountItemUpdateParams) -> Result<crate::models::AccountItemResponse, Error<UpdateAccountItemError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -219,7 +219,7 @@ pub async fn update_account_item(configuration: &configuration::Configuration, i
     if let Some(ref local_var_token) = local_var_configuration.oauth_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&account_item_params);
+    local_var_req_builder = local_var_req_builder.json(&account_item_update_params);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;

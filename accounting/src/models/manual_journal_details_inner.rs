@@ -56,21 +56,21 @@ pub struct ManualJournalDetailsInner {
     /// セグメント１ID
     #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_1_tag_id: Option<i64>,
-    /// セグメント１ID
+    /// セグメント１
     #[serde(rename = "segment_1_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_name: Option<i32>,
+    pub segment_1_tag_name: Option<String>,
     /// セグメント２ID
     #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_2_tag_id: Option<i64>,
     /// セグメント２
     #[serde(rename = "segment_2_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_name: Option<i32>,
+    pub segment_2_tag_name: Option<String>,
     /// セグメント３ID
     #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_3_tag_id: Option<i64>,
     /// セグメント３
     #[serde(rename = "segment_3_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_name: Option<i32>,
+    pub segment_3_tag_name: Option<String>,
     /// 金額（税込で指定してください）
     #[serde(rename = "amount")]
     pub amount: i32,

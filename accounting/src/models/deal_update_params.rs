@@ -18,7 +18,7 @@ pub struct DealUpdateParams {
     pub issue_date: String,
     /// 収支区分 (収入: income, 支出: expense)
     #[serde(rename = "type")]
-    pub _type: Type,
+    pub r#type: RHashType,
     /// 事業所ID
     #[serde(rename = "company_id")]
     pub company_id: i32,
@@ -42,10 +42,10 @@ pub struct DealUpdateParams {
 }
 
 impl DealUpdateParams {
-    pub fn new(issue_date: String, _type: Type, company_id: i32, details: Vec<crate::models::DealUpdateParamsDetailsInner>) -> DealUpdateParams {
+    pub fn new(issue_date: String, r#type: RHashType, company_id: i32, details: Vec<crate::models::DealUpdateParamsDetailsInner>) -> DealUpdateParams {
         DealUpdateParams {
             issue_date,
-            _type,
+            r#type,
             company_id,
             due_date: None,
             partner_id: None,
@@ -59,15 +59,15 @@ impl DealUpdateParams {
 
 /// 収支区分 (収入: income, 支出: expense)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum RHashType {
     #[serde(rename = "income")]
     Income,
     #[serde(rename = "expense")]
     Expense,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for RHashType {
+    fn default() -> RHashType {
         Self::Income
     }
 }

@@ -34,7 +34,7 @@ pub struct PaymentRequestUpdateParams {
     /// 申請経路ID<br> 指定する申請経路IDは、申請経路APIを利用して取得してください。 
     #[serde(rename = "approval_flow_route_id")]
     pub approval_flow_route_id: i32,
-    /// 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を更新します。<br> trueを指定した時は下書き（draft）で支払依頼を更新します。<br> 未指定の時は下書きとみなして支払依頼を更新します。 
+    /// 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を更新します。<br> trueを指定した時は下書き（draft）で支払依頼を更新します。 
     #[serde(rename = "draft")]
     pub draft: bool,
     /// 請求書番号（255文字以内）

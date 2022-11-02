@@ -22,6 +22,8 @@ pub struct ReceiptUpdateParams {
     /// 取引日 (yyyy-mm-dd)
     #[serde(rename = "issue_date")]
     pub issue_date: String,
+    #[serde(rename = "receipt_metadatum", skip_serializing_if = "Option::is_none")]
+    pub receipt_metadatum: Option<Box<crate::models::ReceiptUpdateParamsReceiptMetadatum>>,
 }
 
 impl ReceiptUpdateParams {
@@ -30,6 +32,7 @@ impl ReceiptUpdateParams {
             company_id,
             description: None,
             issue_date,
+            receipt_metadatum: None,
         }
     }
 }

@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## destroy_walletable
 
-> destroy_walletable(id, _type, company_id)
+> destroy_walletable(id, r#type, company_id)
 口座の削除
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座を削除する</p>  <h2 id=\"\">注意点</h2> <ul> <li>削除を実行するには、当該口座に関連する仕訳データを事前に削除する必要があります。</li> <li>当該口座に仕訳が残っていないか確認するには、レポートの「仕訳帳」等を参照し、必要に応じて、「取引」や「口座振替」も削除します。</li>  </ul>
@@ -55,7 +55,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | 口座ID | [required] |
-**_type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
+**r#type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
 **company_id** | **i32** | 事業所ID | [required] |
 
 ### Return type
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_walletable
 
-> crate::models::GetWalletable200Response get_walletable(id, _type, company_id)
+> crate::models::GetWalletable200Response get_walletable(id, r#type, company_id)
 口座情報の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座情報を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
@@ -87,7 +87,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | 口座ID | [required] |
-**_type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
+**r#type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
 **company_id** | **i32** | 事業所ID | [required] |
 
 ### Return type
@@ -108,7 +108,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_walletables
 
-> crate::models::GetWalletables200Response get_walletables(company_id, with_balance, _type)
+> crate::models::GetWalletables200Response get_walletables(company_id, with_balance, r#type)
 口座一覧の取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所の口座一覧を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
@@ -120,7 +120,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **company_id** | **i32** | 事業所ID | [required] |
 **with_balance** | Option<**bool**> | 残高情報を含める |  |
-**_type** | Option<**String**> | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） |  |
+**r#type** | Option<**String**> | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） |  |
 
 ### Return type
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_walletable
 
-> crate::models::GetWalletable200Response update_walletable(id, _type, walletable_update_params)
+> crate::models::GetWalletable200Response update_walletable(id, r#type, walletable_update_params)
 口座の更新
 
  <h2 id=\"\">概要</h2>  <p>口座を更新する</p>
@@ -151,7 +151,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** |  | [required] |
-**_type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
+**r#type** | **String** | 口座種別（bank_account : 銀行口座, credit_card : クレジットカード, wallet : その他の決済口座） | [required] |
 **walletable_update_params** | Option<[**WalletableUpdateParams**](WalletableUpdateParams.md)> | 口座の更新 |  |
 
 ### Return type
