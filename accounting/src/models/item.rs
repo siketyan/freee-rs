@@ -29,11 +29,11 @@ pub struct Item {
     #[serde(rename = "available")]
     pub available: bool,
     /// ショートカット１ (20文字以内)
-    #[serde(rename = "shortcut1", skip_serializing_if = "Option::is_none")]
-    pub shortcut1: Option<String>,
+    #[serde(rename = "shortcut1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut1: Option<Option<String>>,
     /// ショートカット２ (20文字以内)
-    #[serde(rename = "shortcut2", skip_serializing_if = "Option::is_none")]
-    pub shortcut2: Option<String>,
+    #[serde(rename = "shortcut2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut2: Option<Option<String>>,
 }
 
 impl Item {

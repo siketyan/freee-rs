@@ -16,42 +16,6 @@ pub struct ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer {
     /// 健康保険に加入しているかどうか null不可
     #[serde(rename = "entried", skip_serializing_if = "Option::is_none")]
     pub entried: Option<bool>,
-    /// 給与計算時の健康保険料の計算方法
-    #[serde(rename = "health_insurance_salary_calc_type", skip_serializing_if = "Option::is_none")]
-    pub health_insurance_salary_calc_type: Option<HealthInsuranceSalaryCalcType>,
-    /// 賞与計算時の健康保険料の計算方法
-    #[serde(rename = "health_insurance_bonus_calc_type", skip_serializing_if = "Option::is_none")]
-    pub health_insurance_bonus_calc_type: Option<HealthInsuranceBonusCalcType>,
-    /// 給与計算時の健康保険料の直接指定金額（従業員負担分）
-    #[serde(rename = "manual_health_insurance_amount_of_employee_salary", skip_serializing_if = "Option::is_none")]
-    pub manual_health_insurance_amount_of_employee_salary: Option<i32>,
-    /// 賞与計算時の健康保険料の直接指定金額（従業員負担分）
-    #[serde(rename = "manual_health_insurance_amount_of_employee_bonus", skip_serializing_if = "Option::is_none")]
-    pub manual_health_insurance_amount_of_employee_bonus: Option<i32>,
-    /// 給与計算時の健康保険料の直接指定金額（会社負担分）
-    #[serde(rename = "manual_health_insurance_amount_of_company_salary", skip_serializing_if = "Option::is_none")]
-    pub manual_health_insurance_amount_of_company_salary: Option<f32>,
-    /// 賞与計算時の健康保険料の直接指定金額（会社負担分）
-    #[serde(rename = "manual_health_insurance_amount_of_company_bonus", skip_serializing_if = "Option::is_none")]
-    pub manual_health_insurance_amount_of_company_bonus: Option<f32>,
-    /// 給与計算時の介護保険料の計算方法
-    #[serde(rename = "care_insurance_salary_calc_type", skip_serializing_if = "Option::is_none")]
-    pub care_insurance_salary_calc_type: Option<CareInsuranceSalaryCalcType>,
-    /// 賞与計算時の介護保険料の計算方法
-    #[serde(rename = "care_insurance_bonus_calc_type", skip_serializing_if = "Option::is_none")]
-    pub care_insurance_bonus_calc_type: Option<CareInsuranceBonusCalcType>,
-    /// 給与計算時の介護保険料の直接指定金額（従業員負担分）
-    #[serde(rename = "manual_care_insurance_amount_of_employee_salary", skip_serializing_if = "Option::is_none")]
-    pub manual_care_insurance_amount_of_employee_salary: Option<i32>,
-    /// 賞与計算時の介護保険料の直接指定金額（従業員負担分）
-    #[serde(rename = "manual_care_insurance_amount_of_employee_bonus", skip_serializing_if = "Option::is_none")]
-    pub manual_care_insurance_amount_of_employee_bonus: Option<i32>,
-    /// 給与計算時の介護保険料の直接指定金額（会社負担分）
-    #[serde(rename = "manual_care_insurance_amount_of_company_salary", skip_serializing_if = "Option::is_none")]
-    pub manual_care_insurance_amount_of_company_salary: Option<f32>,
-    /// 賞与計算時の介護保険料の直接指定金額（会社負担分）
-    #[serde(rename = "manual_care_insurance_amount_of_company_bonus", skip_serializing_if = "Option::is_none")]
-    pub manual_care_insurance_amount_of_company_bonus: Option<f32>,
     /// 健康保険の被保険者整理番号
     #[serde(rename = "reference_num", skip_serializing_if = "Option::is_none")]
     pub reference_num: Option<String>,
@@ -64,78 +28,10 @@ impl ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer {
     pub fn new(standard_monthly_remuneration: i32) -> ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer {
         ApiV1EmployeesHealthInsuranceRuleUpdateRequestSerializer {
             entried: None,
-            health_insurance_salary_calc_type: None,
-            health_insurance_bonus_calc_type: None,
-            manual_health_insurance_amount_of_employee_salary: None,
-            manual_health_insurance_amount_of_employee_bonus: None,
-            manual_health_insurance_amount_of_company_salary: None,
-            manual_health_insurance_amount_of_company_bonus: None,
-            care_insurance_salary_calc_type: None,
-            care_insurance_bonus_calc_type: None,
-            manual_care_insurance_amount_of_employee_salary: None,
-            manual_care_insurance_amount_of_employee_bonus: None,
-            manual_care_insurance_amount_of_company_salary: None,
-            manual_care_insurance_amount_of_company_bonus: None,
             reference_num: None,
             standard_monthly_remuneration,
         }
     }
 }
 
-/// 給与計算時の健康保険料の計算方法
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum HealthInsuranceSalaryCalcType {
-    #[serde(rename = "auto")]
-    Auto,
-    #[serde(rename = "manual")]
-    Manual,
-}
-
-impl Default for HealthInsuranceSalaryCalcType {
-    fn default() -> HealthInsuranceSalaryCalcType {
-        Self::Auto
-    }
-}
-/// 賞与計算時の健康保険料の計算方法
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum HealthInsuranceBonusCalcType {
-    #[serde(rename = "auto")]
-    Auto,
-    #[serde(rename = "manual")]
-    Manual,
-}
-
-impl Default for HealthInsuranceBonusCalcType {
-    fn default() -> HealthInsuranceBonusCalcType {
-        Self::Auto
-    }
-}
-/// 給与計算時の介護保険料の計算方法
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum CareInsuranceSalaryCalcType {
-    #[serde(rename = "auto")]
-    Auto,
-    #[serde(rename = "manual")]
-    Manual,
-}
-
-impl Default for CareInsuranceSalaryCalcType {
-    fn default() -> CareInsuranceSalaryCalcType {
-        Self::Auto
-    }
-}
-/// 賞与計算時の介護保険料の計算方法
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum CareInsuranceBonusCalcType {
-    #[serde(rename = "auto")]
-    Auto,
-    #[serde(rename = "manual")]
-    Manual,
-}
-
-impl Default for CareInsuranceBonusCalcType {
-    fn default() -> CareInsuranceBonusCalcType {
-        Self::Auto
-    }
-}
 

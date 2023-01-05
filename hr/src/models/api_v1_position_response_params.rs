@@ -17,8 +17,8 @@ pub struct ApiV1PositionResponseParams {
     #[serde(rename = "id")]
     pub id: i32,
     /// 役職コード
-    #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    #[serde(rename = "code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub code: Option<Option<String>>,
     /// 役職名称
     #[serde(rename = "name")]
     pub name: String,

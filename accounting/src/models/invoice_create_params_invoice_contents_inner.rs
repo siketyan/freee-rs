@@ -29,8 +29,8 @@ pub struct InvoiceCreateParamsInvoiceContentsInner {
     #[serde(rename = "unit_price", skip_serializing_if = "Option::is_none")]
     pub unit_price: Option<f32>,
     /// 消費税額
-    #[serde(rename = "vat", skip_serializing_if = "Option::is_none")]
-    pub vat: Option<i32>,
+    #[serde(rename = "vat", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub vat: Option<Option<i32>>,
     /// 備考
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,

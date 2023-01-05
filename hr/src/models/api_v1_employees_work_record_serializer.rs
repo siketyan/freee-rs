@@ -17,11 +17,11 @@ pub struct ApiV1EmployeesWorkRecordSerializer {
     #[serde(rename = "break_records", skip_serializing_if = "Option::is_none")]
     pub break_records: Option<Vec<crate::models::ApiV1EmployeesWorkRecordTimeRangeResponseSerializer>>,
     /// 出勤時間
-    #[serde(rename = "clock_in_at", skip_serializing_if = "Option::is_none")]
-    pub clock_in_at: Option<String>,
+    #[serde(rename = "clock_in_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub clock_in_at: Option<Option<String>>,
     /// 退勤時間
-    #[serde(rename = "clock_out_at", skip_serializing_if = "Option::is_none")]
-    pub clock_out_at: Option<String>,
+    #[serde(rename = "clock_out_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub clock_out_at: Option<Option<String>>,
     /// 対象日付
     #[serde(rename = "date", skip_serializing_if = "Option::is_none")]
     pub date: Option<String>,
@@ -47,11 +47,11 @@ pub struct ApiV1EmployeesWorkRecordSerializer {
     #[serde(rename = "lateness_mins", skip_serializing_if = "Option::is_none")]
     pub lateness_mins: Option<i32>,
     /// 所定労働開始時刻
-    #[serde(rename = "normal_work_clock_in_at", skip_serializing_if = "Option::is_none")]
-    pub normal_work_clock_in_at: Option<String>,
+    #[serde(rename = "normal_work_clock_in_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub normal_work_clock_in_at: Option<Option<String>>,
     /// 所定労働終了時刻
-    #[serde(rename = "normal_work_clock_out_at", skip_serializing_if = "Option::is_none")]
-    pub normal_work_clock_out_at: Option<String>,
+    #[serde(rename = "normal_work_clock_out_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub normal_work_clock_out_at: Option<Option<String>>,
     /// 所定労働時間
     #[serde(rename = "normal_work_mins", skip_serializing_if = "Option::is_none")]
     pub normal_work_mins: Option<i32>,

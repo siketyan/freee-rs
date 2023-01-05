@@ -26,7 +26,7 @@ pub struct ManualJournal {
     #[serde(rename = "adjustment")]
     pub adjustment: bool,
     /// 仕訳番号
-    #[serde(rename = "txn_number")]
+    #[serde(rename = "txn_number", deserialize_with = "Option::deserialize")]
     pub txn_number: Option<String>,
     /// 貸借行一覧（配列）: 貸借合わせて100行まで登録できます。
     #[serde(rename = "details")]

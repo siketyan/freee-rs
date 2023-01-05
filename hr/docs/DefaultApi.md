@@ -1005,7 +1005,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesControllerPeriodShowResponse get_employee(company_id, year, month, id)
 取得 
 
- 指定したIDの従業員を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した対象年月に退職済みユーザは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。
+ 指定したIDの従業員を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した対象年月に退職済みユーザは取得できません。
 
 ### Parameters
 
@@ -1171,7 +1171,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse get_employee_health_insurance_rule(company_id, year, month, employee_id)
 取得 
 
- 指定した従業員・日付の健康保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)
+ 指定した従業員・日付の健康保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。
 
 ### Parameters
 
@@ -1336,7 +1336,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodShowResponse get_employee_welfare_pension_insurance_rule(company_id, year, month, employee_id)
 取得 
 
- 指定した従業員・日付の厚生年金保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+ 指定した従業員・日付の厚生年金保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。
 
 ### Parameters
 
@@ -1435,7 +1435,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesIndexSerializer get_employees(company_id, year, month, limit, offset)
 一覧の取得 
 
- 指定した対象年月に事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した年月に退職済みユーザは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。
+ 指定した対象年月に事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した年月に退職済みユーザは取得できません。
 
 ### Parameters
 
@@ -1809,7 +1809,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse update_employee_health_insurance_rule(employee_id, body)
 更新 
 
- 指定した従業員の健康保険情報を更新します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。 - 事業所が定額制の健康保険組合に加入している場合、保険料の計算方法と保険料の更新はできません。
+ 指定した従業員の健康保険情報を更新します。 - 管理者権限を持ったユーザのみ実行可能です。
 
 ### Parameters
 
@@ -1871,7 +1871,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateResponse update_employee_welfare_pension_insurance_rule(employee_id, body)
 更新 
 
- 指定した従業員の厚生年金保険情報を更新します。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険料の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+ 指定した従業員の厚生年金保険情報を更新します。
 
 ### Parameters
 

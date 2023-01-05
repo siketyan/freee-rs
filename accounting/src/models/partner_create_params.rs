@@ -29,8 +29,8 @@ pub struct PartnerCreateParams {
     #[serde(rename = "shortcut2", skip_serializing_if = "Option::is_none")]
     pub shortcut2: Option<String>,
     /// 事業所種別（null: 未設定、1: 法人、2: 個人）
-    #[serde(rename = "org_code", skip_serializing_if = "Option::is_none")]
-    pub org_code: Option<OrgCode>,
+    #[serde(rename = "org_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub org_code: Option<Option<OrgCode>>,
     /// 地域（JP: 国内、ZZ:国外）、指定しない場合JPになります。
     #[serde(rename = "country_code", skip_serializing_if = "Option::is_none")]
     pub country_code: Option<CountryCode>,
@@ -53,8 +53,8 @@ pub struct PartnerCreateParams {
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
     /// 振込元口座ID（一括振込ファイル用）:（walletableのtypeが'bank_account'のidのみ指定できます。また、未設定にする場合は、nullを指定してください。）
-    #[serde(rename = "payer_walletable_id", skip_serializing_if = "Option::is_none")]
-    pub payer_walletable_id: Option<i32>,
+    #[serde(rename = "payer_walletable_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub payer_walletable_id: Option<Option<i32>>,
     /// 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee)、指定しない場合payerになります。
     #[serde(rename = "transfer_fee_handling_side", skip_serializing_if = "Option::is_none")]
     pub transfer_fee_handling_side: Option<TransferFeeHandlingSide>,

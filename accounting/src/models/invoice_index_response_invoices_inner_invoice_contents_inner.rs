@@ -17,7 +17,7 @@ pub struct InvoiceIndexResponseInvoicesInnerInvoiceContentsInner {
     #[serde(rename = "id")]
     pub id: i32,
     /// 順序
-    #[serde(rename = "order")]
+    #[serde(rename = "order", deserialize_with = "Option::deserialize")]
     pub order: Option<i32>,
     /// 行の種類
     #[serde(rename = "type")]
@@ -26,7 +26,7 @@ pub struct InvoiceIndexResponseInvoicesInnerInvoiceContentsInner {
     #[serde(rename = "qty")]
     pub qty: f32,
     /// 単位
-    #[serde(rename = "unit")]
+    #[serde(rename = "unit", deserialize_with = "Option::deserialize")]
     pub unit: Option<String>,
     /// 単価
     #[serde(rename = "unit_price")]
@@ -41,51 +41,51 @@ pub struct InvoiceIndexResponseInvoicesInnerInvoiceContentsInner {
     #[serde(rename = "reduced_vat")]
     pub reduced_vat: bool,
     /// 備考
-    #[serde(rename = "description")]
+    #[serde(rename = "description", deserialize_with = "Option::deserialize")]
     pub description: Option<String>,
     /// 勘定科目ID
-    #[serde(rename = "account_item_id")]
+    #[serde(rename = "account_item_id", deserialize_with = "Option::deserialize")]
     pub account_item_id: Option<i32>,
     /// 勘定科目名
-    #[serde(rename = "account_item_name")]
+    #[serde(rename = "account_item_name", deserialize_with = "Option::deserialize")]
     pub account_item_name: Option<String>,
     /// 税区分コード
-    #[serde(rename = "tax_code")]
+    #[serde(rename = "tax_code", deserialize_with = "Option::deserialize")]
     pub tax_code: Option<i32>,
     /// 品目ID
-    #[serde(rename = "item_id")]
+    #[serde(rename = "item_id", deserialize_with = "Option::deserialize")]
     pub item_id: Option<i32>,
     /// 品目
-    #[serde(rename = "item_name")]
+    #[serde(rename = "item_name", deserialize_with = "Option::deserialize")]
     pub item_name: Option<String>,
     /// 部門ID
-    #[serde(rename = "section_id")]
+    #[serde(rename = "section_id", deserialize_with = "Option::deserialize")]
     pub section_id: Option<i32>,
     /// 部門
-    #[serde(rename = "section_name")]
+    #[serde(rename = "section_name", deserialize_with = "Option::deserialize")]
     pub section_name: Option<String>,
     #[serde(rename = "tag_ids")]
     pub tag_ids: Vec<i32>,
     #[serde(rename = "tag_names")]
     pub tag_names: Vec<String>,
     /// セグメント１ID
-    #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_id: Option<i64>,
-    /// セグメント１
-    #[serde(rename = "segment_1_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_name: Option<String>,
+    #[serde(rename = "segment_1_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_1_tag_id: Option<Option<i64>>,
+    /// セグメント１ID
+    #[serde(rename = "segment_1_tag_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_1_tag_name: Option<Option<String>>,
     /// セグメント２ID
-    #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_id: Option<i64>,
+    #[serde(rename = "segment_2_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_2_tag_id: Option<Option<i64>>,
     /// セグメント２
-    #[serde(rename = "segment_2_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_name: Option<String>,
+    #[serde(rename = "segment_2_tag_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_2_tag_name: Option<Option<String>>,
     /// セグメント３ID
-    #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_id: Option<i64>,
+    #[serde(rename = "segment_3_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_3_tag_id: Option<Option<i64>>,
     /// セグメント３
-    #[serde(rename = "segment_3_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_name: Option<String>,
+    #[serde(rename = "segment_3_tag_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_3_tag_name: Option<Option<String>>,
 }
 
 impl InvoiceIndexResponseInvoicesInnerInvoiceContentsInner {

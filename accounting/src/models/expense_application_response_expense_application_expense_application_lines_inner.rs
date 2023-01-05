@@ -17,20 +17,20 @@ pub struct ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesIn
     #[serde(rename = "id")]
     pub id: i64,
     /// 日付 (yyyy-mm-dd)
-    #[serde(rename = "transaction_date", skip_serializing_if = "Option::is_none")]
-    pub transaction_date: Option<String>,
+    #[serde(rename = "transaction_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub transaction_date: Option<Option<String>>,
     /// 内容
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub description: Option<Option<String>>,
     /// 金額
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
     pub amount: Option<i32>,
     /// 経費科目ID
-    #[serde(rename = "expense_application_line_template_id", skip_serializing_if = "Option::is_none")]
-    pub expense_application_line_template_id: Option<i32>,
+    #[serde(rename = "expense_application_line_template_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub expense_application_line_template_id: Option<Option<i32>>,
     /// 証憑ファイルID（ファイルボックスのファイルID）
-    #[serde(rename = "receipt_id", skip_serializing_if = "Option::is_none")]
-    pub receipt_id: Option<i32>,
+    #[serde(rename = "receipt_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub receipt_id: Option<Option<i32>>,
 }
 
 impl ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner {

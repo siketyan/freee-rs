@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **payment_request_lines** | [**Vec<crate::models::PaymentRequestUpdateParamsPaymentRequestLinesInner>**](paymentRequestUpdateParams_payment_request_lines_inner.md) | 支払依頼の項目行一覧（配列） | 
 **approver_id** | Option<**i32**> | 承認者のユーザーID<br> 「承認者を指定」の経路を申請経路として使用する場合に指定してください。<br> 指定する承認者のユーザーIDは、申請経路APIを利用して取得してください。  | [optional]
 **approval_flow_route_id** | **i32** | 申請経路ID<br> 指定する申請経路IDは、申請経路APIを利用して取得してください。  | 
-**draft** | **bool** | 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を更新します。<br> trueを指定した時は下書き（draft）で支払依頼を更新します。  | 
+**draft** | **bool** | 支払依頼のステータス<br> falseを指定した時は申請中（in_progress）で支払依頼を更新します。<br> trueを指定した時は下書き（draft）で支払依頼を更新します。<br> 未指定の時は下書きとみなして支払依頼を更新します。  | 
 **document_code** | Option<**String**> | 請求書番号（255文字以内） | [optional]
 **receipt_ids** | Option<**Vec<i32>**> | 証憑ファイルID（ファイルボックスのファイルID）（配列） | [optional]
 **issue_date** | **String** | 発生日 (yyyy-mm-dd) | 

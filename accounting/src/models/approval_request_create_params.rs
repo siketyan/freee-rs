@@ -28,7 +28,7 @@ pub struct ApprovalRequestCreateParams {
     /// 承認者のユーザーID
     #[serde(rename = "approver_id", skip_serializing_if = "Option::is_none")]
     pub approver_id: Option<i32>,
-    /// 各種申請のステータス<br> falseを指定した時は申請中（in_progress）で各種申請を作成します。<br> trueを指定した時は下書き（draft）で各種申請を作成します。 
+    /// falseの時、in_progress:申請中で作成する。それ以外の時はdraft:下書きで作成する
     #[serde(rename = "draft")]
     pub draft: bool,
     /// 親申請ID(既存各種申請IDのみ指定可能です。)

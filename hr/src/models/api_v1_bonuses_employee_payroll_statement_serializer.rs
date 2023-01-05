@@ -29,8 +29,8 @@ pub struct ApiV1BonusesEmployeePayrollStatementSerializer {
     #[serde(rename = "employee_display_name", skip_serializing_if = "Option::is_none")]
     pub employee_display_name: Option<String>,
     /// 従業員番号
-    #[serde(rename = "employee_num", skip_serializing_if = "Option::is_none")]
-    pub employee_num: Option<String>,
+    #[serde(rename = "employee_num", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub employee_num: Option<Option<String>>,
     /// 確定日
     #[serde(rename = "closing_date", skip_serializing_if = "Option::is_none")]
     pub closing_date: Option<String>,
@@ -44,26 +44,26 @@ pub struct ApiV1BonusesEmployeePayrollStatementSerializer {
     #[serde(rename = "calc_status", skip_serializing_if = "Option::is_none")]
     pub calc_status: Option<String>,
     /// 計算状況ステータスの更新日
-    #[serde(rename = "calculated_at", skip_serializing_if = "Option::is_none")]
-    pub calculated_at: Option<String>,
+    #[serde(rename = "calculated_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub calculated_at: Option<Option<String>>,
     /// 賞与額
-    #[serde(rename = "bonus_amount", skip_serializing_if = "Option::is_none")]
-    pub bonus_amount: Option<String>,
+    #[serde(rename = "bonus_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub bonus_amount: Option<Option<String>>,
     /// 手当額合計
-    #[serde(rename = "total_allowance_amount", skip_serializing_if = "Option::is_none")]
-    pub total_allowance_amount: Option<String>,
+    #[serde(rename = "total_allowance_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_allowance_amount: Option<Option<String>>,
     /// 控除額合計
-    #[serde(rename = "total_deduction_amount", skip_serializing_if = "Option::is_none")]
-    pub total_deduction_amount: Option<String>,
+    #[serde(rename = "total_deduction_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_deduction_amount: Option<Option<String>>,
     /// 差引支給額(手取り額)
-    #[serde(rename = "net_payment_amount", skip_serializing_if = "Option::is_none")]
-    pub net_payment_amount: Option<String>,
+    #[serde(rename = "net_payment_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub net_payment_amount: Option<Option<String>>,
     /// 総支給額(額面)
-    #[serde(rename = "gross_payment_amount", skip_serializing_if = "Option::is_none")]
-    pub gross_payment_amount: Option<String>,
+    #[serde(rename = "gross_payment_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub gross_payment_amount: Option<Option<String>>,
     /// 課税対象支給額
-    #[serde(rename = "total_taxable_payment_amount", skip_serializing_if = "Option::is_none")]
-    pub total_taxable_payment_amount: Option<String>,
+    #[serde(rename = "total_taxable_payment_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_taxable_payment_amount: Option<Option<String>>,
     /// 手当
     #[serde(rename = "allowances", skip_serializing_if = "Option::is_none")]
     pub allowances: Option<Vec<crate::models::ApiV1EmployeePayrollStatementsEmployeePayrollStatementItemSerializer>>,

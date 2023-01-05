@@ -26,20 +26,20 @@ pub struct ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInner {
     #[serde(rename = "label", skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     /// 追加説明
-    #[serde(rename = "annotation", skip_serializing_if = "Option::is_none")]
-    pub annotation: Option<String>,
+    #[serde(rename = "annotation", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub annotation: Option<Option<String>>,
     /// 必須かどうか
-    #[serde(rename = "required", skip_serializing_if = "Option::is_none")]
-    pub required: Option<bool>,
+    #[serde(rename = "required", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub required: Option<Option<bool>>,
     /// 選択項目
-    #[serde(rename = "values", skip_serializing_if = "Option::is_none")]
-    pub values: Option<Vec<crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInnerValuesInner>>,
+    #[serde(rename = "values", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub values: Option<Option<Vec<crate::models::ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInnerValuesInner>>>,
     /// 上限金額
-    #[serde(rename = "max_amount", skip_serializing_if = "Option::is_none")]
-    pub max_amount: Option<i32>,
+    #[serde(rename = "max_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub max_amount: Option<Option<i32>>,
     /// 下限金額
-    #[serde(rename = "min_amount", skip_serializing_if = "Option::is_none")]
-    pub min_amount: Option<i32>,
+    #[serde(rename = "min_amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub min_amount: Option<Option<i32>>,
 }
 
 impl ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInner {

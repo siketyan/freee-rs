@@ -26,8 +26,8 @@ pub struct PaymentRequestUpdateParamsPaymentRequestLinesInner {
     #[serde(rename = "amount")]
     pub amount: i64,
     /// 勘定科目ID
-    #[serde(rename = "account_item_id", skip_serializing_if = "Option::is_none")]
-    pub account_item_id: Option<i32>,
+    #[serde(rename = "account_item_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account_item_id: Option<Option<i32>>,
     /// 税区分コード<br> 勘定科目IDを指定する場合は必須です。 
     #[serde(rename = "tax_code", skip_serializing_if = "Option::is_none")]
     pub tax_code: Option<i32>,

@@ -83,14 +83,14 @@ pub struct ApiV1EmployeesWorkRecordSummarySerializer {
     #[serde(rename = "work_records", skip_serializing_if = "Option::is_none")]
     pub work_records: Option<Vec<crate::models::ApiV1EmployeesWorkRecordSerializer>>,
     /// 不足時間（分）
-    #[serde(rename = "total_shortage_work_mins", skip_serializing_if = "Option::is_none")]
-    pub total_shortage_work_mins: Option<i32>,
+    #[serde(rename = "total_shortage_work_mins", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_shortage_work_mins: Option<Option<i32>>,
     /// 支給対象の法定内残業時間（分）
-    #[serde(rename = "total_deemed_paid_excess_statutory_work_mins", skip_serializing_if = "Option::is_none")]
-    pub total_deemed_paid_excess_statutory_work_mins: Option<i32>,
+    #[serde(rename = "total_deemed_paid_excess_statutory_work_mins", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_deemed_paid_excess_statutory_work_mins: Option<Option<i32>>,
     /// 支給対象の時間外労働時間（分）
-    #[serde(rename = "total_deemed_paid_overtime_except_normal_work_mins", skip_serializing_if = "Option::is_none")]
-    pub total_deemed_paid_overtime_except_normal_work_mins: Option<i32>,
+    #[serde(rename = "total_deemed_paid_overtime_except_normal_work_mins", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub total_deemed_paid_overtime_except_normal_work_mins: Option<Option<i32>>,
 }
 
 impl ApiV1EmployeesWorkRecordSummarySerializer {

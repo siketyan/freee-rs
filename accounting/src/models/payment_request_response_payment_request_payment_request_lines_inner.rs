@@ -26,29 +26,29 @@ pub struct PaymentRequestResponsePaymentRequestPaymentRequestLinesInner {
     #[serde(rename = "amount")]
     pub amount: i64,
     /// 勘定科目ID
-    #[serde(rename = "account_item_id")]
+    #[serde(rename = "account_item_id", deserialize_with = "Option::deserialize")]
     pub account_item_id: Option<i32>,
     /// 税区分コード
-    #[serde(rename = "tax_code")]
+    #[serde(rename = "tax_code", deserialize_with = "Option::deserialize")]
     pub tax_code: Option<i32>,
     /// 品目ID
-    #[serde(rename = "item_id")]
+    #[serde(rename = "item_id", deserialize_with = "Option::deserialize")]
     pub item_id: Option<i32>,
     /// 部門ID
-    #[serde(rename = "section_id")]
+    #[serde(rename = "section_id", deserialize_with = "Option::deserialize")]
     pub section_id: Option<i32>,
     /// メモタグID
     #[serde(rename = "tag_ids")]
     pub tag_ids: Vec<i32>,
     /// セグメント１ID。セグメント１が使用可能なプランの時のみレスポンスに含まれます。
-    #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_id: Option<i64>,
+    #[serde(rename = "segment_1_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_1_tag_id: Option<Option<i64>>,
     /// セグメント２ID。セグメント２が使用可能なプランの時のみレスポンスに含まれます。
-    #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_id: Option<i64>,
+    #[serde(rename = "segment_2_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_2_tag_id: Option<Option<i64>>,
     /// セグメント３ID。セグメント３が使用可能なプランの時のみレスポンスに含まれます。
-    #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_id: Option<i64>,
+    #[serde(rename = "segment_3_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_3_tag_id: Option<Option<i64>>,
 }
 
 impl PaymentRequestResponsePaymentRequestPaymentRequestLinesInner {

@@ -41,19 +41,19 @@ pub struct ApprovalRequestsIndexResponseApprovalRequestsInner {
     #[serde(rename = "form_id")]
     pub form_id: i32,
     /// 現在承認ステップID
-    #[serde(rename = "current_step_id")]
+    #[serde(rename = "current_step_id", deserialize_with = "Option::deserialize")]
     pub current_step_id: Option<i32>,
     /// 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。
     #[serde(rename = "current_round")]
     pub current_round: i32,
     /// 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます)
-    #[serde(rename = "deal_id")]
+    #[serde(rename = "deal_id", deserialize_with = "Option::deserialize")]
     pub deal_id: Option<i32>,
     /// 振替伝票のID (申請ステータス:statusがapprovedで、関連する振替伝票が存在する時のみmanual_journal_idが表示されます)  <a href=\"https://support.freee.co.jp/hc/ja/articles/115003827683-#5\" target=\"_blank\">承認された各種申請から支払依頼等を作成する</a> 
-    #[serde(rename = "manual_journal_id")]
+    #[serde(rename = "manual_journal_id", deserialize_with = "Option::deserialize")]
     pub manual_journal_id: Option<i32>,
     /// 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:決済済み, unsettled:未決済)
-    #[serde(rename = "deal_status")]
+    #[serde(rename = "deal_status", deserialize_with = "Option::deserialize")]
     pub deal_status: Option<DealStatus>,
 }
 

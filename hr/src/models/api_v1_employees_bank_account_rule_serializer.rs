@@ -23,32 +23,32 @@ pub struct ApiV1EmployeesBankAccountRuleSerializer {
     #[serde(rename = "employee_id", skip_serializing_if = "Option::is_none")]
     pub employee_id: Option<i32>,
     /// 金融機関名
-    #[serde(rename = "bank_name", skip_serializing_if = "Option::is_none")]
-    pub bank_name: Option<String>,
+    #[serde(rename = "bank_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub bank_name: Option<Option<String>>,
     /// 金融機関名カナ
-    #[serde(rename = "bank_name_kana", skip_serializing_if = "Option::is_none")]
-    pub bank_name_kana: Option<String>,
+    #[serde(rename = "bank_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub bank_name_kana: Option<Option<String>>,
     /// 金融機関コード
-    #[serde(rename = "bank_code", skip_serializing_if = "Option::is_none")]
-    pub bank_code: Option<String>,
+    #[serde(rename = "bank_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<Option<String>>,
     /// 支店名
-    #[serde(rename = "branch_name", skip_serializing_if = "Option::is_none")]
-    pub branch_name: Option<String>,
+    #[serde(rename = "branch_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub branch_name: Option<Option<String>>,
     /// 支店名カナ
-    #[serde(rename = "branch_name_kana", skip_serializing_if = "Option::is_none")]
-    pub branch_name_kana: Option<String>,
+    #[serde(rename = "branch_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub branch_name_kana: Option<Option<String>>,
     /// 支店コード
-    #[serde(rename = "branch_code", skip_serializing_if = "Option::is_none")]
-    pub branch_code: Option<String>,
+    #[serde(rename = "branch_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub branch_code: Option<Option<String>>,
     /// 口座番号
-    #[serde(rename = "account_number", skip_serializing_if = "Option::is_none")]
-    pub account_number: Option<String>,
+    #[serde(rename = "account_number", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account_number: Option<Option<String>>,
     /// 口座名義カナ
-    #[serde(rename = "account_name", skip_serializing_if = "Option::is_none")]
-    pub account_name: Option<String>,
+    #[serde(rename = "account_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account_name: Option<Option<String>>,
     /// 預金種類 ordinary: 普通預金, current: 当座預金, saving: 貯蓄預金
-    #[serde(rename = "account_type", skip_serializing_if = "Option::is_none")]
-    pub account_type: Option<String>,
+    #[serde(rename = "account_type", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub account_type: Option<Option<String>>,
 }
 
 impl ApiV1EmployeesBankAccountRuleSerializer {

@@ -17,8 +17,8 @@ pub struct ApiV1CompaniesEmployeeSerializer {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<i32>,
     /// 従業員番号(従業員詳細未設定の場合、nullになります。)
-    #[serde(rename = "num", skip_serializing_if = "Option::is_none")]
-    pub num: Option<String>,
+    #[serde(rename = "num", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub num: Option<Option<String>>,
     /// 従業員名（表示名）
     #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
@@ -26,14 +26,14 @@ pub struct ApiV1CompaniesEmployeeSerializer {
     #[serde(rename = "entry_date", skip_serializing_if = "Option::is_none")]
     pub entry_date: Option<String>,
     /// 退職日
-    #[serde(rename = "retire_date", skip_serializing_if = "Option::is_none")]
-    pub retire_date: Option<String>,
+    #[serde(rename = "retire_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub retire_date: Option<Option<String>>,
     /// ユーザーID(従業員詳細未設定の場合、nullになります。)
-    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<i32>,
+    #[serde(rename = "user_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<Option<i32>>,
     /// ログイン用メールアドレス(従業員詳細未設定の場合、nullになります。)
-    #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<String>,
+    #[serde(rename = "email", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub email: Option<Option<String>>,
     /// 給与計算対象従業員の場合trueを返します
     #[serde(rename = "payroll_calculation", skip_serializing_if = "Option::is_none")]
     pub payroll_calculation: Option<bool>,

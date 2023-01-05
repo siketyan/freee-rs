@@ -17,14 +17,14 @@ pub struct ApiV1EmployeePayrollStatementsEmployeeOvertimePayItemSerializer {
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     /// 時間(単位: 分)。固定残業代の場合、nullになります。
-    #[serde(rename = "time", skip_serializing_if = "Option::is_none")]
-    pub time: Option<String>,
+    #[serde(rename = "time", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub time: Option<Option<String>>,
     /// 手当金額
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
     pub amount: Option<String>,
     /// コード（事業所毎に設定可能な小文字英数最大10桁のコード）
-    #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    #[serde(rename = "code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub code: Option<Option<String>>,
 }
 
 impl ApiV1EmployeePayrollStatementsEmployeeOvertimePayItemSerializer {

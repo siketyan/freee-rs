@@ -35,22 +35,22 @@ pub struct ApiV1PaidHolidayResponseParams {
     #[serde(rename = "holiday_type")]
     pub holiday_type: HolidayType,
     /// 取得予定開始時間
-    #[serde(rename = "start_at", skip_serializing_if = "Option::is_none")]
-    pub start_at: Option<String>,
+    #[serde(rename = "start_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub start_at: Option<Option<String>>,
     /// 取得予定終了時間
-    #[serde(rename = "end_at", skip_serializing_if = "Option::is_none")]
-    pub end_at: Option<String>,
+    #[serde(rename = "end_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub end_at: Option<Option<String>>,
     /// 申請日
     #[serde(rename = "issue_date")]
     pub issue_date: String,
     /// 申請理由
-    #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    #[serde(rename = "comment", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub comment: Option<Option<String>>,
     /// 申請ステータス。（draft:下書き、in_progress:申請中、approved:承認済、feedback:差戻し）
     #[serde(rename = "status")]
     pub status: Status,
     /// 取消申請ステータス。（null:取消申請されてない、revoking:取消中、revoked:取消済）
-    #[serde(rename = "revoke_status")]
+    #[serde(rename = "revoke_status", deserialize_with = "Option::deserialize")]
     pub revoke_status: Option<RevokeStatus>,
     /// 自動チェック結果
     #[serde(rename = "passed_auto_check")]
@@ -65,8 +65,8 @@ pub struct ApiV1PaidHolidayResponseParams {
     #[serde(rename = "approval_flow_logs")]
     pub approval_flow_logs: Vec<crate::models::ApiV1ApprovalFlowLogsParams>,
     /// 現在承認ステップID<br> 申請を差戻した場合、nullになります。
-    #[serde(rename = "current_step_id", skip_serializing_if = "Option::is_none")]
-    pub current_step_id: Option<i32>,
+    #[serde(rename = "current_step_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub current_step_id: Option<Option<i32>>,
     /// 現在のround。差戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。
     #[serde(rename = "current_round")]
     pub current_round: i32,

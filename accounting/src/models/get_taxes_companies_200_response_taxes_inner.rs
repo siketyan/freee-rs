@@ -23,9 +23,9 @@ pub struct GetTaxesCompanies200ResponseTaxesInner {
     #[serde(rename = "name_ja")]
     pub name_ja: String,
     /// 税区分の表示カテゴリ（tax_5: 5%表示の税区分、tax_8: 8%表示の税区分、tax_r8: 軽減税率8%表示の税区分、tax_10: 10%表示の税区分、null: 税率未設定税区分）
-    #[serde(rename = "display_category")]
+    #[serde(rename = "display_category", deserialize_with = "Option::deserialize")]
     pub display_category: Option<DisplayCategory>,
-    /// 税区分の使用設定。true: 使用する、false: 使用しない
+    /// true: 使用する、false: 使用しない
     #[serde(rename = "available")]
     pub available: bool,
 }

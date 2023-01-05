@@ -26,13 +26,13 @@ pub struct Transfer {
     #[serde(rename = "date")]
     pub date: String,
     /// 振替元口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)
-    #[serde(rename = "from_walletable_type")]
+    #[serde(rename = "from_walletable_type", deserialize_with = "Option::deserialize")]
     pub from_walletable_type: Option<FromWalletableType>,
     /// 振替元口座ID
     #[serde(rename = "from_walletable_id")]
     pub from_walletable_id: i32,
     /// 振替先口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)
-    #[serde(rename = "to_walletable_type")]
+    #[serde(rename = "to_walletable_type", deserialize_with = "Option::deserialize")]
     pub to_walletable_type: Option<ToWalletableType>,
     /// 振替先口座ID
     #[serde(rename = "to_walletable_id")]

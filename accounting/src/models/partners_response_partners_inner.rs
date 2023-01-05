@@ -17,7 +17,7 @@ pub struct PartnersResponsePartnersInner {
     #[serde(rename = "id")]
     pub id: i32,
     /// 取引先コード
-    #[serde(rename = "code")]
+    #[serde(rename = "code", deserialize_with = "Option::deserialize")]
     pub code: Option<String>,
     /// 事業所ID
     #[serde(rename = "company_id")]
@@ -32,38 +32,38 @@ pub struct PartnersResponsePartnersInner {
     #[serde(rename = "available")]
     pub available: bool,
     /// ショートカット1 (255文字以内)
-    #[serde(rename = "shortcut1", skip_serializing_if = "Option::is_none")]
-    pub shortcut1: Option<String>,
+    #[serde(rename = "shortcut1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut1: Option<Option<String>>,
     /// ショートカット2 (255文字以内)
-    #[serde(rename = "shortcut2", skip_serializing_if = "Option::is_none")]
-    pub shortcut2: Option<String>,
+    #[serde(rename = "shortcut2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut2: Option<Option<String>>,
     /// 事業所種別（null: 未設定、1: 法人、2: 個人）
-    #[serde(rename = "org_code", skip_serializing_if = "Option::is_none")]
-    pub org_code: Option<i32>,
+    #[serde(rename = "org_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub org_code: Option<Option<i32>>,
     /// 地域（JP: 国内、ZZ:国外）
     #[serde(rename = "country_code", skip_serializing_if = "Option::is_none")]
     pub country_code: Option<String>,
     /// 正式名称（255文字以内）
-    #[serde(rename = "long_name", skip_serializing_if = "Option::is_none")]
-    pub long_name: Option<String>,
+    #[serde(rename = "long_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub long_name: Option<Option<String>>,
     /// カナ名称（255文字以内）
-    #[serde(rename = "name_kana", skip_serializing_if = "Option::is_none")]
-    pub name_kana: Option<String>,
+    #[serde(rename = "name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub name_kana: Option<Option<String>>,
     /// 敬称（御中、様、(空白)の3つから選択）
-    #[serde(rename = "default_title", skip_serializing_if = "Option::is_none")]
-    pub default_title: Option<String>,
+    #[serde(rename = "default_title", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub default_title: Option<Option<String>>,
     /// 電話番号
-    #[serde(rename = "phone", skip_serializing_if = "Option::is_none")]
-    pub phone: Option<String>,
+    #[serde(rename = "phone", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub phone: Option<Option<String>>,
     /// 担当者 氏名
-    #[serde(rename = "contact_name", skip_serializing_if = "Option::is_none")]
-    pub contact_name: Option<String>,
+    #[serde(rename = "contact_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub contact_name: Option<Option<String>>,
     /// 担当者 メールアドレス
-    #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<String>,
+    #[serde(rename = "email", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub email: Option<Option<String>>,
     /// 振込元口座ID（一括振込ファイル用）:（未設定の場合は、nullです。）
-    #[serde(rename = "payer_walletable_id", skip_serializing_if = "Option::is_none")]
-    pub payer_walletable_id: Option<i32>,
+    #[serde(rename = "payer_walletable_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub payer_walletable_id: Option<Option<i32>>,
     /// 振込手数料負担（一括振込ファイル用）: (振込元(当方): payer, 振込先(先方): payee)
     #[serde(rename = "transfer_fee_handling_side", skip_serializing_if = "Option::is_none")]
     pub transfer_fee_handling_side: Option<TransferFeeHandlingSide>,

@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApiV1EmployeesProfileRulesControllerPeriodUpdateResponse {
-    #[serde(rename = "employee_profile_rule", skip_serializing_if = "Option::is_none")]
-    pub employee_profile_rule: Option<Box<crate::models::ApiV1EmployeesProfileRuleSerializer>>,
+    #[serde(rename = "employee_profile_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub employee_profile_rule: Option<Option<Box<crate::models::ApiV1EmployeesProfileRuleSerializer>>>,
 }
 
 impl ApiV1EmployeesProfileRulesControllerPeriodUpdateResponse {

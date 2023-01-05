@@ -25,25 +25,25 @@ pub struct ApiV1EmployeesWorkRecordsControllerPeriodUpdateBody {
     /// 退勤時刻
     #[serde(rename = "clock_out_at", skip_serializing_if = "Option::is_none")]
     pub clock_out_at: Option<String>,
-    /// 勤務パターン（所定労働日: normal_day, 所定休日: prescribed_holiday, 法定休日: legal_holiday）  prescribed_holiday、legal_holidayを指定すると、以下のパラメータについて、指定した値が反映されず無視されます。 - early_leaving_mins - lateness_mins - paid_holiday
+    /// 勤務パターン（所定労働日: normal_day, 所定休日: prescribed_holiday, 法定休日: legal_holiday）  prescribed_holiday、legal_holidayを指定すると、以下のパラメータについて、指定した値が反映されず無視されます - early_leaving_mins - lateness_mins - paid_holiday
     #[serde(rename = "day_pattern", skip_serializing_if = "Option::is_none")]
     pub day_pattern: Option<DayPattern>,
     /// 早退分の時間（分単位）
     #[serde(rename = "early_leaving_mins", skip_serializing_if = "Option::is_none")]
     pub early_leaving_mins: Option<i32>,
-    /// 欠勤かどうか  is_absenceにtrueを指定すると、以下のパラーメータについて、指定した値が反映されず無視されます。 - break_records   - clock_in_at   - clock_out_at - clock_in_at - clock_out_at - early_leaving_mins - lateness_mins - normal_work_clock_in_at - normal_work_clock_out_at - normal_work_mins - normal_work_mins_by_paid_holiday - paid_holiday
+    /// 欠勤かどうか
     #[serde(rename = "is_absence", skip_serializing_if = "Option::is_none")]
     pub is_absence: Option<bool>,
     /// 遅刻分の時間（分単位）
     #[serde(rename = "lateness_mins", skip_serializing_if = "Option::is_none")]
     pub lateness_mins: Option<i32>,
-    /// 所定労働開始時刻。指定しない場合はデフォルト設定が使用されます。（デフォルト設定は従業員に設定した勤務賃金設定の出退勤時刻と労働時間の設定を参照して値が決まります。）
+    /// 所定労働開始時刻。指定しない場合はデフォルト設定が使用されます。
     #[serde(rename = "normal_work_clock_in_at", skip_serializing_if = "Option::is_none")]
     pub normal_work_clock_in_at: Option<String>,
-    /// 所定労働終了時刻。指定しない場合はデフォルト設定が使用されます。（デフォルト設定は従業員に設定した勤務賃金設定の出退勤時刻と労働時間の設定を参照して値が決まります。）
+    /// 所定労働終了時刻。指定しない場合はデフォルト設定が使用されます。
     #[serde(rename = "normal_work_clock_out_at", skip_serializing_if = "Option::is_none")]
     pub normal_work_clock_out_at: Option<String>,
-    /// 所定労働時間。指定しない場合はデフォルト設定が使用されます。（デフォルト設定は従業員に設定した勤務賃金設定の出退勤時刻と労働時間の設定を参照して値が決まります。）
+    /// 所定労働時間。指定しない場合はデフォルト設定が使用されます。
     #[serde(rename = "normal_work_mins", skip_serializing_if = "Option::is_none")]
     pub normal_work_mins: Option<i32>,
     /// 有給によって計上される所定労働時間（分）
@@ -86,7 +86,7 @@ impl ApiV1EmployeesWorkRecordsControllerPeriodUpdateBody {
     }
 }
 
-/// 勤務パターン（所定労働日: normal_day, 所定休日: prescribed_holiday, 法定休日: legal_holiday）  prescribed_holiday、legal_holidayを指定すると、以下のパラメータについて、指定した値が反映されず無視されます。 - early_leaving_mins - lateness_mins - paid_holiday
+/// 勤務パターン（所定労働日: normal_day, 所定休日: prescribed_holiday, 法定休日: legal_holiday）  prescribed_holiday、legal_holidayを指定すると、以下のパラメータについて、指定した値が反映されず無視されます - early_leaving_mins - lateness_mins - paid_holiday
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum DayPattern {
     #[serde(rename = "normal_day")]

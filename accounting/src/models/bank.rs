@@ -23,8 +23,8 @@ pub struct Bank {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub r#type: Option<RHashType>,
     /// 連携サービス名(カナ)
-    #[serde(rename = "name_kana", skip_serializing_if = "Option::is_none")]
-    pub name_kana: Option<String>,
+    #[serde(rename = "name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub name_kana: Option<Option<String>>,
 }
 
 impl Bank {

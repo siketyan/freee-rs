@@ -14,14 +14,14 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApiV1GroupCreateRequestParams {
     /// 部門コード（入力しない場合、空文字が入力されます。）
-    #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    #[serde(rename = "code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub code: Option<Option<String>>,
     /// 部門名称（必須）
     #[serde(rename = "name")]
     pub name: String,
     /// 親部門ID（部門階層レベルが10以内になるように親部門IDを指定してください。）
-    #[serde(rename = "parent_group_id", skip_serializing_if = "Option::is_none")]
-    pub parent_group_id: Option<i32>,
+    #[serde(rename = "parent_group_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_group_id: Option<Option<i32>>,
 }
 
 impl ApiV1GroupCreateRequestParams {

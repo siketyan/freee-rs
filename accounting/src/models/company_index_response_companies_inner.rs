@@ -17,13 +17,13 @@ pub struct CompanyIndexResponseCompaniesInner {
     #[serde(rename = "id")]
     pub id: i32,
     /// 事業所名
-    #[serde(rename = "name")]
+    #[serde(rename = "name", deserialize_with = "Option::deserialize")]
     pub name: Option<String>,
     /// 事業所名（カナ）
-    #[serde(rename = "name_kana")]
+    #[serde(rename = "name_kana", deserialize_with = "Option::deserialize")]
     pub name_kana: Option<String>,
     /// 事業所名
-    #[serde(rename = "display_name")]
+    #[serde(rename = "display_name", deserialize_with = "Option::deserialize")]
     pub display_name: Option<String>,
     /// ユーザーの権限
     #[serde(rename = "role")]

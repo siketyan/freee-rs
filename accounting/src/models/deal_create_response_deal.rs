@@ -38,8 +38,8 @@ pub struct DealCreateResponseDeal {
     #[serde(rename = "partner_id")]
     pub partner_id: i32,
     /// 取引先コード
-    #[serde(rename = "partner_code", skip_serializing_if = "Option::is_none")]
-    pub partner_code: Option<String>,
+    #[serde(rename = "partner_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_code: Option<Option<String>>,
     /// 管理番号
     #[serde(rename = "ref_number", skip_serializing_if = "Option::is_none")]
     pub ref_number: Option<String>,

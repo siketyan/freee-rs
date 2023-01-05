@@ -14,14 +14,14 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ReceiptUpdateParamsReceiptMetadatum {
     /// 発行元
-    #[serde(rename = "partner_name", skip_serializing_if = "Option::is_none")]
-    pub partner_name: Option<String>,
+    #[serde(rename = "partner_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_name: Option<Option<String>>,
     /// 発行日 (yyyy-mm-dd)
-    #[serde(rename = "issue_date", skip_serializing_if = "Option::is_none")]
-    pub issue_date: Option<String>,
+    #[serde(rename = "issue_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub issue_date: Option<Option<String>>,
     /// 金額
-    #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
-    pub amount: Option<i64>,
+    #[serde(rename = "amount", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub amount: Option<Option<i64>>,
 }
 
 impl ReceiptUpdateParamsReceiptMetadatum {

@@ -34,50 +34,50 @@ pub struct ApiV1EmployeesProfileRuleSerializer {
     #[serde(rename = "first_name_kana", skip_serializing_if = "Option::is_none")]
     pub first_name_kana: Option<String>,
     /// 住民票住所の郵便番号1
-    #[serde(rename = "zipcode1", skip_serializing_if = "Option::is_none")]
-    pub zipcode1: Option<String>,
+    #[serde(rename = "zipcode1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub zipcode1: Option<Option<String>>,
     /// 住民票住所の郵便番号2
-    #[serde(rename = "zipcode2", skip_serializing_if = "Option::is_none")]
-    pub zipcode2: Option<String>,
+    #[serde(rename = "zipcode2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub zipcode2: Option<Option<String>>,
     /// 住民票住所の都道府県コード（-1: 設定しない、0: 北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄)
-    #[serde(rename = "prefecture_code", skip_serializing_if = "Option::is_none")]
-    pub prefecture_code: Option<i32>,
+    #[serde(rename = "prefecture_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub prefecture_code: Option<Option<i32>>,
     /// 住民票住所の市区町村以降の住所
-    #[serde(rename = "address", skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    #[serde(rename = "address", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub address: Option<Option<String>>,
     /// 住民票住所の市区町村以降の住所カナ
     #[serde(rename = "address_kana", skip_serializing_if = "Option::is_none")]
     pub address_kana: Option<String>,
     /// 電話番号1
-    #[serde(rename = "phone1", skip_serializing_if = "Option::is_none")]
-    pub phone1: Option<String>,
+    #[serde(rename = "phone1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub phone1: Option<Option<String>>,
     /// 電話番号2
-    #[serde(rename = "phone2", skip_serializing_if = "Option::is_none")]
-    pub phone2: Option<String>,
+    #[serde(rename = "phone2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub phone2: Option<Option<String>>,
     /// 電話番号3
-    #[serde(rename = "phone3", skip_serializing_if = "Option::is_none")]
-    pub phone3: Option<String>,
+    #[serde(rename = "phone3", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub phone3: Option<Option<String>>,
     /// 現住所の郵便番号１
-    #[serde(rename = "residential_zipcode1", skip_serializing_if = "Option::is_none")]
-    pub residential_zipcode1: Option<String>,
+    #[serde(rename = "residential_zipcode1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub residential_zipcode1: Option<Option<String>>,
     /// 現住所の郵便番号２
-    #[serde(rename = "residential_zipcode2", skip_serializing_if = "Option::is_none")]
-    pub residential_zipcode2: Option<String>,
+    #[serde(rename = "residential_zipcode2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub residential_zipcode2: Option<Option<String>>,
     /// 現住所の都道府県コード（-1: 設定しない、0: 北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄)
-    #[serde(rename = "residential_prefecture_code", skip_serializing_if = "Option::is_none")]
-    pub residential_prefecture_code: Option<i32>,
+    #[serde(rename = "residential_prefecture_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub residential_prefecture_code: Option<Option<i32>>,
     /// 現住所の住所
-    #[serde(rename = "residential_address", skip_serializing_if = "Option::is_none")]
-    pub residential_address: Option<String>,
+    #[serde(rename = "residential_address", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub residential_address: Option<Option<String>>,
     /// 現住所の住所カナ
-    #[serde(rename = "residential_address_kana", skip_serializing_if = "Option::is_none")]
-    pub residential_address_kana: Option<String>,
+    #[serde(rename = "residential_address_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub residential_address_kana: Option<Option<String>>,
     /// 雇用形態 board-member: 役員, (空文字列): 役員以外
-    #[serde(rename = "employment_type", skip_serializing_if = "Option::is_none")]
-    pub employment_type: Option<String>,
+    #[serde(rename = "employment_type", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub employment_type: Option<Option<String>>,
     /// 肩書
-    #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    #[serde(rename = "title", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub title: Option<Option<String>>,
     /// 性別　unselected: 未選択, male: 男性, female: 女性
     #[serde(rename = "gender", skip_serializing_if = "Option::is_none")]
     pub gender: Option<Gender>,
