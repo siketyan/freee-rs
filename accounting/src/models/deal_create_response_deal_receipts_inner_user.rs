@@ -20,8 +20,8 @@ pub struct DealCreateResponseDealReceiptsInnerUser {
     #[serde(rename = "email")]
     pub email: String,
     /// 表示名
-    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    #[serde(rename = "display_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub display_name: Option<Option<String>>,
 }
 
 impl DealCreateResponseDealReceiptsInnerUser {

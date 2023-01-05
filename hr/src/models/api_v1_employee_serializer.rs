@@ -20,14 +20,14 @@ pub struct ApiV1EmployeeSerializer {
     #[serde(rename = "company_id", skip_serializing_if = "Option::is_none")]
     pub company_id: Option<i32>,
     /// 従業員番号
-    #[serde(rename = "num", skip_serializing_if = "Option::is_none")]
-    pub num: Option<String>,
+    #[serde(rename = "num", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub num: Option<Option<String>>,
     /// 従業員名（表示名）
     #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
     /// 基礎年金番号
-    #[serde(rename = "base_pension_num", skip_serializing_if = "Option::is_none")]
-    pub base_pension_num: Option<String>,
+    #[serde(rename = "base_pension_num", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub base_pension_num: Option<Option<String>>,
     /// 被保険者番号（雇用保険）
     #[serde(rename = "employment_insurance_reference_number", skip_serializing_if = "Option::is_none")]
     pub employment_insurance_reference_number: Option<String>,
@@ -38,30 +38,30 @@ pub struct ApiV1EmployeeSerializer {
     #[serde(rename = "entry_date", skip_serializing_if = "Option::is_none")]
     pub entry_date: Option<String>,
     /// 退職日
-    #[serde(rename = "retire_date", skip_serializing_if = "Option::is_none")]
-    pub retire_date: Option<String>,
+    #[serde(rename = "retire_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub retire_date: Option<Option<String>>,
     /// ユーザーID(従業員詳細未設定の場合、nullになります。)
-    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<i32>,
-    #[serde(rename = "profile_rule", skip_serializing_if = "Option::is_none")]
-    pub profile_rule: Option<Box<crate::models::ApiV1EmployeesProfileRuleSerializer>>,
-    #[serde(rename = "health_insurance_rule", skip_serializing_if = "Option::is_none")]
-    pub health_insurance_rule: Option<Box<crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer>>,
-    #[serde(rename = "welfare_pension_insurance_rule", skip_serializing_if = "Option::is_none")]
-    pub welfare_pension_insurance_rule: Option<Box<crate::models::ApiV1EmployeesWelfarePensionInsuranceRuleSerializer>>,
+    #[serde(rename = "user_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<Option<i32>>,
+    #[serde(rename = "profile_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub profile_rule: Option<Option<Box<crate::models::ApiV1EmployeesProfileRuleSerializer>>>,
+    #[serde(rename = "health_insurance_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub health_insurance_rule: Option<Option<Box<crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer>>>,
+    #[serde(rename = "welfare_pension_insurance_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub welfare_pension_insurance_rule: Option<Option<Box<crate::models::ApiV1EmployeesWelfarePensionInsuranceRuleSerializer>>>,
     /// 扶養親族
     #[serde(rename = "dependent_rules", skip_serializing_if = "Option::is_none")]
     pub dependent_rules: Option<Vec<crate::models::ApiV1EmployeesDependentRuleSerializer>>,
-    #[serde(rename = "bank_account_rule", skip_serializing_if = "Option::is_none")]
-    pub bank_account_rule: Option<Box<crate::models::ApiV1EmployeesBankAccountRuleSerializer>>,
-    #[serde(rename = "basic_pay_rule", skip_serializing_if = "Option::is_none")]
-    pub basic_pay_rule: Option<Box<crate::models::ApiV1EmployeesBasicPayRuleSerializer>>,
+    #[serde(rename = "bank_account_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub bank_account_rule: Option<Option<Box<crate::models::ApiV1EmployeesBankAccountRuleSerializer>>>,
+    #[serde(rename = "basic_pay_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub basic_pay_rule: Option<Option<Box<crate::models::ApiV1EmployeesBasicPayRuleSerializer>>>,
     /// 給与計算対象従業員の場合trueを返します
     #[serde(rename = "payroll_calculation", skip_serializing_if = "Option::is_none")]
     pub payroll_calculation: Option<bool>,
     /// 締め日支払日グループ名(給与計算対象外従業員の場合、nullを返します)
-    #[serde(rename = "company_reference_date_rule_name", skip_serializing_if = "Option::is_none")]
-    pub company_reference_date_rule_name: Option<String>,
+    #[serde(rename = "company_reference_date_rule_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_reference_date_rule_name: Option<Option<String>>,
 }
 
 impl ApiV1EmployeeSerializer {

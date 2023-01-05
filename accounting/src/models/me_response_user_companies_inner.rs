@@ -26,8 +26,8 @@ pub struct MeResponseUserCompaniesInner {
     #[serde(rename = "use_custom_role")]
     pub use_custom_role: bool,
     /// アドバイザープロファイルID（アドバイザー事業所で無い場合にnullになります）
-    #[serde(rename = "advisor_id", skip_serializing_if = "Option::is_none")]
-    pub advisor_id: Option<i32>,
+    #[serde(rename = "advisor_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub advisor_id: Option<Option<i32>>,
 }
 
 impl MeResponseUserCompaniesInner {

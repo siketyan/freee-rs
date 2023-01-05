@@ -37,8 +37,8 @@ pub struct DealUpdateParams {
     #[serde(rename = "details")]
     pub details: Vec<crate::models::DealUpdateParamsDetailsInner>,
     /// 証憑ファイルID（ファイルボックスのファイルID）（配列）
-    #[serde(rename = "receipt_ids", skip_serializing_if = "Option::is_none")]
-    pub receipt_ids: Option<Vec<i32>>,
+    #[serde(rename = "receipt_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub receipt_ids: Option<Option<Vec<i32>>>,
 }
 
 impl DealUpdateParams {

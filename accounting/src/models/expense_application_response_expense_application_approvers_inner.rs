@@ -17,7 +17,7 @@ pub struct ExpenseApplicationResponseExpenseApplicationApproversInner {
     #[serde(rename = "step_id")]
     pub step_id: i32,
     /// 承認者のユーザーID 下記の場合はnullになります。 <ul>   <li>resource_type:selected_userの場合で承認者未指定時</li>   <li>resource_type:or_positionで前stepで部門未指定の場合</li> </ul>
-    #[serde(rename = "user_id")]
+    #[serde(rename = "user_id", deserialize_with = "Option::deserialize")]
     pub user_id: Option<i32>,
     /// 承認者の承認状態 * `initial` - 初期状態 * `approved` - 承認済 * `rejected` - 却下 * `feedback` - 差戻し
     #[serde(rename = "status")]

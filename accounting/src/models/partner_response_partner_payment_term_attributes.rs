@@ -14,14 +14,14 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct PartnerResponsePartnerPaymentTermAttributes {
     /// 締め日（29, 30, 31日の末日を指定する場合は、32。）
-    #[serde(rename = "cutoff_day", skip_serializing_if = "Option::is_none")]
-    pub cutoff_day: Option<i32>,
-    /// 支払月（当月を指定する場合は、0を指定してください。）
-    #[serde(rename = "additional_months", skip_serializing_if = "Option::is_none")]
-    pub additional_months: Option<i32>,
+    #[serde(rename = "cutoff_day", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub cutoff_day: Option<Option<i32>>,
+    /// 支払月
+    #[serde(rename = "additional_months", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub additional_months: Option<Option<i32>>,
     /// 支払日（29, 30, 31日の末日を指定する場合は、32。）
-    #[serde(rename = "fixed_day", skip_serializing_if = "Option::is_none")]
-    pub fixed_day: Option<i32>,
+    #[serde(rename = "fixed_day", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub fixed_day: Option<Option<i32>>,
 }
 
 impl PartnerResponsePartnerPaymentTermAttributes {

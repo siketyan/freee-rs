@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **approval_flow_route_id** | **i32** | 申請経路ID | 
 **form_id** | **i32** | 申請フォームID | 
 **approver_id** | Option<**i32**> | 承認者のユーザーID | [optional]
-**draft** | **bool** | 各種申請のステータス<br> falseを指定した時は申請中（in_progress）で各種申請を作成します。<br> trueを指定した時は下書き（draft）で各種申請を作成します。  | 
+**draft** | **bool** | falseの時、in_progress:申請中で作成する。それ以外の時はdraft:下書きで作成する | 
 **parent_id** | Option<**i32**> | 親申請ID(既存各種申請IDのみ指定可能です。) | [optional]
 **request_items** | [**Vec<crate::models::ApprovalRequestCreateParamsRequestItemsInner>**](approvalRequestCreateParams_request_items_inner.md) |  | 
 

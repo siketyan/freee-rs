@@ -33,7 +33,7 @@ pub struct PartnerCreateParamsPartnerBankAccountAttributes {
     pub branch_code: Option<String>,
     /// 口座種別(ordinary:普通、checking：当座、earmarked：納税準備預金、savings：貯蓄、other:その他)、指定しない場合ordinaryになります。
     #[serde(rename = "account_type", skip_serializing_if = "Option::is_none")]
-    pub account_type: Option<AccountType>,
+    pub account_type: Option<String>,
     /// 口座番号
     #[serde(rename = "account_number", skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -62,24 +62,4 @@ impl PartnerCreateParamsPartnerBankAccountAttributes {
     }
 }
 
-/// 口座種別(ordinary:普通、checking：当座、earmarked：納税準備預金、savings：貯蓄、other:その他)、指定しない場合ordinaryになります。
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum AccountType {
-    #[serde(rename = "ordinary")]
-    Ordinary,
-    #[serde(rename = "checking")]
-    Checking,
-    #[serde(rename = "earmarked")]
-    Earmarked,
-    #[serde(rename = "savings")]
-    Savings,
-    #[serde(rename = "other")]
-    Other,
-}
-
-impl Default for AccountType {
-    fn default() -> AccountType {
-        Self::Ordinary
-    }
-}
 

@@ -49,9 +49,9 @@ This endpoint does not need any parameter.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | 事業所ID | [required] |
-**details** | Option<**bool**> | 取得情報に勘定科目・税区分コード・品目・取引先・部門・メモタグ・口座の一覧を含める |  |
+**details** | Option<**bool**> | 取得情報に勘定科目・税区分コード・税区分・品目・取引先・部門・メモタグ・口座の一覧を含める |  |
 **account_items** | Option<**bool**> | 取得情報に勘定科目一覧を含める |  |
-**taxes** | Option<**bool**> | 取得情報に税区分コード一覧を含める |  |
+**taxes** | Option<**bool**> | 取得情報に税区分コード・税区分一覧を含める |  |
 **items** | Option<**bool**> | 取得情報に品目一覧を含める |  |
 **partners** | Option<**bool**> | 取得情報に取引先一覧を含める |  |
 **sections** | Option<**bool**> | 取得情報に部門一覧を含める |  |

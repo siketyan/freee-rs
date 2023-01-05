@@ -20,7 +20,7 @@ pub struct Walletable {
     #[serde(rename = "name")]
     pub name: String,
     /// サービスID
-    #[serde(rename = "bank_id")]
+    #[serde(rename = "bank_id", deserialize_with = "Option::deserialize")]
     pub bank_id: Option<i32>,
     /// 口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet)
     #[serde(rename = "type")]

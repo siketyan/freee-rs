@@ -20,14 +20,14 @@ pub struct ApiV1ApprovalActionRequest {
     #[serde(rename = "approval_action")]
     pub approval_action: ApprovalAction,
     /// 対象round。差戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。取得APIレスポンス.current_roundを送信してください。
-    #[serde(rename = "target_round")]
+    #[serde(rename = "target_round", deserialize_with = "Option::deserialize")]
     pub target_round: Option<i32>,
     /// 対象承認ステップID。取得APIレスポンス.current_step_idを送信してください。
-    #[serde(rename = "target_step_id")]
+    #[serde(rename = "target_step_id", deserialize_with = "Option::deserialize")]
     pub target_step_id: Option<i32>,
     /// 次のステップの承認者のユーザーID
-    #[serde(rename = "next_approver_id", skip_serializing_if = "Option::is_none")]
-    pub next_approver_id: Option<i32>,
+    #[serde(rename = "next_approver_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub next_approver_id: Option<Option<i32>>,
 }
 
 impl ApiV1ApprovalActionRequest {

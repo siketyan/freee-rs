@@ -23,23 +23,23 @@ pub struct DealCreateResponseDealDetailsInner {
     #[serde(rename = "tax_code")]
     pub tax_code: i32,
     /// 品目ID
-    #[serde(rename = "item_id", skip_serializing_if = "Option::is_none")]
-    pub item_id: Option<i32>,
+    #[serde(rename = "item_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub item_id: Option<Option<i32>>,
     /// 部門ID
-    #[serde(rename = "section_id", skip_serializing_if = "Option::is_none")]
-    pub section_id: Option<i32>,
+    #[serde(rename = "section_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub section_id: Option<Option<i32>>,
     /// メモタグID
     #[serde(rename = "tag_ids", skip_serializing_if = "Option::is_none")]
     pub tag_ids: Option<Vec<i32>>,
     /// セグメント１ID
-    #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_id: Option<i64>,
+    #[serde(rename = "segment_1_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_1_tag_id: Option<Option<i64>>,
     /// セグメント２ID
-    #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_id: Option<i64>,
+    #[serde(rename = "segment_2_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_2_tag_id: Option<Option<i64>>,
     /// セグメント３ID
-    #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_id: Option<i64>,
+    #[serde(rename = "segment_3_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_3_tag_id: Option<Option<i64>>,
     /// 取引金額
     #[serde(rename = "amount")]
     pub amount: i64,

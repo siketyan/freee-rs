@@ -20,20 +20,20 @@ pub struct User {
     #[serde(rename = "email")]
     pub email: String,
     /// 表示名
-    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    #[serde(rename = "display_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub display_name: Option<Option<String>>,
     /// 氏名（名）
-    #[serde(rename = "first_name", skip_serializing_if = "Option::is_none")]
-    pub first_name: Option<String>,
+    #[serde(rename = "first_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub first_name: Option<Option<String>>,
     /// 氏名（姓）
-    #[serde(rename = "last_name", skip_serializing_if = "Option::is_none")]
-    pub last_name: Option<String>,
+    #[serde(rename = "last_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub last_name: Option<Option<String>>,
     /// 氏名（カナ・名）
-    #[serde(rename = "first_name_kana", skip_serializing_if = "Option::is_none")]
-    pub first_name_kana: Option<String>,
+    #[serde(rename = "first_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub first_name_kana: Option<Option<String>>,
     /// 氏名（カナ・姓）
-    #[serde(rename = "last_name_kana", skip_serializing_if = "Option::is_none")]
-    pub last_name_kana: Option<String>,
+    #[serde(rename = "last_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub last_name_kana: Option<Option<String>>,
 }
 
 impl User {

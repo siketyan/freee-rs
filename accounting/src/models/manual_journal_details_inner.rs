@@ -26,28 +26,28 @@ pub struct ManualJournalDetailsInner {
     #[serde(rename = "tax_code")]
     pub tax_code: i32,
     /// 取引先ID
-    #[serde(rename = "partner_id")]
+    #[serde(rename = "partner_id", deserialize_with = "Option::deserialize")]
     pub partner_id: Option<i32>,
     /// 取引先名
-    #[serde(rename = "partner_name")]
+    #[serde(rename = "partner_name", deserialize_with = "Option::deserialize")]
     pub partner_name: Option<String>,
     /// 取引先コード
-    #[serde(rename = "partner_code", skip_serializing_if = "Option::is_none")]
-    pub partner_code: Option<String>,
+    #[serde(rename = "partner_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_code: Option<Option<String>>,
     /// 正式名称（255文字以内）
-    #[serde(rename = "partner_long_name")]
+    #[serde(rename = "partner_long_name", deserialize_with = "Option::deserialize")]
     pub partner_long_name: Option<String>,
     /// 品目ID
-    #[serde(rename = "item_id")]
+    #[serde(rename = "item_id", deserialize_with = "Option::deserialize")]
     pub item_id: Option<i32>,
     /// 品目
-    #[serde(rename = "item_name")]
+    #[serde(rename = "item_name", deserialize_with = "Option::deserialize")]
     pub item_name: Option<String>,
     /// 部門ID
-    #[serde(rename = "section_id")]
+    #[serde(rename = "section_id", deserialize_with = "Option::deserialize")]
     pub section_id: Option<i32>,
     /// 部門
-    #[serde(rename = "section_name")]
+    #[serde(rename = "section_name", deserialize_with = "Option::deserialize")]
     pub section_name: Option<String>,
     #[serde(rename = "tag_ids")]
     pub tag_ids: Vec<i32>,
@@ -56,21 +56,21 @@ pub struct ManualJournalDetailsInner {
     /// セグメント１ID
     #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_1_tag_id: Option<i64>,
-    /// セグメント１
+    /// セグメント１ID
     #[serde(rename = "segment_1_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_name: Option<String>,
+    pub segment_1_tag_name: Option<i32>,
     /// セグメント２ID
     #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_2_tag_id: Option<i64>,
     /// セグメント２
     #[serde(rename = "segment_2_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_name: Option<String>,
+    pub segment_2_tag_name: Option<i32>,
     /// セグメント３ID
     #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
     pub segment_3_tag_id: Option<i64>,
     /// セグメント３
     #[serde(rename = "segment_3_tag_name", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_name: Option<String>,
+    pub segment_3_tag_name: Option<i32>,
     /// 金額（税込で指定してください）
     #[serde(rename = "amount")]
     pub amount: i32,

@@ -41,13 +41,13 @@ pub struct ApiV1OvertimeWorkIndexResponseParams {
     #[serde(rename = "issue_date")]
     pub issue_date: String,
     /// 申請理由
-    #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
+    #[serde(rename = "comment", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub comment: Option<Option<String>>,
     /// 申請ステータス。（draft:下書き、in_progress:申請中、approved:承認済、feedback:差戻し）
     #[serde(rename = "status")]
     pub status: Status,
     /// 取消申請ステータス。（null:取消申請されてない、revoking:取消中、revoked:取消済）
-    #[serde(rename = "revoke_status")]
+    #[serde(rename = "revoke_status", deserialize_with = "Option::deserialize")]
     pub revoke_status: Option<RevokeStatus>,
     /// 自動チェック結果
     #[serde(rename = "passed_auto_check")]

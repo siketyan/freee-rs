@@ -32,8 +32,8 @@ pub struct ApiV1EmployeeUpdateRequestSerializer {
     #[serde(rename = "entry_date")]
     pub entry_date: String,
     /// 退職日 - 退職していない場合は指定不要です。 - 指定する場合はentry_date以降の日付を指定してください。 - retire_dateをクリアする場合、nullを指定してください。
-    #[serde(rename = "retire_date", skip_serializing_if = "Option::is_none")]
-    pub retire_date: Option<String>,
+    #[serde(rename = "retire_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub retire_date: Option<Option<String>>,
     /// <a href=\"https://support.freee.co.jp/hc/ja/articles/360000666303-締め日支払い日を変更する方法は-\" target=\"_blank\">締め日支払い日グループ名</a> で設定した締め日支払い日を指定してください。 - 未指定の際は、締め日支払い日は変わりません。 - 指定した従業員が給与計算対象外の場合、指定するとエラーになります。
     #[serde(rename = "company_reference_date_rule_name", skip_serializing_if = "Option::is_none")]
     pub company_reference_date_rule_name: Option<String>,

@@ -26,11 +26,11 @@ pub struct ApiV1UsersCompanySerializer {
     #[serde(rename = "external_cid", skip_serializing_if = "Option::is_none")]
     pub external_cid: Option<String>,
     /// 事業所に所属する従業員としての従業員ID、従業員情報が未登録の場合はnullになります。
-    #[serde(rename = "employee_id", skip_serializing_if = "Option::is_none")]
-    pub employee_id: Option<i32>,
+    #[serde(rename = "employee_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub employee_id: Option<Option<i32>>,
     /// 事業所に所属する従業員の表示名
-    #[serde(rename = "display_name", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    #[serde(rename = "display_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub display_name: Option<Option<String>>,
 }
 
 impl ApiV1UsersCompanySerializer {

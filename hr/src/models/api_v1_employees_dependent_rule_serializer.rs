@@ -29,11 +29,11 @@ pub struct ApiV1EmployeesDependentRuleSerializer {
     #[serde(rename = "first_name", skip_serializing_if = "Option::is_none")]
     pub first_name: Option<String>,
     /// 姓カナ
-    #[serde(rename = "last_name_kana", skip_serializing_if = "Option::is_none")]
-    pub last_name_kana: Option<String>,
+    #[serde(rename = "last_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub last_name_kana: Option<Option<String>>,
     /// 名カナ
-    #[serde(rename = "first_name_kana", skip_serializing_if = "Option::is_none")]
-    pub first_name_kana: Option<String>,
+    #[serde(rename = "first_name_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub first_name_kana: Option<Option<String>>,
     /// 性別　unselected: 未選択, male: 男性, female: 女性
     #[serde(rename = "gender", skip_serializing_if = "Option::is_none")]
     pub gender: Option<Gender>,
@@ -47,23 +47,23 @@ pub struct ApiV1EmployeesDependentRuleSerializer {
     #[serde(rename = "residence_type", skip_serializing_if = "Option::is_none")]
     pub residence_type: Option<String>,
     /// 住民票住所の郵便番号1
-    #[serde(rename = "zipcode1", skip_serializing_if = "Option::is_none")]
-    pub zipcode1: Option<String>,
+    #[serde(rename = "zipcode1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub zipcode1: Option<Option<String>>,
     /// 住民票住所の郵便番号2
-    #[serde(rename = "zipcode2", skip_serializing_if = "Option::is_none")]
-    pub zipcode2: Option<String>,
+    #[serde(rename = "zipcode2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub zipcode2: Option<Option<String>>,
     /// 住民票住所の都道府県コード（-1: 設定しない、0: 北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄)
-    #[serde(rename = "prefecture_code", skip_serializing_if = "Option::is_none")]
-    pub prefecture_code: Option<i32>,
+    #[serde(rename = "prefecture_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub prefecture_code: Option<Option<i32>>,
     /// 住民票住所の市区町村以降の住所
-    #[serde(rename = "address", skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
+    #[serde(rename = "address", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub address: Option<Option<String>>,
     /// 住民票住所の市区町村以降の住所カナ
-    #[serde(rename = "address_kana", skip_serializing_if = "Option::is_none")]
-    pub address_kana: Option<String>,
+    #[serde(rename = "address_kana", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub address_kana: Option<Option<String>>,
     /// 基礎年金番号
-    #[serde(rename = "base_pension_num", skip_serializing_if = "Option::is_none")]
-    pub base_pension_num: Option<String>,
+    #[serde(rename = "base_pension_num", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub base_pension_num: Option<Option<String>>,
     /// 年間所得
     #[serde(rename = "income", skip_serializing_if = "Option::is_none")]
     pub income: Option<i32>,
@@ -74,8 +74,8 @@ pub struct ApiV1EmployeesDependentRuleSerializer {
     #[serde(rename = "disability_type", skip_serializing_if = "Option::is_none")]
     pub disability_type: Option<String>,
     /// 職業
-    #[serde(rename = "occupation", skip_serializing_if = "Option::is_none")]
-    pub occupation: Option<String>,
+    #[serde(rename = "occupation", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub occupation: Option<Option<String>>,
     /// 一年間の送金額
     #[serde(rename = "annual_remittance_amount", skip_serializing_if = "Option::is_none")]
     pub annual_remittance_amount: Option<i32>,

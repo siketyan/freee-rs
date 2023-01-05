@@ -23,8 +23,8 @@ pub struct ApprovalFlowRoutesIndexResponseApprovalFlowRoutesInner {
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 更新したユーザーのユーザーID
-    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<i32>,
+    #[serde(rename = "user_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<Option<i32>>,
     /// システム作成の申請経路かどうか
     #[serde(rename = "definition_system", skip_serializing_if = "Option::is_none")]
     pub definition_system: Option<bool>,

@@ -32,11 +32,11 @@ pub struct PaymentRequestsIndexResponsePaymentRequestsInner {
     #[serde(rename = "status")]
     pub status: Status,
     /// 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます)
-    #[serde(rename = "deal_id", skip_serializing_if = "Option::is_none")]
-    pub deal_id: Option<i32>,
+    #[serde(rename = "deal_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub deal_id: Option<Option<i32>>,
     /// 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:支払済み, unsettled:支払待ち)
-    #[serde(rename = "deal_status", skip_serializing_if = "Option::is_none")]
-    pub deal_status: Option<DealStatus>,
+    #[serde(rename = "deal_status", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub deal_status: Option<Option<DealStatus>>,
     /// 申請者のユーザーID
     #[serde(rename = "applicant_id")]
     pub applicant_id: i32,
@@ -47,7 +47,7 @@ pub struct PaymentRequestsIndexResponsePaymentRequestsInner {
     #[serde(rename = "application_number")]
     pub application_number: String,
     /// 現在承認ステップID
-    #[serde(rename = "current_step_id")]
+    #[serde(rename = "current_step_id", deserialize_with = "Option::deserialize")]
     pub current_step_id: Option<i32>,
     /// 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。
     #[serde(rename = "current_round")]
@@ -59,19 +59,19 @@ pub struct PaymentRequestsIndexResponsePaymentRequestsInner {
     #[serde(rename = "issue_date")]
     pub issue_date: String,
     /// 支払期限 (yyyy-mm-dd)
-    #[serde(rename = "payment_date")]
+    #[serde(rename = "payment_date", deserialize_with = "Option::deserialize")]
     pub payment_date: Option<String>,
     /// 支払方法(none: 指定なし, domestic_bank_transfer: 国内振込, abroad_bank_transfer: 国外振込, account_transfer: 口座振替, credit_card: クレジットカード)
     #[serde(rename = "payment_method")]
     pub payment_method: PaymentMethod,
     /// 取引先ID
-    #[serde(rename = "partner_id")]
+    #[serde(rename = "partner_id", deserialize_with = "Option::deserialize")]
     pub partner_id: Option<i32>,
     /// 取引先コード
-    #[serde(rename = "partner_code")]
+    #[serde(rename = "partner_code", deserialize_with = "Option::deserialize")]
     pub partner_code: Option<String>,
     /// 取引先名
-    #[serde(rename = "partner_name")]
+    #[serde(rename = "partner_name", deserialize_with = "Option::deserialize")]
     pub partner_name: Option<String>,
 }
 

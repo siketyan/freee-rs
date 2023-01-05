@@ -14,8 +14,8 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApiV1PositionRequestParams {
     /// 役職コード（入力しない場合、空文字が入力されます。）
-    #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    #[serde(rename = "code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub code: Option<Option<String>>,
     /// 役職名称（必須）
     #[serde(rename = "name")]
     pub name: String,

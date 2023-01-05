@@ -32,23 +32,23 @@ pub struct ApiV1GroupMembershipSerializer {
     #[serde(rename = "level", skip_serializing_if = "Option::is_none")]
     pub level: Option<i32>,
     /// 役職ID
-    #[serde(rename = "position_id", skip_serializing_if = "Option::is_none")]
-    pub position_id: Option<i32>,
+    #[serde(rename = "position_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub position_id: Option<Option<i32>>,
     /// 役職コード
-    #[serde(rename = "position_code", skip_serializing_if = "Option::is_none")]
-    pub position_code: Option<String>,
+    #[serde(rename = "position_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub position_code: Option<Option<String>>,
     /// 役職名称
-    #[serde(rename = "position_name", skip_serializing_if = "Option::is_none")]
-    pub position_name: Option<String>,
+    #[serde(rename = "position_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub position_name: Option<Option<String>>,
     /// 親部門ID
-    #[serde(rename = "parent_group_id", skip_serializing_if = "Option::is_none")]
-    pub parent_group_id: Option<i32>,
+    #[serde(rename = "parent_group_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_group_id: Option<Option<i32>>,
     /// 親部門コード
-    #[serde(rename = "parent_group_code", skip_serializing_if = "Option::is_none")]
-    pub parent_group_code: Option<String>,
+    #[serde(rename = "parent_group_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_group_code: Option<Option<String>>,
     /// 親部門名称
-    #[serde(rename = "parent_group_name", skip_serializing_if = "Option::is_none")]
-    pub parent_group_name: Option<String>,
+    #[serde(rename = "parent_group_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_group_name: Option<Option<String>>,
 }
 
 impl ApiV1GroupMembershipSerializer {

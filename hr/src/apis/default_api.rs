@@ -1905,7 +1905,7 @@ pub async fn get_company_employees(configuration: &configuration::Configuration,
     }
 }
 
-///  指定したIDの従業員を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した対象年月に退職済みユーザは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。
+///  指定したIDの従業員を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した対象年月に退職済みユーザは取得できません。
 pub async fn get_employee(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, id: i32) -> Result<crate::models::ApiV1EmployeesControllerPeriodShowResponse, Error<GetEmployeeError>> {
     let local_var_configuration = configuration;
 
@@ -2108,7 +2108,7 @@ pub async fn get_employee_group_memberships(configuration: &configuration::Confi
     }
 }
 
-///  指定した従業員・日付の健康保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)
+///  指定した従業員・日付の健康保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。
 pub async fn get_employee_health_insurance_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse, Error<GetEmployeeHealthInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2312,7 +2312,7 @@ pub async fn get_employee_time_clocks_available_types(configuration: &configurat
     }
 }
 
-///  指定した従業員・日付の厚生年金保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+///  指定した従業員・日付の厚生年金保険情報を返します。 - 管理者権限を持ったユーザのみ実行可能です。
 pub async fn get_employee_welfare_pension_insurance_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodShowResponse, Error<GetEmployeeWelfarePensionInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2428,7 +2428,7 @@ pub async fn get_employee_work_record_summary(configuration: &configuration::Con
     }
 }
 
-///  指定した対象年月に事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した年月に退職済みユーザは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。
+///  指定した対象年月に事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザのみ実行可能です。 - 指定した年月に退職済みユーザは取得できません。
 pub async fn get_employees(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1EmployeesIndexSerializer, Error<GetEmployeesError>> {
     let local_var_configuration = configuration;
 
@@ -2889,7 +2889,7 @@ pub async fn update_employee_basic_pay_rule(configuration: &configuration::Confi
     }
 }
 
-///  指定した従業員の健康保険情報を更新します。 - 管理者権限を持ったユーザのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。 - 事業所が定額制の健康保険組合に加入している場合、保険料の計算方法と保険料の更新はできません。
+///  指定した従業員の健康保険情報を更新します。 - 管理者権限を持ったユーザのみ実行可能です。
 pub async fn update_employee_health_insurance_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeHealthInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2963,7 +2963,7 @@ pub async fn update_employee_profile_rule(configuration: &configuration::Configu
     }
 }
 
-///  指定した従業員の厚生年金保険情報を更新します。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険料の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+///  指定した従業員の厚生年金保険情報を更新します。
 pub async fn update_employee_welfare_pension_insurance_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeWelfarePensionInsuranceRuleError>> {
     let local_var_configuration = configuration;
 

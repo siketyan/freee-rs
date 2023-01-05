@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse {
-    #[serde(rename = "employee_health_insurance_rule", skip_serializing_if = "Option::is_none")]
-    pub employee_health_insurance_rule: Option<Box<crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer>>,
+    #[serde(rename = "employee_health_insurance_rule", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub employee_health_insurance_rule: Option<Option<Box<crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer>>>,
 }
 
 impl ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse {

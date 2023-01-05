@@ -26,8 +26,8 @@ pub struct ExpenseApplicationActionCreateParams {
     #[serde(rename = "target_round")]
     pub target_round: i32,
     /// 次ステップの承認者のユーザーID
-    #[serde(rename = "next_approver_id", skip_serializing_if = "Option::is_none")]
-    pub next_approver_id: Option<i32>,
+    #[serde(rename = "next_approver_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub next_approver_id: Option<Option<i32>>,
 }
 
 impl ExpenseApplicationActionCreateParams {

@@ -23,20 +23,20 @@ pub struct InvoiceIndexResponseInvoicesInner {
     #[serde(rename = "issue_date")]
     pub issue_date: String,
     /// 取引先ID
-    #[serde(rename = "partner_id")]
+    #[serde(rename = "partner_id", deserialize_with = "Option::deserialize")]
     pub partner_id: Option<i32>,
     /// 取引先コード
-    #[serde(rename = "partner_code", skip_serializing_if = "Option::is_none")]
-    pub partner_code: Option<String>,
+    #[serde(rename = "partner_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_code: Option<Option<String>>,
     /// 請求書番号
     #[serde(rename = "invoice_number")]
     pub invoice_number: String,
     /// タイトル
-    #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    #[serde(rename = "title", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub title: Option<Option<String>>,
     /// 期日 (yyyy-mm-dd)
-    #[serde(rename = "due_date", skip_serializing_if = "Option::is_none")]
-    pub due_date: Option<String>,
+    #[serde(rename = "due_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub due_date: Option<Option<String>>,
     /// 合計金額
     #[serde(rename = "total_amount")]
     pub total_amount: i32,
@@ -47,11 +47,11 @@ pub struct InvoiceIndexResponseInvoicesInner {
     #[serde(rename = "sub_total", skip_serializing_if = "Option::is_none")]
     pub sub_total: Option<i32>,
     /// 売上計上日
-    #[serde(rename = "booking_date", skip_serializing_if = "Option::is_none")]
-    pub booking_date: Option<String>,
+    #[serde(rename = "booking_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub booking_date: Option<Option<String>>,
     /// 概要
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub description: Option<Option<String>>,
     /// 請求書ステータス  (draft: 下書き, applying: 申請中, remanded: 差し戻し, rejected: 却下, approved: 承認済み, submitted: 送付済み, unsubmitted: 請求書の承認フローが無効の場合のみ、unsubmitted（送付待ち）の値をとります)
     #[serde(rename = "invoice_status")]
     pub invoice_status: InvoiceStatus,
@@ -59,83 +59,83 @@ pub struct InvoiceIndexResponseInvoicesInner {
     #[serde(rename = "payment_status", skip_serializing_if = "Option::is_none")]
     pub payment_status: Option<PaymentStatus>,
     /// 入金日
-    #[serde(rename = "payment_date", skip_serializing_if = "Option::is_none")]
-    pub payment_date: Option<String>,
+    #[serde(rename = "payment_date", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub payment_date: Option<Option<String>>,
     /// Web共有日時(最新)
-    #[serde(rename = "web_published_at", skip_serializing_if = "Option::is_none")]
-    pub web_published_at: Option<String>,
+    #[serde(rename = "web_published_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub web_published_at: Option<Option<String>>,
     /// Web共有ダウンロード日時(最新)
-    #[serde(rename = "web_downloaded_at", skip_serializing_if = "Option::is_none")]
-    pub web_downloaded_at: Option<String>,
+    #[serde(rename = "web_downloaded_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub web_downloaded_at: Option<Option<String>>,
     /// Web共有取引先確認日時(最新)
-    #[serde(rename = "web_confirmed_at", skip_serializing_if = "Option::is_none")]
-    pub web_confirmed_at: Option<String>,
+    #[serde(rename = "web_confirmed_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub web_confirmed_at: Option<Option<String>>,
     /// メール送信日時(最新)
-    #[serde(rename = "mail_sent_at", skip_serializing_if = "Option::is_none")]
-    pub mail_sent_at: Option<String>,
+    #[serde(rename = "mail_sent_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub mail_sent_at: Option<Option<String>>,
     /// 郵送ステータス(unrequested: リクエスト前, preview_registered: プレビュー登録, preview_failed: プレビュー登録失敗, ordered: 注文中, order_failed: 注文失敗, printing: 印刷中, canceled: キャンセル, posted: 投函済み)
     #[serde(rename = "posting_status")]
     pub posting_status: PostingStatus,
     /// 取引先名
-    #[serde(rename = "partner_name", skip_serializing_if = "Option::is_none")]
-    pub partner_name: Option<String>,
+    #[serde(rename = "partner_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_name: Option<Option<String>>,
     /// 請求書に表示する取引先名
-    #[serde(rename = "partner_display_name", skip_serializing_if = "Option::is_none")]
-    pub partner_display_name: Option<String>,
+    #[serde(rename = "partner_display_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_display_name: Option<Option<String>>,
     /// 敬称（御中、様、(空白)の3つから選択）
-    #[serde(rename = "partner_title", skip_serializing_if = "Option::is_none")]
-    pub partner_title: Option<String>,
+    #[serde(rename = "partner_title", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_title: Option<Option<String>>,
     /// 郵便番号
-    #[serde(rename = "partner_zipcode", skip_serializing_if = "Option::is_none")]
-    pub partner_zipcode: Option<String>,
+    #[serde(rename = "partner_zipcode", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_zipcode: Option<Option<String>>,
     /// 都道府県コード（-1: 設定しない、0:北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄
-    #[serde(rename = "partner_prefecture_code", skip_serializing_if = "Option::is_none")]
-    pub partner_prefecture_code: Option<i32>,
+    #[serde(rename = "partner_prefecture_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_prefecture_code: Option<Option<i32>>,
     /// 都道府県
-    #[serde(rename = "partner_prefecture_name", skip_serializing_if = "Option::is_none")]
-    pub partner_prefecture_name: Option<String>,
+    #[serde(rename = "partner_prefecture_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_prefecture_name: Option<Option<String>>,
     /// 市区町村・番地
-    #[serde(rename = "partner_address1", skip_serializing_if = "Option::is_none")]
-    pub partner_address1: Option<String>,
+    #[serde(rename = "partner_address1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_address1: Option<Option<String>>,
     /// 建物名・部屋番号など
-    #[serde(rename = "partner_address2", skip_serializing_if = "Option::is_none")]
-    pub partner_address2: Option<String>,
+    #[serde(rename = "partner_address2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_address2: Option<Option<String>>,
     /// 取引先担当者名
-    #[serde(rename = "partner_contact_info", skip_serializing_if = "Option::is_none")]
-    pub partner_contact_info: Option<String>,
+    #[serde(rename = "partner_contact_info", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub partner_contact_info: Option<Option<String>>,
     /// 事業所名
     #[serde(rename = "company_name")]
     pub company_name: String,
     /// 郵便番号
-    #[serde(rename = "company_zipcode", skip_serializing_if = "Option::is_none")]
-    pub company_zipcode: Option<String>,
+    #[serde(rename = "company_zipcode", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_zipcode: Option<Option<String>>,
     /// 都道府県コード（-1: 設定しない、0:北海道、1:青森、2:岩手、3:宮城、4:秋田、5:山形、6:福島、7:茨城、8:栃木、9:群馬、10:埼玉、11:千葉、12:東京、13:神奈川、14:新潟、15:富山、16:石川、17:福井、18:山梨、19:長野、20:岐阜、21:静岡、22:愛知、23:三重、24:滋賀、25:京都、26:大阪、27:兵庫、28:奈良、29:和歌山、30:鳥取、31:島根、32:岡山、33:広島、34:山口、35:徳島、36:香川、37:愛媛、38:高知、39:福岡、40:佐賀、41:長崎、42:熊本、43:大分、44:宮崎、45:鹿児島、46:沖縄
-    #[serde(rename = "company_prefecture_code", skip_serializing_if = "Option::is_none")]
-    pub company_prefecture_code: Option<i32>,
+    #[serde(rename = "company_prefecture_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_prefecture_code: Option<Option<i32>>,
     /// 都道府県
-    #[serde(rename = "company_prefecture_name", skip_serializing_if = "Option::is_none")]
-    pub company_prefecture_name: Option<String>,
+    #[serde(rename = "company_prefecture_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_prefecture_name: Option<Option<String>>,
     /// 市区町村・番地
-    #[serde(rename = "company_address1", skip_serializing_if = "Option::is_none")]
-    pub company_address1: Option<String>,
+    #[serde(rename = "company_address1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_address1: Option<Option<String>>,
     /// 建物名・部屋番号など
-    #[serde(rename = "company_address2", skip_serializing_if = "Option::is_none")]
-    pub company_address2: Option<String>,
+    #[serde(rename = "company_address2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_address2: Option<Option<String>>,
     /// 事業所担当者名
-    #[serde(rename = "company_contact_info", skip_serializing_if = "Option::is_none")]
-    pub company_contact_info: Option<String>,
+    #[serde(rename = "company_contact_info", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub company_contact_info: Option<Option<String>>,
     /// 支払方法 (振込: transfer, 引き落とし: direct_debit)
     #[serde(rename = "payment_type")]
     pub payment_type: PaymentType,
     /// 支払口座
-    #[serde(rename = "payment_bank_info", skip_serializing_if = "Option::is_none")]
-    pub payment_bank_info: Option<String>,
+    #[serde(rename = "payment_bank_info", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub payment_bank_info: Option<Option<String>>,
     /// メッセージ
-    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    #[serde(rename = "message", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub message: Option<Option<String>>,
     /// 備考
-    #[serde(rename = "notes", skip_serializing_if = "Option::is_none")]
-    pub notes: Option<String>,
+    #[serde(rename = "notes", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub notes: Option<Option<String>>,
     /// 請求書レイアウト * `default_classic` - レイアウト１/クラシック (デフォルト)  * `standard_classic` - レイアウト２/クラシック  * `envelope_classic` - 封筒１/クラシック  * `carried_forward_standard_classic` - レイアウト３（繰越金額欄あり）/クラシック  * `carried_forward_envelope_classic` - 封筒２（繰越金額欄あり）/クラシック  * `default_modern` - レイアウト１/モダン  * `standard_modern` - レイアウト２/モダン  * `envelope_modern` - 封筒/モダン
     #[serde(rename = "invoice_layout")]
     pub invoice_layout: InvoiceLayout,
@@ -143,8 +143,8 @@ pub struct InvoiceIndexResponseInvoicesInner {
     #[serde(rename = "tax_entry_method")]
     pub tax_entry_method: TaxEntryMethod,
     /// 取引ID (invoice_statusがsubmitted, unsubmittedの時IDが表示されます)
-    #[serde(rename = "deal_id", skip_serializing_if = "Option::is_none")]
-    pub deal_id: Option<i32>,
+    #[serde(rename = "deal_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub deal_id: Option<Option<i32>>,
     /// 請求内容
     #[serde(rename = "invoice_contents", skip_serializing_if = "Option::is_none")]
     pub invoice_contents: Option<Vec<crate::models::InvoiceIndexResponseInvoicesInnerInvoiceContentsInner>>,

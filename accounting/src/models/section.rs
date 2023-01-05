@@ -23,23 +23,23 @@ pub struct Section {
     #[serde(rename = "available")]
     pub available: bool,
     /// 正式名称（255文字以内）
-    #[serde(rename = "long_name", skip_serializing_if = "Option::is_none")]
-    pub long_name: Option<String>,
+    #[serde(rename = "long_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub long_name: Option<Option<String>>,
     /// 事業所ID
     #[serde(rename = "company_id")]
     pub company_id: i32,
     /// ショートカット１ (20文字以内)
-    #[serde(rename = "shortcut1", skip_serializing_if = "Option::is_none")]
-    pub shortcut1: Option<String>,
+    #[serde(rename = "shortcut1", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut1: Option<Option<String>>,
     /// ショートカット２ (20文字以内)
-    #[serde(rename = "shortcut2", skip_serializing_if = "Option::is_none")]
-    pub shortcut2: Option<String>,
+    #[serde(rename = "shortcut2", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub shortcut2: Option<Option<String>>,
     /// <a target=\"_blank\" href=\"https://support.freee.co.jp/hc/ja/articles/209093566\">部門階層</a> <br> ※ indent_count が 0 のときは第一階層の親部門です。 
     #[serde(rename = "indent_count", skip_serializing_if = "Option::is_none")]
     pub indent_count: Option<i32>,
     /// <a target=\"_blank\" href=\"https://support.freee.co.jp/hc/ja/articles/209093566\">親部門ID</a> <br> ※ parent_id が null のときは第一階層の親部門です。 
-    #[serde(rename = "parent_id", skip_serializing_if = "Option::is_none")]
-    pub parent_id: Option<i32>,
+    #[serde(rename = "parent_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_id: Option<Option<i32>>,
 }
 
 impl Section {

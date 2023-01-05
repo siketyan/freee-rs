@@ -13,9 +13,9 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct PartnerCreateParamsPartnerDocSettingAttributes {
-    /// 請求書送付方法(email:メール、posting:郵送、email_and_posting:メールと郵送、null:設定しない)
-    #[serde(rename = "sending_method", skip_serializing_if = "Option::is_none")]
-    pub sending_method: Option<SendingMethod>,
+    /// 請求書送付方法(email:メール、posting:郵送、email_and_posting:メールと郵送)
+    #[serde(rename = "sending_method", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub sending_method: Option<Option<SendingMethod>>,
 }
 
 impl PartnerCreateParamsPartnerDocSettingAttributes {
@@ -26,7 +26,7 @@ impl PartnerCreateParamsPartnerDocSettingAttributes {
     }
 }
 
-/// 請求書送付方法(email:メール、posting:郵送、email_and_posting:メールと郵送、null:設定しない)
+/// 請求書送付方法(email:メール、posting:郵送、email_and_posting:メールと郵送)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum SendingMethod {
     #[serde(rename = "email")]

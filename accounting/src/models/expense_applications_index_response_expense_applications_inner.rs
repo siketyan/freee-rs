@@ -35,8 +35,8 @@ pub struct ExpenseApplicationsIndexResponseExpenseApplicationsInner {
     #[serde(rename = "status")]
     pub status: Status,
     /// 部門ID
-    #[serde(rename = "section_id", skip_serializing_if = "Option::is_none")]
-    pub section_id: Option<i32>,
+    #[serde(rename = "section_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub section_id: Option<Option<i32>>,
     /// メモタグID
     #[serde(rename = "tag_ids", skip_serializing_if = "Option::is_none")]
     pub tag_ids: Option<Vec<i32>>,
@@ -44,10 +44,10 @@ pub struct ExpenseApplicationsIndexResponseExpenseApplicationsInner {
     #[serde(rename = "expense_application_lines")]
     pub expense_application_lines: Vec<crate::models::ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner>,
     /// 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます)
-    #[serde(rename = "deal_id")]
+    #[serde(rename = "deal_id", deserialize_with = "Option::deserialize")]
     pub deal_id: Option<i32>,
     /// 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:精算済み, unsettled:清算待ち)
-    #[serde(rename = "deal_status")]
+    #[serde(rename = "deal_status", deserialize_with = "Option::deserialize")]
     pub deal_status: Option<DealStatus>,
     /// 申請者のユーザーID
     #[serde(rename = "applicant_id")]
@@ -56,20 +56,20 @@ pub struct ExpenseApplicationsIndexResponseExpenseApplicationsInner {
     #[serde(rename = "application_number")]
     pub application_number: String,
     /// 現在承認ステップID
-    #[serde(rename = "current_step_id", skip_serializing_if = "Option::is_none")]
-    pub current_step_id: Option<i32>,
+    #[serde(rename = "current_step_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub current_step_id: Option<Option<i32>>,
     /// 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。
     #[serde(rename = "current_round", skip_serializing_if = "Option::is_none")]
     pub current_round: Option<i32>,
     /// セグメント１ID
-    #[serde(rename = "segment_1_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_1_tag_id: Option<i64>,
+    #[serde(rename = "segment_1_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_1_tag_id: Option<Option<i64>>,
     /// セグメント２ID
-    #[serde(rename = "segment_2_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_2_tag_id: Option<i64>,
+    #[serde(rename = "segment_2_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_2_tag_id: Option<Option<i64>>,
     /// セグメント３ID
-    #[serde(rename = "segment_3_tag_id", skip_serializing_if = "Option::is_none")]
-    pub segment_3_tag_id: Option<i64>,
+    #[serde(rename = "segment_3_tag_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub segment_3_tag_id: Option<Option<i64>>,
 }
 
 impl ExpenseApplicationsIndexResponseExpenseApplicationsInner {
