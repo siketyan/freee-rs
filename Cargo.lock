@@ -222,7 +222,7 @@ dependencies = [
 
 [[package]]
 name = "freee"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "reqwest",
  "serde",
@@ -234,7 +234,7 @@ dependencies = [
 
 [[package]]
 name = "freee-hr"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "reqwest",
  "serde",
