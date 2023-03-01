@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **i32** | 証憑ファイルID（ファイルボックスのファイルID） | 
+**id** | **i32** | ファイルボックス（証憑ファイル）ID | 
 **status** | **String** | ステータス(confirmed:確認済み、deleted:削除済み、ignored:無視) | 
 **description** | Option<**String**> | メモ | [optional]
 **mime_type** | **String** | MIMEタイプ | 

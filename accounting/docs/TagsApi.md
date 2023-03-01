@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_tag**](TagsApi.md#create_tag) | **POST** /api/1/tags | メモタグの作成
 [**destroy_tag**](TagsApi.md#destroy_tag) | **DELETE** /api/1/tags/{id} | メモタグの削除
-[**get_tag**](TagsApi.md#get_tag) | **GET** /api/1/tags/{id} | メモタグの詳細情報の取得
+[**get_tag**](TagsApi.md#get_tag) | **GET** /api/1/tags/{id} | メモタグの取得
 [**get_tags**](TagsApi.md#get_tags) | **GET** /api/1/tags | メモタグ一覧の取得
 [**update_tag**](TagsApi.md#update_tag) | **PUT** /api/1/tags/{id} | メモタグの更新
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 ## get_tag
 
 > crate::models::TagResponse get_tag(id, company_id)
-メモタグの詳細情報の取得
+メモタグの取得
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所のメモタグを取得する</p>
 

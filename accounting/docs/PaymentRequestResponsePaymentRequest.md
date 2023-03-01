@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **current_step_id** | Option<**i32**> | 現在承認ステップID | 
 **current_round** | **i32** | 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。 | 
 **document_code** | **String** | 請求書番号 | 
-**receipt_ids** | **Vec<i32>** | 証憑ファイルID（ファイルボックスのファイルID） | 
+**receipt_ids** | **Vec<i32>** | ファイルボックス（証憑ファイル）ID | 
 **issue_date** | **String** | 発生日 (yyyy-mm-dd) | 
 **payment_date** | Option<**String**> | 支払期限 (yyyy-mm-dd) | 
 **payment_method** | **String** | 支払方法(none: 指定なし, domestic_bank_transfer: 国内振込, abroad_bank_transfer: 国外振込, account_transfer: 口座振替, credit_card: クレジットカード) | 

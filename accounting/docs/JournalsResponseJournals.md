@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **end_date** | Option<**String**> | 取得終了日 (yyyy-mm-dd) | [optional]
 **visible_tags** | Option<**Vec<String>**> |  | [optional]
 **visible_ids** | Option<**Vec<String>**> |  | [optional]
-**status_url** | Option<**String**> | ステータス確認用URL | [optional]
+**status_url** | Option<**String**> | 仕訳帳のステータスの取得用URL | [optional]
 **up_to_date** | Option<**bool**> | 集計結果が最新かどうか | [optional]
 **up_to_date_reasons** | Option<[**Vec<crate::models::JournalsResponseJournalsUpToDateReasonsInner>**](journalsResponse_journals_up_to_date_reasons_inner.md)> | 集計が最新でない場合の要因情報 | [optional]
 

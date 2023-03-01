@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **tax_code** | **i32** | 税区分コード | 
 **shortcut** | Option<**String**> | ショートカット1 (20文字以内) | [optional]
 **shortcut_num** | Option<**String**> | ショートカット2(勘定科目コード) (20文字以内) | [optional]
-**default_tax_id** | Option<**i32**> | デフォルト設定がされている税区分ID | [optional]
 **default_tax_code** | **i32** | デフォルト設定がされている税区分コード | 
 **account_category** | **String** | 勘定科目カテゴリー | 
 **account_category_id** | **i32** | 勘定科目のカテゴリーID | 

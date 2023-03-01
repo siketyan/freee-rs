@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_users**](UsersApi.md#get_users) | **GET** /api/1/users | 事業所に所属するユーザー一覧の取得
 [**get_users_capabilities**](UsersApi.md#get_users_capabilities) | **GET** /api/1/users/capabilities | ログインユーザーの権限の取得
-[**get_users_me**](UsersApi.md#get_users_me) | **GET** /api/1/users/me | ログインユーザー情報の取得
-[**update_user**](UsersApi.md#update_user) | **PUT** /api/1/users/me | ユーザー情報の更新
+[**get_users_me**](UsersApi.md#get_users_me) | **GET** /api/1/users/me | ログインユーザーの取得
+[**update_user**](UsersApi.md#update_user) | **PUT** /api/1/users/me | ログインユーザーの更新
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > crate::models::GetUsers200Response get_users(company_id, limit)
 事業所に所属するユーザー一覧の取得
 
- <h2 id=\"\">概要</h2>  <p>事業所に所属するユーザーの一覧を取得する</p>
+ <h2 id=\"\">概要</h2>  <p>事業所に所属するユーザー一覧を取得する</p>
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::GetUsersCapabilities200Response get_users_capabilities(company_id)
 ログインユーザーの権限の取得
 
- <h2 id=\"\">概要</h2>  <p>ユーザーの権限情報を取得する</p>
+ <h2 id=\"\">概要</h2>  <p>ログインユーザーの権限を取得する</p>
 
 ### Parameters
 
@@ -75,9 +75,9 @@ Name | Type | Description  | Required | Notes
 ## get_users_me
 
 > crate::models::MeResponse get_users_me(companies, advisor)
-ログインユーザー情報の取得
+ログインユーザーの取得
 
- <h2 id=\"\">概要</h2>  <p>ユーザーの情報を取得する</p>
+ <h2 id=\"\">概要</h2>  <p>ログインユーザーを取得する</p>
 
 ### Parameters
 
@@ -106,16 +106,16 @@ Name | Type | Description  | Required | Notes
 ## update_user
 
 > crate::models::UserResponse update_user(user_params)
-ユーザー情報の更新
+ログインユーザーの更新
 
- <h2 id=\"\">概要</h2>  <p>ユーザー情報を更新する</p>
+ <h2 id=\"\">概要</h2>  <p>ログインユーザーを更新する</p>
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**user_params** | Option<[**UserParams**](UserParams.md)> | ユーザー情報の更新 |  |
+**user_params** | Option<[**UserParams**](UserParams.md)> | ログインユーザーの更新 |  |
 
 ### Return type
 

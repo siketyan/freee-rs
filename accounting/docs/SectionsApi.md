@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_section**](SectionsApi.md#create_section) | **POST** /api/1/sections | 部門の作成
 [**destroy_section**](SectionsApi.md#destroy_section) | **DELETE** /api/1/sections/{id} | 部門の削除
-[**get_section**](SectionsApi.md#get_section) | **GET** /api/1/sections/{id} | 
+[**get_section**](SectionsApi.md#get_section) | **GET** /api/1/sections/{id} | 部門の取得
 [**get_sections**](SectionsApi.md#get_sections) | **GET** /api/1/sections | 部門一覧の取得
 [**update_section**](SectionsApi.md#update_section) | **PUT** /api/1/sections/{id} | 部門の更新
 
@@ -76,9 +76,9 @@ Name | Type | Description  | Required | Notes
 ## get_section
 
 > crate::models::SectionResponse get_section(id, company_id)
+部門の取得
 
-
- <h2 id=\"\">概要</h2>  <p>指定した事業所の部門を参照する</p><h2 id=\"_2\">レスポンスの例</h2>  <pre><code>// プレミアムプラン（個人）、ベーシックプラン以上（法人） {   &quot;section&quot; : {     &quot;id&quot; : 102,     &quot;company_id&quot; : 1,     &quot;name&quot; : &quot;開発部門&quot;,     &quot;long_name&quot;: &quot;開発部門&quot;,     &quot;shortcut1&quot; : &quot;DEVELOPER&quot;,     &quot;shortcut2&quot; : &quot;123&quot;,     &quot;indent_count&quot;: 1,     &quot;parent_id&quot;: 101   } } // それ以外のプラン {   &quot;section&quot; : {     &quot;id&quot; : 102,     &quot;company_id&quot; : 1,     &quot;name&quot; : &quot;開発部門&quot;,     &quot;long_name&quot;: &quot;開発部門&quot;,     &quot;shortcut1&quot; : &quot;DEVELOPER&quot;,     &quot;shortcut2&quot; : &quot;123&quot;   } }</code></pre> 
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の部門を取得する</p><h2 id=\"_2\">レスポンスの例</h2>  <pre><code>// プレミアムプラン（個人）、ベーシックプラン以上（法人） {   &quot;section&quot; : {     &quot;id&quot; : 102,     &quot;company_id&quot; : 1,     &quot;name&quot; : &quot;開発部門&quot;,     &quot;long_name&quot;: &quot;開発部門&quot;,     &quot;shortcut1&quot; : &quot;DEVELOPER&quot;,     &quot;shortcut2&quot; : &quot;123&quot;,     &quot;indent_count&quot;: 1,     &quot;parent_id&quot;: 101   } } // それ以外のプラン {   &quot;section&quot; : {     &quot;id&quot; : 102,     &quot;company_id&quot; : 1,     &quot;name&quot; : &quot;開発部門&quot;,     &quot;long_name&quot;: &quot;開発部門&quot;,     &quot;shortcut1&quot; : &quot;DEVELOPER&quot;,     &quot;shortcut2&quot; : &quot;123&quot;   } }</code></pre> 
 
 ### Parameters
 

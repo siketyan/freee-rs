@@ -18,7 +18,7 @@ Method | HTTP request | Description
 > crate::models::PartnerResponse create_partner(partner_create_params)
 取引先の作成
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の取引先を作成する</p> <ul> <li>codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</li> <li>取引先コードの利用を有効にしている場合は、codeの指定は必須です。</li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li></ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の取引先を作成する</p> <ul> <li>取引先名称（name）は重複不可です。</li> <li>codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</li> <li>取引先コードの利用を有効にしている場合は、   <ul>     <li>codeの指定は必須です。</li>     <li>name、codeそれぞれ重複不可です。</li>   </ul> </li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li></ul>
 
 ### Parameters
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Required | Notes
 **end_update_date** | Option<**String**> | 更新日で絞り込み：終了日(yyyy-mm-dd) |  |
 **offset** | Option<**i64**> | 取得レコードのオフセット (デフォルト: 0) |  |
 **limit** | Option<**i32**> | 取得レコードの件数 (デフォルト: 50, 最小: 1, 最大: 3000) |  |
-**keyword** | Option<**String**> | 検索キーワード：取引先名・正式名称・カナ名称に対するあいまい検索で一致、またはショートカットキー1・2のいずれかに完全一致 |  |
+**keyword** | Option<**String**> | 検索キーワード<br> 取引先コード・取引先名・正式名称・カナ名称・ショートカットキー1・2のいずれかに対する部分一致。<br> 以下のいずれかで区切って複数キーワードを指定した場合はAND検索となります。 <ul> <li>半角スペース</li> <li>全角スペース</li> <li>タブ</li> </ul>  |  |
 
 ### Return type
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::PartnerResponse update_partner(id, partner_update_params)
 取引先の更新
 
- <h2 id=\"\">概要</h2>  <p>指定した取引先の情報を更新する</p> <ul> <li>codeを指定、更新することはできません。</li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li> <li>支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）にnull型を入力することにより、期日を未設定に変更可能です。</li></ul>
+ <h2 id=\"\">概要</h2>  <p>指定した取引先の情報を更新する</p> <ul> <li>取引先名称（name）は重複不可です。</li> <li>codeを指定、更新することはできません。</li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li> <li>支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）にnull型を入力することにより、期日を未設定に変更可能です。</li></ul>
 
 ### Parameters
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::PartnerResponse update_partner_by_code(code, partner_update_params)
 取引先の更新
 
- <h2 id=\"\">概要</h2>  <p>取引先コードをキーに、指定した取引先の情報を更新する</p> <ul> <li>このAPIを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</li> <li>コードを日本語に設定している場合は、URLエンコードしてURLに含めるようにしてください。</li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li> <li>支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）にnull型を入力することにより、期日を未設定に変更可能です。</li></ul>
+ <h2 id=\"\">概要</h2>  <p>取引先コードをキーに、指定した取引先の情報を更新する</p> <ul> <li>このAPIを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</li> <li>コードを日本語に設定している場合は、URLエンコードしてURLに含めるようにしてください。</li> <li>取引先名称（name）は重複不可です。</li> <li>振込元口座ID（payer_walletable_id）, 振込手数料負担（transfer_fee_handling_side）, 支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）は法人向けのプロフェッショナルプラン以上で利用可能です。</li> <li>支払期日設定（payment_term_attributes）, 請求の入金期日設定（invoice_payment_term_attributes）にnull型を入力することにより、期日を未設定に変更可能です。</li></ul>
 
 ### Parameters
 

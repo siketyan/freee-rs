@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **i32** | 取引先ID | 
-**code** | Option<**String**> | 取引先コード | 
+**code** | Option<**String**> | 取引先コード | [optional]
 **name** | **String** | 取引先名 | 
 **shortcut1** | Option<**String**> | ショートカット1 (255文字以内) | [optional]
 **shortcut2** | Option<**String**> | ショートカット2 (255文字以内) | [optional]

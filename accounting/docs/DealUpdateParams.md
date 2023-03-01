@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **partner_code** | Option<**String**> | 取引先コード | [optional]
 **ref_number** | Option<**String**> | 管理番号 | [optional]
 **details** | [**Vec<crate::models::DealUpdateParamsDetailsInner>**](dealUpdateParams_details_inner.md) |  | 
-**receipt_ids** | Option<**Vec<i32>**> | 証憑ファイルID（ファイルボックスのファイルID）（配列） | [optional]
+**receipt_ids** | Option<**Vec<i32>**> | ファイルボックス（証憑ファイル）ID（配列） | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
