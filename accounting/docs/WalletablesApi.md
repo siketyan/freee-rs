@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_walletable**](WalletablesApi.md#create_walletable) | **POST** /api/1/walletables | 口座の作成
 [**destroy_walletable**](WalletablesApi.md#destroy_walletable) | **DELETE** /api/1/walletables/{type}/{id} | 口座の削除
-[**get_walletable**](WalletablesApi.md#get_walletable) | **GET** /api/1/walletables/{type}/{id} | 口座情報の取得
+[**get_walletable**](WalletablesApi.md#get_walletable) | **GET** /api/1/walletables/{type}/{id} | 口座の取得
 [**get_walletables**](WalletablesApi.md#get_walletables) | **GET** /api/1/walletables | 口座一覧の取得
 [**update_walletable**](WalletablesApi.md#update_walletable) | **PUT** /api/1/walletables/{type}/{id} | 口座の更新
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > crate::models::WalletableCreateResponse create_walletable(walletable_create_params)
 口座の作成
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所に口座を作成する</p>  <h2 id=\"\">注意点</h2> <ul><li>同期に対応した口座はこのAPIでは作成できません</li></ul>  <h2 id=\"_2\">定義</h2>  <ul> <li> <p>type</p>  <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li> <p>name : 口座名</p> </li>  <li> <p>bank_id : 連携サービスID</p> </li>  <li> <p>is_asset : type:wallet指定時に口座を資産口座とするか負債口座とするか（true: 資産口座 (デフォルト), false: 負債口座）</p> </li> </ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の口座を作成する</p>  <h2 id=\"\">注意点</h2> <ul><li>同期に対応した口座はこのAPIでは作成できません</li></ul>  <h2 id=\"_2\">定義</h2>  <ul> <li> <p>type</p>  <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li> <p>name : 口座名</p> </li>  <li> <p>bank_id : 連携サービスID</p> </li>  <li> <p>is_asset : type:wallet指定時に口座を資産口座とするか負債口座とするか（true: 資産口座 (デフォルト), false: 負債口座）</p> </li> </ul>
 
 ### Parameters
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Required | Notes
 ## get_walletable
 
 > crate::models::GetWalletable200Response get_walletable(id, r#type, company_id)
-口座情報の取得
+口座の取得
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の口座情報を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の口座を取得する</p>  <h2 id=\"_2\">定義</h2>  <ul> <li>type <ul> <li>bank_account : 銀行口座</li>  <li>credit_card : クレジットカード</li>  <li>wallet : その他の決済口座</li> </ul> </li>  <li>walletable_balance : 登録残高</li>  <li>last_balance : 同期残高</li> </ul>
 
 ### Parameters
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::GetWalletable200Response update_walletable(id, r#type, walletable_update_params)
 口座の更新
 
- <h2 id=\"\">概要</h2>  <p>口座を更新する</p>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の口座を更新する</p>
 
 ### Parameters
 

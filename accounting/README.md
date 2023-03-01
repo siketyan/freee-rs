@@ -15,7 +15,7 @@
 <p>https://api.freee.co.jp/ (httpsのみ)</p>
 
 <h3 id=\"about_authorize\">認証について</h3>
-<p>OAuth2.0を利用します。詳細は<a href=\"https://developer.freee.co.jp/docs\" target=\"_blank\">ドキュメントの認証</a>パートを参照してください。</p>
+<p>OAuth2.0を利用します。<a href=\"https://developer.freee.co.jp/reference/#%e8%aa%8d%e8%a8%bc\" target=\"_blank\">詳細はリファレンスの認証に関する記載を参照してください。</a></p>
 
 <h3 id=\"data_format\">データフォーマット</h3>
 
@@ -91,19 +91,32 @@
 <h4 id=\"reports_api_endpoint\">/reportsと/receipts/{id}/downloadエンドポイント</h4>
 
 <p>freeeはエンドポイント毎に一定頻度以上のアクセスを検知した場合、APIアクセスをコントロールする場合があります。その際のhttp status codeは429（too many requests）となります。</p>
-
 <ul>
   <li>/reports:1秒に10回まで</li>
   <li>/receipts/{id}/download:1秒に3回まで</li>
 </ul>
 
-<p>レスポンスボディのmetaプロパティに以下を含めます。</p>
+<p>http status codeが429となった場合、API使用ステータスはレスポンスヘッダに付与されます。</p>
+<pre><code>x-ratelimit-limit:10
+x-ratelimit-remaining:1
+x-ratelimit-reset:2023-01-13T10:22:29+09:00
+</code></pre>
 
-<ul>
-  <li>設定されている上限値</li>
-  <li>上限に達するまでの使用可能回数</li>
-  <li>（上限値に達した場合）使用回数がリセットされる時刻</li>
-</ul>
+<br> 各ヘッダの意味は次のとおりです。</p>
+
+<table border=\"1\">
+  <tbody>
+    <tr>
+      <th style=\"padding: 10px\"><strong>ヘッダ名</strong></th>
+      <th style=\"padding: 10px\"><strong>説明</strong></th>
+    </tr>
+    <tr><td style=\"padding: 10px\">x-ratelimit-limit</td><td style=\"padding: 10px\">使用回数の上限</td></tr>
+    <tr><td style=\"padding: 10px\">x-ratelimit-remaining</td><td style=\"padding: 10px\">残り使用回数</td></tr>
+    <tr><td style=\"padding: 10px\">x-ratelimit-reset</td><td style=\"padding: 10px\">使用回数がリセットされる時刻</td></tr>
+  </tbody>
+</table>
+
+</br>
 
 <h3 id=\"plan_api_rate_limit\">プラン別のAPI Rate Limit</h3>
   <table border=\"1\">
@@ -170,7 +183,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountItemsApi* | [**create_account_item**](docs/AccountItemsApi.md#create_account_item) | **POST** /api/1/account_items | 勘定科目の作成
 *AccountItemsApi* | [**destroy_account_item**](docs/AccountItemsApi.md#destroy_account_item) | **DELETE** /api/1/account_items/{id} | 勘定科目の削除
-*AccountItemsApi* | [**get_account_item**](docs/AccountItemsApi.md#get_account_item) | **GET** /api/1/account_items/{id} | 勘定科目の詳細情報の取得
+*AccountItemsApi* | [**get_account_item**](docs/AccountItemsApi.md#get_account_item) | **GET** /api/1/account_items/{id} | 勘定科目の取得
 *AccountItemsApi* | [**get_account_items**](docs/AccountItemsApi.md#get_account_items) | **GET** /api/1/account_items | 勘定科目一覧の取得
 *AccountItemsApi* | [**update_account_item**](docs/AccountItemsApi.md#update_account_item) | **PUT** /api/1/account_items/{id} | 勘定科目の更新
 *ApprovalFlowRoutesApi* | [**get_approval_flow_route**](docs/ApprovalFlowRoutesApi.md#get_approval_flow_route) | **GET** /api/1/approval_flow_routes/{id} | 申請経路の取得
@@ -180,18 +193,18 @@ Class | Method | HTTP request | Description
 *ApprovalRequestsApi* | [**get_approval_request**](docs/ApprovalRequestsApi.md#get_approval_request) | **GET** /api/1/approval_requests/{id} | 各種申請の取得
 *ApprovalRequestsApi* | [**get_approval_request_form**](docs/ApprovalRequestsApi.md#get_approval_request_form) | **GET** /api/1/approval_requests/forms/{id} | 各種申請の申請フォームの取得
 *ApprovalRequestsApi* | [**get_approval_request_forms**](docs/ApprovalRequestsApi.md#get_approval_request_forms) | **GET** /api/1/approval_requests/forms | 各種申請の申請フォーム一覧の取得
-*ApprovalRequestsApi* | [**get_approval_requests**](docs/ApprovalRequestsApi.md#get_approval_requests) | **GET** /api/1/approval_requests | 各種申請の一覧
+*ApprovalRequestsApi* | [**get_approval_requests**](docs/ApprovalRequestsApi.md#get_approval_requests) | **GET** /api/1/approval_requests | 各種申請一覧の取得
 *ApprovalRequestsApi* | [**update_approval_request**](docs/ApprovalRequestsApi.md#update_approval_request) | **PUT** /api/1/approval_requests/{id} | 各種申請の更新
 *ApprovalRequestsApi* | [**update_approval_request_action**](docs/ApprovalRequestsApi.md#update_approval_request_action) | **POST** /api/1/approval_requests/{id}/actions | 各種申請の承認操作
 *BanksApi* | [**get_bank**](docs/BanksApi.md#get_bank) | **GET** /api/1/banks/{id} | 連携サービスの取得
 *BanksApi* | [**get_banks**](docs/BanksApi.md#get_banks) | **GET** /api/1/banks | 連携サービス一覧の取得
 *CompaniesApi* | [**get_companies**](docs/CompaniesApi.md#get_companies) | **GET** /api/1/companies | 事業所一覧の取得
-*CompaniesApi* | [**get_company**](docs/CompaniesApi.md#get_company) | **GET** /api/1/companies/{id} | 事業所の詳細情報の取得
-*DealsApi* | [**create_deal**](docs/DealsApi.md#create_deal) | **POST** /api/1/deals | 取引（収入／支出）の作成
-*DealsApi* | [**destroy_deal**](docs/DealsApi.md#destroy_deal) | **DELETE** /api/1/deals/{id} | 取引（収入／支出）の削除
-*DealsApi* | [**get_deal**](docs/DealsApi.md#get_deal) | **GET** /api/1/deals/{id} | 取引（収入／支出）の取得
-*DealsApi* | [**get_deals**](docs/DealsApi.md#get_deals) | **GET** /api/1/deals | 取引（収入／支出）一覧の取得
-*DealsApi* | [**update_deal**](docs/DealsApi.md#update_deal) | **PUT** /api/1/deals/{id} | 取引（収入／支出）の更新
+*CompaniesApi* | [**get_company**](docs/CompaniesApi.md#get_company) | **GET** /api/1/companies/{id} | 事業所の取得
+*DealsApi* | [**create_deal**](docs/DealsApi.md#create_deal) | **POST** /api/1/deals | 取引（収入・支出）の作成
+*DealsApi* | [**destroy_deal**](docs/DealsApi.md#destroy_deal) | **DELETE** /api/1/deals/{id} | 取引（収入・支出）の削除
+*DealsApi* | [**get_deal**](docs/DealsApi.md#get_deal) | **GET** /api/1/deals/{id} | 取引（収入・支出）の取得
+*DealsApi* | [**get_deals**](docs/DealsApi.md#get_deals) | **GET** /api/1/deals | 取引（収入・支出）一覧の取得
+*DealsApi* | [**update_deal**](docs/DealsApi.md#update_deal) | **PUT** /api/1/deals/{id} | 取引（収入・支出）の更新
 *ExpenseApplicationLineTemplatesApi* | [**create_expense_application_line_template**](docs/ExpenseApplicationLineTemplatesApi.md#create_expense_application_line_template) | **POST** /api/1/expense_application_line_templates | 経費科目の作成
 *ExpenseApplicationLineTemplatesApi* | [**destroy_expense_application_line_template**](docs/ExpenseApplicationLineTemplatesApi.md#destroy_expense_application_line_template) | **DELETE** /api/1/expense_application_line_templates/{id} | 経費科目の削除
 *ExpenseApplicationLineTemplatesApi* | [**get_expense_application_line_template**](docs/ExpenseApplicationLineTemplatesApi.md#get_expense_application_line_template) | **GET** /api/1/expense_application_line_templates/{id} | 経費科目の取得
@@ -213,9 +226,9 @@ Class | Method | HTTP request | Description
 *ItemsApi* | [**get_item**](docs/ItemsApi.md#get_item) | **GET** /api/1/items/{id} | 品目の取得
 *ItemsApi* | [**get_items**](docs/ItemsApi.md#get_items) | **GET** /api/1/items | 品目一覧の取得
 *ItemsApi* | [**update_item**](docs/ItemsApi.md#update_item) | **PUT** /api/1/items/{id} | 品目の更新
-*JournalsApi* | [**download_journal**](docs/JournalsApi.md#download_journal) | **GET** /api/1/journals/reports/{id}/download | ダウンロード実行
-*JournalsApi* | [**get_journal_status**](docs/JournalsApi.md#get_journal_status) | **GET** /api/1/journals/reports/{id}/status | ステータス確認
-*JournalsApi* | [**get_journals**](docs/JournalsApi.md#get_journals) | **GET** /api/1/journals | ダウンロード要求
+*JournalsApi* | [**download_journal**](docs/JournalsApi.md#download_journal) | **GET** /api/1/journals/reports/{id}/download | 仕訳帳のダウンロード
+*JournalsApi* | [**get_journal_status**](docs/JournalsApi.md#get_journal_status) | **GET** /api/1/journals/reports/{id}/status | 仕訳帳のステータスの取得
+*JournalsApi* | [**get_journals**](docs/JournalsApi.md#get_journals) | **GET** /api/1/journals | 仕訳帳のダウンロード要求
 *ManualJournalsApi* | [**create_manual_journal**](docs/ManualJournalsApi.md#create_manual_journal) | **POST** /api/1/manual_journals | 振替伝票の作成
 *ManualJournalsApi* | [**destroy_manual_journal**](docs/ManualJournalsApi.md#destroy_manual_journal) | **DELETE** /api/1/manual_journals/{id} | 振替伝票の削除
 *ManualJournalsApi* | [**get_manual_journal**](docs/ManualJournalsApi.md#get_manual_journal) | **GET** /api/1/manual_journals/{id} | 振替伝票の取得
@@ -229,47 +242,47 @@ Class | Method | HTTP request | Description
 *PartnersApi* | [**update_partner_by_code**](docs/PartnersApi.md#update_partner_by_code) | **PUT** /api/1/partners/code/{code} | 取引先の更新
 *PaymentRequestsApi* | [**create_payment_request**](docs/PaymentRequestsApi.md#create_payment_request) | **POST** /api/1/payment_requests | 支払依頼の作成
 *PaymentRequestsApi* | [**destroy_payment_request**](docs/PaymentRequestsApi.md#destroy_payment_request) | **DELETE** /api/1/payment_requests/{id} | 支払依頼の削除
-*PaymentRequestsApi* | [**get_payment_request**](docs/PaymentRequestsApi.md#get_payment_request) | **GET** /api/1/payment_requests/{id} | 支払依頼詳細の取得
+*PaymentRequestsApi* | [**get_payment_request**](docs/PaymentRequestsApi.md#get_payment_request) | **GET** /api/1/payment_requests/{id} | 支払依頼の取得
 *PaymentRequestsApi* | [**get_payment_requests**](docs/PaymentRequestsApi.md#get_payment_requests) | **GET** /api/1/payment_requests | 支払依頼一覧の取得
 *PaymentRequestsApi* | [**update_payment_request**](docs/PaymentRequestsApi.md#update_payment_request) | **PUT** /api/1/payment_requests/{id} | 支払依頼の更新
 *PaymentRequestsApi* | [**update_payment_request_action**](docs/PaymentRequestsApi.md#update_payment_request_action) | **POST** /api/1/payment_requests/{id}/actions | 支払依頼の承認操作
-*PaymentsApi* | [**create_deal_payment**](docs/PaymentsApi.md#create_deal_payment) | **POST** /api/1/deals/{id}/payments | 取引（収入／支出）の支払行作成
-*PaymentsApi* | [**destroy_deal_payment**](docs/PaymentsApi.md#destroy_deal_payment) | **DELETE** /api/1/deals/{id}/payments/{payment_id} | 取引（収入／支出）の支払行削除
-*PaymentsApi* | [**update_deal_payment**](docs/PaymentsApi.md#update_deal_payment) | **PUT** /api/1/deals/{id}/payments/{payment_id} | 取引（収入／支出）の支払行更新
+*PaymentsApi* | [**create_deal_payment**](docs/PaymentsApi.md#create_deal_payment) | **POST** /api/1/deals/{id}/payments | 取引（収入・支出）の支払行の作成
+*PaymentsApi* | [**destroy_deal_payment**](docs/PaymentsApi.md#destroy_deal_payment) | **DELETE** /api/1/deals/{id}/payments/{payment_id} | 取引（収入・支出）の支払行の削除
+*PaymentsApi* | [**update_deal_payment**](docs/PaymentsApi.md#update_deal_payment) | **PUT** /api/1/deals/{id}/payments/{payment_id} | 取引（収入・支出）の支払行の更新
 *QuotationsApi* | [**create_quotation**](docs/QuotationsApi.md#create_quotation) | **POST** /api/1/quotations | 見積書の作成
 *QuotationsApi* | [**destroy_quotation**](docs/QuotationsApi.md#destroy_quotation) | **DELETE** /api/1/quotations/{id} | 見積書の削除
 *QuotationsApi* | [**get_quotation**](docs/QuotationsApi.md#get_quotation) | **GET** /api/1/quotations/{id} | 見積書の取得
 *QuotationsApi* | [**get_quotations**](docs/QuotationsApi.md#get_quotations) | **GET** /api/1/quotations | 見積書一覧の取得
 *QuotationsApi* | [**update_quotation**](docs/QuotationsApi.md#update_quotation) | **PUT** /api/1/quotations/{id} | 見積書の更新
-*ReceiptsApi* | [**create_receipt**](docs/ReceiptsApi.md#create_receipt) | **POST** /api/1/receipts | ファイルボックス 証憑ファイルアップロード
-*ReceiptsApi* | [**destroy_receipt**](docs/ReceiptsApi.md#destroy_receipt) | **DELETE** /api/1/receipts/{id} | ファイルボックス 証憑ファイルを削除する
-*ReceiptsApi* | [**download_receipt**](docs/ReceiptsApi.md#download_receipt) | **GET** /api/1/receipts/{id}/download | ファイルボックス 証憑ファイルのダウンロード
-*ReceiptsApi* | [**get_receipt**](docs/ReceiptsApi.md#get_receipt) | **GET** /api/1/receipts/{id} | ファイルボックス 証憑ファイルの取得
-*ReceiptsApi* | [**get_receipts**](docs/ReceiptsApi.md#get_receipts) | **GET** /api/1/receipts | ファイルボックス 証憑ファイル一覧の取得
-*ReceiptsApi* | [**update_receipt**](docs/ReceiptsApi.md#update_receipt) | **PUT** /api/1/receipts/{id} | ファイルボックス 証憑ファイル情報更新
-*RenewsApi* | [**create_deal_renew**](docs/RenewsApi.md#create_deal_renew) | **POST** /api/1/deals/{id}/renews | 取引（収入／支出）に対する+更新の作成
-*RenewsApi* | [**delete_deal_renew**](docs/RenewsApi.md#delete_deal_renew) | **DELETE** /api/1/deals/{id}/renews/{renew_id} | 取引（収入／支出）の+更新の削除
-*RenewsApi* | [**update_deal_renew**](docs/RenewsApi.md#update_deal_renew) | **PUT** /api/1/deals/{id}/renews/{renew_id} | 取引（収入／支出）の+更新の更新
+*ReceiptsApi* | [**create_receipt**](docs/ReceiptsApi.md#create_receipt) | **POST** /api/1/receipts | ファイルボックス（証憑ファイル）のアップロード
+*ReceiptsApi* | [**destroy_receipt**](docs/ReceiptsApi.md#destroy_receipt) | **DELETE** /api/1/receipts/{id} | ファイルボックス（証憑ファイル）の削除
+*ReceiptsApi* | [**download_receipt**](docs/ReceiptsApi.md#download_receipt) | **GET** /api/1/receipts/{id}/download | ファイルボックス（証憑ファイル）のダウンロード
+*ReceiptsApi* | [**get_receipt**](docs/ReceiptsApi.md#get_receipt) | **GET** /api/1/receipts/{id} | ファイルボックス（証憑ファイル）の取得
+*ReceiptsApi* | [**get_receipts**](docs/ReceiptsApi.md#get_receipts) | **GET** /api/1/receipts | ファイルボックス（証憑ファイル）一覧の取得
+*ReceiptsApi* | [**update_receipt**](docs/ReceiptsApi.md#update_receipt) | **PUT** /api/1/receipts/{id} | ファイルボックス（証憑ファイル）の更新
+*RenewsApi* | [**create_deal_renew**](docs/RenewsApi.md#create_deal_renew) | **POST** /api/1/deals/{id}/renews | 取引（収入・支出）の+更新の作成
+*RenewsApi* | [**delete_deal_renew**](docs/RenewsApi.md#delete_deal_renew) | **DELETE** /api/1/deals/{id}/renews/{renew_id} | 取引（収入・支出）の+更新の削除
+*RenewsApi* | [**update_deal_renew**](docs/RenewsApi.md#update_deal_renew) | **PUT** /api/1/deals/{id}/renews/{renew_id} | 取引（収入・支出）の+更新の更新
 *SectionsApi* | [**create_section**](docs/SectionsApi.md#create_section) | **POST** /api/1/sections | 部門の作成
 *SectionsApi* | [**destroy_section**](docs/SectionsApi.md#destroy_section) | **DELETE** /api/1/sections/{id} | 部門の削除
-*SectionsApi* | [**get_section**](docs/SectionsApi.md#get_section) | **GET** /api/1/sections/{id} | 
+*SectionsApi* | [**get_section**](docs/SectionsApi.md#get_section) | **GET** /api/1/sections/{id} | 部門の取得
 *SectionsApi* | [**get_sections**](docs/SectionsApi.md#get_sections) | **GET** /api/1/sections | 部門一覧の取得
 *SectionsApi* | [**update_section**](docs/SectionsApi.md#update_section) | **PUT** /api/1/sections/{id} | 部門の更新
-*SegmentTagsApi* | [**create_segment_tag**](docs/SegmentTagsApi.md#create_segment_tag) | **POST** /api/1/segments/{segment_id}/tags | セグメントの作成
+*SegmentTagsApi* | [**create_segment_tag**](docs/SegmentTagsApi.md#create_segment_tag) | **POST** /api/1/segments/{segment_id}/tags | セグメントタグの作成
 *SegmentTagsApi* | [**destroy_segments_tag**](docs/SegmentTagsApi.md#destroy_segments_tag) | **DELETE** /api/1/segments/{segment_id}/tags/{id} | セグメントタグの削除
 *SegmentTagsApi* | [**get_segment_tags**](docs/SegmentTagsApi.md#get_segment_tags) | **GET** /api/1/segments/{segment_id}/tags | セグメントタグ一覧の取得
 *SegmentTagsApi* | [**update_segment_tag**](docs/SegmentTagsApi.md#update_segment_tag) | **PUT** /api/1/segments/{segment_id}/tags/{id} | セグメントタグの更新
 *SelectablesApi* | [**get_forms_selectables**](docs/SelectablesApi.md#get_forms_selectables) | **GET** /api/1/forms/selectables | フォーム用選択項目情報の取得
 *TagsApi* | [**create_tag**](docs/TagsApi.md#create_tag) | **POST** /api/1/tags | メモタグの作成
 *TagsApi* | [**destroy_tag**](docs/TagsApi.md#destroy_tag) | **DELETE** /api/1/tags/{id} | メモタグの削除
-*TagsApi* | [**get_tag**](docs/TagsApi.md#get_tag) | **GET** /api/1/tags/{id} | メモタグの詳細情報の取得
+*TagsApi* | [**get_tag**](docs/TagsApi.md#get_tag) | **GET** /api/1/tags/{id} | メモタグの取得
 *TagsApi* | [**get_tags**](docs/TagsApi.md#get_tags) | **GET** /api/1/tags | メモタグ一覧の取得
 *TagsApi* | [**update_tag**](docs/TagsApi.md#update_tag) | **PUT** /api/1/tags/{id} | メモタグの更新
-*TaxesApi* | [**get_tax_code**](docs/TaxesApi.md#get_tax_code) | **GET** /api/1/taxes/codes/{code} | 税区分コードの取得
-*TaxesApi* | [**get_tax_codes**](docs/TaxesApi.md#get_tax_codes) | **GET** /api/1/taxes/codes | 税区分コード一覧の取得
-*TaxesApi* | [**get_taxes_companies**](docs/TaxesApi.md#get_taxes_companies) | **GET** /api/1/taxes/companies/{company_id} | 税区分コード詳細一覧の取得
+*TaxesApi* | [**get_tax_code**](docs/TaxesApi.md#get_tax_code) | **GET** /api/1/taxes/codes/{code} | 税区分の取得
+*TaxesApi* | [**get_tax_codes**](docs/TaxesApi.md#get_tax_codes) | **GET** /api/1/taxes/codes | 税区分一覧の取得
+*TaxesApi* | [**get_taxes_companies**](docs/TaxesApi.md#get_taxes_companies) | **GET** /api/1/taxes/companies/{company_id} | 指定した事業所の税区分一覧の取得
 *TransfersApi* | [**create_transfer**](docs/TransfersApi.md#create_transfer) | **POST** /api/1/transfers | 取引（振替）の作成
-*TransfersApi* | [**destroy_transfer**](docs/TransfersApi.md#destroy_transfer) | **DELETE** /api/1/transfers/{id} | 取引（振替）の削除する
+*TransfersApi* | [**destroy_transfer**](docs/TransfersApi.md#destroy_transfer) | **DELETE** /api/1/transfers/{id} | 取引（振替）の削除
 *TransfersApi* | [**get_transfer**](docs/TransfersApi.md#get_transfer) | **GET** /api/1/transfers/{id} | 取引（振替）の取得
 *TransfersApi* | [**get_transfers**](docs/TransfersApi.md#get_transfers) | **GET** /api/1/transfers | 取引（振替）一覧の取得
 *TransfersApi* | [**update_transfer**](docs/TransfersApi.md#update_transfer) | **PUT** /api/1/transfers/{id} | 取引（振替）の更新
@@ -292,28 +305,30 @@ Class | Method | HTTP request | Description
 *TrialBalanceApi* | [**get_trial_pl_two_years**](docs/TrialBalanceApi.md#get_trial_pl_two_years) | **GET** /api/1/reports/trial_pl_two_years | 損益計算書(前年比較)の取得
 *UsersApi* | [**get_users**](docs/UsersApi.md#get_users) | **GET** /api/1/users | 事業所に所属するユーザー一覧の取得
 *UsersApi* | [**get_users_capabilities**](docs/UsersApi.md#get_users_capabilities) | **GET** /api/1/users/capabilities | ログインユーザーの権限の取得
-*UsersApi* | [**get_users_me**](docs/UsersApi.md#get_users_me) | **GET** /api/1/users/me | ログインユーザー情報の取得
-*UsersApi* | [**update_user**](docs/UsersApi.md#update_user) | **PUT** /api/1/users/me | ユーザー情報の更新
-*WalletTxnsApi* | [**create_wallet_txn**](docs/WalletTxnsApi.md#create_wallet_txn) | **POST** /api/1/wallet_txns | 明細の作成
-*WalletTxnsApi* | [**destroy_wallet_txn**](docs/WalletTxnsApi.md#destroy_wallet_txn) | **DELETE** /api/1/wallet_txns/{id} | 明細の削除
-*WalletTxnsApi* | [**get_wallet_txn**](docs/WalletTxnsApi.md#get_wallet_txn) | **GET** /api/1/wallet_txns/{id} | 明細の取得
-*WalletTxnsApi* | [**get_wallet_txns**](docs/WalletTxnsApi.md#get_wallet_txns) | **GET** /api/1/wallet_txns | 明細一覧の取得
+*UsersApi* | [**get_users_me**](docs/UsersApi.md#get_users_me) | **GET** /api/1/users/me | ログインユーザーの取得
+*UsersApi* | [**update_user**](docs/UsersApi.md#update_user) | **PUT** /api/1/users/me | ログインユーザーの更新
+*WalletTxnsApi* | [**create_wallet_txn**](docs/WalletTxnsApi.md#create_wallet_txn) | **POST** /api/1/wallet_txns | 口座明細の作成
+*WalletTxnsApi* | [**destroy_wallet_txn**](docs/WalletTxnsApi.md#destroy_wallet_txn) | **DELETE** /api/1/wallet_txns/{id} | 口座明細の削除
+*WalletTxnsApi* | [**get_wallet_txn**](docs/WalletTxnsApi.md#get_wallet_txn) | **GET** /api/1/wallet_txns/{id} | 口座明細の取得
+*WalletTxnsApi* | [**get_wallet_txns**](docs/WalletTxnsApi.md#get_wallet_txns) | **GET** /api/1/wallet_txns | 口座明細一覧の取得
 *WalletablesApi* | [**create_walletable**](docs/WalletablesApi.md#create_walletable) | **POST** /api/1/walletables | 口座の作成
 *WalletablesApi* | [**destroy_walletable**](docs/WalletablesApi.md#destroy_walletable) | **DELETE** /api/1/walletables/{type}/{id} | 口座の削除
-*WalletablesApi* | [**get_walletable**](docs/WalletablesApi.md#get_walletable) | **GET** /api/1/walletables/{type}/{id} | 口座情報の取得
+*WalletablesApi* | [**get_walletable**](docs/WalletablesApi.md#get_walletable) | **GET** /api/1/walletables/{type}/{id} | 口座の取得
 *WalletablesApi* | [**get_walletables**](docs/WalletablesApi.md#get_walletables) | **GET** /api/1/walletables | 口座一覧の取得
 *WalletablesApi* | [**update_walletable**](docs/WalletablesApi.md#update_walletable) | **PUT** /api/1/walletables/{type}/{id} | 口座の更新
 
 
 ## Documentation For Models
 
- - [AccountItemParams](docs/AccountItemParams.md)
- - [AccountItemParamsAccountItem](docs/AccountItemParamsAccountItem.md)
- - [AccountItemParamsAccountItemItemsInner](docs/AccountItemParamsAccountItemItemsInner.md)
+ - [AccountItemCreateParams](docs/AccountItemCreateParams.md)
+ - [AccountItemCreateParamsAccountItem](docs/AccountItemCreateParamsAccountItem.md)
+ - [AccountItemCreateParamsAccountItemItemsInner](docs/AccountItemCreateParamsAccountItemItemsInner.md)
  - [AccountItemResponse](docs/AccountItemResponse.md)
  - [AccountItemResponseAccountItem](docs/AccountItemResponseAccountItem.md)
  - [AccountItemResponseAccountItemItemsInner](docs/AccountItemResponseAccountItemItemsInner.md)
  - [AccountItemResponseAccountItemPartnersInner](docs/AccountItemResponseAccountItemPartnersInner.md)
+ - [AccountItemUpdateParams](docs/AccountItemUpdateParams.md)
+ - [AccountItemUpdateParamsAccountItem](docs/AccountItemUpdateParamsAccountItem.md)
  - [AccountItemsResponse](docs/AccountItemsResponse.md)
  - [AccountItemsResponseAccountItemsInner](docs/AccountItemsResponseAccountItemsInner.md)
  - [ApprovalFlowRouteResponse](docs/ApprovalFlowRouteResponse.md)
@@ -354,7 +369,6 @@ Class | Method | HTTP request | Description
  - [CompanyResponseCompanySectionsInner](docs/CompanyResponseCompanySectionsInner.md)
  - [CompanyResponseCompanyTagsInner](docs/CompanyResponseCompanyTagsInner.md)
  - [CompanyResponseCompanyTaxCodesInner](docs/CompanyResponseCompanyTaxCodesInner.md)
- - [CompanyResponseCompanyTaxesInner](docs/CompanyResponseCompanyTaxesInner.md)
  - [CompanyResponseCompanyWalletablesInner](docs/CompanyResponseCompanyWalletablesInner.md)
  - [Deal](docs/Deal.md)
  - [DealCreateParams](docs/DealCreateParams.md)
@@ -390,6 +404,7 @@ Class | Method | HTTP request | Description
  - [ExpenseApplicationsIndexResponseExpenseApplicationsInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInner.md)
  - [ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner.md)
  - [FiscalYears](docs/FiscalYears.md)
+ - [FixedAsset](docs/FixedAsset.md)
  - [ForbiddenError](docs/ForbiddenError.md)
  - [GetBanks200Response](docs/GetBanks200Response.md)
  - [GetDeals200Response](docs/GetDeals200Response.md)
@@ -449,7 +464,6 @@ Class | Method | HTTP request | Description
  - [PartnerCreateParamsPaymentTermAttributes](docs/PartnerCreateParamsPaymentTermAttributes.md)
  - [PartnerResponse](docs/PartnerResponse.md)
  - [PartnerResponsePartner](docs/PartnerResponsePartner.md)
- - [PartnerResponsePartnerAddressAttributes](docs/PartnerResponsePartnerAddressAttributes.md)
  - [PartnerResponsePartnerInvoicePaymentTermAttributes](docs/PartnerResponsePartnerInvoicePaymentTermAttributes.md)
  - [PartnerResponsePartnerPaymentTermAttributes](docs/PartnerResponsePartnerPaymentTermAttributes.md)
  - [PartnerUpdateParams](docs/PartnerUpdateParams.md)
@@ -496,8 +510,18 @@ Class | Method | HTTP request | Description
  - [SelectablesIndexResponseAccountCategoriesInner](docs/SelectablesIndexResponseAccountCategoriesInner.md)
  - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInner](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInner.md)
  - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTax](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTax.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10Exempt50](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10Exempt50.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10Exempt80](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate10Exempt80.md)
  - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5Exempt50](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5Exempt50.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5Exempt80](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate5Exempt80.md)
  - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8Exempt50](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8Exempt50.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8Exempt80](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRate8Exempt80.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8Exempt50](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8Exempt50.md)
+ - [SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8Exempt80](docs/SelectablesIndexResponseAccountCategoriesInnerAccountItemsInnerDefaultTaxTaxRateR8Exempt80.md)
  - [SelectablesIndexResponseAccountGroupsInner](docs/SelectablesIndexResponseAccountGroupsInner.md)
  - [ServiceUnavailableError](docs/ServiceUnavailableError.md)
  - [ServiceUnavailableErrorErrorsInner](docs/ServiceUnavailableErrorErrorsInner.md)
@@ -576,7 +600,17 @@ Class | Method | HTTP request | Description
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [User](docs/User.md)
  - [UserCapability](docs/UserCapability.md)
+ - [UserCapabilityJustCreate](docs/UserCapabilityJustCreate.md)
+ - [UserCapabilityJustCreateRead](docs/UserCapabilityJustCreateRead.md)
+ - [UserCapabilityJustRead](docs/UserCapabilityJustRead.md)
+ - [UserCapabilityJustReadUpdate](docs/UserCapabilityJustReadUpdate.md)
+ - [UserCapabilityJustReadUpdateDestroy](docs/UserCapabilityJustReadUpdateDestroy.md)
+ - [UserCapabilityJustReadWrite](docs/UserCapabilityJustReadWrite.md)
+ - [UserCapabilityJustUpdate](docs/UserCapabilityJustUpdate.md)
+ - [UserCapabilityWithConfirm](docs/UserCapabilityWithConfirm.md)
  - [UserCapabilityWithSelfOnly](docs/UserCapabilityWithSelfOnly.md)
+ - [UserCapabilityWithSync](docs/UserCapabilityWithSync.md)
+ - [UserCapabilityWithWrite](docs/UserCapabilityWithWrite.md)
  - [UserParams](docs/UserParams.md)
  - [UserResponse](docs/UserResponse.md)
  - [WalletTxn](docs/WalletTxn.md)

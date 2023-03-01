@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::InvoiceResponse get_invoice(company_id, id)
 請求書の取得
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書詳細を取得する</p>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書を取得する</p>
 
 ### Parameters
 

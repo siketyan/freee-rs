@@ -4,7 +4,7 @@ All URIs are relative to *https://api.freee.co.jp*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_segment_tag**](SegmentTagsApi.md#create_segment_tag) | **POST** /api/1/segments/{segment_id}/tags | セグメントの作成
+[**create_segment_tag**](SegmentTagsApi.md#create_segment_tag) | **POST** /api/1/segments/{segment_id}/tags | セグメントタグの作成
 [**destroy_segments_tag**](SegmentTagsApi.md#destroy_segments_tag) | **DELETE** /api/1/segments/{segment_id}/tags/{id} | セグメントタグの削除
 [**get_segment_tags**](SegmentTagsApi.md#get_segment_tags) | **GET** /api/1/segments/{segment_id}/tags | セグメントタグ一覧の取得
 [**update_segment_tag**](SegmentTagsApi.md#update_segment_tag) | **PUT** /api/1/segments/{segment_id}/tags/{id} | セグメントタグの更新
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ## create_segment_tag
 
 > crate::models::SegmentTagResponse create_segment_tag(segment_id, segment_tag_params)
-セグメントの作成
+セグメントタグの作成
 
  <h2 id=\"\">概要</h2>  <p>指定した事業所のセグメントタグを作成する</p>  <h2 id=\"\">注意点</h2>  <ul>  <li>本APIは法人向けのプロフェッショナルプラン以上で利用可能です。利用可能なセグメントの数は、法人向けのプロフェッショナルプランの場合は1つ、エンタープライズプランの場合は3つです。</li>  </ul>
 

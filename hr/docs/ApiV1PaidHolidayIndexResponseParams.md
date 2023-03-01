@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **end_at** | Option<**String**> | 取得予定終了時間 | [optional]
 **issue_date** | [**String**](string.md) | 申請日 | 
 **comment** | Option<**String**> | 申請理由 | [optional]
-**status** | **String** | 申請ステータス。（draft:下書き、in_progress:申請中、approved:承認済、feedback:差戻し）  | 
+**status** | **String** | 申請ステータス。（draft:下書き、in_progress:申請中、approved:承認済、feedback:差戻し） | 
 **revoke_status** | Option<**String**> | 取消申請ステータス。（null:取消申請されてない、revoking:取消中、revoked:取消済） | 
 **passed_auto_check** | **bool** | 自動チェック結果 | 
 

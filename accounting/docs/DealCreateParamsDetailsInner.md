@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tax_code** | **i32** | 税区分コード | 
 **account_item_id** | **i32** | 勘定科目ID | 
-**amount** | **i64** | 取引金額（税込で指定してください） | 
+**amount** | **i64** | 取引金額（税込で指定してください）<br> マイナスの値を指定した場合、控除・マイナス行として登録されます。<br> 上記以外の値を指定した場合、通常行として登録されます。  | 
 **item_id** | Option<**i32**> | 品目ID | [optional]
 **section_id** | Option<**i32**> | 部門ID | [optional]
 **tag_ids** | Option<**Vec<i32>**> | メモタグID | [optional]

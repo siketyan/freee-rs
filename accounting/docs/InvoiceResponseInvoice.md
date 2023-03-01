@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **title** | Option<**String**> | タイトル | [optional]
 **due_date** | Option<**String**> | 期日 (yyyy-mm-dd) | [optional]
 **total_amount** | **i32** | 合計金額 | 
-**total_vat** | Option<**i32**> | 合計金額 | [optional]
+**total_vat** | Option<**i32**> | 消費税 | [optional]
 **sub_total** | Option<**i32**> | 小計 | [optional]
 **booking_date** | Option<**String**> | 売上計上日 | [optional]
 **description** | Option<**String**> | 概要 | [optional]

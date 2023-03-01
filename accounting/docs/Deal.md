@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **details** | Option<[**Vec<crate::models::DealCreateResponseDealDetailsInner>**](dealCreateResponse_deal_details_inner.md)> | 取引の明細行 | [optional]
 **renews** | Option<[**Vec<crate::models::DealRenewsInner>**](deal_renews_inner.md)> | 取引の+更新行 | [optional]
 **payments** | Option<[**Vec<crate::models::DealCreateResponseDealPaymentsInner>**](dealCreateResponse_deal_payments_inner.md)> | 取引の支払行 | [optional]
-**receipts** | Option<[**Vec<crate::models::DealReceiptsInner>**](deal_receipts_inner.md)> | 証憑ファイル（ファイルボックスのファイル） | [optional]
+**receipts** | Option<[**Vec<crate::models::DealReceiptsInner>**](deal_receipts_inner.md)> | ファイルボックス（証憑ファイル） | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
