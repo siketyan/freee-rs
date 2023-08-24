@@ -12,7 +12,7 @@ authors = ["Naoki Ikeguchi <me@s6n.jp>"]
 edition = "2021"
 
 [dependencies]
-serde = "^1.0.185"
+serde = "^1.0.186"
 serde_derive = "^1.0.185"
 serde_json = "^1.0.105"
 serde_with = "^3.3.0"
