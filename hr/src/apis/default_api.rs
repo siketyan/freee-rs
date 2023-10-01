@@ -1,7 +1,7 @@
 /*
  * freee人事労務 API
  *
- *  <p>freee人事労務のAPI仕様です。</p>  <hr />  <h2 id=\"start_guide\">スタートガイド</h2>  <p>freee API開発がはじめての方は<a href=\"https://developer.freee.co.jp/getting-started\">freee API スタートガイド</a>を参照してください。</p>  <hr /> <h2 id=\"specification\">仕様</h2>  <h3 id=\"api_endpoint\">APIエンドポイント</h3>  <p>https://api.freee.co.jp/hr</p>  <h3 id=\"about_authorize\">認証について</h3>  <p>OAuth2.0を利用します。<a href=\"https://developer.freee.co.jp/reference/#%e8%aa%8d%e8%a8%bc\" target=\"_blank\">詳細はリファレンスの認証に関する記載を参照してください。</a></p>  <h3 id=\"data_format\">データフォーマット</h3>  <p>リクエスト、レスポンスともにJSON形式をサポートしていますが、詳細は、API毎の説明欄（application/jsonなど）を確認してください。</p>  <h3 id=\"compatibility\">後方互換性ありの変更</h3>  <p>freeeでは、APIを改善していくために以下のような変更は後方互換性ありとして通知なく変更を入れることがあります。アプリケーション実装者は以下を踏まえて開発を行ってください。</p>  <ul> <li>新しいAPIリソース・エンドポイントの追加</li> <li>既存のAPIに対して必須ではない新しいリクエストパラメータの追加</li> <li>既存のAPIレスポンスに対する新しいプロパティの追加</li> <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li> <li>keyとなっているidやcodeの長さの変更（長くする）</li> </ul>  <h3 id=\"common_response_header\">共通レスポンスヘッダー</h3>  <p>すべてのAPIのレスポンスには以下のHTTPヘッダーが含まれます。</p>  <ul> <li> <p>X-Request-Id</p> <ul> <li>各リクエスト毎に発行されるID</li> </ul> </li> </ul>  <h3 id=\"error_response\">共通エラーレスポンス</h3>  <p>APIリクエストでエラーが発生した場合は、エラー原因に応じたステータスコードおよびメッセージを返します。</p>    <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ステータスコード</strong></th>       <th style=\"padding: 10px\"><strong>原因</strong></th>     </tr>     <tr><td style=\"padding: 10px\">400</td><td style=\"padding: 10px\">リクエストパラメータが不正</td></tr>     <tr><td style=\"padding: 10px\">401</td><td style=\"padding: 10px\">アクセストークンが無効</td></tr>     <tr><td style=\"padding: 10px\">403</td><td style=\"padding: 10px\">アクセス権限がない</td></tr>     <tr><td style=\"padding: 10px\">404</td><td style=\"padding: 10px\">リソースが存在しない</td></tr>     <tr><td style=\"padding: 10px\">429</td><td style=\"padding: 10px\">リクエスト回数制限を超えた</td></tr>     <tr><td style=\"padding: 10px\">503</td><td style=\"padding: 10px\">システム内で予期しないエラーが発生</td></tr>   </tbody> </table>  <p>メッセージボディ内の <code>messages</code> にはエラー内容を説明する文字列が入ります。</p> <pre><code>  {     &quot;status_code&quot; : 400,     &quot;errors&quot; : [       {         &quot;type&quot; : &quot;bad_request&quot;,         &quot;messages&quot; : [           &quot;リクエストの形式が不正です。&quot;         ]       }     ]   }  </code></pre>  </br>  <h3 id=\"api_rate_limit\">API使用制限</h3>  <p>APIリクエストは1時間で5000回を上限としています。API使用ステータスはレスポンスヘッダに付与されます。</p> <pre><code>X-Ratelimit-Limit:5000 X-Ratelimit-Remaining:4998 X-Ratelimit-Reset:2018-01-01T12:00:00.000000Z </code></pre>  <br> 各ヘッダの意味は次のとおりです。</p>   <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ヘッダ名</strong></th>       <th style=\"padding: 10px\"><strong>説明</strong></th>     </tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Limit</td><td style=\"padding: 10px\">使用回数の上限</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Remaining</td><td style=\"padding: 10px\">残り使用回数</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Reset</td><td style=\"padding: 10px\">使用回数がリセットされる時刻</td></tr>   </tbody> </table>  <p>上記に加え、freeeは一定期間に過度のアクセスを検知した場合、APIアクセスをコントロールする場合があります。<br> その際のhttp status codeは403となります。制限がかかってから10分程度が過ぎると再度使用することができるようになります。</p>
+ *  <p>freee人事労務のAPI仕様です。</p>  <hr />  <h2 id=\"start_guide\">スタートガイド</h2>  <p>freee API開発がはじめての方は<a href=\"https://developer.freee.co.jp/getting-started\">freee API スタートガイド</a>を参照してください。</p>  <hr /> <h2 id=\"specification\">仕様</h2>  <h3 id=\"api_endpoint\">APIエンドポイント</h3>  <p>https://api.freee.co.jp/hr</p>  <h3 id=\"about_authorize\">認証について</h3>  <p>OAuth2.0を利用します。<a href=\"https://developer.freee.co.jp/reference/#%e8%aa%8d%e8%a8%bc\" target=\"_blank\">詳細はリファレンスの認証に関する記載を参照してください。</a></p>  <h3 id=\"data_format\">データフォーマット</h3>  <p>リクエスト、レスポンスともにJSON形式をサポートしていますが、詳細は、API毎の説明欄（application/jsonなど）を確認してください。</p>  <h3 id=\"compatibility\">後方互換性ありの変更</h3>  <p>freeeでは、APIを改善していくために以下のような変更は後方互換性ありとして通知なく変更を入れることがあります。アプリケーション実装者は以下を踏まえて開発を行ってください。</p>  <ul> <li>新しいAPIリソース・エンドポイントの追加</li> <li>既存のAPIに対して必須ではない新しいリクエストパラメータの追加</li> <li>既存のAPIレスポンスに対する新しいプロパティの追加</li> <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li> <li>keyとなっているidやcodeの長さの変更（長くする）</li> <li>エラーメッセージの変更</li> </ul>  <h3 id=\"common_response_header\">共通レスポンスヘッダー</h3>  <p>すべてのAPIのレスポンスには以下のHTTPヘッダーが含まれます。</p>  <ul> <li> <p>X-Request-Id</p> <ul> <li>各リクエスト毎に発行されるID</li> </ul> </li> </ul>  <h3 id=\"error_response\">共通エラーレスポンス</h3>  <p>APIリクエストでエラーが発生した場合は、エラー原因に応じたステータスコードおよびメッセージを返します。</p>    <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ステータスコード</strong></th>       <th style=\"padding: 10px\"><strong>原因</strong></th>     </tr>     <tr><td style=\"padding: 10px\">400</td><td style=\"padding: 10px\">リクエストパラメータが不正</td></tr>     <tr><td style=\"padding: 10px\">401</td><td style=\"padding: 10px\">アクセストークンが無効</td></tr>     <tr><td style=\"padding: 10px\">403</td><td style=\"padding: 10px\">アクセス権限がない</td></tr>     <tr><td style=\"padding: 10px\">404</td><td style=\"padding: 10px\">リソースが存在しない</td></tr>     <tr><td style=\"padding: 10px\">429</td><td style=\"padding: 10px\">リクエスト回数制限を超えた</td></tr>     <tr><td style=\"padding: 10px\">503</td><td style=\"padding: 10px\">システム内で予期しないエラーが発生</td></tr>   </tbody> </table>  <p>メッセージボディ内の <code>messages</code> にはエラー内容を説明する文字列が入ります。</p> <pre><code>  {     &quot;status_code&quot; : 400,     &quot;errors&quot; : [       {         &quot;type&quot; : &quot;bad_request&quot;,         &quot;messages&quot; : [           &quot;リクエストの形式が不正です。&quot;         ]       }     ]   }  </code></pre>  </br>  <h3 id=\"api_rate_limit\">API使用制限</h3>  <p>APIリクエストは1時間で5000回を上限としています。API使用ステータスはレスポンスヘッダに付与されます。</p> <pre><code>X-Ratelimit-Limit:5000 X-Ratelimit-Remaining:4998 X-Ratelimit-Reset:2018-01-01T12:00:00.000000Z </code></pre>  <br> 各ヘッダの意味は次のとおりです。</p>   <table border=\"1\">   <tbody>     <tr>       <th style=\"padding: 10px\"><strong>ヘッダ名</strong></th>       <th style=\"padding: 10px\"><strong>説明</strong></th>     </tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Limit</td><td style=\"padding: 10px\">使用回数の上限</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Remaining</td><td style=\"padding: 10px\">残り使用回数</td></tr>     <tr><td style=\"padding: 10px\">X-RateLimit-Reset</td><td style=\"padding: 10px\">使用回数がリセットされる時刻</td></tr>   </tbody> </table>  <p>上記に加え、freeeは一定期間に過度のアクセスを検知した場合、APIアクセスをコントロールする場合があります。<br> その際のhttp status codeは403となります。制限がかかってから10分程度が過ぎると再度使用することができるようになります。</p>  </br>  <h3 id=\"api_rate_limit\">プランごとの利用可能API</h3>   <p>契約プランごとに利用可能なfreee人事労務APIはfreee人事労務のWeb版でご利用できる機能と同様です。例えば、スタンダードプラン（または旧ベーシックプラン）を契約している場合、Web版では打刻機能をご利用いただけますので、APIでもタイムレコーダー(打刻)APIが利用可能です。<a href=\"https://support.freee.co.jp/hc/ja/articles/203309710\" target=\"_blank\">freee人事労務のWeb版のプラン別機能比較はfreee人事労務のプラン・料金についてのヘルプを参照してください。</a></p>  </br>  <hr />
  *
  * The version of the OpenAPI document: 2022-02-01
  * 
@@ -51,6 +51,30 @@ pub enum ActionApprovalRequestsPaidHolidayError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`action_approval_requests_special_holiday`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ActionApprovalRequestsSpecialHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`action_approval_requests_work_time`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ActionApprovalRequestsWorkTimeError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`bulk_update_employee_dependent_rules`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -88,6 +112,28 @@ pub enum CreateApprovalRequestsOvertimeWorkError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CreateApprovalRequestsPaidHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`create_approval_requests_special_holiday`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreateApprovalRequestsSpecialHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`create_approval_requests_work_time`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreateApprovalRequestsWorkTimeError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
@@ -175,6 +221,30 @@ pub enum DestroyApprovalRequestsPaidHolidayError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`destroy_approval_requests_special_holiday`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DestroyApprovalRequestsSpecialHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`destroy_approval_requests_work_time`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DestroyApprovalRequestsWorkTimeError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`destroy_employee`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -223,6 +293,42 @@ pub enum DestroyPositionError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`destroy_yearend_adjustment_housing_loan`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DestroyYearendAdjustmentHousingLoanError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`destroy_yearend_adjustment_insurances`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DestroyYearendAdjustmentInsurancesError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`destroy_yearend_adjustment_previous_job`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DestroyYearendAdjustmentPreviousJobError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_approval_flow_route`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -253,6 +359,7 @@ pub enum GetApprovalRequestsMonthlyAttendanceError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
     Status500(crate::models::InternalServerError),
     UnknownValue(serde_json::Value),
 }
@@ -275,6 +382,7 @@ pub enum GetApprovalRequestsOvertimeWorkError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
     Status500(crate::models::InternalServerError),
     UnknownValue(serde_json::Value),
 }
@@ -297,6 +405,7 @@ pub enum GetApprovalRequestsPaidHolidayError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
     Status500(crate::models::InternalServerError),
     UnknownValue(serde_json::Value),
 }
@@ -305,6 +414,52 @@ pub enum GetApprovalRequestsPaidHolidayError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetApprovalRequestsPaidHolidaysError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_approval_requests_special_holiday`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetApprovalRequestsSpecialHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_approval_requests_special_holidays`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetApprovalRequestsSpecialHolidaysError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_approval_requests_work_time`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetApprovalRequestsWorkTimeError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_approval_requests_work_times`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetApprovalRequestsWorkTimesError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
@@ -414,6 +569,18 @@ pub enum GetEmployeeHealthInsuranceRuleError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_employee_profile_custom_fields_rule`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetEmployeeProfileCustomFieldsRuleError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_employee_profile_rule`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -503,6 +670,17 @@ pub enum GetEmployeesError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_employees_special_holidays`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetEmployeesSpecialHolidaysError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_groups`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -559,6 +737,137 @@ pub enum GetUsersMeError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_yearend_adjustment_employee`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetYearendAdjustmentEmployeeError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_yearend_adjustment_employees`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetYearendAdjustmentEmployeesError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`post_yearend_adjustment_housing_loan`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PostYearendAdjustmentHousingLoanError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`post_yearend_adjustment_insurances`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PostYearendAdjustmentInsurancesError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_dependents`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentDependentsError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_employee`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentEmployeeError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_housing_loan`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentHousingLoanError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_housing_loan_deduction`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentHousingLoanDeductionError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_insurances`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentInsurancesError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_payroll_and_bonus`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentPayrollAndBonusError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`put_yearend_adjustment_previous_job`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PutYearendAdjustmentPreviousJobError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`update_approval_requests_monthly_attendance`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -587,6 +896,30 @@ pub enum UpdateApprovalRequestsOvertimeWorkError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum UpdateApprovalRequestsPaidHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`update_approval_requests_special_holiday`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UpdateApprovalRequestsSpecialHolidayError {
+    Status400(crate::models::Error),
+    Status401(crate::models::UnauthorizedError),
+    Status403(crate::models::ForbiddenError),
+    Status404(crate::models::NotfoundError),
+    Status500(crate::models::InternalServerError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`update_approval_requests_work_time`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UpdateApprovalRequestsWorkTimeError {
     Status400(crate::models::Error),
     Status401(crate::models::UnauthorizedError),
     Status403(crate::models::ForbiddenError),
@@ -709,7 +1042,7 @@ pub enum UpdatePositionError {
 }
 
 
-///  指定した事業所の月次勤怠締め申請情報を承認操作します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の月次勤怠締め申請情報を承認操作します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn action_approval_requests_monthly_attendance(configuration: &configuration::Configuration, id: i32, api_v1_approval_action_request: Option<crate::models::ApiV1ApprovalActionRequest>) -> Result<crate::models::ApiV1MonthlyAttendanceResponse, Error<ActionApprovalRequestsMonthlyAttendanceError>> {
     let local_var_configuration = configuration;
 
@@ -746,7 +1079,7 @@ pub async fn action_approval_requests_monthly_attendance(configuration: &configu
     }
 }
 
-///  指定した事業所の残業申請情報を承認操作します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の残業申請情報を承認操作します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn action_approval_requests_overtime_work(configuration: &configuration::Configuration, id: i32, api_v1_approval_action_request: Option<crate::models::ApiV1ApprovalActionRequest>) -> Result<crate::models::ApiV1OvertimeWorkResponse, Error<ActionApprovalRequestsOvertimeWorkError>> {
     let local_var_configuration = configuration;
 
@@ -783,7 +1116,7 @@ pub async fn action_approval_requests_overtime_work(configuration: &configuratio
     }
 }
 
-///  指定した事業所の有給申請情報を承認操作します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  全休の有給申請は承認されると申請者の有給の残数が減ります。<br> 半休と時間休の有給申請は承認されても申請者の有給の残数が減らない場合があります。以下の条件を満たす場合、申請者の有給の残数が減ります。 - 申請承認後、申請者が申請の対象日に出勤打刻と退勤打刻をする。 - 申請承認前に、申請者が申請の対象日に勤怠を登録している。  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の有給申請情報を承認操作します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>全休の有給申請は承認されると申請者の有給の残数が減ります。</li>   <li>半休と時間休の有給申請は承認されても申請者の有給の残数が減らない場合があります。以下の条件を満たす場合、申請者の有給の残数が減ります。</li>   <ul>     <li>申請承認後、申請者が申請の対象日に出勤打刻と退勤打刻をする。</li>     <li>申請承認前に、申請者が申請の対象日に勤怠を登録している。</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn action_approval_requests_paid_holiday(configuration: &configuration::Configuration, id: i32, api_v1_approval_action_request: Option<crate::models::ApiV1ApprovalActionRequest>) -> Result<crate::models::ApiV1PaidHolidayResponse, Error<ActionApprovalRequestsPaidHolidayError>> {
     let local_var_configuration = configuration;
 
@@ -820,7 +1153,81 @@ pub async fn action_approval_requests_paid_holiday(configuration: &configuration
     }
 }
 
-/// 指定した従業員の扶養親族情報を更新します。 idがない場合は新規作成、destroyがtrueの場合は削除になります。  residence_type=live_in: 同居の場合、以下のパラメータに指定した値はWebに反映されません。 - zipcode1 - zipcode2 - prefecture_code - address - address_kana - annual_remittance_amount  residence_type=non_resident: 別居(国外)の場合、以下のパラメータに指定した値はWebに反映されません。 - prefecture_code
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の特別休暇申請情報を承認操作します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>全休の特別休暇申請は承認されると申請者の特別休暇の残数が減ります。</li>   <li>半休と時間休の特別休暇申請は承認されても申請者の特別休暇の残数が減らない場合があります。以下の条件を満たす場合、申請者の特別休暇の残数が減ります。</li>   <ul>     <li>申請承認後、申請者が申請の対象日に出勤打刻と退勤打刻をする。</li>     <li>申請承認前に、申請者が申請の対象日に勤怠を登録している。</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn action_approval_requests_special_holiday(configuration: &configuration::Configuration, id: i32, api_v1_approval_action_request: Option<crate::models::ApiV1ApprovalActionRequest>) -> Result<crate::models::ApiV1specialHolidayResponse, Error<ActionApprovalRequestsSpecialHolidayError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays/{id}/actions", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_approval_action_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<ActionApprovalRequestsSpecialHolidayError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の勤務時間修正申請情報を承認操作します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn action_approval_requests_work_time(configuration: &configuration::Configuration, id: i32, api_v1_approval_action_request: Option<crate::models::ApiV1ApprovalActionRequest>) -> Result<serde_json::Value, Error<ActionApprovalRequestsWorkTimeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times/{id}/actions", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_approval_action_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<ActionApprovalRequestsWorkTimeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の家族情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>idがない場合は新規作成、destroyがtrueの場合は削除になります。</li>   <li>residence_type=live_in: 同居の場合、以下のパラメータに指定した値はWebに反映されません。</li>   <ul>     <li>zipcode1</li>     <li>zipcode2</li>     <li>prefecture_code</li>     <li>address</li>     <li>address_kana</li>     <li>annual_remittance_amount</li>   </ul>   <li>residence_type=non_resident: 別居(国外)の場合、以下のパラメータに指定した値はWebに反映されません。</li>   <ul>     <li>prefecture_code</li>   </ul> </ul>
 pub async fn bulk_update_employee_dependent_rules(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateBody>) -> Result<crate::models::ApiV1EmployeesDependentRulesControllerPeriodBulkUpdateResponse, Error<BulkUpdateEmployeeDependentRulesError>> {
     let local_var_configuration = configuration;
 
@@ -857,7 +1264,7 @@ pub async fn bulk_update_employee_dependent_rules(configuration: &configuration:
     }
 }
 
-///  指定した事業所の月次勤怠締め申請を新規作成します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の月次勤怠締め申請を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn create_approval_requests_monthly_attendance(configuration: &configuration::Configuration, api_v1_monthly_attendance_create_request: Option<crate::models::ApiV1MonthlyAttendanceCreateRequest>) -> Result<crate::models::ApiV1MonthlyAttendanceResponse, Error<CreateApprovalRequestsMonthlyAttendanceError>> {
     let local_var_configuration = configuration;
 
@@ -894,7 +1301,7 @@ pub async fn create_approval_requests_monthly_attendance(configuration: &configu
     }
 }
 
-///  指定した事業所の残業申請を新規作成します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の残業申請を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn create_approval_requests_overtime_work(configuration: &configuration::Configuration, api_v1_overtime_work_request: Option<crate::models::ApiV1OvertimeWorkRequest>) -> Result<crate::models::ApiV1OvertimeWorkResponse, Error<CreateApprovalRequestsOvertimeWorkError>> {
     let local_var_configuration = configuration;
 
@@ -931,7 +1338,7 @@ pub async fn create_approval_requests_overtime_work(configuration: &configuratio
     }
 }
 
-///  指定した事業所の有給申請を新規作成します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の有給申請を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn create_approval_requests_paid_holiday(configuration: &configuration::Configuration, api_v1_paid_holiday_request: Option<crate::models::ApiV1PaidHolidayRequest>) -> Result<crate::models::ApiV1PaidHolidayResponse, Error<CreateApprovalRequestsPaidHolidayError>> {
     let local_var_configuration = configuration;
 
@@ -968,7 +1375,81 @@ pub async fn create_approval_requests_paid_holiday(configuration: &configuration
     }
 }
 
-///  従業員を新規作成します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の特別休暇申請を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn create_approval_requests_special_holiday(configuration: &configuration::Configuration, api_v1special_holiday_request: Option<crate::models::ApiV1specialHolidayRequest>) -> Result<crate::models::ApiV1specialHolidayResponse, Error<CreateApprovalRequestsSpecialHolidayError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1special_holiday_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<CreateApprovalRequestsSpecialHolidayError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の勤務時間修正を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn create_approval_requests_work_time(configuration: &configuration::Configuration, create_approval_requests_work_time_request: Option<crate::models::CreateApprovalRequestsWorkTimeRequest>) -> Result<crate::models::CreateApprovalRequestsWorkTime201Response, Error<CreateApprovalRequestsWorkTimeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&create_approval_requests_work_time_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<CreateApprovalRequestsWorkTimeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>従業員を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn create_employee(configuration: &configuration::Configuration, body: Option<crate::models::ApiV1EmployeesControllerPeriodCreateBody>) -> Result<crate::models::ApiV1EmployeesControllerPeriodCreateResponse, Error<CreateEmployeeError>> {
     let local_var_configuration = configuration;
 
@@ -1005,7 +1486,7 @@ pub async fn create_employee(configuration: &configuration::Configuration, body:
     }
 }
 
-///  指定した従業員の打刻情報を登録します。  休憩開始の連続や退勤のみなど、整合性の取れていない打刻は登録できません。 打刻可能種別の取得APIを呼ぶことで、その従業員がその時点で登録可能な打刻種別が取得できます。  出勤の打刻は  - 前日の出勤時刻から24時間以内の場合、前日の退勤打刻が必須です。  - 前日の出勤時刻から24時間経過している場合は、前日の退勤打刻がなくとも出勤打刻を登録することができます。  退勤の打刻は  - [『退勤を自動打刻する』](https://support.freee.co.jp/hc/ja/articles/900004490226-%E5%8B%A4%E6%80%A0%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E3%82%92%E8%A1%8C%E3%81%86#h_01EYPYTR9HZ7YB8V5F18VMD1BT)の設定を使用している場合は、出勤打刻から24時間経過しても退勤打刻がない場合に、退勤打刻が自動で登録されます。  - すでに登録されている退勤打刻よりも後の時刻であれば上書き登録することができます。  打刻が日をまたぐ場合は、base_date(打刻日)に前日の日付を指定してください。  datetime(打刻日時)を指定できるのは管理者か事務担当者の権限を持ったユーザーのみです。  本APIはベーシックプラン以上で利用可能なAPIです。対象外のプランでは403エラーを返却します。  ## 操作可能な打刻種別 - clock_in：出勤 - break_begin：休憩開始 - break_end：休憩終了 - clock_out：退勤
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の打刻情報を登録します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>休憩開始の連続や退勤のみなど、整合性の取れていない打刻は登録できません。 打刻可能種別の取得APIを呼ぶことで、その従業員がその時点で登録可能な打刻種別が取得できます。</li>    <li>出勤の打刻は</li>   <ul>     <li>前日の出勤時刻から24時間以内の場合、前日の退勤打刻が必須です。</li>     <li> 前日の出勤時刻から24時間経過している場合は、前日の退勤打刻がなくとも出勤打刻を登録することができます。</li>   </ul>    <li>退勤の打刻は</li>   <ul>     <li><a href=\\\"https://support.freee.co.jp/hc/ja/articles/900004490226-%E5%8B%A4%E6%80%A0%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E3%82%92%E8%A1%8C%E3%81%86#h_01EYPYTR9HZ7YB8V5F18VMD1BT\"target=\\\"_blank\\\">『退勤を自動打刻する』</a>の設定を使用している場合は、出勤打刻から24時間経過しても退勤打刻がない場合に、退勤打刻が自動で登録されます。</li>     <li>すでに登録されている退勤打刻よりも後の時刻であれば上書き登録することができます。</li>   </ul>    <li>打刻が日をまたぐ場合は、base_date(打刻日)に前日の日付を指定してください。</li>    <li>datetime(打刻日時)を指定できるのは管理者か事務担当者の権限を持ったユーザーのみです。</li> </ul>
 pub async fn create_employee_time_clock(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesTimeClocksControllerPeriodCreateBody>) -> Result<crate::models::ApiV1EmployeesTimeClocksControllerPeriodCreateResponse, Error<CreateEmployeeTimeClockError>> {
     let local_var_configuration = configuration;
 
@@ -1042,7 +1523,7 @@ pub async fn create_employee_time_clock(configuration: &configuration::Configura
     }
 }
 
-///  指定した事業所の部門を新規作成します。 部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の部門を新規作成します。</p> <p>部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn create_group(configuration: &configuration::Configuration, api_v1_group_create_request: Option<crate::models::ApiV1GroupCreateRequest>) -> Result<crate::models::ApiV1GroupResponse, Error<CreateGroupError>> {
     let local_var_configuration = configuration;
 
@@ -1079,7 +1560,7 @@ pub async fn create_group(configuration: &configuration::Configuration, api_v1_g
     }
 }
 
-///  指定した事業所の役職を新規作成します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の役職を新規作成します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn create_position(configuration: &configuration::Configuration, api_v1_position_request: Option<crate::models::ApiV1PositionRequest>) -> Result<crate::models::ApiV1PositionResponse, Error<CreatePositionError>> {
     let local_var_configuration = configuration;
 
@@ -1116,7 +1597,7 @@ pub async fn create_position(configuration: &configuration::Configuration, api_v
     }
 }
 
-///  指定した事業所の月次勤怠締め申請情報を削除します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の月次勤怠締め申請情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn destroy_approval_requests_monthly_attendance(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyApprovalRequestsMonthlyAttendanceError>> {
     let local_var_configuration = configuration;
 
@@ -1153,7 +1634,7 @@ pub async fn destroy_approval_requests_monthly_attendance(configuration: &config
     }
 }
 
-///  指定した事業所の残業申請情報を削除します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の残業申請情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn destroy_approval_requests_overtime_work(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyApprovalRequestsOvertimeWorkError>> {
     let local_var_configuration = configuration;
 
@@ -1190,7 +1671,7 @@ pub async fn destroy_approval_requests_overtime_work(configuration: &configurati
     }
 }
 
-///  指定した事業所の有給申請情報を削除します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の有給申請情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn destroy_approval_requests_paid_holiday(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyApprovalRequestsPaidHolidayError>> {
     let local_var_configuration = configuration;
 
@@ -1227,7 +1708,81 @@ pub async fn destroy_approval_requests_paid_holiday(configuration: &configuratio
     }
 }
 
-///  指定したIDの従業員を削除します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の特別休暇申請情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
+pub async fn destroy_approval_requests_special_holiday(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyApprovalRequestsSpecialHolidayError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<DestroyApprovalRequestsSpecialHolidayError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の勤務時間修正申請情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
+pub async fn destroy_approval_requests_work_time(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyApprovalRequestsWorkTimeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<DestroyApprovalRequestsWorkTimeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定したIDの従業員を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn destroy_employee(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyEmployeeError>> {
     let local_var_configuration = configuration;
 
@@ -1264,7 +1819,7 @@ pub async fn destroy_employee(configuration: &configuration::Configuration, id: 
     }
 }
 
-///  指定した従業員の勤怠情報を削除します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の勤怠情報を削除します。</p>
 pub async fn destroy_employee_work_record(configuration: &configuration::Configuration, employee_id: i32, date: String, company_id: i32) -> Result<(), Error<DestroyEmployeeWorkRecordError>> {
     let local_var_configuration = configuration;
 
@@ -1301,7 +1856,7 @@ pub async fn destroy_employee_work_record(configuration: &configuration::Configu
     }
 }
 
-///  指定した事業所の部門の情報を削除します。 部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の部門の情報を削除します。</p> <p>部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn destroy_group(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyGroupError>> {
     let local_var_configuration = configuration;
 
@@ -1338,7 +1893,7 @@ pub async fn destroy_group(configuration: &configuration::Configuration, id: i32
     }
 }
 
-///  指定した事業所の役職の情報を削除します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 従業員に役職が適用されている場合、従業員の役職情報も削除されます。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の役職の情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>従業員に役職が適用されている場合、従業員の役職情報も削除されます。</li> </ul>
 pub async fn destroy_position(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<(), Error<DestroyPositionError>> {
     let local_var_configuration = configuration;
 
@@ -1375,7 +1930,118 @@ pub async fn destroy_position(configuration: &configuration::Configuration, id: 
     }
 }
 
-/// 指定した事業所の申請経路を取得する - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。 - 指定した事業所の従業員に紐づくユーザーのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の住宅ローンを削除します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn destroy_yearend_adjustment_housing_loan(configuration: &configuration::Configuration, company_id: i32, year: i32, employee_id: i32, id: i32) -> Result<(), Error<DestroyYearendAdjustmentHousingLoanError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/housing_loans/{employee_id}/{id}", local_var_configuration.base_path, year=year, employee_id=employee_id, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<DestroyYearendAdjustmentHousingLoanError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の保険料情報を削除します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn destroy_yearend_adjustment_insurances(configuration: &configuration::Configuration, company_id: i32, year: i32, employee_id: i32, id: i32) -> Result<(), Error<DestroyYearendAdjustmentInsurancesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/insurances/{employee_id}/{id}", local_var_configuration.base_path, year=year, employee_id=employee_id, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<DestroyYearendAdjustmentInsurancesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の前職情報を削除します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn destroy_yearend_adjustment_previous_job(configuration: &configuration::Configuration, company_id: i32, year: i32, employee_id: i32) -> Result<(), Error<DestroyYearendAdjustmentPreviousJobError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/previous_jobs/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        Ok(())
+    } else {
+        let local_var_entity: Option<DestroyYearendAdjustmentPreviousJobError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の申請経路を取得する。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>指定した事業所の従業員に紐づくユーザーのみ実行可能です。</li>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn get_approval_flow_route(configuration: &configuration::Configuration, id: i32, company_id: i32) -> Result<crate::models::ApiV1ApprovalFlowRouteResponse, Error<GetApprovalFlowRouteError>> {
     let local_var_configuration = configuration;
 
@@ -1412,7 +2078,7 @@ pub async fn get_approval_flow_route(configuration: &configuration::Configuratio
     }
 }
 
-/// 指定した事業所の申請経路一覧を取得する - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。 - 指定した事業所の従業員に紐づくユーザーのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の申請経路一覧を取得する。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>指定した事業所の従業員に紐づくユーザーのみ実行可能です。</li>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn get_approval_flow_routes(configuration: &configuration::Configuration, company_id: i32, included_user_id: Option<i32>, usage: Option<&str>) -> Result<crate::models::ApiV1ApprovalFlowRoutesIndexResponse, Error<GetApprovalFlowRoutesError>> {
     let local_var_configuration = configuration;
 
@@ -1455,7 +2121,7 @@ pub async fn get_approval_flow_routes(configuration: &configuration::Configurati
     }
 }
 
-///  指定した事業所の月次勤怠締め申請情報を取得します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の月次勤怠締め申請情報を取得します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn get_approval_requests_monthly_attendance(configuration: &configuration::Configuration, company_id: i32, id: i32) -> Result<crate::models::ApiV1MonthlyAttendanceResponse, Error<GetApprovalRequestsMonthlyAttendanceError>> {
     let local_var_configuration = configuration;
 
@@ -1492,7 +2158,7 @@ pub async fn get_approval_requests_monthly_attendance(configuration: &configurat
     }
 }
 
-///  指定した事業所の指定日付時点における月次勤怠締め申請情報をリストで返します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における月次勤怠締め申請情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn get_approval_requests_monthly_attendances(configuration: &configuration::Configuration, company_id: i32, status: Option<&str>, application_number: Option<i32>, start_issue_date: Option<String>, end_issue_date: Option<String>, approver_id: Option<i32>, applicant_id: Option<i32>, start_target_date: Option<String>, end_target_date: Option<String>, passed_auto_check: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1MonthlyAttendanceIndexResponse, Error<GetApprovalRequestsMonthlyAttendancesError>> {
     let local_var_configuration = configuration;
 
@@ -1562,7 +2228,7 @@ pub async fn get_approval_requests_monthly_attendances(configuration: &configura
     }
 }
 
-///  指定した事業所の残業申請情報を取得します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の残業申請情報を取得します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn get_approval_requests_overtime_work(configuration: &configuration::Configuration, company_id: i32, id: i32) -> Result<crate::models::ApiV1OvertimeWorkResponse, Error<GetApprovalRequestsOvertimeWorkError>> {
     let local_var_configuration = configuration;
 
@@ -1599,7 +2265,7 @@ pub async fn get_approval_requests_overtime_work(configuration: &configuration::
     }
 }
 
-///  指定した事業所の指定日付時点における残業申請情報をリストで返します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における残業申請情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
 pub async fn get_approval_requests_overtime_works(configuration: &configuration::Configuration, company_id: i32, status: Option<&str>, application_number: Option<i32>, start_issue_date: Option<String>, end_issue_date: Option<String>, approver_id: Option<i32>, applicant_id: Option<i32>, start_target_date: Option<String>, end_target_date: Option<String>, passed_auto_check: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1OvertimeWorkIndexResponse, Error<GetApprovalRequestsOvertimeWorksError>> {
     let local_var_configuration = configuration;
 
@@ -1669,7 +2335,7 @@ pub async fn get_approval_requests_overtime_works(configuration: &configuration:
     }
 }
 
-///  指定した事業所の有給申請情報を取得します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の有給申請情報を取得します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn get_approval_requests_paid_holiday(configuration: &configuration::Configuration, company_id: i32, id: i32) -> Result<crate::models::ApiV1PaidHolidayResponse, Error<GetApprovalRequestsPaidHolidayError>> {
     let local_var_configuration = configuration;
 
@@ -1706,7 +2372,7 @@ pub async fn get_approval_requests_paid_holiday(configuration: &configuration::C
     }
 }
 
-///  指定した事業所の指定日付時点における有給申請情報をリストで返します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における有給申請情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn get_approval_requests_paid_holidays(configuration: &configuration::Configuration, company_id: i32, status: Option<&str>, application_number: Option<i32>, start_issue_date: Option<String>, end_issue_date: Option<String>, approver_id: Option<i32>, applicant_id: Option<i32>, start_target_date: Option<String>, end_target_date: Option<String>, passed_auto_check: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1PaidHolidayIndexResponse, Error<GetApprovalRequestsPaidHolidaysError>> {
     let local_var_configuration = configuration;
 
@@ -1776,7 +2442,221 @@ pub async fn get_approval_requests_paid_holidays(configuration: &configuration::
     }
 }
 
-///  指定した従業員ID、年月の賞与明細を返します。 指定した年月に支払いのある賞与明細が返されます。 - 管理者権限を持ったユーザーのみ実行可能です。  # examples ``` {  \"employee_payroll_statement\": {    \"id\": 1,    \"company_id\": 1,    \"employee_id\": 1,    \"employee_name\": \"給与 太郎\",    \"employee_display_name\": \"給与 太郎\",    \"employee_num\": \"001\",    \"closing_date\": \"2018-03-31\",    \"pay_date\": \"2018-03-31\",    \"fixed\": true,    \"calc_status\": \"calculated\",    \"calculated_at\": \"2018-09-27T05:06:45.315Z\",    \"bonus_amount\": \"300000.0\",    \"total_allowance_amount\": \"0.0\",    \"total_deduction_amount\": \"23830.0\",    \"net_payment_amount\": \"268000.0\",    \"gross_payment_amount\": \"330000.0\",    \"total_taxable_payment_amount\": \"330000.0\",    \"allowances\": [{\"name\": \"地域手当\", \"amount\": \"30000.0\"}],    \"deductions\": [{\"name\": \"所得税\", \"amount\": \"46000.0\"}, {\"name\": \"健康保険料\", \"amount\": \"16000.0\"}],    \"remark\": \"備考\"  } } ```
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の特別休暇申請情報を取得します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn get_approval_requests_special_holiday(configuration: &configuration::Configuration, company_id: i32, id: i32) -> Result<crate::models::ApiV1specialHolidayResponse, Error<GetApprovalRequestsSpecialHolidayError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetApprovalRequestsSpecialHolidayError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における特別休暇申請情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn get_approval_requests_special_holidays(configuration: &configuration::Configuration, company_id: i32, status: Option<&str>, application_number: Option<i32>, start_issue_date: Option<String>, end_issue_date: Option<String>, approver_id: Option<i32>, applicant_id: Option<i32>, start_target_date: Option<String>, end_target_date: Option<String>, passed_auto_check: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1specialHolidayIndexResponse, Error<GetApprovalRequestsSpecialHolidaysError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_str) = status {
+        local_var_req_builder = local_var_req_builder.query(&[("status", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = application_number {
+        local_var_req_builder = local_var_req_builder.query(&[("application_number", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = start_issue_date {
+        local_var_req_builder = local_var_req_builder.query(&[("start_issue_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = end_issue_date {
+        local_var_req_builder = local_var_req_builder.query(&[("end_issue_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = approver_id {
+        local_var_req_builder = local_var_req_builder.query(&[("approver_id", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = applicant_id {
+        local_var_req_builder = local_var_req_builder.query(&[("applicant_id", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = start_target_date {
+        local_var_req_builder = local_var_req_builder.query(&[("start_target_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = end_target_date {
+        local_var_req_builder = local_var_req_builder.query(&[("end_target_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = passed_auto_check {
+        local_var_req_builder = local_var_req_builder.query(&[("passed_auto_check", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = limit {
+        local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = offset {
+        local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetApprovalRequestsSpecialHolidaysError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の勤務時間修正申請情報を取得します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn get_approval_requests_work_time(configuration: &configuration::Configuration, company_id: i32, id: i32) -> Result<serde_json::Value, Error<GetApprovalRequestsWorkTimeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetApprovalRequestsWorkTimeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における勤務時間修正申請情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul> </ul>
+pub async fn get_approval_requests_work_times(configuration: &configuration::Configuration, company_id: i32, status: Option<&str>, application_number: Option<i32>, start_issue_date: Option<String>, end_issue_date: Option<String>, approver_id: Option<i32>, applicant_id: Option<i32>, start_target_date: Option<String>, end_target_date: Option<String>, passed_auto_check: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::GetApprovalRequestsWorkTimes200Response, Error<GetApprovalRequestsWorkTimesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times", local_var_configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_str) = status {
+        local_var_req_builder = local_var_req_builder.query(&[("status", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = application_number {
+        local_var_req_builder = local_var_req_builder.query(&[("application_number", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = start_issue_date {
+        local_var_req_builder = local_var_req_builder.query(&[("start_issue_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = end_issue_date {
+        local_var_req_builder = local_var_req_builder.query(&[("end_issue_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = approver_id {
+        local_var_req_builder = local_var_req_builder.query(&[("approver_id", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = applicant_id {
+        local_var_req_builder = local_var_req_builder.query(&[("applicant_id", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = start_target_date {
+        local_var_req_builder = local_var_req_builder.query(&[("start_target_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = end_target_date {
+        local_var_req_builder = local_var_req_builder.query(&[("end_target_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = passed_auto_check {
+        local_var_req_builder = local_var_req_builder.query(&[("passed_auto_check", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = limit {
+        local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = offset {
+        local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetApprovalRequestsWorkTimesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員ID、年月の賞与明細を返します。</p> <p>指定した年月に支払いのある賞与明細が返されます。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>  <h2 id=\"_2\">examples</h2> <pre>   <code>     {     \"employee_payroll_statement\": {       \"id\": 1,       \"company_id\": 1,       \"employee_id\": 1,       \"employee_name\": \"給与 太郎\",       \"employee_display_name\": \"給与 太郎\",       \"employee_num\": \"001\",       \"closing_date\": \"2018-03-31\",       \"pay_date\": \"2018-03-31\",       \"fixed\": true,       \"calc_status\": \"calculated\",       \"calculated_at\": \"2018-09-27T05:06:45.315Z\",       \"bonus_amount\": \"300000.0\",       \"total_allowance_amount\": \"0.0\",       \"total_deduction_amount\": \"23830.0\",       \"net_payment_amount\": \"268000.0\",       \"gross_payment_amount\": \"330000.0\",       \"total_taxable_payment_amount\": \"330000.0\",       \"allowances\": [{\"name\": \"地域手当\", \"amount\": \"30000.0\"}],       \"deductions\": [{\"name\": \"所得税\", \"amount\": \"46000.0\"}, {\"name\": \"健康保険料\", \"amount\": \"16000.0\"}],       \"remark\": \"備考\"     }     }   </code> </pre>
 pub async fn get_bonuses_employee_payroll_statement(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1BonusesEmployeePayrollStatementsControllerPeriodShowResponse, Error<GetBonusesEmployeePayrollStatementError>> {
     let local_var_configuration = configuration;
 
@@ -1815,7 +2695,7 @@ pub async fn get_bonuses_employee_payroll_statement(configuration: &configuratio
     }
 }
 
-///  指定した事業所に所属する従業員の賞与明細をリストで返します。 指定した年月に支払いのある賞与明細が返されます。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所に所属する従業員の賞与明細をリストで返します。</p> <p>指定した年月に支払いのある賞与明細が返されます。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn get_bonuses_employee_payroll_statements(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1BonusesEmployeePayrollStatementsIndexSerializer, Error<GetBonusesEmployeePayrollStatementsError>> {
     let local_var_configuration = configuration;
 
@@ -1860,7 +2740,7 @@ pub async fn get_bonuses_employee_payroll_statements(configuration: &configurati
     }
 }
 
-///  指定した事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 退職ユーザーも含めて取得可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所に所属する従業員をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>退職ユーザーも含めて取得可能です。</li> </ul>
 pub async fn get_company_employees(configuration: &configuration::Configuration, company_id: i32, limit: Option<i32>, offset: Option<i32>, with_no_payroll_calculation: Option<bool>) -> Result<Vec<crate::models::ApiV1CompaniesEmployeeSerializer>, Error<GetCompanyEmployeesError>> {
     let local_var_configuration = configuration;
 
@@ -1905,7 +2785,7 @@ pub async fn get_company_employees(configuration: &configuration::Configuration,
     }
 }
 
-///  指定したIDの従業員を返します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 指定した対象年月に退職済みユーザーは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。
+/// <h2 id=\"\">概要</h2> <p>指定したIDの従業員を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>指定した年月に退職済みユーザーは取得できません。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)</li>   <li>事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。</li> </ul>
 pub async fn get_employee(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, id: i32) -> Result<crate::models::ApiV1EmployeesControllerPeriodShowResponse, Error<GetEmployeeError>> {
     let local_var_configuration = configuration;
 
@@ -1944,7 +2824,7 @@ pub async fn get_employee(configuration: &configuration::Configuration, company_
     }
 }
 
-///  指定した従業員・日付の銀行口座情報を返します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の銀行口座情報を返します。</p>
 pub async fn get_employee_bank_account_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesBankAccountRulesControllerPeriodShowResponse, Error<GetEmployeeBankAccountRuleError>> {
     let local_var_configuration = configuration;
 
@@ -1983,7 +2863,7 @@ pub async fn get_employee_bank_account_rule(configuration: &configuration::Confi
     }
 }
 
-///  指定した従業員・日付の基本給情報を返します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の基本給情報を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn get_employee_basic_pay_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesBasicPayRulesControllerPeriodShowResponse, Error<GetEmployeeBasicPayRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2022,7 +2902,7 @@ pub async fn get_employee_basic_pay_rule(configuration: &configuration::Configur
     }
 }
 
-///  指定した従業員・日付の扶養親族情報を返します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の家族情報を返します。</p>
 pub async fn get_employee_dependent_rules(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesDependentRulesControllerPeriodIndexResponse, Error<GetEmployeeDependentRulesError>> {
     let local_var_configuration = configuration;
 
@@ -2061,7 +2941,7 @@ pub async fn get_employee_dependent_rules(configuration: &configuration::Configu
     }
 }
 
-///  指定した事業所の指定日付時点における所属情報をリストで返します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における所属情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn get_employee_group_memberships(configuration: &configuration::Configuration, company_id: i32, base_date: String, with_no_payroll_calculation: Option<bool>, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1EmployeeGroupMembershipsIndexSerializer, Error<GetEmployeeGroupMembershipsError>> {
     let local_var_configuration = configuration;
 
@@ -2108,7 +2988,7 @@ pub async fn get_employee_group_memberships(configuration: &configuration::Confi
     }
 }
 
-///  指定した従業員・日付の健康保険情報を返します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の健康保険情報を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)</li> </ul>
 pub async fn get_employee_health_insurance_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse, Error<GetEmployeeHealthInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2147,7 +3027,46 @@ pub async fn get_employee_health_insurance_rule(configuration: &configuration::C
     }
 }
 
-///  指定した従業員・日付の姓名などの情報を返します。  本APIは、給与計算対象外の従業員には非対応です。employee_idに給与計算対象外の従業員IDを指定した場合、本APIを利用できません。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付のカスタム項目情報を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>指定年月に在籍していない従業員および給与計算対象外の従業員ではデータが存在しないため、空の配列が返ります。</li> </ul>
+pub async fn get_employee_profile_custom_fields_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesProfileCustomFieldRulesControllerPeriodIndexResponse, Error<GetEmployeeProfileCustomFieldsRuleError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/employees/{employee_id}/profile_custom_fields", local_var_configuration.base_path, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    local_var_req_builder = local_var_req_builder.query(&[("year", &year.to_string())]);
+    local_var_req_builder = local_var_req_builder.query(&[("month", &month.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetEmployeeProfileCustomFieldsRuleError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の姓名などの情報を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、給与計算対象外の従業員には非対応です。employee_idに給与計算対象外の従業員IDを指定した場合、本APIを利用できません。</li> </ul>
 pub async fn get_employee_profile_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesProfileRulesControllerPeriodShowResponse, Error<GetEmployeeProfileRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2186,7 +3105,7 @@ pub async fn get_employee_profile_rule(configuration: &configuration::Configurat
     }
 }
 
-///  指定した従業員・指定した打刻の詳細情報を返します。 打刻一覧の取得APIにて取得した打刻IDを利用することができます。  本APIはベーシックプラン以上で利用可能なAPIです。対象外のプランでは403エラーを返却します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・指定した打刻の詳細情報を返します。</p>
 pub async fn get_employee_time_clock(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, id: i32) -> Result<crate::models::ApiV1EmployeesTimeClocksControllerPeriodShowResponse, Error<GetEmployeeTimeClockError>> {
     let local_var_configuration = configuration;
 
@@ -2223,7 +3142,7 @@ pub async fn get_employee_time_clock(configuration: &configuration::Configuratio
     }
 }
 
-///  指定した従業員・期間の打刻情報を返します。 デフォルトでは従業員の当月の打刻開始日から当日までの値が返ります。  本APIはベーシックプラン以上で利用可能なAPIです。対象外のプランでは403エラーを返却します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・期間の打刻情報を返します。</p>
 pub async fn get_employee_time_clocks(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, from_date: Option<String>, to_date: Option<String>, limit: Option<i32>, offset: Option<i32>) -> Result<Vec<crate::models::ApiV1EmployeesTimeClockSerializer>, Error<GetEmployeeTimeClocksError>> {
     let local_var_configuration = configuration;
 
@@ -2272,7 +3191,7 @@ pub async fn get_employee_time_clocks(configuration: &configuration::Configurati
     }
 }
 
-///  指定した従業員・日付の打刻可能種別と打刻基準日を返します。 例: すでに出勤した状態だと、休憩開始、退勤が配列で返ります。  本APIはベーシックプラン以上で利用可能なAPIです。対象外のプランでは403エラーを返却します。  ## 返却される打刻種別 - clock_in：出勤 - break_begin：休憩開始 - break_end：休憩終了 - clock_out：退勤 ## 返却される日付 - base_date：打刻基準日
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の打刻可能種別と打刻基準日を返します。</p> <p>例: すでに出勤した状態だと、休憩開始、退勤が配列で返ります。</p>
 pub async fn get_employee_time_clocks_available_types(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, date: Option<String>) -> Result<crate::models::ApiV1EmployeesTimeClocksControllerPeriodAvailableTypesResponse, Error<GetEmployeeTimeClocksAvailableTypesError>> {
     let local_var_configuration = configuration;
 
@@ -2312,7 +3231,7 @@ pub async fn get_employee_time_clocks_available_types(configuration: &configurat
     }
 }
 
-///  指定した従業員・日付の厚生年金保険情報を返します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の厚生年金保険情報を返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の厚生年金保険料の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)</li> </ul>
 pub async fn get_employee_welfare_pension_insurance_rule(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodShowResponse, Error<GetEmployeeWelfarePensionInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2351,7 +3270,7 @@ pub async fn get_employee_welfare_pension_insurance_rule(configuration: &configu
     }
 }
 
-///  指定した従業員・日付の勤怠情報を返します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員・日付の勤怠情報を返します。</p>
 pub async fn get_employee_work_record(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, date: String) -> Result<crate::models::ApiV1EmployeesWorkRecordSerializer, Error<GetEmployeeWorkRecordError>> {
     let local_var_configuration = configuration;
 
@@ -2388,7 +3307,7 @@ pub async fn get_employee_work_record(configuration: &configuration::Configurati
     }
 }
 
-///  指定した従業員、月の勤怠情報のサマリを返します。 work_recordsオプションにtrueを指定することで、明細となる日次の勤怠情報もあわせて返却します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員、月の勤怠情報のサマリを返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>work_recordsオプションにtrueを指定することで、明細となる日次の勤怠情報もあわせて返却します。</li> </ul>
 pub async fn get_employee_work_record_summary(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, year: i32, month: i32, work_records: Option<bool>) -> Result<crate::models::ApiV1EmployeesWorkRecordSummarySerializer, Error<GetEmployeeWorkRecordSummaryError>> {
     let local_var_configuration = configuration;
 
@@ -2428,8 +3347,8 @@ pub async fn get_employee_work_record_summary(configuration: &configuration::Con
     }
 }
 
-///  指定した対象年月に事業所に所属する従業員をリストで返します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 指定した年月に退職済みユーザーは取得できません。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。 - Responsesのprofile_custom_field_groupsは、2023年3月にリリースされる予定の機能に関する項目です。
-pub async fn get_employees(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1EmployeesControllerPeriodIndexResponse, Error<GetEmployeesError>> {
+/// <h2 id=\"\">概要</h2> <p>指定した対象年月に事業所に所属する従業員をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>指定した年月に退職済みユーザーは取得できません。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)</li>   <li>事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。</li> </ul>
+pub async fn get_employees(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1EmployeesIndexSerializer, Error<GetEmployeesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -2473,7 +3392,53 @@ pub async fn get_employees(configuration: &configuration::Configuration, company
     }
 }
 
-///  指定した事業所の指定日付時点における部門情報をリストで返します。 部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員に付与された特別休暇情報をリストで返します。</p>
+pub async fn get_employees_special_holidays(configuration: &configuration::Configuration, company_id: i32, employee_id: i32, date: Option<String>, start_date: Option<String>, end_date: Option<String>) -> Result<crate::models::GetEmployeesSpecialHolidays200Response, Error<GetEmployeesSpecialHolidaysError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/employees/{employee_id}/special_holidays", local_var_configuration.base_path, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_str) = date {
+        local_var_req_builder = local_var_req_builder.query(&[("date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = start_date {
+        local_var_req_builder = local_var_req_builder.query(&[("start_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = end_date {
+        local_var_req_builder = local_var_req_builder.query(&[("end_date", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetEmployeesSpecialHolidaysError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における部門情報をリストで返します。</p> <p>部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn get_groups(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::ApiV1GroupsIndexResponse, Error<GetGroupsError>> {
     let local_var_configuration = configuration;
 
@@ -2510,7 +3475,7 @@ pub async fn get_groups(configuration: &configuration::Configuration, company_id
     }
 }
 
-///  指定した事業所の指定日付時点における役職情報をリストで返します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の指定日付時点における役職情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn get_positions(configuration: &configuration::Configuration, company_id: i32) -> Result<crate::models::ApiV1PositionIndexResponse, Error<GetPositionsError>> {
     let local_var_configuration = configuration;
 
@@ -2547,7 +3512,7 @@ pub async fn get_positions(configuration: &configuration::Configuration, company
     }
 }
 
-///  指定した従業員ID、年月の給与明細を返します。 指定した年月に支払いのある給与明細が返されます。 - 複数時給を設定している場合はpaymentsに内訳が返されます。 - 管理者権限を持ったユーザーのみ実行可能です。  # examples ``` {  \"employee_payroll_statement\": {    \"id\": 1,    \"company_id\": 1,    \"employee_id\": 1,    \"employee_name\": \"給与 太郎\",    \"employee_display_name\": \"給与 太郎\",    \"employee_num\": \"001\",    \"pay_date\": \"2018-02-25\",    \"start_date\": \"2018-02-01\",    \"closing_date\": \"2018-02-28\",    \"variable_pay_start_date\": \"2018-01-01\",    \"variable_pay_closing_date\": \"2018-01-31\",    \"fixed\": true,    \"calc_status\": \"calculated\",    \"calculated_at\": \"2018-09-27T05:06:45.315Z\",    \"pay_calc_type\": \"monthly\",    \"basic_pay_amount\": \"300000.0\",    \"work_days\": \"21.0\",    \"normal_work_time\": \"8.0\",    \"normal_work_days\": \"21.0\",    \"work_mins_by_paid_holiday\": \"480.0\",    \"num_paid_holidays\": \"1.0\",    \"is_board_member\": true,    \"total_attendance_deduction_amount\": \"0.0\",    \"total_allowance_amount\": \"0.0\",    \"total_deduction_amount\": \"23830.0\",    \"net_payment_amount\": \"277170.0\",    \"gross_payment_amount\": \"301000.0\",    \"total_worked_days_count\": \"21.0\",    \"total_taxable_payment_amount\": \"301000.0\",    \"total_expense_amount\": \"0.0\",    \"total_transfer_amount\": \"277170.0\",    \"total_annual_payment_amount\": \"600000.0\",    \"payments\": [{ \"name\": \"基本給\", \"amount\": \"300000.0\"},{ \"name\": \"残業代\", \"amount\": \"1000.0\"}],    \"deductions\": [{\"name\": \"所得税\", \"amount\": \"7000.0\"}, {\"name\": \"健康保険料\", \"amount\": \"16830.0\"}],    \"attendances\": [{\"name\": \"遅刻・早退\", \"time\": \"0.0\", \"amount\": \"0.0\"}],    \"overtime_pays\": [{ \"name\": \"時間外労働\", \"time\": \"60.0\", \"amount\": \"1000.0\", \"code\": null }, { \"name\": \"カスタム固定残業代\", \"time\": null, \"amount\": \"10000.0\", \"code\": \"a001\" }],    \"remark\": \"備考\"  } } ```
+/// <h2 id=\"\">概要</h2> <p>指定した従業員ID、年月の給与明細を返します。</p> <p>指定した年月に支払いのある給与明細が返されます。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>複数時給を設定している場合はpaymentsに内訳が返されます。</li>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>給与計算中の場合は、各パラメータはnullおよび空配列が返ります。</li> </ul>  <h2 id=\"_2\">examples</h2> <pre>   <code>   {   \"employee_payroll_statement\": {     \"id\": 1,     \"company_id\": 1,     \"employee_id\": 1,     \"employee_name\": \"給与 太郎\",     \"employee_display_name\": \"給与 太郎\",     \"employee_num\": \"001\",     \"pay_date\": \"2018-02-25\",     \"start_date\": \"2018-02-01\",     \"closing_date\": \"2018-02-28\",     \"variable_pay_start_date\": \"2018-01-01\",     \"variable_pay_closing_date\": \"2018-01-31\",     \"fixed\": true,     \"calc_status\": \"calculated\",     \"calculated_at\": \"2018-09-27T05:06:45.315Z\",     \"pay_calc_type\": \"monthly\",     \"board_member_remuneration_amount\": \"400000.0\",     \"basic_pay_amount\": \"300000.0\",     \"work_days\": \"21.0\",     \"normal_work_time\": \"8.0\",     \"normal_work_days\": \"21.0\",     \"work_mins_by_paid_holiday\": \"480.0\",     \"num_paid_holidays\": \"1.0\",     \"is_board_member\": true,     \"total_attendance_deduction_amount\": \"0.0\",     \"total_allowance_amount\": \"0.0\",     \"total_deduction_amount\": \"23830.0\",     \"net_payment_amount\": \"277170.0\",     \"gross_payment_amount\": \"301000.0\",     \"total_worked_days_count\": \"21.0\",     \"total_taxable_payment_amount\": \"301000.0\",     \"total_expense_amount\": \"0.0\",     \"total_transfer_amount\": \"277170.0\",     \"total_annual_payment_amount\": \"600000.0\",     \"payments\": [{ \"name\": \"基本給\", \"amount\": \"300000.0\"},{ \"name\": \"残業代\", \"amount\": \"1000.0\"}],     \"deductions\": [{\"name\": \"所得税\", \"amount\": \"7000.0\"}, {\"name\": \"健康保険料\", \"amount\": \"16830.0\"}],     \"attendances\": [{\"name\": \"遅刻・早退\", \"time\": \"0.0\", \"amount\": \"0.0\"}],     \"overtime_pays\": [{ \"name\": \"時間外労働\", \"time\": \"60.0\", \"amount\": \"1000.0\", \"code\": null }, { \"name\": \"カスタム固定残業代\", \"time\": null, \"amount\": \"10000.0\", \"code\": \"a001\" }],     \"remark\": \"備考\"     }   }   </code> </pre>
 pub async fn get_salaries_employee_payroll_statement(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, employee_id: i32) -> Result<crate::models::ApiV1SalariesEmployeePayrollStatementsControllerPeriodShowResponse, Error<GetSalariesEmployeePayrollStatementError>> {
     let local_var_configuration = configuration;
 
@@ -2586,7 +3551,7 @@ pub async fn get_salaries_employee_payroll_statement(configuration: &configurati
     }
 }
 
-///  指定した事業所に所属する従業員の給与明細をリストで返します。 指定した年月に支払いのある給与明細が返されます。 - 複数時給を設定している場合はpaymentsに内訳が返されます。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所に所属する従業員の給与明細をリストで返します。</p> <p>指定した年月に支払いのある給与明細が返されます。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>複数時給を設定している場合はpaymentsに内訳が返されます。</li>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>給与計算中の場合は、各パラメータはnullおよび空配列が返ります。</li> </ul>
 pub async fn get_salaries_employee_payroll_statements(configuration: &configuration::Configuration, company_id: i32, year: i32, month: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1SalariesEmployeePayrollStatementsControllerPeriodIndexResponse, Error<GetSalariesEmployeePayrollStatementsError>> {
     let local_var_configuration = configuration;
 
@@ -2631,7 +3596,7 @@ pub async fn get_salaries_employee_payroll_statements(configuration: &configurat
     }
 }
 
-///  このリクエストの認可セッションにおけるログインユーザーの情報を返します。 freee人事労務では一人のログインユーザーを複数の事業所に関連付けられるため、このユーザーと関連のあるすべての事業所の情報をリストで返します。 他のAPIのパラメータとして `company_id` が求められる場合は、このAPIで取得した `company_id` を使用します。 給与計算対象外の従業員の `employee_id` と `display_name` は取得できません。
+/// <h2 id=\"\">概要</h2> <p>このリクエストの認可セッションにおけるログインユーザーの情報を返します。</p> <p>freee人事労務では一人のログインユーザーを複数の事業所に関連付けられるため、このユーザーと関連のあるすべての事業所の情報をリストで返します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>他のAPIのパラメータとしてcompany_idが求められる場合は、このAPIで取得したcompany_idを使用します。</li>   <li>給与計算対象外の従業員のemployee_idとdisplay_nameは取得できません。</li> </ul>
 pub async fn get_users_me(configuration: &configuration::Configuration, ) -> Result<crate::models::ApiV1UsersMeSerializer, Error<GetUsersMeError>> {
     let local_var_configuration = configuration;
 
@@ -2667,7 +3632,420 @@ pub async fn get_users_me(configuration: &configuration::Configuration, ) -> Res
     }
 }
 
-///  指定した事業所の月次勤怠締め申請情報を更新します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// 指定した年、従業員IDの年末調整の詳細内容を返します。<br> 年末調整対象外の従業員は、本人情報、給与・賞与、前職情報のみが取得できます。
+pub async fn get_yearend_adjustment_employee(configuration: &configuration::Configuration, company_id: i32, year: i32, employee_id: i32) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodShowResponse, Error<GetYearendAdjustmentEmployeeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/employees/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetYearendAdjustmentEmployeeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+///  指定した年の年末調整対象のリスト返します。
+pub async fn get_yearend_adjustment_employees(configuration: &configuration::Configuration, company_id: i32, year: i32, limit: Option<i32>, offset: Option<i32>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodIndexResponse, Error<GetYearendAdjustmentEmployeesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/employees", local_var_configuration.base_path, year=year);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    local_var_req_builder = local_var_req_builder.query(&[("company_id", &company_id.to_string())]);
+    if let Some(ref local_var_str) = limit {
+        local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = offset {
+        local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GetYearendAdjustmentEmployeesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の住宅ローンを作成します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn post_yearend_adjustment_housing_loan(configuration: &configuration::Configuration, year: i32, employee_id: i32, body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanResponse, Error<PostYearendAdjustmentHousingLoanError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/housing_loans/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PostYearendAdjustmentHousingLoanError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の保険料情報を作成します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn post_yearend_adjustment_insurances(configuration: &configuration::Configuration, year: i32, employee_id: i32, body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceResponse, Error<PostYearendAdjustmentInsurancesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/insurances/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PostYearendAdjustmentInsurancesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した年末調整の家族情報を更新します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li>   <li>idがない場合は新規作成、destroyがtrueの場合は削除になります。</li> </ul>
+pub async fn put_yearend_adjustment_dependents(configuration: &configuration::Configuration, year: i32, employee_id: i32, api_v1_employee_yearend_adjustment_controller_period_update_dependents_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsResponse, Error<PutYearendAdjustmentDependentsError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/dependents/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_dependents_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentDependentsError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の姓名・住所などを更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_employee(configuration: &configuration::Configuration, year: i32, employee_id: i32, api_v1_employee_yearend_adjustment_controller_period_update_employee_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeResponse, Error<PutYearendAdjustmentEmployeeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/employees/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_employee_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentEmployeeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の住宅ローンを更新します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_housing_loan(configuration: &configuration::Configuration, year: i32, employee_id: i32, id: i32, api_v1_employee_yearend_adjustment_controller_period_update_housing_loan_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanResponse, Error<PutYearendAdjustmentHousingLoanError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/housing_loans/{employee_id}/{id}", local_var_configuration.base_path, year=year, employee_id=employee_id, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_housing_loan_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentHousingLoanError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の住宅ローン控除額を更新します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_housing_loan_deduction(configuration: &configuration::Configuration, year: i32, employee_id: i32, put_yearend_adjustment_housing_loan_deduction_request: Option<crate::models::PutYearendAdjustmentHousingLoanDeductionRequest>) -> Result<crate::models::PutYearendAdjustmentHousingLoanDeduction200Response, Error<PutYearendAdjustmentHousingLoanDeductionError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/housing_loan_deductions/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&put_yearend_adjustment_housing_loan_deduction_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentHousingLoanDeductionError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の保険料情報を更新します。</p> <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_insurances(configuration: &configuration::Configuration, year: i32, employee_id: i32, id: i32, api_v1_employee_yearend_adjustment_controller_period_update_insurance_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceResponse, Error<PutYearendAdjustmentInsurancesError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/insurances/{employee_id}/{id}", local_var_configuration.base_path, year=year, employee_id=employee_id, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_insurance_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentInsurancesError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の給与・賞与を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_payroll_and_bonus(configuration: &configuration::Configuration, year: i32, employee_id: i32, api_v1_employee_yearend_adjustment_controller_period_update_payroll_and_bonus_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusResponse, Error<PutYearendAdjustmentPayrollAndBonusError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/payroll_and_bonus/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_payroll_and_bonus_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentPayrollAndBonusError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の前職情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、年末調整が確定済みの従業員には非対応です。</li> </ul>
+pub async fn put_yearend_adjustment_previous_job(configuration: &configuration::Configuration, year: i32, employee_id: i32, api_v1_employee_yearend_adjustment_controller_period_update_previous_job_body: Option<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobBody>) -> Result<crate::models::ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobResponse, Error<PutYearendAdjustmentPreviousJobError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/yearend_adjustments/{year}/previous_jobs/{employee_id}", local_var_configuration.base_path, year=year, employee_id=employee_id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1_employee_yearend_adjustment_controller_period_update_previous_job_body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<PutYearendAdjustmentPreviousJobError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の月次勤怠締め申請情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn update_approval_requests_monthly_attendance(configuration: &configuration::Configuration, id: i32, api_v1_monthly_attendance_update_request: Option<crate::models::ApiV1MonthlyAttendanceUpdateRequest>) -> Result<crate::models::ApiV1MonthlyAttendanceResponse, Error<UpdateApprovalRequestsMonthlyAttendanceError>> {
     let local_var_configuration = configuration;
 
@@ -2704,7 +4082,7 @@ pub async fn update_approval_requests_monthly_attendance(configuration: &configu
     }
 }
 
-///  指定した事業所の残業申請情報を更新します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の残業申請情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn update_approval_requests_overtime_work(configuration: &configuration::Configuration, id: i32, api_v1_overtime_work_request: Option<crate::models::ApiV1OvertimeWorkRequest>) -> Result<crate::models::ApiV1OvertimeWorkResponse, Error<UpdateApprovalRequestsOvertimeWorkError>> {
     let local_var_configuration = configuration;
 
@@ -2741,7 +4119,7 @@ pub async fn update_approval_requests_overtime_work(configuration: &configuratio
     }
 }
 
-///  指定した事業所の有給申請情報を更新します。 - プロフェッショナルプラン、エンタープライズプランでのみ実行可能です。  申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。 - 役職指定（申請者の所属部門） - 役職指定（申請時に部門指定） - 部門および役職指定  申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。 - status: draft - approval_flow_logs.action: cancel
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の有給申請情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
 pub async fn update_approval_requests_paid_holiday(configuration: &configuration::Configuration, id: i32, api_v1_paid_holiday_request: Option<crate::models::ApiV1PaidHolidayRequest>) -> Result<crate::models::ApiV1PaidHolidayResponse, Error<UpdateApprovalRequestsPaidHolidayError>> {
     let local_var_configuration = configuration;
 
@@ -2778,7 +4156,81 @@ pub async fn update_approval_requests_paid_holiday(configuration: &configuration
     }
 }
 
-///  指定した従業員の情報を更新します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の特別休暇申請情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn update_approval_requests_special_holiday(configuration: &configuration::Configuration, id: i32, api_v1special_holiday_request: Option<crate::models::ApiV1specialHolidayRequest>) -> Result<crate::models::ApiV1specialHolidayResponse, Error<UpdateApprovalRequestsSpecialHolidayError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/special_holidays/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&api_v1special_holiday_request);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<UpdateApprovalRequestsSpecialHolidayError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の勤務時間修正申請情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>申請経路、承認者の指定として部門役職データ連携を活用し、以下のいずれかを利用している申請と申請経路はAPI経由で参照は可能ですが、作成と更新、承認ステータスの変更ができません。</li>   <ul>     <li>役職指定（申請者の所属部門）</li>     <li>役職指定（申請時に部門指定）</li>     <li>部門および役職指定</li>   </ul>   <li>申請者と承認者が同一ユーザーの場合、feedback(差戻し)をするとレスポンスは以下のようになります。</li>   <ul>     <li>status: draft</li>     <li>approval_flow_logs.action: cancel</li>   </ul> </ul>
+pub async fn update_approval_requests_work_time(configuration: &configuration::Configuration, id: i32, body: Option<serde_json::Value>) -> Result<serde_json::Value, Error<UpdateApprovalRequestsWorkTimeError>> {
+    let local_var_configuration = configuration;
+
+    let local_var_client = &local_var_configuration.client;
+
+    let local_var_uri_str = format!("{}/api/v1/approval_requests/work_times/{id}", local_var_configuration.base_path, id=id);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+    };
+    local_var_req_builder = local_var_req_builder.json(&body);
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<UpdateApprovalRequestsWorkTimeError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn update_employee(configuration: &configuration::Configuration, id: i32, body: Option<crate::models::ApiV1EmployeesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesControllerPeriodUpdateResponse, Error<UpdateEmployeeError>> {
     let local_var_configuration = configuration;
 
@@ -2815,7 +4267,7 @@ pub async fn update_employee(configuration: &configuration::Configuration, id: i
     }
 }
 
-///  指定した従業員の銀行口座1の情報を更新します。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の銀行口座1の情報を更新します。</p>
 pub async fn update_employee_bank_account_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesBankAccountRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesBankAccountRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeBankAccountRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2852,7 +4304,7 @@ pub async fn update_employee_bank_account_rule(configuration: &configuration::Co
     }
 }
 
-///  指定した従業員の基本給情報を更新します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の基本給情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn update_employee_basic_pay_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesBasicPayRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesBasicPayRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeBasicPayRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2889,7 +4341,7 @@ pub async fn update_employee_basic_pay_rule(configuration: &configuration::Confi
     }
 }
 
-///  指定した従業員の健康保険情報を更新します。 - 管理者権限を持ったユーザーのみ実行可能です。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます) - 事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。 - 事業所が定額制の健康保険組合に加入している場合、保険料の計算方法と保険料の更新はできません。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の健康保険情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の健康保険料の計算方法が自動計算の場合、給与計算時の健康保険料の直接指定金額はnullが返されます)</li>   <li>事業所が定額制の健康保険組合に加入している場合、保険料の直接指定金額は無視されnullが返されます。</li>   <li>事業所が定額制の健康保険組合に加入している場合、保険料の計算方法と保険料の更新はできません。</li> </ul>
 pub async fn update_employee_health_insurance_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeHealthInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2926,7 +4378,7 @@ pub async fn update_employee_health_insurance_rule(configuration: &configuration
     }
 }
 
-///  指定した従業員の姓名・住所などを更新します。  本APIは、給与計算対象外の従業員には非対応です。employee_idに給与計算対象外の従業員IDを指定した場合、本APIを利用できません。
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の姓名・住所などを更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>本APIは、給与計算対象外の従業員には非対応です。employee_idに給与計算対象外の従業員IDを指定した場合、本APIを利用できません。</li> </ul>
 pub async fn update_employee_profile_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesProfileRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesProfileRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeProfileRuleError>> {
     let local_var_configuration = configuration;
 
@@ -2963,7 +4415,7 @@ pub async fn update_employee_profile_rule(configuration: &configuration::Configu
     }
 }
 
-///  指定した従業員の厚生年金保険情報を更新します。 - 保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。 (例: 給与計算時の厚生年金保険料の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の厚生年金保険情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>保険料計算方法が自動計算の場合、対応する保険料の直接指定金額は無視されnullが返されます。(例: 給与計算時の厚生年金保険料の計算方法が自動計算の場合、給与計算時の厚生年金保険料の直接指定金額はnullが返されます)</li> </ul>
 pub async fn update_employee_welfare_pension_insurance_rule(configuration: &configuration::Configuration, employee_id: i32, body: Option<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesWelfarePensionInsuranceRulesControllerPeriodUpdateResponse, Error<UpdateEmployeeWelfarePensionInsuranceRuleError>> {
     let local_var_configuration = configuration;
 
@@ -3000,7 +4452,7 @@ pub async fn update_employee_welfare_pension_insurance_rule(configuration: &conf
     }
 }
 
-///  指定した従業員の勤怠情報を更新します。  振替出勤・振替休日・代休出勤・代休・特別休暇の登録はAPIでは行うことができません。  # examples  出勤日について出退勤時刻および休憩時間を更新する場合は以下のようなパラメータをリクエストします。  ``` {   \"company_id\": 1,   \"break_records\": [     {       \"clock_in_at\": \"2017-05-25 12:00:00\",       \"clock_out_at\": \"2017-05-25 13:00:00\"     }   ],   \"clock_in_at\": \"2017-05-25 09:10:00\",   \"clock_out_at\": \"2017-05-25 18:20:00\" } ```  勤務パターンや既定の所定労働時間を変更する場合は use_default_work_pattern に false を指定するとともに、各設定を上書きするパラメータをリクエストします。  ``` {   \"company_id\": 1,   \"break_records\": [     {       \"clock_in_at\": \"2017-05-25 12:00:00\",       \"clock_out_at\": \"2017-05-25 13:00:00\"     }   ],   \"clock_in_at\": \"2017-05-25 09:10:00\",   \"clock_out_at\": \"2017-05-25 18:20:00\",   \"day_pattern\": \"normal_day\",   \"normal_work_clock_in_at\": \"2017-05-25 11:00:00\",   \"normal_work_clock_out_at\": \"2017-12-20 20:00:00\",   \"normal_work_mins\": 0,   \"use_default_work_pattern\": false } ```  有給取得時の連携について 半休の場合は通常勤務のように勤務開始・終了時間を指定しつつ、加えて以下の２つの要素を指定することで API での勤怠をつけることができます。     - paid_holiday (半休の場合は 0.5 とします)     - normal_work_mins_by_paid_holiday (半休により計上される所定労働時間を分で指定します)  ``` {   \"company_id\": 1,   \"break_records\": [     {       \"clock_in_at\": \"2017-05-25 12:00:00\",       \"clock_out_at\": \"2017-05-25 13:00:00\"     }   ],   \"clock_in_at\": \"2017-05-25 09:10:00\",   \"clock_out_at\": \"2017-05-25 18:20:00\",   \"paid_holiday\": 0.5,   \"normal_work_mins_by_paid_holiday\": 240 } ```  欠勤を付ける場合は company_idとis_absence 以外のパラメータは必要ありません。  ``` {   \"company_id\": 1,   \"is_absence\": true } ```
+/// <h2 id=\"\">概要</h2> <p>指定した従業員の勤怠情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>振替出勤・振替休日・代休出勤・代休・特別休暇の登録はAPIでは行うことができません。</li> </ul>  <h2 id=\"_2\">examples</h2> <ul>   <li>出勤日について出退勤時刻および休憩時間を更新する場合は以下のようなパラメータをリクエストします。     <pre>       <code>       {         \"company_id\": 1,         \"break_records\": [           {             \"clock_in_at\": \"2017-05-25 12:00:00\",             \"clock_out_at\": \"2017-05-25 13:00:00\"           }         ],         \"clock_in_at\": \"2017-05-25 09:10:00\",         \"clock_out_at\": \"2017-05-25 18:20:00\"       }       </code>     </pre>   </li>    <li>勤務パターンや既定の所定労働時間を変更する場合は use_default_work_pattern に false を指定するとともに、各設定を上書きするパラメータをリクエストします。     <pre>       <code>       {         \"company_id\": 1,         \"break_records\": [           {             \"clock_in_at\": \"2017-05-25 12:00:00\",             \"clock_out_at\": \"2017-05-25 13:00:00\"           }         ],         \"clock_in_at\": \"2017-05-25 09:10:00\",         \"clock_out_at\": \"2017-05-25 18:20:00\",         \"day_pattern\": \"normal_day\",         \"normal_work_clock_in_at\": \"2017-05-25 11:00:00\",         \"normal_work_clock_out_at\": \"2017-12-20 20:00:00\",         \"normal_work_mins\": 0,         \"use_default_work_pattern\": false       }       </code>     </pre>   </li>    <li>有給取得時の連携について半休の場合は通常勤務のように勤務開始・終了時間を指定しつつ、加えて以下の２つの要素を指定することで API での勤怠をつけることができます。     <ul>       <li>paid_holiday (半休の場合は 0.5 とします)</li>       <li>normal_work_mins_by_paid_holiday (半休により計上される所定労働時間を分で指定します)</li>     </ul>     <pre>       <code>       {         \"company_id\": 1,         \"break_records\": [           {             \"clock_in_at\": \"2017-05-25 12:00:00\",             \"clock_out_at\": \"2017-05-25 13:00:00\"           }         ],         \"clock_in_at\": \"2017-05-25 09:10:00\",         \"clock_out_at\": \"2017-05-25 18:20:00\",         \"paid_holiday\": 0.5,         \"normal_work_mins_by_paid_holiday\": 240       }       </code>     </pre>   </li>    <li>欠勤を付ける場合は company_idとis_absence 以外のパラメータは必要ありません。     <pre>       <code>       {         \"company_id\": 1,         \"is_absence\": true       }       </code>     </pre>   </li>  </ul>
 pub async fn update_employee_work_record(configuration: &configuration::Configuration, employee_id: i32, date: String, body: Option<crate::models::ApiV1EmployeesWorkRecordsControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesWorkRecordSerializer, Error<UpdateEmployeeWorkRecordError>> {
     let local_var_configuration = configuration;
 
@@ -3037,7 +4489,7 @@ pub async fn update_employee_work_record(configuration: &configuration::Configur
     }
 }
 
-///  指定した従業員、月の勤怠情報のサマリを更新します。勤怠データが存在しない場合は新規作成、既に存在する場合は上書き更新されます。 ※日毎の勤怠の更新はこのAPIではできません。日毎の勤怠の操作には勤怠APIを使用して下さい。 ※管理者権限を持ったユーザーのみ実行可能です。  ## 更新可能な項目 ※値が設定された項目のみ更新されます。値が設定されなかった場合は自動的に0が設定されます。 - work_days：総勤務日数 - work_days_on_weekdays：所定労働日の勤務日数 - work_days_on_prescribed_holidays：所定休日の勤務日数 - work_days_on_legal_holidays：法定休日の勤務日数 - total_work_mins：労働時間（分） - total_normal_work_mins：所定労働時間（分） - total_excess_statutory_work_mins：給与計算に用いられる法定内残業時間（分） - total_holiday_work_mins：法定休日労働時間（分） - total_latenight_work_mins：深夜労働時間（分） - total_actual_excess_statutory_work_mins：実労働時間ベースの法定内残業時間（分） - total_overtime_work_mins：時間外労働時間（分） - num_absences：欠勤日数 - num_absences_for_deduction：控除対象の欠勤日数 - total_lateness_mins：遅刻時間（分） - total_lateness_mins_for_deduction：控除対象の遅刻時間（分） - total_early_leaving_mins：早退時間（分） - total_early_leaving_mins_for_deduction：控除対象の早退時間（分） - num_paid_holidays：有給取得日数 - total_shortage_work_mins：不足時間（分）（フレックスタイム制でのみ使用） - total_deemed_paid_excess_statutory_work_mins：支給対象の法定内残業時間（分）（裁量労働制でのみ使用） - total_deemed_paid_overtime_except_normal_work_mins：支給対象の時間外労働時間（分）（裁量労働制でのみ使用）  # examples  勤怠情報を更新する場合は以下のようなパラメータをリクエストします。  ``` {   \"company_id\": 1,   \"work_days\": 20,   \"work_days_on_weekdays\": 20,   \"work_days_on_prescribed_holidays\": 0,   \"work_days_on_legal_holidays\": 0,   \"total_work_mins\": 9600,   \"total_normal_work_mins\": 9000,   \"total_excess_statutory_work_mins\": 600,   \"total_holiday_work_mins\": 0,   \"total_latenight_work_mins\": 0,   \"total_actual_excess_statutory_work_mins\": 0,   \"total_overtime_work_mins\": 600,   \"num_absences\": 0,   \"num_absences_for_deduction\": 0,   \"total_lateness_mins\": 60,   \"total_lateness_mins_for_deduction\": 60,   \"total_early_leaving_mins\": 60,   \"total_early_leaving_mins_for_deduction\": 60,   \"num_paid_holidays\": 2 } ```
+/// <h2 id=\"\">概要</h2> <p>指定した従業員、月の勤怠情報のサマリを更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li>   <li>日毎の勤怠の更新はこのAPIではできません。日毎の勤怠の操作には勤怠APIを使用して下さい。</li>   <li>勤怠データが存在しない場合は新規作成、既に存在する場合は上書き更新されます。</li>   <li>値が設定された項目のみ更新されます。値が設定されなかった場合は自動的に0が設定されます。</li> </ul>
 pub async fn update_employee_work_record_summary(configuration: &configuration::Configuration, employee_id: i32, year: i32, month: i32, api_v1_employees_work_record_summary_controller_period_update_body: Option<crate::models::ApiV1EmployeesWorkRecordSummaryControllerPeriodUpdateBody>) -> Result<crate::models::ApiV1EmployeesWorkRecordSummarySerializer, Error<UpdateEmployeeWorkRecordSummaryError>> {
     let local_var_configuration = configuration;
 
@@ -3074,7 +4526,7 @@ pub async fn update_employee_work_record_summary(configuration: &configuration::
     }
 }
 
-///  指定した事業所の部門の情報を更新します。 部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の部門の情報を更新します。</p> <p>部門APIの使い方については、<a href=\"https://developer.freee.co.jp/tips/groups-api-hierarchy\" target=\"_blank\">部門APIを利用した組織図の取得について</a> をご参照ください。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn update_group(configuration: &configuration::Configuration, id: i32, api_v1_group_update_request: Option<crate::models::ApiV1GroupUpdateRequest>) -> Result<crate::models::ApiV1GroupResponse, Error<UpdateGroupError>> {
     let local_var_configuration = configuration;
 
@@ -3111,7 +4563,7 @@ pub async fn update_group(configuration: &configuration::Configuration, id: i32,
     }
 }
 
-///  指定した事業所の役職の情報を更新します。 - 管理者権限を持ったユーザーのみ実行可能です。
+/// <h2 id=\"\">概要</h2> <p>指定した事業所の役職の情報を更新します。</p>  <h2 id=\"_1\">注意点</h2> <ul>   <li>管理者権限を持ったユーザーのみ実行可能です。</li> </ul>
 pub async fn update_position(configuration: &configuration::Configuration, id: i32, api_v1_position_request: Option<crate::models::ApiV1PositionRequest>) -> Result<crate::models::ApiV1PositionResponse, Error<UpdatePositionError>> {
     let local_var_configuration = configuration;
 

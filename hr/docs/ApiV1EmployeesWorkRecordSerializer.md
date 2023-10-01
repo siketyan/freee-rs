@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **day_pattern** | Option<**String**> | 勤務パターン - normal_day: 所定労働日 - prescribed_holiday: 所定休日 - legal_holiday: 法定休日 | [optional]
 **schedule_pattern** | Option<**String**> | スケジュールパターン - substitute_holiday_work: 振替出勤 - substitute_holiday: 振替休日 - compensatory_holiday_work: 代休出勤 - compensatory_holiday: 代休 - special_holiday: 特別休暇 | [optional]
 **early_leaving_mins** | Option<**i32**> | 早退分の時間（分単位） | [optional]
-**hourly_paid_holiday_mins** | Option<**i32**> | 時間休を利用した時間（分単位） | [optional]
+**hourly_paid_holiday_mins** | Option<**i32**> | 有給休暇の時間休を利用した時間（分単位） | [optional]
 **is_absence** | Option<**bool**> | 欠勤かどうか | [optional]
 **is_editable** | Option<**bool**> | 勤怠データが編集可能かどうか | [optional]
 **lateness_mins** | Option<**i32**> | 遅刻分の時間（分単位） | [optional]

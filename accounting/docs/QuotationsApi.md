@@ -4,7 +4,7 @@ All URIs are relative to *https://api.freee.co.jp*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_quotation**](QuotationsApi.md#create_quotation) | **POST** /api/1/quotations | 見積書の作成
+[**create_quotation**](QuotationsApi.md#create_quotation) | **POST** /api/1/quotations | 見積書の作成（2023年10月廃止予定）
 [**destroy_quotation**](QuotationsApi.md#destroy_quotation) | **DELETE** /api/1/quotations/{id} | 見積書の削除
 [**get_quotation**](QuotationsApi.md#get_quotation) | **GET** /api/1/quotations/{id} | 見積書の取得
 [**get_quotations**](QuotationsApi.md#get_quotations) | **GET** /api/1/quotations | 見積書一覧の取得
@@ -15,9 +15,9 @@ Method | HTTP request | Description
 ## create_quotation
 
 > crate::models::QuotationResponse create_quotation(quotation_create_params)
-見積書の作成
+見積書の作成（2023年10月廃止予定）
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の見積書を作成する</p>  <h2 id=\"_1\">注意点</h2> <ul> <li> <p>partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは見積内容(quotation_contents)は、最大100行までになります。</p> </li> </ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の見積書を作成する</p>  <h2 id=\"_1\">注意点</h2> <b>インボイス制度に伴い、freee会計の帳票機能がfreee請求書に移行します。これに伴い、2023年10月にfreee会計の「見積書の作成」エンドポイントは廃止、freee請求書APIに移行する予定です。詳細は<a href=\"https://developer.freee.co.jp/news/6369\" target=\"_blank\"> freee会計 APIの仕様変更（インボイス制度対応）について</a>をご確認ください。</b> <ul> <li> <p>partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは見積内容(quotation_contents)は、最大100行までになります。</p> </li> </ul>
 
 ### Parameters
 

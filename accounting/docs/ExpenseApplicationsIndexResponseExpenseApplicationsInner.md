@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **status** | **String** | 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し) | 
 **section_id** | Option<**i32**> | 部門ID | [optional]
 **tag_ids** | Option<**Vec<i32>**> | メモタグID | [optional]
-**expense_application_lines** | [**Vec<crate::models::ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner>**](expenseApplicationsIndexResponse_expense_applications_inner_expense_application_lines_inner.md) | 経費申請の項目行一覧（配列） | 
+**purchase_lines** | Option<[**Vec<crate::models::ExpenseApplicationsIndexResponseExpenseApplicationsInnerPurchaseLinesInner>**](expenseApplicationsIndexResponse_expense_applications_inner_purchase_lines_inner.md)> | 経費申請の申請行一覧（配列） | [optional]
+**expense_application_lines** | Option<[**Vec<crate::models::ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner>**](expenseApplicationsIndexResponse_expense_applications_inner_expense_application_lines_inner.md)> | 経費申請の項目行一覧（配列） | [optional]
 **deal_id** | Option<**i32**> | 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます) | 
 **deal_status** | Option<**String**> | 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:精算済み, unsettled:清算待ち) | 
 **applicant_id** | **i32** | 申請者のユーザーID | 

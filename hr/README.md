@@ -34,6 +34,7 @@
 <li>既存のAPIレスポンスに対する新しいプロパティの追加</li>
 <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li>
 <li>keyとなっているidやcodeの長さの変更（長くする）</li>
+<li>エラーメッセージの変更</li>
 </ul>
 
 <h3 id=\"common_response_header\">共通レスポンスヘッダー</h3>
@@ -106,6 +107,16 @@ X-Ratelimit-Reset:2018-01-01T12:00:00.000000Z
 
 <p>上記に加え、freeeは一定期間に過度のアクセスを検知した場合、APIアクセスをコントロールする場合があります。<br> その際のhttp status codeは403となります。制限がかかってから10分程度が過ぎると再度使用することができるようになります。</p>
 
+</br>
+
+<h3 id=\"api_rate_limit\">プランごとの利用可能API</h3> 
+
+<p>契約プランごとに利用可能なfreee人事労務APIはfreee人事労務のWeb版でご利用できる機能と同様です。例えば、スタンダードプラン（または旧ベーシックプラン）を契約している場合、Web版では打刻機能をご利用いただけますので、APIでもタイムレコーダー(打刻)APIが利用可能です。<a href=\"https://support.freee.co.jp/hc/ja/articles/203309710\" target=\"_blank\">freee人事労務のWeb版のプラン別機能比較はfreee人事労務のプラン・料金についてのヘルプを参照してください。</a></p>
+
+</br>
+
+<hr />
+
 For more information, please visit [https://accounts.secure.freee.co.jp/contacts?from=payroll](https://accounts.secure.freee.co.jp/contacts?from=payroll)
 
 ## Overview
@@ -133,10 +144,14 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**action_approval_requests_monthly_attendance**](docs/DefaultApi.md#action_approval_requests_monthly_attendance) | **POST** /api/v1/approval_requests/monthly_attendances/{id}/actions | 月次勤怠締め申請の承認操作
 *DefaultApi* | [**action_approval_requests_overtime_work**](docs/DefaultApi.md#action_approval_requests_overtime_work) | **POST** /api/v1/approval_requests/overtime_works/{id}/actions | 残業申請の承認操作
 *DefaultApi* | [**action_approval_requests_paid_holiday**](docs/DefaultApi.md#action_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays/{id}/actions | 有給申請の承認操作
-*DefaultApi* | [**bulk_update_employee_dependent_rules**](docs/DefaultApi.md#bulk_update_employee_dependent_rules) | **PUT** /api/v1/employees/{employee_id}/dependent_rules/bulk_update | 従業員の扶養親族の更新
+*DefaultApi* | [**action_approval_requests_special_holiday**](docs/DefaultApi.md#action_approval_requests_special_holiday) | **POST** /api/v1/approval_requests/special_holidays/{id}/actions | 特別休暇申請の承認操作
+*DefaultApi* | [**action_approval_requests_work_time**](docs/DefaultApi.md#action_approval_requests_work_time) | **POST** /api/v1/approval_requests/work_times/{id}/actions | 勤務時間修正申請の承認操作
+*DefaultApi* | [**bulk_update_employee_dependent_rules**](docs/DefaultApi.md#bulk_update_employee_dependent_rules) | **PUT** /api/v1/employees/{employee_id}/dependent_rules/bulk_update | 従業員の家族情報の更新
 *DefaultApi* | [**create_approval_requests_monthly_attendance**](docs/DefaultApi.md#create_approval_requests_monthly_attendance) | **POST** /api/v1/approval_requests/monthly_attendances | 月次勤怠締め申請の作成
 *DefaultApi* | [**create_approval_requests_overtime_work**](docs/DefaultApi.md#create_approval_requests_overtime_work) | **POST** /api/v1/approval_requests/overtime_works | 残業申請の作成
 *DefaultApi* | [**create_approval_requests_paid_holiday**](docs/DefaultApi.md#create_approval_requests_paid_holiday) | **POST** /api/v1/approval_requests/paid_holidays | 有給申請の作成
+*DefaultApi* | [**create_approval_requests_special_holiday**](docs/DefaultApi.md#create_approval_requests_special_holiday) | **POST** /api/v1/approval_requests/special_holidays | 特別休暇申請の作成
+*DefaultApi* | [**create_approval_requests_work_time**](docs/DefaultApi.md#create_approval_requests_work_time) | **POST** /api/v1/approval_requests/work_times | 勤務時間修正申請の作成
 *DefaultApi* | [**create_employee**](docs/DefaultApi.md#create_employee) | **POST** /api/v1/employees | 従業員の作成
 *DefaultApi* | [**create_employee_time_clock**](docs/DefaultApi.md#create_employee_time_clock) | **POST** /api/v1/employees/{employee_id}/time_clocks | 打刻の登録
 *DefaultApi* | [**create_group**](docs/DefaultApi.md#create_group) | **POST** /api/v1/groups | 部門の作成
@@ -144,10 +159,15 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**destroy_approval_requests_monthly_attendance**](docs/DefaultApi.md#destroy_approval_requests_monthly_attendance) | **DELETE** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の削除
 *DefaultApi* | [**destroy_approval_requests_overtime_work**](docs/DefaultApi.md#destroy_approval_requests_overtime_work) | **DELETE** /api/v1/approval_requests/overtime_works/{id} | 残業申請の削除
 *DefaultApi* | [**destroy_approval_requests_paid_holiday**](docs/DefaultApi.md#destroy_approval_requests_paid_holiday) | **DELETE** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の削除
+*DefaultApi* | [**destroy_approval_requests_special_holiday**](docs/DefaultApi.md#destroy_approval_requests_special_holiday) | **DELETE** /api/v1/approval_requests/special_holidays/{id} | 特別休暇申請の削除
+*DefaultApi* | [**destroy_approval_requests_work_time**](docs/DefaultApi.md#destroy_approval_requests_work_time) | **DELETE** /api/v1/approval_requests/work_times/{id} | 勤務時間修正申請の削除
 *DefaultApi* | [**destroy_employee**](docs/DefaultApi.md#destroy_employee) | **DELETE** /api/v1/employees/{id} | 従業員の削除
 *DefaultApi* | [**destroy_employee_work_record**](docs/DefaultApi.md#destroy_employee_work_record) | **DELETE** /api/v1/employees/{employee_id}/work_records/{date} | 勤怠の削除
 *DefaultApi* | [**destroy_group**](docs/DefaultApi.md#destroy_group) | **DELETE** /api/v1/groups/{id} | 部門の削除
 *DefaultApi* | [**destroy_position**](docs/DefaultApi.md#destroy_position) | **DELETE** /api/v1/positions/{id} | 役職の削除
+*DefaultApi* | [**destroy_yearend_adjustment_housing_loan**](docs/DefaultApi.md#destroy_yearend_adjustment_housing_loan) | **DELETE** /api/v1/yearend_adjustments/{year}/housing_loans/{employee_id}/{id} | 年末調整従業員住宅ローンの削除
+*DefaultApi* | [**destroy_yearend_adjustment_insurances**](docs/DefaultApi.md#destroy_yearend_adjustment_insurances) | **DELETE** /api/v1/yearend_adjustments/{year}/insurances/{employee_id}/{id} | 年末調整従業員保険料情報の削除
+*DefaultApi* | [**destroy_yearend_adjustment_previous_job**](docs/DefaultApi.md#destroy_yearend_adjustment_previous_job) | **DELETE** /api/v1/yearend_adjustments/{year}/previous_jobs/{employee_id} | 年末調整従業員前職情報の削除
 *DefaultApi* | [**get_approval_flow_route**](docs/DefaultApi.md#get_approval_flow_route) | **GET** /api/v1/approval_flow_routes/{id} | 申請経路の取得
 *DefaultApi* | [**get_approval_flow_routes**](docs/DefaultApi.md#get_approval_flow_routes) | **GET** /api/v1/approval_flow_routes | 申請経路一覧の取得
 *DefaultApi* | [**get_approval_requests_monthly_attendance**](docs/DefaultApi.md#get_approval_requests_monthly_attendance) | **GET** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の取得
@@ -156,15 +176,20 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_approval_requests_overtime_works**](docs/DefaultApi.md#get_approval_requests_overtime_works) | **GET** /api/v1/approval_requests/overtime_works | 残業申請一覧の取得
 *DefaultApi* | [**get_approval_requests_paid_holiday**](docs/DefaultApi.md#get_approval_requests_paid_holiday) | **GET** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の取得
 *DefaultApi* | [**get_approval_requests_paid_holidays**](docs/DefaultApi.md#get_approval_requests_paid_holidays) | **GET** /api/v1/approval_requests/paid_holidays | 有給申請一覧の取得
+*DefaultApi* | [**get_approval_requests_special_holiday**](docs/DefaultApi.md#get_approval_requests_special_holiday) | **GET** /api/v1/approval_requests/special_holidays/{id} | 特別休暇申請の取得
+*DefaultApi* | [**get_approval_requests_special_holidays**](docs/DefaultApi.md#get_approval_requests_special_holidays) | **GET** /api/v1/approval_requests/special_holidays | 特別休暇申請一覧の取得
+*DefaultApi* | [**get_approval_requests_work_time**](docs/DefaultApi.md#get_approval_requests_work_time) | **GET** /api/v1/approval_requests/work_times/{id} | 勤務時間修正申請の取得
+*DefaultApi* | [**get_approval_requests_work_times**](docs/DefaultApi.md#get_approval_requests_work_times) | **GET** /api/v1/approval_requests/work_times | 勤務時間修正申請一覧の取得
 *DefaultApi* | [**get_bonuses_employee_payroll_statement**](docs/DefaultApi.md#get_bonuses_employee_payroll_statement) | **GET** /api/v1/bonuses/employee_payroll_statements/{employee_id} | 賞与明細の取得
 *DefaultApi* | [**get_bonuses_employee_payroll_statements**](docs/DefaultApi.md#get_bonuses_employee_payroll_statements) | **GET** /api/v1/bonuses/employee_payroll_statements | 賞与明細一覧の取得
 *DefaultApi* | [**get_company_employees**](docs/DefaultApi.md#get_company_employees) | **GET** /api/v1/companies/{company_id}/employees | 全期間の従業員一覧の取得
 *DefaultApi* | [**get_employee**](docs/DefaultApi.md#get_employee) | **GET** /api/v1/employees/{id} | 従業員の取得
 *DefaultApi* | [**get_employee_bank_account_rule**](docs/DefaultApi.md#get_employee_bank_account_rule) | **GET** /api/v1/employees/{employee_id}/bank_account_rule | 従業員の銀行口座の取得
 *DefaultApi* | [**get_employee_basic_pay_rule**](docs/DefaultApi.md#get_employee_basic_pay_rule) | **GET** /api/v1/employees/{employee_id}/basic_pay_rule | 従業員の基本給の取得
-*DefaultApi* | [**get_employee_dependent_rules**](docs/DefaultApi.md#get_employee_dependent_rules) | **GET** /api/v1/employees/{employee_id}/dependent_rules | 従業員の扶養親族の取得
+*DefaultApi* | [**get_employee_dependent_rules**](docs/DefaultApi.md#get_employee_dependent_rules) | **GET** /api/v1/employees/{employee_id}/dependent_rules | 従業員の家族情報の取得
 *DefaultApi* | [**get_employee_group_memberships**](docs/DefaultApi.md#get_employee_group_memberships) | **GET** /api/v1/employee_group_memberships | 所属一覧の取得
 *DefaultApi* | [**get_employee_health_insurance_rule**](docs/DefaultApi.md#get_employee_health_insurance_rule) | **GET** /api/v1/employees/{employee_id}/health_insurance_rule | 従業員の健康保険の取得
+*DefaultApi* | [**get_employee_profile_custom_fields_rule**](docs/DefaultApi.md#get_employee_profile_custom_fields_rule) | **GET** /api/v1/employees/{employee_id}/profile_custom_fields | 従業員のカスタム項目の取得
 *DefaultApi* | [**get_employee_profile_rule**](docs/DefaultApi.md#get_employee_profile_rule) | **GET** /api/v1/employees/{employee_id}/profile_rule | 従業員の姓名・住所などの取得
 *DefaultApi* | [**get_employee_time_clock**](docs/DefaultApi.md#get_employee_time_clock) | **GET** /api/v1/employees/{employee_id}/time_clocks/{id} | 打刻の取得
 *DefaultApi* | [**get_employee_time_clocks**](docs/DefaultApi.md#get_employee_time_clocks) | **GET** /api/v1/employees/{employee_id}/time_clocks | 打刻一覧の取得
@@ -173,14 +198,28 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_employee_work_record**](docs/DefaultApi.md#get_employee_work_record) | **GET** /api/v1/employees/{employee_id}/work_records/{date} | 勤怠の取得
 *DefaultApi* | [**get_employee_work_record_summary**](docs/DefaultApi.md#get_employee_work_record_summary) | **GET** /api/v1/employees/{employee_id}/work_record_summaries/{year}/{month} | 勤怠情報月次サマリの取得
 *DefaultApi* | [**get_employees**](docs/DefaultApi.md#get_employees) | **GET** /api/v1/employees | 従業員一覧の取得
+*DefaultApi* | [**get_employees_special_holidays**](docs/DefaultApi.md#get_employees_special_holidays) | **GET** /api/v1/employees/{employee_id}/special_holidays | 従業員の特別休暇一覧の取得
 *DefaultApi* | [**get_groups**](docs/DefaultApi.md#get_groups) | **GET** /api/v1/groups | 部門一覧の取得
 *DefaultApi* | [**get_positions**](docs/DefaultApi.md#get_positions) | **GET** /api/v1/positions | 役職一覧の取得
 *DefaultApi* | [**get_salaries_employee_payroll_statement**](docs/DefaultApi.md#get_salaries_employee_payroll_statement) | **GET** /api/v1/salaries/employee_payroll_statements/{employee_id} | 給与明細の取得
 *DefaultApi* | [**get_salaries_employee_payroll_statements**](docs/DefaultApi.md#get_salaries_employee_payroll_statements) | **GET** /api/v1/salaries/employee_payroll_statements | 給与明細一覧の取得
 *DefaultApi* | [**get_users_me**](docs/DefaultApi.md#get_users_me) | **GET** /api/v1/users/me | ログインユーザーの取得
+*DefaultApi* | [**get_yearend_adjustment_employee**](docs/DefaultApi.md#get_yearend_adjustment_employee) | **GET** /api/v1/yearend_adjustments/{year}/employees/{employee_id} | 年末調整の取得
+*DefaultApi* | [**get_yearend_adjustment_employees**](docs/DefaultApi.md#get_yearend_adjustment_employees) | **GET** /api/v1/yearend_adjustments/{year}/employees | 年末調整対象一覧の取得
+*DefaultApi* | [**post_yearend_adjustment_housing_loan**](docs/DefaultApi.md#post_yearend_adjustment_housing_loan) | **POST** /api/v1/yearend_adjustments/{year}/housing_loans/{employee_id} | 年末調整従業員住宅ローンの作成
+*DefaultApi* | [**post_yearend_adjustment_insurances**](docs/DefaultApi.md#post_yearend_adjustment_insurances) | **POST** /api/v1/yearend_adjustments/{year}/insurances/{employee_id} | 年末調整従業員保険料情報の作成
+*DefaultApi* | [**put_yearend_adjustment_dependents**](docs/DefaultApi.md#put_yearend_adjustment_dependents) | **PUT** /api/v1/yearend_adjustments/{year}/dependents/{employee_id} | 年末調整家族情報の更新
+*DefaultApi* | [**put_yearend_adjustment_employee**](docs/DefaultApi.md#put_yearend_adjustment_employee) | **PUT** /api/v1/yearend_adjustments/{year}/employees/{employee_id} | 年末調整従業員情報の更新
+*DefaultApi* | [**put_yearend_adjustment_housing_loan**](docs/DefaultApi.md#put_yearend_adjustment_housing_loan) | **PUT** /api/v1/yearend_adjustments/{year}/housing_loans/{employee_id}/{id} | 年末調整従業員住宅ローンの更新
+*DefaultApi* | [**put_yearend_adjustment_housing_loan_deduction**](docs/DefaultApi.md#put_yearend_adjustment_housing_loan_deduction) | **PUT** /api/v1/yearend_adjustments/{year}/housing_loan_deductions/{employee_id} | 年末調整従業員住宅ローン控除額の更新
+*DefaultApi* | [**put_yearend_adjustment_insurances**](docs/DefaultApi.md#put_yearend_adjustment_insurances) | **PUT** /api/v1/yearend_adjustments/{year}/insurances/{employee_id}/{id} | 年末調整従業員保険料情報の更新
+*DefaultApi* | [**put_yearend_adjustment_payroll_and_bonus**](docs/DefaultApi.md#put_yearend_adjustment_payroll_and_bonus) | **PUT** /api/v1/yearend_adjustments/{year}/payroll_and_bonus/{employee_id} | 年末調整従業員給与・賞与の更新
+*DefaultApi* | [**put_yearend_adjustment_previous_job**](docs/DefaultApi.md#put_yearend_adjustment_previous_job) | **PUT** /api/v1/yearend_adjustments/{year}/previous_jobs/{employee_id} | 年末調整従業員前職情報の更新
 *DefaultApi* | [**update_approval_requests_monthly_attendance**](docs/DefaultApi.md#update_approval_requests_monthly_attendance) | **PUT** /api/v1/approval_requests/monthly_attendances/{id} | 月次勤怠締め申請の更新
 *DefaultApi* | [**update_approval_requests_overtime_work**](docs/DefaultApi.md#update_approval_requests_overtime_work) | **PUT** /api/v1/approval_requests/overtime_works/{id} | 残業申請の更新
 *DefaultApi* | [**update_approval_requests_paid_holiday**](docs/DefaultApi.md#update_approval_requests_paid_holiday) | **PUT** /api/v1/approval_requests/paid_holidays/{id} | 有給申請の更新
+*DefaultApi* | [**update_approval_requests_special_holiday**](docs/DefaultApi.md#update_approval_requests_special_holiday) | **PUT** /api/v1/approval_requests/special_holidays/{id} | 特別休暇申請の更新
+*DefaultApi* | [**update_approval_requests_work_time**](docs/DefaultApi.md#update_approval_requests_work_time) | **PUT** /api/v1/approval_requests/work_times/{id} | 勤務時間修正申請の更新
 *DefaultApi* | [**update_employee**](docs/DefaultApi.md#update_employee) | **PUT** /api/v1/employees/{id} | 従業員の更新
 *DefaultApi* | [**update_employee_bank_account_rule**](docs/DefaultApi.md#update_employee_bank_account_rule) | **PUT** /api/v1/employees/{employee_id}/bank_account_rule | 従業員の銀行口座の更新
 *DefaultApi* | [**update_employee_basic_pay_rule**](docs/DefaultApi.md#update_employee_basic_pay_rule) | **PUT** /api/v1/employees/{employee_id}/basic_pay_rule | 従業員の基本給の更新
@@ -209,13 +248,39 @@ Class | Method | HTTP request | Description
  - [ApiV1EmployeeCreateRequestSerializer](docs/ApiV1EmployeeCreateRequestSerializer.md)
  - [ApiV1EmployeeGroupMembershipSerializer](docs/ApiV1EmployeeGroupMembershipSerializer.md)
  - [ApiV1EmployeeGroupMembershipsIndexSerializer](docs/ApiV1EmployeeGroupMembershipsIndexSerializer.md)
- - [ApiV1EmployeeIndexSerializer](docs/ApiV1EmployeeIndexSerializer.md)
  - [ApiV1EmployeePayrollStatementsEmployeeAttendanceItemSerializer](docs/ApiV1EmployeePayrollStatementsEmployeeAttendanceItemSerializer.md)
  - [ApiV1EmployeePayrollStatementsEmployeeOvertimePayItemSerializer](docs/ApiV1EmployeePayrollStatementsEmployeeOvertimePayItemSerializer.md)
  - [ApiV1EmployeePayrollStatementsEmployeePayrollStatementItemSerializer](docs/ApiV1EmployeePayrollStatementsEmployeePayrollStatementItemSerializer.md)
  - [ApiV1EmployeeProfileCustomFieldSerializer](docs/ApiV1EmployeeProfileCustomFieldSerializer.md)
  - [ApiV1EmployeeSerializer](docs/ApiV1EmployeeSerializer.md)
  - [ApiV1EmployeeUpdateRequestSerializer](docs/ApiV1EmployeeUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodIndexResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodIndexResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodShowResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodShowResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateDependentsResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateEmployeeResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateHousingLoanResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdateInsuranceResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePayrollAndBonusResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobBody](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobBody.md)
+ - [ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobResponse](docs/ApiV1EmployeeYearendAdjustmentControllerPeriodUpdatePreviousJobResponse.md)
+ - [ApiV1EmployeeYearendAdjustmentDependentSerializer](docs/ApiV1EmployeeYearendAdjustmentDependentSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentDependentUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentDependentUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentEmployeeSerializer](docs/ApiV1EmployeeYearendAdjustmentEmployeeSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentEmployeeUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentEmployeeUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentHousingLoanSerializer](docs/ApiV1EmployeeYearendAdjustmentHousingLoanSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentHousingLoanUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentHousingLoanUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentInsuranceSerializer](docs/ApiV1EmployeeYearendAdjustmentInsuranceSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentInsuranceUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentInsuranceUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentParams](docs/ApiV1EmployeeYearendAdjustmentParams.md)
+ - [ApiV1EmployeeYearendAdjustmentPayrollAndBonusSerializer](docs/ApiV1EmployeeYearendAdjustmentPayrollAndBonusSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentPayrollAndBonusUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentPayrollAndBonusUpdateRequestSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentPreviousJobSerializer](docs/ApiV1EmployeeYearendAdjustmentPreviousJobSerializer.md)
+ - [ApiV1EmployeeYearendAdjustmentPreviousJobUpdateRequestSerializer](docs/ApiV1EmployeeYearendAdjustmentPreviousJobUpdateRequestSerializer.md)
  - [ApiV1EmployeesBankAccountRuleSerializer](docs/ApiV1EmployeesBankAccountRuleSerializer.md)
  - [ApiV1EmployeesBankAccountRuleUpdateRequestSerializer](docs/ApiV1EmployeesBankAccountRuleUpdateRequestSerializer.md)
  - [ApiV1EmployeesBankAccountRulesControllerPeriodShowResponse](docs/ApiV1EmployeesBankAccountRulesControllerPeriodShowResponse.md)
@@ -228,7 +293,6 @@ Class | Method | HTTP request | Description
  - [ApiV1EmployeesBasicPayRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesBasicPayRulesControllerPeriodUpdateResponse.md)
  - [ApiV1EmployeesControllerPeriodCreateBody](docs/ApiV1EmployeesControllerPeriodCreateBody.md)
  - [ApiV1EmployeesControllerPeriodCreateResponse](docs/ApiV1EmployeesControllerPeriodCreateResponse.md)
- - [ApiV1EmployeesControllerPeriodIndexResponse](docs/ApiV1EmployeesControllerPeriodIndexResponse.md)
  - [ApiV1EmployeesControllerPeriodShowResponse](docs/ApiV1EmployeesControllerPeriodShowResponse.md)
  - [ApiV1EmployeesControllerPeriodUpdateBody](docs/ApiV1EmployeesControllerPeriodUpdateBody.md)
  - [ApiV1EmployeesControllerPeriodUpdateResponse](docs/ApiV1EmployeesControllerPeriodUpdateResponse.md)
@@ -243,6 +307,8 @@ Class | Method | HTTP request | Description
  - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodShowResponse.md)
  - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateBody.md)
  - [ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse](docs/ApiV1EmployeesHealthInsuranceRulesControllerPeriodUpdateResponse.md)
+ - [ApiV1EmployeesIndexSerializer](docs/ApiV1EmployeesIndexSerializer.md)
+ - [ApiV1EmployeesProfileCustomFieldRulesControllerPeriodIndexResponse](docs/ApiV1EmployeesProfileCustomFieldRulesControllerPeriodIndexResponse.md)
  - [ApiV1EmployeesProfileRuleSerializer](docs/ApiV1EmployeesProfileRuleSerializer.md)
  - [ApiV1EmployeesProfileRuleUpdateRequestSerializer](docs/ApiV1EmployeesProfileRuleUpdateRequestSerializer.md)
  - [ApiV1EmployeesProfileRulesControllerPeriodShowResponse](docs/ApiV1EmployeesProfileRulesControllerPeriodShowResponse.md)
@@ -301,14 +367,31 @@ Class | Method | HTTP request | Description
  - [ApiV1SalariesEmployeePayrollStatementsControllerPeriodShowResponse](docs/ApiV1SalariesEmployeePayrollStatementsControllerPeriodShowResponse.md)
  - [ApiV1UsersCompanySerializer](docs/ApiV1UsersCompanySerializer.md)
  - [ApiV1UsersMeSerializer](docs/ApiV1UsersMeSerializer.md)
+ - [ApiV1WorkTimeIndexResponseParams](docs/ApiV1WorkTimeIndexResponseParams.md)
+ - [ApiV1WorkTimeIndexResponseParamsBreakRecordsInner](docs/ApiV1WorkTimeIndexResponseParamsBreakRecordsInner.md)
+ - [ApiV1WorkTimeResponseParams](docs/ApiV1WorkTimeResponseParams.md)
+ - [ApiV1specialHolidayIndexResponse](docs/ApiV1specialHolidayIndexResponse.md)
+ - [ApiV1specialHolidayIndexResponseSpecialHolidaysInner](docs/ApiV1specialHolidayIndexResponseSpecialHolidaysInner.md)
+ - [ApiV1specialHolidayRequest](docs/ApiV1specialHolidayRequest.md)
+ - [ApiV1specialHolidayResponse](docs/ApiV1specialHolidayResponse.md)
+ - [ApiV1specialHolidayResponseSpecialHoliday](docs/ApiV1specialHolidayResponseSpecialHoliday.md)
+ - [CreateApprovalRequestsWorkTime201Response](docs/CreateApprovalRequestsWorkTime201Response.md)
+ - [CreateApprovalRequestsWorkTimeRequest](docs/CreateApprovalRequestsWorkTimeRequest.md)
  - [Error](docs/Error.md)
  - [ErrorErrorsInner](docs/ErrorErrorsInner.md)
  - [ForbiddenError](docs/ForbiddenError.md)
  - [ForbiddenErrorErrorsInner](docs/ForbiddenErrorErrorsInner.md)
+ - [GetApprovalRequestsWorkTimes200Response](docs/GetApprovalRequestsWorkTimes200Response.md)
+ - [GetEmployeesSpecialHolidays200Response](docs/GetEmployeesSpecialHolidays200Response.md)
+ - [GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInner](docs/GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInner.md)
+ - [GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInnerNumDaysAndHoursLeft](docs/GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInnerNumDaysAndHoursLeft.md)
+ - [GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInnerNumDaysAndHoursUsed](docs/GetEmployeesSpecialHolidays200ResponseEmployeeSpecialHolidaysInnerNumDaysAndHoursUsed.md)
  - [InternalServerError](docs/InternalServerError.md)
  - [InternalServerErrorErrorsInner](docs/InternalServerErrorErrorsInner.md)
  - [NotfoundError](docs/NotfoundError.md)
  - [NotfoundErrorErrorsInner](docs/NotfoundErrorErrorsInner.md)
+ - [PutYearendAdjustmentHousingLoanDeduction200Response](docs/PutYearendAdjustmentHousingLoanDeduction200Response.md)
+ - [PutYearendAdjustmentHousingLoanDeductionRequest](docs/PutYearendAdjustmentHousingLoanDeductionRequest.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
 
 

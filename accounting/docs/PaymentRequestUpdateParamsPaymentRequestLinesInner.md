@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**i64**> | 支払依頼の項目行ID: 既存項目行を更新する場合に指定します。IDを指定しない項目行は、新規行として扱われ追加されます。また、payment_request_linesに含まれない既存の項目行は削除されます。更新後も残したい行は、必ず支払依頼の項目行IDを指定してpayment_request_linesに含めてください。 | [optional]
-**line_type** | Option<**String**> | '行の種類 (deal_line: 支払依頼の通常取引行, withholding_tax: 源泉所得税行)'<br> 'デフォルトは deal_line: 支払依頼の通常取引行 です'  | [optional]
+**line_type** | Option<**String**> | '行の種類 (deal_line: 支払依頼の通常取引行, negative_line: 支払依頼の控除・マイナス行, withholding_tax: 源泉所得税行)'<br> 'デフォルトは deal_line: 支払依頼の通常取引行 です'  | [optional]
 **description** | Option<**String**> | 内容 | [optional]
 **amount** | **i64** | 金額 | 
 **account_item_id** | Option<**i32**> | 勘定科目ID | [optional]

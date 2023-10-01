@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**line_type** | Option<**String**> | '行の種類 (deal_line: 支払依頼の通常取引行, withholding_tax: 源泉所得税行)'<br> 'デフォルトは deal_line: 支払依頼の通常取引行 です'  | [optional]
+**line_type** | Option<**String**> | '行の種類 (deal_line: 支払依頼の通常取引行, negative_line: 支払依頼の控除・マイナス行, withholding_tax: 源泉所得税行)'<br> 'デフォルトは deal_line: 支払依頼の通常取引行 です'  | [optional]
 **description** | Option<**String**> | 内容 | [optional]
 **amount** | **i64** | 金額 | 
 **account_item_id** | Option<**i32**> | 勘定科目ID | [optional]

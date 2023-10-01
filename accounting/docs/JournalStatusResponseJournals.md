@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **i32** | 受け付けID | 
 **company_id** | **i32** | 事業所ID | 
 **download_type** | **String** | ダウンロード形式 | 
+**encoding** | Option<**String**> | 文字コード | [optional]
 **status** | **String** | ダウンロードリクエストのステータス | 
 **start_date** | **String** | 取得開始日 (yyyy-mm-dd) | 
 **end_date** | **String** | 取得終了日 (yyyy-mm-dd) | 
