@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **calc_status** | Option<**String**> | 計算状況ステータス calculating: 計算中, calculated: 計算完了, overwritten: 直接編集, imported: インポート, error: エラー | [optional]
 **calculated_at** | Option<**String**> | 計算状況ステータスの更新日 | [optional]
 **pay_calc_type** | Option<**String**> | 給与形態 monthly: 月給, daily: 日給, hourly: 時給, (空文字列): 計算中 | [optional]
+**board_member_remuneration_amount** | Option<**String**> | 役員報酬 | [optional]
 **basic_pay_amount** | Option<**String**> | 基本給 | [optional]
 **work_days** | Option<**String**> | 労働日数 | [optional]
 **normal_work_time** | Option<**String**> | 労働時間のうち、所定労働時間に該当するもの | [optional]

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **normal_work_mins** | Option<**i32**> | 所定労働時間。指定しない場合はデフォルト設定が使用されます。（デフォルト設定は従業員に設定した勤務賃金設定の出退勤時刻と労働時間の設定を参照して値が決まります。） | [optional]
 **normal_work_mins_by_paid_holiday** | Option<**i32**> | 有給によって計上される所定労働時間（分） | [optional]
 **note** | Option<**String**> | 勤怠メモ | [optional]
-**paid_holiday** | Option<**f32**> | この日の有休取得数。0.5日単位で指定します。 | [optional]
+**paid_holiday** | Option<**f32**> | この日の有休取得日数。0.5日単位で指定します。 | [optional]
 **use_attendance_deduction** | Option<**bool**> | 欠勤・遅刻・早退を控除対象時間に算入するかどうか | [optional]
 **use_default_work_pattern** | Option<**bool**> | デフォルトの勤務設定を使うかどうか。  trueを指定した場合、以下のパラメータについて、指定した値に関係なく、従業員に設定した勤務賃金設定の休日の設定を参照して値が決まります - day_pattern  trueを指定した場合、以下のパラメータについて、指定した値に関係なく、従業員に設定した勤務賃金設定の出退勤時刻と労働時間の設定を参照して値が決まります。 - normal_work_clock_in_at - normal_work_clock_out_at - normal_work_mins | [optional]
 

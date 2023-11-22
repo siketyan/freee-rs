@@ -15,10 +15,10 @@ Method | HTTP request | Description
 
 ## create_receipt
 
-> crate::models::ReceiptResponse create_receipt(company_id, receipt, description, issue_date, receipt_metadatum_partner_name, receipt_metadatum_issue_date, receipt_metadatum_amount, qualified_invoice, document_type)
+> crate::models::ReceiptResponse create_receipt(company_id, receipt, description, receipt_metadatum_partner_name, receipt_metadatum_issue_date, receipt_metadatum_amount, qualified_invoice, document_type)
 ファイルボックス（証憑ファイル）のアップロード
 
- <h2 id=\"\">概要</h2>  <p>ファイルボックス（証憑ファイル）をアップロードする</p> <h2 id=\"_2\">注意点</h2> <ul>   <li>リクエストヘッダーの Content-Type は、multipart/form-dataにのみ対応しています。</li> </ul>
+ <h2 id=\"\">概要</h2>  <p>ファイルボックス（証憑ファイル）をアップロードする</p> <h2 id=\"_2\">注意点</h2> <ul>   <li>リクエストヘッダーの Content-Type は、multipart/form-dataにのみ対応しています。</li>   <li>インボイス制度適格請求書発行事業者登録番号はOCR解析結果が採用されます。OCR解析結果を確認する場合は、Web画面にてご確認ください。上書きする場合は、ファイルボックス（証憑ファイル）の更新APIをご利用ください。</li> </ul>
 
 ### Parameters
 
@@ -28,12 +28,11 @@ Name | Type | Description  | Required | Notes
 **company_id** | **i32** | 事業所ID | [required] |
 **receipt** | **std::path::PathBuf** | 証憑ファイル | [required] |
 **description** | Option<**String**> | メモ (255文字以内) |  |
-**issue_date** | Option<**String**> | 取引日 (yyyy-mm-dd) |  |
 **receipt_metadatum_partner_name** | Option<**String**> | 発行元 |  |
 **receipt_metadatum_issue_date** | Option<**String**> | 発行日 (yyyy-mm-dd) |  |
 **receipt_metadatum_amount** | Option<**i64**> | 金額 |  |
-**qualified_invoice** | Option<**String**> | この項目はインボイス制度で利用する項目です。2023年4月頃から利用できる予定です。 適格請求書等（qualified: 該当する、not_qualified: 該当しない）  |  |
-**document_type** | Option<**String**> | この項目はインボイス制度で利用する項目です。2023年4月頃から利用できる予定です。 書類の種類（receipt: 領収書、invoice: 請求書、other: その他）  |  |
+**qualified_invoice** | Option<**String**> | 適格請求書等（qualified: 該当する、not_qualified: 該当しない、unselected: 未選択） |  |
+**document_type** | Option<**String**> | 書類の種類（receipt: 領収書、invoice: 請求書、other: その他） |  |
 
 ### Return type
 

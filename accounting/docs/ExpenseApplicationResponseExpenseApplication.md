@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **status** | **String** | 申請ステータス(draft:下書き, in_progress:申請中, approved:承認済, rejected:却下, feedback:差戻し) | 
 **section_id** | Option<**i32**> | 部門ID | [optional]
 **tag_ids** | Option<**Vec<i32>**> | メモタグID | [optional]
-**expense_application_lines** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner>**](expenseApplicationResponse_expense_application_expense_application_lines_inner.md) | 経費申請の項目行一覧（配列） | 
+**purchase_lines** | Option<[**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationPurchaseLinesInner>**](expenseApplicationResponse_expense_application_purchase_lines_inner.md)> | 経費申請の申請行一覧（配列） | [optional]
+**expense_application_lines** | Option<[**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner>**](expenseApplicationResponse_expense_application_expense_application_lines_inner.md)> | 経費申請の項目行一覧（配列） | [optional]
 **deal_id** | Option<**i32**> | 取引ID (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_idが表示されます) | 
 **deal_status** | Option<**String**> | 取引ステータス (申請ステータス:statusがapprovedで、取引が存在する時のみdeal_statusが表示されます settled:精算済み, unsettled:清算待ち) | 
 **applicant_id** | **i32** | 申請者のユーザーID | 
@@ -24,6 +25,7 @@ Name | Type | Description | Notes
 **approval_flow_logs** | [**Vec<crate::models::ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner>**](expenseApplicationResponse_expense_application_approval_flow_logs_inner.md) | 経費申請の承認履歴（配列） | 
 **current_step_id** | Option<**i32**> | 現在承認ステップID | 
 **current_round** | **i32** | 現在のround。差し戻し等により申請がstepの最初からやり直しになるとroundの値が増えます。 | 
+**parent_id** | Option<**i32**> | 親申請ID。各種申請が使用可能なプランの時のみレスポンスに含まれます。 | [optional]
 **segment_1_tag_id** | Option<**i64**> | セグメント１ID。セグメント１が使用可能なプランの時のみレスポンスに含まれます。 | [optional]
 **segment_2_tag_id** | Option<**i64**> | セグメント２ID。セグメント２が使用可能なプランの時のみレスポンスに含まれます。 | [optional]
 **segment_3_tag_id** | Option<**i64**> | セグメント３ID。セグメント３が使用可能なプランの時のみレスポンスに含まれます。 | [optional]

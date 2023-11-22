@@ -4,7 +4,7 @@ All URIs are relative to *https://api.freee.co.jp*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_invoice**](InvoicesApi.md#create_invoice) | **POST** /api/1/invoices | 請求書の作成
+[**create_invoice**](InvoicesApi.md#create_invoice) | **POST** /api/1/invoices | 請求書の作成（2023年10月廃止予定）
 [**destroy_invoice**](InvoicesApi.md#destroy_invoice) | **DELETE** /api/1/invoices/{id} | 請求書の削除
 [**get_invoice**](InvoicesApi.md#get_invoice) | **GET** /api/1/invoices/{id} | 請求書の取得
 [**get_invoices**](InvoicesApi.md#get_invoices) | **GET** /api/1/invoices | 請求書一覧の取得
@@ -15,9 +15,9 @@ Method | HTTP request | Description
 ## create_invoice
 
 > crate::models::InvoiceResponse create_invoice(invoice_create_params)
-請求書の作成
+請求書の作成（2023年10月廃止予定）
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書を作成する</p>  <h2 id=\"_1\">注意点</h2> <ul> <li> <p>partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。</p> </li> <li> <p>請求書ステータス(invoice_status)を発行(issue)で利用した場合、請求内容の合計金額が0円以上になる必要があります。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは請求内容(invoice_contents)は、最大100行までになります。</p> </li> </ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書を作成する</p>  <h2 id=\"_1\">注意点</h2> <b>インボイス制度に伴い、freee会計の帳票機能がfreee請求書に移行します。これに伴い、2023年10月にfreee会計の「請求書の作成」エンドポイントは廃止、freee請求書APIに移行する予定です。詳細は<a href=\"https://developer.freee.co.jp/news/6369\" target=\"_blank\"> freee会計 APIの仕様変更（インボイス制度対応）について</a>をご確認ください。</b> <ul> <li> <p>partner_code, partner_idはどちらかの指定が必須です。ただし両方同時に指定することはできません。</p> </li> <li> <p>請求書ステータス(invoice_status)を下書き(draft)以外で作成する場合、請求内容の合計金額が0円以上になる必要があります。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは請求内容(invoice_contents)は、最大100行までになります。</p> </li> </ul>
 
 ### Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::InvoiceResponse update_invoice(id, invoice_update_params)
 請求書の更新
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書を更新する</p>  <h2 id=\"_1\">注意点</h2> <ul> <li> <p>入金済みの請求書に対する金額関連の変更はできません。</p> </li> <li> <p>請求書ステータスは確定(issue)のみ指定可能です。請求書ステータスを確定する時のみ指定してください。</p> </li> <li> <p>請求書WFを利用している場合、承認済み請求書は承認権限を持たないユーザーでは更新できません。</p> </li> <li> <p>更新後の請求書ステータス(invoice_status)が下書き以外の場合、請求内容の合計金額が0円以上になる必要があります。</p> </li> <li> <p>partner_code, partner_idを両方同時に指定することはできません。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは請求内容(invoice_contents)は、最大100行までになります。</p> </li> </ul>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の請求書を更新する</p>  <h2 id=\"_1\">注意点</h2> <ul> <li> <p>入金済みの請求書に対する金額関連の変更はできません。</p> </li> <li> <p>請求書WFを利用している場合、承認済み請求書は承認権限を持たないユーザーでは更新できません。</p> </li> <li> <p>請求書ステータス(invoice_status)を下書き(draft)以外で更新する場合、請求内容の合計金額が0円以上になる必要があります。</p> </li> <li> <p>partner_code, partner_idを両方同時に指定することはできません。</p> </li> <li> <p>partner_codeを利用するには、事業所の設定から取引先コードの利用を有効にする必要があります。</p> </li> <li> <p>本APIでは請求内容(invoice_contents)は、最大100行までになります。</p> </li> </ul>
 
 ### Parameters
 

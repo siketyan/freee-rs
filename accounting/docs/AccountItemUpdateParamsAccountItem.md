@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | Option<**String**> | 勘定科目名 (30文字以内) 口座に紐付かない勘定科目の更新時は必須です。 口座に紐付く勘定科目の更新時は指定することができません。  | [optional]
 **shortcut** | Option<**String**> | ショートカット1 (20文字以内) | [optional]
 **shortcut_num** | Option<**String**> | ショートカット2(勘定科目コード)(20文字以内) | [optional]
-**tax_code** | **i32** | 税区分コード | 
+**tax_code** | **i32** | 税区分コード 指定できるコードは本APIの注意点をご確認ください。 | 
 **group_name** | **String** | 決算書表示名（小カテゴリー） Selectablesフォーム用選択項目情報エンドポイント(account_groups.name)で取得可能です | 
 **account_category_id** | **i32** | 勘定科目カテゴリーID Selectablesフォーム用選択項目情報エンドポイント(account_groups.account_category_id)で取得可能です | 
 **corresponding_income_id** | **i32** | 収入取引相手勘定科目ID | 

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **partner_id** | Option<**i32**> | 取引先ID | 
 **partner_code** | Option<**String**> | 取引先コード | 
 **partner_name** | Option<**String**> | 取引先名 | 
+**qualified_invoice_status** | Option<**String**> | 適格請求書発行事業者（qualified: 該当する、not_qualified: 該当しない、unspecified: 未選択） - 支払依頼をインボイス要件をみたす申請として扱うかどうかを表します。  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

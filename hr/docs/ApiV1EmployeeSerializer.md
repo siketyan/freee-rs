@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **profile_rule** | Option<[**crate::models::ApiV1EmployeesProfileRuleSerializer**](ApiV1EmployeesProfileRuleSerializer.md)> |  | [optional]
 **health_insurance_rule** | Option<[**crate::models::ApiV1EmployeesHealthInsuranceRuleSerializer**](ApiV1EmployeesHealthInsuranceRuleSerializer.md)> |  | [optional]
 **welfare_pension_insurance_rule** | Option<[**crate::models::ApiV1EmployeesWelfarePensionInsuranceRuleSerializer**](ApiV1EmployeesWelfarePensionInsuranceRuleSerializer.md)> |  | [optional]
-**dependent_rules** | Option<[**Vec<crate::models::ApiV1EmployeesDependentRuleSerializer>**](ApiV1EmployeesDependentRuleSerializer.md)> | 扶養親族 | [optional]
+**dependent_rules** | Option<[**Vec<crate::models::ApiV1EmployeesDependentRuleSerializer>**](ApiV1EmployeesDependentRuleSerializer.md)> | 家族情報 | [optional]
 **bank_account_rule** | Option<[**crate::models::ApiV1EmployeesBankAccountRuleSerializer**](ApiV1EmployeesBankAccountRuleSerializer.md)> |  | [optional]
 **basic_pay_rule** | Option<[**crate::models::ApiV1EmployeesBasicPayRuleSerializer**](ApiV1EmployeesBasicPayRuleSerializer.md)> |  | [optional]
 **payroll_calculation** | Option<**bool**> | 給与計算対象従業員の場合trueを返します | [optional]

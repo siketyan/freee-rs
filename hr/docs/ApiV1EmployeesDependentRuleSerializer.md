@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<**i32**> | 扶養親族ルールID | [optional]
+**id** | Option<**i32**> | 家族情報ルールID | [optional]
 **company_id** | Option<**i32**> | 事業所ID | [optional]
 **employee_id** | Option<**i32**> | 従業員ID | [optional]
 **last_name** | Option<**String**> | 姓 | [optional]

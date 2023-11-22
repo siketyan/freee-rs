@@ -8,6 +8,12 @@
 <p>freee API開発がはじめての方は<a href=\"https://developer.freee.co.jp/getting-started\">freee API スタートガイド</a>を参照してください。</p>
 
 <hr />
+<h2 id=\"specification\">お知らせ</h2>
+
+<p>
+<b>インボイス制度に伴い、freee会計の帳票機能がfreee請求書に移行します。これに伴い、2023年10月にfreee会計の「請求書の作成、見積書の作成」エンドポイントは廃止、freee請求書APIに移行する予定です。詳細は<a href=\"https://developer.freee.co.jp/news/6369\" target=\"_blank\"> freee会計 APIの仕様変更（インボイス制度対応）について</a>をご確認ください。</b>
+</p>
+
 <h2 id=\"specification\">仕様</h2>
 
 <h3 id=\"api_endpoint\">APIエンドポイント</h3>
@@ -31,6 +37,7 @@
 <li>既存のAPIレスポンスに対する新しいプロパティの追加</li>
 <li>既存のAPIレスポンスに対するプロパティの順番の入れ変え</li>
 <li>keyとなっているidやcodeの長さの変更（長くする）</li>
+<li>エラーメッセージの変更</li>
 </ul>
 
 <h3 id=\"common_response_header\">共通レスポンスヘッダー</h3>
@@ -216,7 +223,9 @@ Class | Method | HTTP request | Description
 *ExpenseApplicationsApi* | [**get_expense_applications**](docs/ExpenseApplicationsApi.md#get_expense_applications) | **GET** /api/1/expense_applications | 経費申請一覧の取得
 *ExpenseApplicationsApi* | [**update_expense_application**](docs/ExpenseApplicationsApi.md#update_expense_application) | **PUT** /api/1/expense_applications/{id} | 経費申請の更新
 *ExpenseApplicationsApi* | [**update_expense_application_action**](docs/ExpenseApplicationsApi.md#update_expense_application_action) | **POST** /api/1/expense_applications/{id}/actions | 経費申請の承認操作
-*InvoicesApi* | [**create_invoice**](docs/InvoicesApi.md#create_invoice) | **POST** /api/1/invoices | 請求書の作成
+*FixedAssetsApi* | [**get_fixed_assets**](docs/FixedAssetsApi.md#get_fixed_assets) | **GET** /api/1/fixed_assets | 固定資産一覧の取得
+*GeneralLedgersApi* | [**get_general_ledgers**](docs/GeneralLedgersApi.md#get_general_ledgers) | **GET** /api/1/reports/general_ledgers | 総勘定元帳一覧の取得（β版）
+*InvoicesApi* | [**create_invoice**](docs/InvoicesApi.md#create_invoice) | **POST** /api/1/invoices | 請求書の作成（2023年10月廃止予定）
 *InvoicesApi* | [**destroy_invoice**](docs/InvoicesApi.md#destroy_invoice) | **DELETE** /api/1/invoices/{id} | 請求書の削除
 *InvoicesApi* | [**get_invoice**](docs/InvoicesApi.md#get_invoice) | **GET** /api/1/invoices/{id} | 請求書の取得
 *InvoicesApi* | [**get_invoices**](docs/InvoicesApi.md#get_invoices) | **GET** /api/1/invoices | 請求書一覧の取得
@@ -249,7 +258,7 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**create_deal_payment**](docs/PaymentsApi.md#create_deal_payment) | **POST** /api/1/deals/{id}/payments | 取引（収入・支出）の支払行の作成
 *PaymentsApi* | [**destroy_deal_payment**](docs/PaymentsApi.md#destroy_deal_payment) | **DELETE** /api/1/deals/{id}/payments/{payment_id} | 取引（収入・支出）の支払行の削除
 *PaymentsApi* | [**update_deal_payment**](docs/PaymentsApi.md#update_deal_payment) | **PUT** /api/1/deals/{id}/payments/{payment_id} | 取引（収入・支出）の支払行の更新
-*QuotationsApi* | [**create_quotation**](docs/QuotationsApi.md#create_quotation) | **POST** /api/1/quotations | 見積書の作成
+*QuotationsApi* | [**create_quotation**](docs/QuotationsApi.md#create_quotation) | **POST** /api/1/quotations | 見積書の作成（2023年10月廃止予定）
 *QuotationsApi* | [**destroy_quotation**](docs/QuotationsApi.md#destroy_quotation) | **DELETE** /api/1/quotations/{id} | 見積書の削除
 *QuotationsApi* | [**get_quotation**](docs/QuotationsApi.md#get_quotation) | **GET** /api/1/quotations/{id} | 見積書の取得
 *QuotationsApi* | [**get_quotations**](docs/QuotationsApi.md#get_quotations) | **GET** /api/1/quotations | 見積書一覧の取得
@@ -279,7 +288,7 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**get_tags**](docs/TagsApi.md#get_tags) | **GET** /api/1/tags | メモタグ一覧の取得
 *TagsApi* | [**update_tag**](docs/TagsApi.md#update_tag) | **PUT** /api/1/tags/{id} | メモタグの更新
 *TaxesApi* | [**get_tax_code**](docs/TaxesApi.md#get_tax_code) | **GET** /api/1/taxes/codes/{code} | 税区分の取得
-*TaxesApi* | [**get_tax_codes**](docs/TaxesApi.md#get_tax_codes) | **GET** /api/1/taxes/codes | 税区分一覧の取得
+*TaxesApi* | [**get_tax_codes**](docs/TaxesApi.md#get_tax_codes) | **GET** /api/1/taxes/codes | 税区分一覧の取得（廃止予定）
 *TaxesApi* | [**get_taxes_companies**](docs/TaxesApi.md#get_taxes_companies) | **GET** /api/1/taxes/companies/{company_id} | 指定した事業所の税区分一覧の取得
 *TransfersApi* | [**create_transfer**](docs/TransfersApi.md#create_transfer) | **POST** /api/1/transfers | 取引（振替）の作成
 *TransfersApi* | [**destroy_transfer**](docs/TransfersApi.md#destroy_transfer) | **DELETE** /api/1/transfers/{id} | 取引（振替）の削除
@@ -348,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ApprovalRequestResponseApprovalRequestApprovalRequestForm](docs/ApprovalRequestResponseApprovalRequestApprovalRequestForm.md)
  - [ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInner](docs/ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInner.md)
  - [ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInnerValuesInner](docs/ApprovalRequestResponseApprovalRequestApprovalRequestFormPartsInnerValuesInner.md)
+ - [ApprovalRequestSweeepDocument](docs/ApprovalRequestSweeepDocument.md)
  - [ApprovalRequestUpdateParams](docs/ApprovalRequestUpdateParams.md)
  - [ApprovalRequestsIndexResponse](docs/ApprovalRequestsIndexResponse.md)
  - [ApprovalRequestsIndexResponseApprovalRequestsInner](docs/ApprovalRequestsIndexResponseApprovalRequestsInner.md)
@@ -370,6 +380,8 @@ Class | Method | HTTP request | Description
  - [CompanyResponseCompanyTagsInner](docs/CompanyResponseCompanyTagsInner.md)
  - [CompanyResponseCompanyTaxCodesInner](docs/CompanyResponseCompanyTaxCodesInner.md)
  - [CompanyResponseCompanyWalletablesInner](docs/CompanyResponseCompanyWalletablesInner.md)
+ - [ConflictError](docs/ConflictError.md)
+ - [ConflictErrorErrorsInner](docs/ConflictErrorErrorsInner.md)
  - [Deal](docs/Deal.md)
  - [DealCreateParams](docs/DealCreateParams.md)
  - [DealCreateParamsDetailsInner](docs/DealCreateParamsDetailsInner.md)
@@ -389,23 +401,36 @@ Class | Method | HTTP request | Description
  - [ExpenseApplicationActionCreateParams](docs/ExpenseApplicationActionCreateParams.md)
  - [ExpenseApplicationCreateParams](docs/ExpenseApplicationCreateParams.md)
  - [ExpenseApplicationCreateParamsExpenseApplicationLinesInner](docs/ExpenseApplicationCreateParamsExpenseApplicationLinesInner.md)
+ - [ExpenseApplicationCreateParamsPurchaseLinesInner](docs/ExpenseApplicationCreateParamsPurchaseLinesInner.md)
+ - [ExpenseApplicationCreateParamsPurchaseLinesInnerExpenseApplicationLinesInner](docs/ExpenseApplicationCreateParamsPurchaseLinesInnerExpenseApplicationLinesInner.md)
  - [ExpenseApplicationLineTemplate](docs/ExpenseApplicationLineTemplate.md)
  - [ExpenseApplicationLineTemplateParams](docs/ExpenseApplicationLineTemplateParams.md)
  - [ExpenseApplicationLineTemplateResponse](docs/ExpenseApplicationLineTemplateResponse.md)
+ - [ExpenseApplicationParentApprovalRequestUpdateParams](docs/ExpenseApplicationParentApprovalRequestUpdateParams.md)
  - [ExpenseApplicationResponse](docs/ExpenseApplicationResponse.md)
  - [ExpenseApplicationResponseExpenseApplication](docs/ExpenseApplicationResponseExpenseApplication.md)
  - [ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner](docs/ExpenseApplicationResponseExpenseApplicationApprovalFlowLogsInner.md)
  - [ExpenseApplicationResponseExpenseApplicationApproversInner](docs/ExpenseApplicationResponseExpenseApplicationApproversInner.md)
  - [ExpenseApplicationResponseExpenseApplicationCommentsInner](docs/ExpenseApplicationResponseExpenseApplicationCommentsInner.md)
  - [ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner](docs/ExpenseApplicationResponseExpenseApplicationExpenseApplicationLinesInner.md)
+ - [ExpenseApplicationResponseExpenseApplicationPurchaseLinesInner](docs/ExpenseApplicationResponseExpenseApplicationPurchaseLinesInner.md)
  - [ExpenseApplicationUpdateParams](docs/ExpenseApplicationUpdateParams.md)
  - [ExpenseApplicationUpdateParamsExpenseApplicationLinesInner](docs/ExpenseApplicationUpdateParamsExpenseApplicationLinesInner.md)
+ - [ExpenseApplicationUpdateParamsPurchaseLinesInner](docs/ExpenseApplicationUpdateParamsPurchaseLinesInner.md)
+ - [ExpenseApplicationUpdateParamsPurchaseLinesInnerExpenseApplicationLinesInner](docs/ExpenseApplicationUpdateParamsPurchaseLinesInnerExpenseApplicationLinesInner.md)
  - [ExpenseApplicationsIndexResponse](docs/ExpenseApplicationsIndexResponse.md)
  - [ExpenseApplicationsIndexResponseExpenseApplicationsInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInner.md)
  - [ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInnerExpenseApplicationLinesInner.md)
+ - [ExpenseApplicationsIndexResponseExpenseApplicationsInnerPurchaseLinesInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInnerPurchaseLinesInner.md)
+ - [ExpenseApplicationsIndexResponseExpenseApplicationsInnerPurchaseLinesInnerExpenseApplicationLinesInner](docs/ExpenseApplicationsIndexResponseExpenseApplicationsInnerPurchaseLinesInnerExpenseApplicationLinesInner.md)
  - [FiscalYears](docs/FiscalYears.md)
- - [FixedAsset](docs/FixedAsset.md)
+ - [FixedAssetResponse](docs/FixedAssetResponse.md)
+ - [FixedAssetResponseFiscalYear](docs/FixedAssetResponseFiscalYear.md)
+ - [FixedAssetResponseFixedAssetsInner](docs/FixedAssetResponseFixedAssetsInner.md)
+ - [FixedAssetResponseUpToDateReasonsInner](docs/FixedAssetResponseUpToDateReasonsInner.md)
  - [ForbiddenError](docs/ForbiddenError.md)
+ - [GeneralLedgersResponse](docs/GeneralLedgersResponse.md)
+ - [GeneralLedgersResponseGeneralLedgersInner](docs/GeneralLedgersResponseGeneralLedgersInner.md)
  - [GetBanks200Response](docs/GetBanks200Response.md)
  - [GetDeals200Response](docs/GetDeals200Response.md)
  - [GetDeals200ResponseMeta](docs/GetDeals200ResponseMeta.md)

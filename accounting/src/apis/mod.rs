@@ -98,6 +98,8 @@ pub mod companies_api;
 pub mod deals_api;
 pub mod expense_application_line_templates_api;
 pub mod expense_applications_api;
+pub mod fixed_assets_api;
+pub mod general_ledgers_api;
 pub mod invoices_api;
 pub mod items_api;
 pub mod journals_api;

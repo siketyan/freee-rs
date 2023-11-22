@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **messages** | Option<**Vec<String>**> |  | [optional]
 **company_id** | **i32** | 事業所ID | 
 **download_type** | Option<**String**> | ダウンロード形式 | [optional]
+**encoding** | Option<**String**> | 文字コード | [optional]
 **start_date** | Option<**String**> | 取得開始日 (yyyy-mm-dd) | [optional]
 **end_date** | Option<**String**> | 取得終了日 (yyyy-mm-dd) | [optional]
 **visible_tags** | Option<**Vec<String>**> |  | [optional]

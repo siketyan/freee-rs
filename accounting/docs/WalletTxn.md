@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **date** | **String** | 取引日(yyyy-mm-dd) | 
 **amount** | **i64** | 取引金額 | 
 **due_amount** | **i32** | 未決済金額 | 
-**balance** | **i32** | 残高(銀行口座等) | 
+**balance** | Option<**i32**> | 残高(銀行口座等)(Webで残高未設定で登録した場合や口座明細の作成APIでキーを指定しないで登録した場合などはnullとなります) | 
 **entry_side** | **String** | 入金／出金 (入金: income, 出金: expense) | 
 **walletable_type** | **String** | 口座区分 (銀行口座: bank_account, クレジットカード: credit_card, 現金: wallet) | 
 **walletable_id** | **i32** | 口座ID | 

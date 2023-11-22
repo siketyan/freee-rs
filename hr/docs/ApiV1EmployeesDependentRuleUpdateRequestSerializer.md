@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<**i32**> | 扶養親族ルールID（idがない場合は新規作成になる) | [optional]
+**id** | Option<**i32**> | 家族情報ルールID（idがない場合は新規作成になる) | [optional]
 **last_name** | **String** | 姓 null不可 | 
 **first_name** | **String** | 名 null不可 | 
 **last_name_kana** | Option<**String**> | 姓カナ | [optional]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **phone1** | Option<**String**> | 電話番号1（先頭番号、例:03-1111-222x の03部分） | [optional]
 **phone2** | Option<**String**> | 電話番号2（中間番号、例:03-1111-222x の1111部分） | [optional]
 **phone3** | Option<**String**> | 電話番号3（末尾番号、例:03-1111-222x の222x部分） | [optional]
-**destroy** | Option<**bool**> | 扶養親族を削除するか | [optional]
+**destroy** | Option<**bool**> | 家族情報を削除するか | [optional]
 **social_insurance_and_tax_dependent** | **String** | 扶養状況 social_insurance_and_tax: 所得税・住民税と社会保険, tax_only: 所得税・住民税のみ, social_insurance_only: 社会保険のみ, not_dependent: 扶養していない | 
 **social_insurance_dependent_acquisition_date** | Option<[**String**](string.md)> | 社会保険の扶養加入日 | [optional]
 **social_insurance_dependent_acquisition_reason** | Option<**String**> | 社会保険の扶養加入理由 配偶者の場合 \"\": 未選択, start_working: 配偶者の就職, marriage: 婚姻, turnover: 離職, decrease_in_income: 収入減少, other: その他 配偶者以外の場合 \"\": 未選択, birth: 出生, turnover: 離職, decrease_in_income: 収入減, live_in: 同居, other: その他 | [optional]

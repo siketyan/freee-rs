@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > crate::models::AccountItemResponse create_account_item(account_item_create_params)
 勘定科目の作成
 
- <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目を作成する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、api/1/taxes/companies/{company_id} で該当事業所の税区分の一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのcodeを指定して勘定科目の作成をしてください</p>
+ <h2 id=\"\">概要</h2>  <p>指定した事業所の勘定科目を作成する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、指定した事業所の税区分一覧の取得APIでavailableの値がtrue、かつ経過措置税区分ではない5%の税区分を確認して、そのcodeを指定して勘定科目の作成をしてください。例 課対仕入の場合、34を指定してください</p>
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > destroy_account_item(id, company_id)
 勘定科目の削除
 
- <h2 id=\"\">概要</h2>  <p>指定した勘定科目を削除する</p> <h2 id=\"\">注意点</h2> <ul> <li>削除できる勘定科目は、追加で作成したカスタム勘定項目のみです。</li> <li>デフォルトで存在する勘定科目や口座の勘定科目は削除できません。</li></ul>
+ <h2 id=\"\">概要</h2>  <p>指定した勘定科目を削除する</p> <h2 id=\"\">注意点</h2> <ul> <li>削除できる勘定科目は、追加で作成したカスタム勘定科目のみです。</li> <li>デフォルトで存在する勘定科目や口座の勘定科目は削除できません。</li></ul>
 
 ### Parameters
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::AccountItemResponse update_account_item(id, account_item_update_params)
 勘定科目の更新
 
- <h2 id=\"\">概要</h2>  <p>指定した勘定科目を更新する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、api/1/taxes/companies/{company_id} で該当事業所の税区分一覧を取得して、availableの値がtrue、かつ”name_ja”に”税率%”を含んでいない税区分を確認して、そのcodeを指定して勘定科目の更新をしてください</p>
+ <h2 id=\"\">概要</h2>  <p>指定した勘定科目を更新する</p>  <h2 id=\"_2\">注意点</h2> <p>tax_codeは、指定した事業所の税区分一覧の取得APIでavailableの値がtrue、かつ経過措置税区分ではない5%の税区分を確認して、そのcodeを指定して勘定科目の更新をしてください。例 課対仕入の場合、34を指定してください</p>
 
 ### Parameters
 
